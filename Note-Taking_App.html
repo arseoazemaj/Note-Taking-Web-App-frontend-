@@ -1,23 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Note-Taking_App.css">
-    <title>Note-Taking-Web-App</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typescript/4.7.4/typescript.min.js"></script>
-</head>
-<body>
-
-    <script>
-        fetch('Note-Taking_App.ts')
-            .then(response => response.text())
-            .then(tsCode => {
-                const jsCode = ts.transpile(tsCode);
-
-                eval(jsCode);
-            })
-            .catch(error => console.error('Error loading TypeScript file:', error));
-    </script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="Note-Taking_App.css">
+        <title>Note-Taking-Web-App</title>
+    </head>
+    <body>
+    
+        <script src="Note-Taking_App.js"></script>
+    </body>
 </html>
