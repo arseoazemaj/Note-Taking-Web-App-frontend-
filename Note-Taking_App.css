@@ -1,0 +1,177 @@
+h2{
+    position: fixed;
+    top: 0%;
+    padding: 77px;
+}
+
+#forgot{
+    position: absolute;
+    top: 30%;
+    left: -16px;
+    padding: 96px;
+    width: 167px;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 413px;
+}
+
+#log_ig {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    position: absolute;
+    top: 150px;
+    gap: 10px;
+    padding: 20px;
+    border: 1px solid #1f1f1f;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    width: 250px;
+    height: 170px;
+}
+
+#log_ig_btn {
+    margin: 0 auto;
+    width: 66%;
+    background-color: #007BFF;
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#log_ig_btn:hover {
+    background-color: #0056b3;
+}
+
+#log_ig_btn:active {
+    transform: scale(0.97);
+}
+
+#sign_up {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    position: absolute;
+    top: 150px;
+    gap: 10px;
+    padding: 20px;
+    border: 1px solid #1f1f1f;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    width: 250px;
+    height: 225px;
+}
+
+#sign_up_btn {
+    margin: 0 auto;
+    width: 66%;
+    background-color: #007BFF;
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#sign_up_btn:hover {
+    background-color: #0056b3;
+}
+
+#sign_up_btn:active {
+    transform: scale(0.97);
+}
+
+.password-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+#Password {
+    padding: 10px;
+    width: 100%;
+    padding-right: 40px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#toggle-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+#toggle-icon img {
+    width: 20px;
+    height: 20px;
+}
+
+#eye-icon, #hidden-eye-icon {
+    position: absolute;
+    height: 25px;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#confirmPassword {
+    margin-top: -10px;
+    padding: 10px;
+    width: 100%;
+    padding-right: 40px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.password-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.toggle-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.eye-icon, .hidden-eye-icon {
+    position: absolute;
+    height: 25px;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#eye-icon-confirm, #hidden-eye-icon-confirm {
+    margin-top: -6px;
+}
+
+#username, #email {
+    padding: 10px;
+    width: 100%;
+    padding-right: 40px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

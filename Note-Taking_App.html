@@ -7,7 +7,44 @@
         <title>Note-Taking-Web-App</title>
     </head>
     <body>
-    
+        <div id="container">
+            <h2 id="text">Log in</h2>
+            <form id="log_ig">
+                <input type="text" id="username" placeholder="Username" required>
+                <div class="password-container">
+                    <input type="password" id="Password" placeholder="Password" required>                
+                        <span id="toggle-icon" onclick="togglePassword()">
+                            <img src="/Icons/eye.png" alt="Eye Icon" id="eye-icon">
+                            <img src="/Icons/hidden-eye.png" alt="Hidden Eye Icon" id="hidden-eye-icon" style="display: none;">
+                        </span>
+                    </input>
+                </div>
+                <button id="log_ig_btn">Log in</button>
+                <p id="forgot">Forgot password?</p>
+            </form>
+            <!-- <h2>Sign up</h2>
+            <form id="sign_up">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="email" id="email" placeholder="Email" required>
+                
+                <div class="password-container">
+                    <input type="password" id="Password" placeholder="Password" required>
+                    <span class="toggle-icon" onclick="togglePassword('Password', 'eye-icon', 'hidden-eye-icon')">
+                        <img src="/Icons/eye.png" alt="Eye Icon" class="eye-icon" id="eye-icon">
+                        <img src="/Icons/hidden-eye.png" alt="Hidden Eye Icon" class="hidden-eye-icon" id="hidden-eye-icon" style="display: none;">
+                    </span>
+                </div>
+                <div class="password-container">
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                    <span class="toggle-icon" onclick="togglePassword('confirmPassword', 'eye-icon-confirm', 'hidden-eye-icon-confirm')">
+                        <img src="/Icons/eye.png" alt="Eye Icon" class="eye-icon" id="eye-icon-confirm">
+                        <img src="/Icons/hidden-eye.png" alt="Hidden Eye Icon" class="hidden-eye-icon" id="hidden-eye-icon-confirm" style="display: none;">
+                    </span>
+                </div>
+                <button id="sign_up_btn">Sign up</button>
+            </form> -->
+        </div>
+
         <script src="Note-Taking_App.js"></script>
     </body>
 </html>
