@@ -6,8 +6,8 @@
 
 #forgot {
     position: absolute;
-    top: 73%;
-    left: 55px;
+    top: 77%;
+    left: 76px;
     width: 163px;
 }
 
@@ -35,7 +35,7 @@
 }
 
 #log_ig_btn {
-    margin-top: -2px;
+    margin-top: 13px;
     margin-left: 34px;
     width: 66%;
     background-color: #007BFF;
@@ -92,6 +92,12 @@
     transform: scale(0.97);
 }
 
+#sign_up_btn:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
 #password-container-1,
 #password-container-2 {
     display: flex;
@@ -112,7 +118,8 @@
 }
 
 #toggle-icon-1,
-#toggle-icon-2 {
+#toggle-icon-2,
+#toggle-icon-3 {
     position: absolute;
     right: 10px;
     top: 50%;
@@ -124,8 +131,21 @@
 #toggle-icon-2 img {
     width: 20px;
     height: 20px;
-    margin-top: -4px;
+    margin-top: 6px;
     margin-right: -12px;
+}
+
+#toggle-icon-1 img {
+    margin-top: -2px;
+}
+
+#toggle-icon-2 img {
+    margin-top: -6px;
+}
+
+#eye-icon-1, #hidden-eye-icon-1 {
+    position: absolute;
+    top: 5px;
 }
 
 #eye-icon-1, #hidden-eye-icon-1,
@@ -135,6 +155,13 @@
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
+}
+
+#eye-icon-3, #hidden-eye-icon-3 {
+    position: absolute;
+    top: -26px;
+    margin-left: -43px;
+    height: 20px;
 }
 
 #eye-icon-1, #eye-icon-2 {
