@@ -1,7 +1,7 @@
-function togglePassword(inputId, eyeIconId, hiddenEyeIconId) {
+function togglePassword(inputId, eyeId, hiddenEyeId) {
     var passwordInput = document.getElementById(inputId);
-    var eyeIcon = document.getElementById(eyeIconId);
-    var hiddenEyeIcon = document.getElementById(hiddenEyeIconId);
+    var eyeIcon = document.getElementById(eyeId);
+    var hiddenEyeIcon = document.getElementById(hiddenEyeId);
 
     if (passwordInput.type === "password") {
         passwordInput.type = "text";
@@ -12,4 +12,9 @@ function togglePassword(inputId, eyeIconId, hiddenEyeIconId) {
         eyeIcon.style.display = "inline";
         hiddenEyeIcon.style.display = "none";
     }
+}
+
+function go_to_log_in(){
+    document.getElementById("sign_up").style.display = "none";
+    document.getElementById("log_ig").style.display = "block";
 }
