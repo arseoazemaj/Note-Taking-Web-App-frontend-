@@ -6,8 +6,8 @@
 
 #forgot {
     position: absolute;
-    top: 77%;
-    left: 76px;
+    top: 63%;
+    left: 78px;
     width: 163px;
 }
 
@@ -16,10 +16,10 @@
     justify-content: center;
     align-items: center;
     height: 413px;
+    position: relative;
 }
 
 #log_ig {
-    display: flex;
     align-items: stretch;
     flex-direction: column;
     position: absolute;
@@ -30,8 +30,12 @@
     border-radius: 8px;
     background-color: #f9f9f9;
     width: 250px;
-    height: 170px;
+    height: 240px;
     display: none;
+}
+
+#create_acc1, #have_acc1 {
+    height: 35px;
 }
 
 #log_ig_btn {
@@ -56,6 +60,107 @@
     transform: scale(0.97);
 }
 
+#log_ig_btn:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+#redirect_log_in {
+    display: none;
+    background-color: #989898;
+    z-index: 1;
+    position: relative;
+    bottom: -202px;
+    width: 290px;
+    height: 45px;
+    border-radius: 7px;
+}
+
+#redirect_sign_up {
+    display: block;
+    background-color: #868686; /*change to f0f0f0*/
+    z-index: 1;
+    position: relative;
+    bottom: -252px;
+    width: 290px;
+    height: 45px;
+    border-radius: 7.3px;
+}
+
+#have_acc1, #have_acc2 {
+    border: none;
+    background-color: #868686;
+    position: relative;
+    top: 3px;
+    left: 152px;
+    width: 130px;
+    height: 40px;
+    font-size: 23px;
+    border-radius: 20px;
+    z-index: 1;
+    transition: background-color 0.3s;
+}
+
+#create_acc1, #create_acc2 {
+    border: none;
+    background-color: #868686;
+    position: absolute;
+    width: 130px;
+    top: 3px;
+    left: 5px;
+    height: 40px;
+    font-size: 23px;
+    border-radius: 20px;
+    z-index: 1;
+    transition: background-color 0.3s;
+}
+
+#create_acc2, #have_acc2 {
+    background-color: #989898;
+    transition: background-color 0.3s;
+}
+
+#have_acc2:active {
+    background-color: #5e5e5e;
+    cursor: pointer;
+}
+
+#have_acc2:hover {
+    background-color: #5e5e5e;
+    cursor: pointer;
+}
+
+#create_acc2:active {
+    background-color: #5e5e5e;
+    cursor: pointer;
+}
+
+#create_acc2:hover {
+    background-color: #5e5e5e;
+    cursor: pointer;
+}
+
+#have_acc1:active {
+    background-color: #5e5e5e;
+    cursor: pointer;
+}
+
+#create_acc1:active {
+    background-color: #5e5e5e;
+    cursor: pointer;
+}
+
+#have_acc1:hover {
+    background-color: #5e5e5e;
+    cursor: pointer;
+}
+
+#create_acc1:hover {
+    background-color: #5e5e5e;
+    cursor: pointer;
+}
+
 #sign_up {
     display: flex;
     align-items: stretch;
@@ -68,7 +173,7 @@
     border-radius: 8px;
     background-color: #f9f9f9;
     width: 250px;
-    height: 225px;
+    height: 290px;
 }
 
 #sign_up_btn {
@@ -159,7 +264,7 @@
 
 #eye-icon-3, #hidden-eye-icon-3 {
     position: absolute;
-    top: -26px;
+    top: -52px;
     margin-left: -43px;
     height: 20px;
 }
