@@ -121,3 +121,81 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const signupBtn = document.getElementById("sign_up_btn");
+    const username = document.getElementById("username");
+    const email = document.getElementById("email");
+    const password = document.getElementById("Password");
+    const confirmPassword = document.getElementById("confirmPassword");
+
+    function isValidEmail(email) {
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return emailPattern.test(email);
+    }
+
+    function validateSignUpForm() {
+        const usernameValue = username.value.trim();
+        const emailValue = email.value.trim();
+        const passwordValue = password.value;
+        const confirmPasswordValue = confirmPassword.value;
+
+        const isEmailValid = isValidEmail(emailValue);
+        const isFormValid = usernameValue !== "" &&
+            emailValue !== "" &&
+            isEmailValid &&
+            passwordValue !== "" &&
+            confirmPasswordValue !== "" &&
+            passwordValue === confirmPasswordValue;
+
+        signupBtn.disabled = !isFormValid;
+    }
+
+    if (username && email && password && confirmPassword) {
+        username.addEventListener("input", validateSignUpForm);
+        email.addEventListener("input", validateSignUpForm);
+        password.addEventListener("input", validateSignUpForm);
+        confirmPassword.addEventListener("input", validateSignUpForm);
+    }
+});
+
+function signup() {
+    const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("Password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match");
+        return;
+    }
+
+    const data = {
+        Username: username,
+        Email: email,
+        Password: password,
+        ConfirmPassword: confirmPassword
+    };
+
+    fetch('https://localhost:7093/api/Auth/signup', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message === "Signup successful!") {
+            alert('Signup successful! Redirecting to login page...');
+            window.location.href = '/login';
+        } else {
+            alert(data.message || 'An error occurred');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('There was an error with the signup process.');
+    });
+}

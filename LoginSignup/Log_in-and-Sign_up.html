@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="Note-Taking_App.css">
+        <link rel="stylesheet" href="Log_in-and-Sign_up.css">
         <title>Note-Taking-Web-App</title>
     </head>
     <body>
@@ -18,7 +18,7 @@
                         <img src="/Icons/hidden-eye.png" alt="Hidden Eye Icon" id="hidden-eye-icon-3" style="display: none;">
                     </span>
                 </div>
-                <button id="log_ig_btn" disabled>Log in</button> <!--* Will check if the username and password are correct-->
+                <button id="log_ig_btn" onclick="login()" disabled>Log in</button> <!--* Will check if the username and password are correct-->
                 <a href="forgot" id="forgot">Forgot password?</a> <!--* Will send a email to reset the password-->
             </form>
 
@@ -49,10 +49,10 @@
                         <img src="/Icons/hidden-eye.png" alt="Hidden Eye Icon" id="hidden-eye-icon-2" style="display: none;">
                     </span>
                 </div>
-                <button id="sign_up_btn" disabled>Sign up</button> <!--* Will create a new account-->
+                <button id="sign_up_btn" onclick="signup()" disabled>Sign up</button> <!--* Will create a new account-->
             </form>
         </div>
 
-        <script src="Note-Taking_App.js"></script>
+        <script src="Log_in-and-Sign_up.js"></script>
     </body>
 </html>
