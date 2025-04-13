@@ -1,0 +1,119 @@
+#menuopener {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 20px;
+    height: 30px;
+}
+
+#menu-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 23px;
+    cursor: pointer;
+}
+
+#line {
+    width: 100%;
+    height: 3px;
+    background-color: black;
+}
+
+#menu-page {
+    position: absolute;
+    left: -100%;
+    top: 0;
+    background-color: #333;
+    height: 100%;
+    width: 50%;
+    transition: left 0.3s ease;
+}
+
+#menu-page.slide-in {
+    animation: in 0.5s forwards;
+}
+
+#menu-page.slide-out {
+    animation: out 0.5s forwards;
+}
+
+@keyframes in {
+    from { left: -100%; }
+    to { left: 0; }
+}
+
+@keyframes out {
+    from { left: 0; }
+    to { left: -100%; }
+}
+
+#notes, #paintings, #trash, #settings {
+    position: absolute;
+    left: 10%;
+    width: 80%;
+    height: 34px;
+    background-color: #ffffff78;
+    border-radius: 5px / 5px;
+    border: none;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+#notes {
+    top: 80px;
+}
+
+#paintings {
+    top: 130px;
+}
+
+#trash {
+    top: 180px;
+}
+
+#settings {
+    top: 230px;
+}
+
+#greetings {
+    text-align: center;
+}
+
+#search {
+    margin: auto;
+    display: block;
+    border-radius: 19px / 16px;
+    height: 32px;
+    width: 56%;
+    border: 2px solid #00000038;
+    font-size: 16px;
+    padding-left: 10px; /* Move padding here */
+}
+
+#search::placeholder {
+    color: black;
+    opacity: 1;
+}
+
+#new_note {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    position: absolute;
+    right: 4%;
+    bottom: 3%;
+    border: none;
+    font-size: 55.1px;
+    background-color: #00000033;
+}
+
+#new_note:active {
+    background-color: #00000013;
+}
