@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">Seluna</string>
-    <string name="title_activity_main">Seluna</string>
-    <string name="package_name">com.seluna.notes</string>
-    <string name="custom_url_scheme">com.seluna.notes</string>
-</resources>
