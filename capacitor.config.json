@@ -1,0 +1,6 @@
+{
+    "appId": "com.seluna.app",
+    "appName": "Seluna",
+    "webDir": "LoginSignup",
+    "bundledWebRuntime": false
+}

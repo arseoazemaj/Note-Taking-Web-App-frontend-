@@ -181,4 +181,4 @@ setInterval(() => {
         .catch(err => {
             console.error('Error pinging backend:', err);
         });
-}, 900000);
+}, 900000); /*15 minutes*/

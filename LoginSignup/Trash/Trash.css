@@ -1,7 +1,3 @@
-#greetings {
-    text-align: center;
-}
-
 #menuopener {
     display: flex;
     justify-content: center;
@@ -9,6 +5,7 @@
     position: fixed;
     left: 20px;
     height: 30px;
+    padding-top: 10px;
 }
 
 #menu-icon {
@@ -23,7 +20,7 @@
 #line {
     width: 100%;
     height: 3px;
-    background-color: black;
+    background-color: #747474;
 }
 
 #menu-page {
@@ -45,18 +42,17 @@
 }
 
 @keyframes in {
-    from { left: -50%; }
+    from { left: -100%; }
     to { left: 0; }
 }
 
 @keyframes out {
     from { left: 0; }
-    to { left: -50%; }
+    to { left: -100%; }
 }
 
-#notes,#paintings,#trash {
+#notes, #paintings, #trash {
     position: absolute;
-    top: 80px;
     left: 10%;
     width: 80%;
     height: 34px;
@@ -81,4 +77,20 @@
 
 #trash {
     top: 140px;
+}
+
+#greetings {
+    text-align: center;
+    padding-top: 40px;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
 }
