@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     position: fixed;
-    left: 20px;
+    left: 25px;
     height: 30px;
 }
 
@@ -19,7 +19,7 @@
 #line {
     width: 100%;
     height: 3px;
-    background-color: black;
+    background-color: #747474;
 }
 
 #menu-page {
@@ -80,6 +80,11 @@
 
 #greetings {
     text-align: center;
+    padding-top: 40px;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 #search {
@@ -117,5 +122,12 @@
 }
 
 #new_note:active {
-    background-color: #00000013;
+    background-color: #a7a7a713;
+}
+
+a, div {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
 }
