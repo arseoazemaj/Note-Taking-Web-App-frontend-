@@ -127,7 +127,7 @@ async function signup(event) {
 
         if (response.ok) {
             console.log("Sign up successful:", result.message);
-            window.location.href = "../Home/Home.html";
+            window.location.href = "../Notes/Notes.html";
         } else {
             console.log("Sign up failed:", result.message || "Unknown error");
         }
@@ -159,7 +159,7 @@ async function login(event) {
 
         if (response.ok) {
             console.log("Log in successful:", result.message);
-            window.location.href = "../Home/Home.html";
+            window.location.href = "../Notes/Notes.html";
         } else {
             console.log("Log in failed:", result.message || "Unknown error");
         }

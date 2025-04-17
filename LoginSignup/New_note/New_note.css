@@ -1,7 +1,54 @@
+body {
+    background-color: #27292d;
+}
+
+#menu {
+    position: fixed;
+    height: 90px;
+    width: 200%;
+    top: -20px;
+    left: -30px;
+    background-color: #212328;
+}
+
 #back {
-    position: absolute;
-    bottom: 2%;
-    right: 7%;
+    position: fixed;
+    top: 16px;
+    left: 16px;
     text-decoration: none;
-    font-size: 30px;
+    font-size: 35px;
+    color: #ffffffdb;
+    line-height: 35px;
+}
+
+a, div {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#title {
+    margin: auto;
+    display: block;
+    height: 35px;
+    width: 70%;
+    border: 0px;
+    font-size: 25px;
+    position: fixed;
+    top: 17px;
+    left: 45px;
+    color: #ffffffdb;
+    background-color: #212328;
+}
+
+#title::placeholder {
+    color: #ffffffdb;
+    opacity: 1;
+}
+
+input:focus {
+    border: none;
+    outline: none;
+    box-shadow: 0 0 5px #00000033;
 }
