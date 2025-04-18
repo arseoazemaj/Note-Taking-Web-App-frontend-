@@ -1,5 +1,6 @@
 {
-    "appId": "com.seluna.notes",
+    "appId": "com.seluna.app",
     "appName": "Seluna",
-    "webDir": "LoginSignup"
+    "webDir": "LoginSignup",
+    "bundledWebRuntime": false
 }
