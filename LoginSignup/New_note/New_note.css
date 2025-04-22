@@ -1,5 +1,5 @@
 body {
-    background-color: #27292d;
+    background-color: #120f20;
 }
 
 #menu {
@@ -8,7 +8,7 @@ body {
     width: 200%;
     top: -20px;
     left: -30px;
-    background-color: #212328;
+    background-color: #07031b;
 }
 
 #back {
@@ -17,7 +17,8 @@ body {
     left: 16px;
     text-decoration: none;
     font-size: 35px;
-    color: #ffffffdb;
+    color: #ae7fce;
+    background-color: #07031b;
     line-height: 35px;
 }
 
@@ -38,19 +39,18 @@ a, div {
     position: fixed;
     top: 17px;
     left: 45px;
-    color: #ffffffdb;
-    background-color: #212328;
+    color: #ae7fce;
+    background-color: #07031b;
 }
 
 #title::placeholder {
-    color: #ffffffdb;
+    color: #ae7fce;
     opacity: 1;
 }
 
-input:focus {
+#title:focus {
     border: none;
     outline: none;
-    box-shadow: 0 0 5px #00000033;
 }
 
 #note {
@@ -61,7 +61,7 @@ input:focus {
     left: 5px;
 }
 
-textarea {
+#note_input {
     width: 85%;
     height: 70%;
     padding: 1rem;
@@ -70,10 +70,14 @@ textarea {
     border-radius: 8px;
     resize: none;
     outline: none;
-    background: #313131;
-    color: #d2d2d2;
+    background: #1c0f2fd1;
+    color: #c7c5ff;
     font-family: 'Arial', sans-serif;
     position: absolute;
     top: 100px;
     left: 3%;
+}
+
+#note_input::placeholder {
+    color: #c7c5ff;
 }

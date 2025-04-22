@@ -1,11 +1,12 @@
 body {
-    background-color: #cccccc;
+    background-color: #120f20;
 }
 
 #text {
     position: absolute;
     top: -29%;
     margin-left: 81px;
+    color: #ae7fce;
 }
 
 #forgot {
@@ -31,7 +32,7 @@ body {
     gap: 10px;
     padding: 20px;
     border-radius: 8px;
-    background-color: #a7a7a7;
+    background-color: #4e2a88d6;
     width: 250px;
     height: 240px;
     display: none;
@@ -45,7 +46,7 @@ body {
     margin-top: 13px;
     margin-left: 34px;
     width: 66%;
-    background-color: #007BFF;
+    background-color: #4a1b95;
     color: white;
     font-size: 26px;
     font-weight: bold;
@@ -55,23 +56,19 @@ body {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-#log_in_btn:hover {
-    background-color: #0056b3;
-}
-
 #log_in_btn:active {
     transform: scale(0.97);
 }
 
 #log_in_btn:disabled {
-    background-color: #ccc;
+    background-color: #4a1b95;
     color: #666;
     cursor: not-allowed;
 }
 
 #redirect_log_in {
     display: none;
-    background-color: #989898;
+    background-color: #4e2a88d6;
     z-index: 1;
     position: relative;
     bottom: -202px;
@@ -82,7 +79,7 @@ body {
 
 #redirect_sign_up {
     display: block;
-    background-color: #868686; /*change to f0f0f0*/
+    background-color: #4e2a88d6;
     z-index: 1;
     position: relative;
     bottom: -252px;
@@ -93,7 +90,7 @@ body {
 
 #have_acc1, #have_acc2 {
     border: none;
-    background-color: #868686;
+    background-color: #4e2a88d6;
     position: relative;
     top: 3px;
     left: 152px;
@@ -107,7 +104,7 @@ body {
 
 #create_acc1, #create_acc2 {
     border: none;
-    background-color: #868686;
+    background-color: #4e2a88d6;
     position: absolute;
     width: 130px;
     top: 3px;
@@ -120,47 +117,47 @@ body {
 }
 
 #create_acc2, #have_acc2 {
-    background-color: #989898;
+    background-color: #4e2a88d6;
     transition: background-color 0.3s;
 }
 
 #have_acc2:active {
-    background-color: #5e5e5e;
+    background-color: #3e1d74d6;
     cursor: pointer;
 }
 
 #have_acc2:hover {
-    background-color: #5e5e5e;
+    background-color: #3e1d74d6;
     cursor: pointer;
 }
 
 #create_acc2:active {
-    background-color: #5e5e5e;
+    background-color: #3e1d74d6;
     cursor: pointer;
 }
 
 #create_acc2:hover {
-    background-color: #5e5e5e;
+    background-color: #3e1d74d6;
     cursor: pointer;
 }
 
 #have_acc1:active {
-    background-color: #5e5e5e;
+    background-color: #3e1d74d6;
     cursor: pointer;
 }
 
 #create_acc1:active {
-    background-color: #5e5e5e;
+    background-color: #3e1d74d6;
     cursor: pointer;
 }
 
 #have_acc1:hover {
-    background-color: #5e5e5e;
+    background-color: #3e1d74d6;
     cursor: pointer;
 }
 
 #create_acc1:hover {
-    background-color: #5e5e5e;
+    background-color: #3e1d74d6;
     cursor: pointer;
 }
 
@@ -173,7 +170,7 @@ body {
     gap: 10px;
     padding: 20px;
     border-radius: 8px;
-    background-color: #a7a7a7;
+    background-color: #4e2a88d6;
     width: 250px;
     height: 290px;
 }
@@ -181,7 +178,7 @@ body {
 #sign_up_btn {
     margin: 0 auto;
     width: 66%;
-    background-color: #007BFF;
+    background-color: #4a1b95;
     color: white;
     font-size: 26px;
     font-weight: bold;
@@ -191,16 +188,12 @@ body {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-#sign_up_btn:hover {
-    background-color: #0056b3;
-}
-
 #sign_up_btn:active {
     transform: scale(0.97);
 }
 
 #sign_up_btn:disabled {
-    background-color: #ccc;
+    background-color: #4a1b95;
     color: #666;
     cursor: not-allowed;
 }
@@ -220,8 +213,12 @@ body {
     width: 100%;
     padding-right: 40px;
     box-sizing: border-box;
-    border: 1px solid #ccc;
+    border: 0;
     border-radius: 4px;
+    background-color: #343438;
+    outline: none;
+    caret-color: #c7c5ff;
+    color: #c7c5ff;
 }
 
 #toggle-icon-1,
@@ -280,8 +277,12 @@ body {
     width: 100%;
     padding-right: 40px;
     box-sizing: border-box;
-    border: 1px solid #ccc;
+    border: 0;
     border-radius: 4px;
+    background-color: #343438;
+    outline: none;
+    caret-color: #c7c5ff;
+    color: #c7c5ff;
 }
 
 #Password {

@@ -117,7 +117,7 @@ async function signup(event) {
     };
 
     try {
-        const response = await fetch("https://localhost:7152/api/Auth/signup", {
+        const response = await fetch("https://localhost:5001/api/Auth/signup", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
@@ -149,7 +149,7 @@ async function login(event) {
     };
 
     try {
-        const response = await fetch("https://localhost:7152/api/Auth/login", {
+        const response = await fetch("https://localhost:5001/api/Auth/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
@@ -169,16 +169,16 @@ async function login(event) {
     }
 }
 
-setInterval(() => {
-    fetch('https://note-taking-web-app-backend.onrender.com')
-        .then(response => {
-            if (response.ok) {
-                console.log('Pinged backend successfully:', response.status);
-            } else {
-                console.error('Backend responded with an error:', response.status);
-            }
-        })
-        .catch(err => {
-            console.error('Error pinging backend:', err);
-        });
-}, 900000); /*15 minutes*/
+// setInterval(() => {
+//     fetch('https://note-taking-web-app-backend.onrender.com')
+//         .then(response => {
+//             if (response.ok) {
+//                 console.log('Pinged backend successfully:', response.status);
+//             } else {
+//                 console.error('Backend responded with an error:', response.status);
+//             }
+//         })
+//         .catch(err => {
+//             console.error('Error pinging backend:', err);
+//         });
+// }, 900000); //*15 minutes//
