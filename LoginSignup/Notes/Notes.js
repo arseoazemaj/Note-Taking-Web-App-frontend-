@@ -22,7 +22,7 @@ document.addEventListener("click", (e) => {
 });
 
 if (!token) {
-    window.location.href = "../Login/login.html";
+    window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
 } else {
     fetch("http://localhost:5001/api/Notes/check-auth", {
         headers: {
@@ -32,7 +32,7 @@ if (!token) {
     .then(res => {
         if (!res.ok) {
             localStorage.removeItem("token");
-            window.location.href = "../Login/login.html";
+            window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
         }
     });
 }
