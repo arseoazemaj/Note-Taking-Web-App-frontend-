@@ -16,7 +16,8 @@
       {
         "ignore": [
           "user-select",
-          "-webkit-user-drag"
+          "-webkit-user-drag",
+          "backdrop-filter"
         ]
       }
     ]

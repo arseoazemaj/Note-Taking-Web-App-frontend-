@@ -169,17 +169,3 @@ async function login(event) {
         alert("An error occurred. Please try again later.");
     }
 }
-
-// setInterval(() => {
-//     fetch('https://note-taking-web-app-backend.onrender.com')
-//         .then(response => {
-//             if (response.ok) {
-//                 console.log('Pinged backend successfully:', response.status);
-//             } else {
-//                 console.error('Backend responded with an error:', response.status);
-//             }
-//         })
-//         .catch(err => {
-//             console.error('Error pinging backend:', err);
-//         });
-// }, 900000); //*15 minutes

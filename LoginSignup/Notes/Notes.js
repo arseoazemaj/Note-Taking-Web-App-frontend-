@@ -1,5 +1,6 @@
 const menuOpener = document.getElementById("menuopener");
 const menuPage = document.getElementById("menu-page");
+const logoutBtn = document.getElementById("logoutBtn");
 const token = localStorage.getItem("token");
 
 let menuOpen = false;
@@ -20,19 +21,3 @@ document.addEventListener("click", (e) => {
         menuOpen = false;
     }
 });
-
-if (!token) {
-    window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
-} else {
-    fetch("http://localhost:5001/api/Notes/check-auth", {
-        headers: {
-            "Authorization": "Bearer " + token
-        }
-    })
-    .then(res => {
-        if (!res.ok) {
-            localStorage.removeItem("token");
-            window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
-        }
-    });
-}
