@@ -1,5 +1,6 @@
 const menuOpener = document.getElementById("menuopener");
 const menuPage = document.getElementById("menu-page");
+const token = localStorage.getItem("token");
 
 let menuOpen = false;
 
@@ -19,3 +20,19 @@ document.addEventListener("click", (e) => {
         menuOpen = false;
     }
 });
+
+if (!token) {
+    window.location.href = "../Login/login.html";
+} else {
+    fetch("http://localhost:5001/api/Notes/check-auth", {
+        headers: {
+            "Authorization": "Bearer " + token
+        }
+    })
+    .then(res => {
+        if (!res.ok) {
+            localStorage.removeItem("token");
+            window.location.href = "../Login/login.html";
+        }
+    });
+}
