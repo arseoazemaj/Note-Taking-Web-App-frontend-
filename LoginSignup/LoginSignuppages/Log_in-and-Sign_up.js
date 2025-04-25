@@ -126,7 +126,13 @@ async function signup(event) {
             alert("Signup successful! Please log in.");
             go_to_log_in();
         } else {
-            alert("Signup failed: " + (result.message || "Unknown error"));
+            const message = result.message?.toLowerCase() || "";
+
+            if (response.status === 507 || message.includes("storage") || message.includes("space")) {
+                alert("Your sign-up couldn’t proceed because Seluna’s database is currently full and cannot store new accounts. We’re working on expanding it — please try again soon.");
+            } else {
+                alert("Signup failed: " + (result.message || "Unknown error"));
+            }
         }
 
     } catch (error) {

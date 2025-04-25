@@ -63,7 +63,7 @@ a, div {
 
 #note_input {
     width: 85%;
-    height: 70%;
+    height: 75%;
     padding: 1rem;
     font-size: 1.2rem;
     border: none;
@@ -74,10 +74,63 @@ a, div {
     color: #c7c5ff;
     font-family: 'Arial', sans-serif;
     position: absolute;
-    top: 100px;
+    top: 130px;
     left: 3%;
+    z-index: -1;
 }
 
 #note_input::placeholder {
     color: #c7c5ff;
+}
+
+#sub-menu {
+    position: fixed;
+    top: 24px;
+    left: 90%;
+    color: #b17fd1;
+}
+
+#save-icon {
+    position: fixed;
+    top: 43px;
+    right: 45%;
+    color: #dda9ff;
+    z-index: 2;
+}
+
+#container {
+    background-color: #30007d;
+    display: none;
+    right: 5%;
+    top: 20px;
+    position: fixed;
+    padding-top: 250px;
+    padding-right: 220px;
+    border-radius: 15px;
+}
+
+#container.show {
+    display: block;
+    opacity: 1;
+}
+
+#save {
+    position: fixed;
+    top: 35px;
+    right: 9%;
+    color: #dda9ff;
+    height: 36px;
+    width: 30%;
+    padding-top: 5px;
+    padding-left: 15%;
+    border-radius: 10px;
+    font-size: larger;
+}
+
+#save:hover {
+    background-color: #090038;
+}
+
+#save:active {
+    background-color: #090038;
 }
