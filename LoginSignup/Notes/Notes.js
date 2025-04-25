@@ -1,5 +1,7 @@
 const menuOpener = document.getElementById("menuopener");
 const menuPage = document.getElementById("menu-page");
+const logoutBtn = document.getElementById("logoutBtn");
+const token = localStorage.getItem("token");
 
 let menuOpen = false;
 

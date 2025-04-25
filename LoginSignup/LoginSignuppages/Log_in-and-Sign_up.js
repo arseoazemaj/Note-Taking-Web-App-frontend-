@@ -29,19 +29,16 @@ function go_to_sign_up() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    //* Sign up
     const username = document.getElementById("username");
     const email = document.getElementById("email");
     const password = document.getElementById("Password");
     const confirmPassword = document.getElementById("confirmPassword");
     const signUpBtn = document.getElementById("sign_up_btn");
 
-    //* Log in
     const loginUsername = document.getElementById("login_username");
     const loginPassword = document.getElementById("login_password");
     const logInBtn = document.getElementById("log_in_btn");
 
-    //* Validate email format
     function isValidEmail(email) {
         const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return emailPattern.test(email);
@@ -126,14 +123,21 @@ async function signup(event) {
         const result = await response.json();
 
         if (response.ok) {
-            console.log("Sign up successful:", result.message);
-            window.location.href = "../Notes/Notes.html";
+            alert("Signup successful! Please log in.");
+            go_to_log_in();
         } else {
-            console.log("Sign up failed:", result.message || "Unknown error");
+            const message = result.message?.toLowerCase() || "";
+
+            if (response.status === 507 || message.includes("storage") || message.includes("space")) {
+                alert("Your sign-up couldn’t proceed because Seluna’s database is currently full and cannot store new accounts. We’re working on expanding it — please try again soon.");
+            } else {
+                alert("Signup failed: " + (result.message || "Unknown error"));
+            }
         }
 
     } catch (error) {
         console.error("Error during sign up:", error);
+        alert("An error occurred. Please try again.");
     }
 }
 
@@ -151,34 +155,23 @@ async function login(event) {
     try {
         const response = await fetch("https://localhost:5001/api/Auth/login", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify(data)
         });
 
         const result = await response.json();
 
-        if (response.ok) {
-            console.log("Log in successful:", result.message);
+        if (response.ok && result.token) {
+            console.log("Login successful:", result.message);
+            localStorage.setItem("token", result.token);
             window.location.href = "../Notes/Notes.html";
         } else {
-            console.log("Log in failed:", result.message || "Unknown error");
+            alert(result.message || "Login failed.");
         }
-
     } catch (error) {
-        console.error("Error during log in:", error);
+        console.error("Error during login:", error);
+        alert("An error occurred. Please try again later.");
     }
 }
-
-// setInterval(() => {
-//     fetch('https://note-taking-web-app-backend.onrender.com')
-//         .then(response => {
-//             if (response.ok) {
-//                 console.log('Pinged backend successfully:', response.status);
-//             } else {
-//                 console.error('Backend responded with an error:', response.status);
-//             }
-//         })
-//         .catch(err => {
-//             console.error('Error pinging backend:', err);
-//         });
-// }, 900000); //*15 minutes//
