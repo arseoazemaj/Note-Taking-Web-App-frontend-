@@ -144,12 +144,12 @@ a, div {
     -webkit-tap-highlight-color: transparent;
 }
 
-#container {
+#container_1 {
     height: 130px;
     width: 130px;
     background-color: #4e2a88d6;
-    position: absolute;
-    left: 50px;
+    position: fixed;
+    left: 12%;
     top: 190px;
     border-radius: 15px;
 }

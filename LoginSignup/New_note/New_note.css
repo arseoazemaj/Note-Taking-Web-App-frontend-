@@ -92,20 +92,19 @@ a, div {
 
 #save-icon {
     position: fixed;
-    top: 43px;
-    right: 45%;
+    top: 40px;
+    right: 160px;
     color: #dda9ff;
-    z-index: 2;
 }
 
 #container {
     background-color: #30007d;
     display: none;
-    right: 5%;
+    right: 17px;
     top: 20px;
     position: fixed;
     padding-top: 250px;
-    padding-right: 220px;
+    width: 190px;
     border-radius: 15px;
 }
 
@@ -117,20 +116,37 @@ a, div {
 #save {
     position: fixed;
     top: 35px;
-    right: 9%;
+    right: 30px;
     color: #dda9ff;
     height: 36px;
-    width: 30%;
-    padding-top: 5px;
-    padding-left: 15%;
+    width: 110px;
+    border-radius: 10px;
+    font-size: larger;
+    padding-left: 60px;
+}
+
+#save:hover, #share:hover {
+    background-color: #090038;
+}
+
+#save:active, #share:active {
+    background-color: #090038;
+}
+/* 
+#share {
+    position: fixed;
+    top: 35px;
+    right: 10%;
+    color: #dda9ff;
+    height: 36px;
+    width: 34%;
     border-radius: 10px;
     font-size: larger;
 }
 
-#save:hover {
-    background-color: #090038;
-}
-
-#save:active {
-    background-color: #090038;
-}
+#share-icon {
+    position: fixed;
+    top: 89px;
+    right: 48%;
+    color: #dda9ff;
+} */
