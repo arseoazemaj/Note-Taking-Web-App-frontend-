@@ -83,18 +83,11 @@ a, div {
     color: #c7c5ff;
 }
 
-#sub-menu {
+#sub-menu_icon {
     position: fixed;
     top: 24px;
     left: 90%;
     color: #b17fd1;
-}
-
-#save-icon {
-    position: fixed;
-    top: 40px;
-    right: 160px;
-    color: #dda9ff;
 }
 
 #container {
@@ -106,47 +99,84 @@ a, div {
     padding-top: 250px;
     width: 190px;
     border-radius: 15px;
+    animation: fadeSlideDown 0.25s ease-out;
 }
 
-#container.show {
-    display: block;
-    opacity: 1;
+@keyframes fadeSlideDown {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 #save {
     position: fixed;
     top: 35px;
-    right: 30px;
+    right: 31px;
     color: #dda9ff;
     height: 36px;
-    width: 110px;
+    width: 127px;
     border-radius: 10px;
-    font-size: larger;
-    padding-left: 60px;
+    font-size: large;
+    padding-left: 40px;
+    background-color: #1c004a;
+    display: flex;
+    align-items: center;
 }
 
-#save:hover, #share:hover {
-    background-color: #090038;
-}
-
-#save:active, #share:active {
-    background-color: #090038;
-}
-/* 
-#share {
+#save-icon {
     position: fixed;
-    top: 35px;
-    right: 10%;
+    top: 41px;
+    right: 165px;
+    color: #dda9ff;
+}
+
+#download {
+    position: fixed;
+    top: 85px;
+    right: 31px;
     color: #dda9ff;
     height: 36px;
-    width: 34%;
+    width: 127px;
     border-radius: 10px;
-    font-size: larger;
+    font-size: large;
+    padding-left: 40px;
+    background-color: #1c004a;
+    display: flex;
+    align-items: center;
 }
 
-#share-icon {
+#download-icon {
     position: fixed;
-    top: 89px;
-    right: 48%;
+    top: 91px;
+    right: 165px;
     color: #dda9ff;
-} */
+}
+
+#important {
+    position: fixed;
+    top: 135px;
+    right: 31px;
+    color: #dda9ff;
+    height: 36px;
+    width: 127px;
+    border-radius: 10px;
+    font-size: large;
+    padding-left: 36px;
+    background-color: #1c004a;
+    display: flex;
+    align-items: center;
+}
+
+#important-icon {
+    position: fixed;
+    top: 141px;
+    right: 165px;
+    color: #dda9ff;
+}
+
+#save:active, #download:active, #important:active {
+    background-color: #370085;
+}

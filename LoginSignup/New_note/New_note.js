@@ -11,7 +11,7 @@ function toggleSubMenu() {
 }
 
 document.addEventListener("click", function (event) {
-    const subMenu = document.getElementById("sub-menu");
+    const subMenu = document.getElementById("sub-menu_icon");
     const container = document.getElementById("container");
 
     if (!subMenu.contains(event.target) && !container.contains(event.target)) {
@@ -19,7 +19,7 @@ document.addEventListener("click", function (event) {
     }
 });
 
-document.getElementById("sub-menu").addEventListener("click", function (event) {
+document.getElementById("sub-menu_icon").addEventListener("click", function (event) {
     event.stopPropagation();
     toggleSubMenu();
 });

@@ -54,20 +54,23 @@ body {
     to { left: -100%; }
 }
 
-#notes, #paintings, #trash, #log-out_btn {
+#notes, #paintings, #trash {
     position: absolute;
     left: 10%;
     width: 80%;
     height: 34px;
     background-color: #2b0066;
     border-radius: 5px / 5px;
-    border: none;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
     color: #ffd6d6;
+}
+
+#notes:active, #paintings:active, #trash:active {
+    background-color: #370085;
 }
 
 #notes {
@@ -83,8 +86,23 @@ body {
 }
 
 #log-out_btn {
-    top: 700px;
+    position: absolute;
+    top: 90%;
+    left: 10%;
+    width: 80%;
+    height: 34px;
     background-color: #d03737;
+    border-radius: 5px / 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #ffd6d6;
+}
+
+#log-out_btn:active {
+    background-color: #b31d1d;
 }
 
 #greetings {
@@ -119,7 +137,7 @@ body {
     height: 60px;
     width: 70px;
     border-radius: 50%;
-    position: absolute;
+    position: fixed;
     right: 4%;
     bottom: 3%;
     border: none;
@@ -144,11 +162,18 @@ a, div {
     -webkit-tap-highlight-color: transparent;
 }
 
+#containers {
+    background-color: red;
+    height: 300px;
+    width: 90%;
+    margin: auto;
+}
+
 #container_1 {
     height: 130px;
     width: 130px;
     background-color: #4e2a88d6;
-    position: fixed;
+    position: absolute;
     left: 12%;
     top: 190px;
     border-radius: 15px;
@@ -161,7 +186,7 @@ i {
     margin: 8px;
 }
 
-#note_icon, #paint_icon, #trash_icon, #log-out {
+#note_icon, #paint_icon, #trash_icon {
     color: #fdd6bc;
     position: absolute;
     left: 15px;
