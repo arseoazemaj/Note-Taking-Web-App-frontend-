@@ -4,19 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="New_note.css">
-    <title>Document</title>
+    <title>New note</title>
 </head>
 <body>
     <div id="menu">
         <a href="../Notes/Notes.html" id="back" draggable="false"><</a>
         <input type="text" name="Title" id="title" placeholder="Title">
-        <a id="sub-menu" draggable="false">
+        <a id="sub-menu_icon" draggable="false">
             <i data-lucide="ellipsis-vertical" id="ellipsis-icon"></i>
         </a>
         <div id="container" style="display: none;">
             <a id="save" draggable="false">
                 <i data-lucide="save" id="save-icon"></i>
                 Save
+            </a>
+            <a id="download" draggable="false">
+                <i data-lucide="download" id="download-icon"></i>
+                Export
+            </a>
+            <a id="important" draggable="false">
+                <!-- <img src="../Icons/star.png" alt=""> -->
+                <i data-lucide="star" id="important-icon"></i>
+                Important
             </a>
         </div>
     </div>
