@@ -1,4 +1,4 @@
-//TODO Uncoment the following code when everything is finished
+//TODO Uncomment the following code when everything is finished
 
 // if (!token) {
 //     window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";

@@ -182,3 +182,16 @@ a, div {
 #save:active, #download:active, #important:active {
     background-color: #370085;
 }
+
+* /*affects all the elements*/{
+    animation: fade 1s;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0.85;
+    }
+    100% {
+        opacity: 1;
+    }
+}
