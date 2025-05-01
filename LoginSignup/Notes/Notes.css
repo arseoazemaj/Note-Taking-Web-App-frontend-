@@ -189,39 +189,18 @@ i {
     gap: 55px 0px;
     padding: 5px;
     box-sizing: border-box;
-    /* background-color: #ff0000; */
+    background-color: #ff0000;
 }
 
-.note-box {
-    height: 130px;
-    width: 130px;
-    background-color: #251e45;
-    padding: 10px;
-    border-radius: 15px;
-    color: #ad7ecc;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
-    padding-bottom: 30px;
-    padding-top: 0px;
+* /*affects all the elements*/{
+    animation: fade 1s;
 }
 
-.note-content, #title {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 99%;
-}
-
-#title {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-    margin-top: 1rem;
-    font-weight: bold;
-    font-size: 1.1rem;
+@keyframes fade {
+    0% {
+        opacity: 0.85;
+    }
+    100% {
+        opacity: 1;
+    }
 }
