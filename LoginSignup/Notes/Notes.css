@@ -189,18 +189,56 @@ i {
     gap: 55px 0px;
     padding: 5px;
     box-sizing: border-box;
-    background-color: #ff0000;
+    /* background-color: #ff0000; */
 }
 
-* /*affects all the elements*/{
+body {
     animation: fade 1s;
 }
 
 @keyframes fade {
-    0% {
-        opacity: 0.85;
+    20% {
+        opacity: 0.2;
     }
     100% {
         opacity: 1;
     }
+}
+
+.note-box {
+    height: 130px;
+    width: 130px;
+    background-color: #251e45;
+    padding: 10px;
+    border-radius: 15px;
+    color: #ad7ecc;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    padding-bottom: 30px;
+    padding-top: 0px;
+}
+
+.note-content, .title {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 99%;
+    position: relative;
+    top: -8px;
+}
+
+.title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    position: relative;
+    top: 1px;
 }

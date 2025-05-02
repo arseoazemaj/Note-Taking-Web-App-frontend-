@@ -50,15 +50,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const noteContent = document.createElement('p');
         noteContent.className = 'note-content';
-        noteContent.textContent = note.content.length > 40 ? note.content.substring(0, 40) + "..." : note.content;
+        noteContent.textContent = note.content.length > 93 ? note.content.substring(0, 93) + "..." : note.content;
 
         const noteTitle = document.createElement('h3');
-        noteTitle.id = 'title';
+        noteTitle.className = 'title';
         noteTitle.textContent = note.title;
 
         noteBox.appendChild(noteContent);
         noteBox.appendChild(noteTitle);
-
+        
         containers.appendChild(noteBox);
     });
 });

@@ -183,13 +183,13 @@ a, div {
     background-color: #370085;
 }
 
-* /*affects all the elements*/{
+body {
     animation: fade 1s;
 }
 
 @keyframes fade {
-    0% {
-        opacity: 0.85;
+    20% {
+        opacity: 0.2;
     }
     100% {
         opacity: 1;
