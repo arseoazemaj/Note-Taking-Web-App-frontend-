@@ -5,8 +5,9 @@ body {
 #text {
     position: absolute;
     top: -29%;
-    margin-left: 81px;
     color: #ae7fce;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #forgot {
@@ -14,6 +15,7 @@ body {
     top: 63%;
     left: 78px;
     width: 163px;
+    text-decoration: none;
 }
 
 #container {
@@ -219,6 +221,7 @@ body {
     outline: none;
     caret-color: #c7c5ff;
     color: #c7c5ff;
+    font-size: 15px;
 }
 
 #toggle-icon-1,
@@ -283,6 +286,7 @@ body {
     outline: none;
     caret-color: #c7c5ff;
     color: #c7c5ff;
+    font-size: 15px;
 }
 
 #Password {

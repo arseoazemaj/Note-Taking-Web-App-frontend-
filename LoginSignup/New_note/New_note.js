@@ -46,3 +46,18 @@ document.getElementById('save').addEventListener('click', function() {
 
     window.location.href = "../Notes/Notes.html";
 });
+
+let filled = false;
+
+function fill() {
+    const icon = document.getElementById("important-icon");
+
+    if (filled) {
+        icon.style.fill = "none";
+    }
+    else {
+        icon.style.fill = "#dda9ff";
+    }
+    
+    filled = !filled;
+}
