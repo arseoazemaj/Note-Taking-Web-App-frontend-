@@ -250,4 +250,7 @@ body {
     #containers {
         gap: 43px 11%;
     }
+    #note_icon, #paint_icon, #trash_icon {
+        left: 5px;
+    }
 }

@@ -22,6 +22,8 @@
     "@capacitor/app": "^7.0.1",
     "@capacitor/cli": "^7.2.0",
     "@capacitor/core": "^7.2.0",
-    "@capacitor/local-notifications": "^7.0.1"
+    "@capacitor/local-notifications": "^7.0.1",
+    "jsdom": "^26.1.0",
+    "jwt-decode": "^4.0.0"
   }
 }

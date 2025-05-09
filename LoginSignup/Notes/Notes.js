@@ -50,11 +50,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const noteContent = document.createElement('p');
         noteContent.className = 'note-content';
-        noteContent.textContent = note.content.length > 93 ? note.content.substring(0, 83) + "..." : note.content;
+        noteContent.textContent = note.content.length > 90 ? note.content.substring(0, 88) + "..." : note.content;
 
         const noteTitle = document.createElement('h3');
+        noteTitle.textContent = note.title.length > 9 ? note.title.substring(0, 12) + "..." : note.title;
         noteTitle.className = 'title';
-        noteTitle.textContent = note.title;
 
         noteBox.appendChild(noteContent);
         noteBox.appendChild(noteTitle);
@@ -64,5 +64,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+//*Will be used to clear the local storage for testing purposes*//
 
-// localStorage.clear();    //*Will be used to clear the local storage for testing purposes*//
+// localStorage.clear();

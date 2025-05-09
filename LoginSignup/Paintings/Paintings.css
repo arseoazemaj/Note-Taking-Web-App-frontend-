@@ -152,3 +152,9 @@ body {
         opacity: 1;
     }
 }
+
+#paint {
+    height: 100px;
+    width: 100px;
+    background-color: #f0f8ff;
+}

@@ -16,7 +16,15 @@
 //     });
 // }
 
-// logoutBtn.addEventListener("click", () => {
-//     localStorage.removeItem("token");
-//     window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
+// document.addEventListener("DOMContentLoaded", () => {
+//     const logoutBtn = document.getElementById("log-out_btn");
+
+//     if (logoutBtn) {
+//         logoutBtn.addEventListener("click", () => {
+//             localStorage.removeItem("token");
+//             window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
+//         });
+//     } else {
+//         console.error("Logout button not found");
+//     }
 // });
