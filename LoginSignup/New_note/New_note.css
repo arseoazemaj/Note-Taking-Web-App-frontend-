@@ -1,5 +1,15 @@
 body {
     background-color: #120f20;
+    animation: fade 1s;
+}
+
+@keyframes fade {
+    0% {
+        opacity: .3;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 #menu {
@@ -49,7 +59,6 @@ a, div {
 }
 
 #title:focus {
-    border: none;
     outline: none;
 }
 
@@ -65,7 +74,7 @@ a, div {
     width: 85%;
     height: 75%;
     padding: 1rem;
-    font-size: 1.2rem;
+    font-size: 25px;
     border: none;
     border-radius: 8px;
     resize: none;
@@ -118,10 +127,10 @@ a, div {
     top: 15px;
     right: 12px;
     color: #dda9ff;
+    font-size: large;
     height: 36px;
     width: 127px;
     border-radius: 10px;
-    font-size: large;
     padding-left: 40px;
     background-color: #1c004a;
     display: flex;
@@ -140,10 +149,10 @@ a, div {
     top: 65px;
     right: 12px;
     color: #dda9ff;
+    font-size: large;
     height: 36px;
     width: 127px;
     border-radius: 10px;
-    font-size: large;
     padding-left: 40px;
     background-color: #1c004a;
     display: flex;
@@ -162,10 +171,10 @@ a, div {
     top: 115px;
     right: 12px;
     color: #dda9ff;
+    font-size: large;
     height: 36px;
     width: 127px;
     border-radius: 10px;
-    font-size: large;
     padding-left: 36px;
     background-color: #1c004a;
     display: flex;
@@ -177,21 +186,9 @@ a, div {
     top: 7px;
     right: 131px;
     color: #dda9ff;
+    /* fill: #dda9ff; */
 }
 
 #save:active, #download:active, #important:active {
     background-color: #370085;
-}
-
-* /*affects all the elements*/{
-    animation: fade 1s;
-}
-
-@keyframes fade {
-    0% {
-        opacity: 0.85;
-    }
-    100% {
-        opacity: 1;
-    }
 }

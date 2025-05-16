@@ -5,8 +5,9 @@ body {
 #text {
     position: absolute;
     top: -29%;
-    margin-left: 81px;
     color: #ae7fce;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #forgot {
@@ -14,6 +15,7 @@ body {
     top: 63%;
     left: 78px;
     width: 163px;
+    text-decoration: none;
 }
 
 #container {
@@ -47,7 +49,7 @@ body {
     margin-left: 34px;
     width: 66%;
     background-color: #4a1b95;
-    color: white;
+    color: #ad7ecc;
     font-size: 26px;
     font-weight: bold;
     border: none;
@@ -121,42 +123,22 @@ body {
     transition: background-color 0.3s;
 }
 
-#have_acc2:active {
+#have_acc2:active, #have_acc2:hover {
     background-color: #3e1d74d6;
     cursor: pointer;
 }
 
-#have_acc2:hover {
+#create_acc2:active, #create_acc2:hover {
     background-color: #3e1d74d6;
     cursor: pointer;
 }
 
-#create_acc2:active {
+#have_acc1:active, #create_acc1:active {
     background-color: #3e1d74d6;
     cursor: pointer;
 }
 
-#create_acc2:hover {
-    background-color: #3e1d74d6;
-    cursor: pointer;
-}
-
-#have_acc1:active {
-    background-color: #3e1d74d6;
-    cursor: pointer;
-}
-
-#create_acc1:active {
-    background-color: #3e1d74d6;
-    cursor: pointer;
-}
-
-#have_acc1:hover {
-    background-color: #3e1d74d6;
-    cursor: pointer;
-}
-
-#create_acc1:hover {
+#have_acc1:hover, #create_acc1:hover {
     background-color: #3e1d74d6;
     cursor: pointer;
 }
@@ -179,7 +161,7 @@ body {
     margin: 0 auto;
     width: 66%;
     background-color: #4a1b95;
-    color: white;
+    color: #ad7ecc;
     font-size: 26px;
     font-weight: bold;
     border: none;
@@ -219,6 +201,7 @@ body {
     outline: none;
     caret-color: #c7c5ff;
     color: #c7c5ff;
+    font-size: 15px;
 }
 
 #toggle-icon-1,
@@ -283,6 +266,7 @@ body {
     outline: none;
     caret-color: #c7c5ff;
     color: #c7c5ff;
+    font-size: 15px;
 }
 
 #Password {
