@@ -129,7 +129,7 @@ async function signup(event) {
             const message = result.message?.toLowerCase() || "";
 
             if (response.status === 507 || message.includes("storage") || message.includes("space")) {
-                alert("Your sign-up couldn’t proceed because Seluna’s database is currently full and cannot store new accounts. We’re working on expanding it — please try again soon.");
+                alert("Your sign-up couldn’t proceed because Seluna’s database is currently full and cannot store new accounts. We’re working on expanding it — please try again later.");
             } else {
                 alert("Signup failed: " + (result.message || "Unknown error"));
             }

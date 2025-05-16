@@ -1,5 +1,15 @@
 body {
     background-color: #120f20;
+    animation: fade 2s;
+}
+
+@keyframes fade {
+    0% {
+        opacity: .3;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 #menuopener {
@@ -190,10 +200,6 @@ i {
     padding: 5px;
     box-sizing: border-box;
     /* background-color: #ff0000; */
-}
-
-body {
-    animation: fade 1s;
 }
 
 @keyframes fade {

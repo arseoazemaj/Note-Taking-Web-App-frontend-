@@ -45,6 +45,13 @@ function save() {
     const userId = localStorage.getItem("userId");
     const important = filled;
 
+    const save = document.getElementById("save");
+
+    if (save) {
+        alert("I am currently working to save your notes into the database. Please try again later.");
+        return;
+    }
+
     if (note_input === "") {
         alert("Please enter some content in order to save the note.");
         return;
