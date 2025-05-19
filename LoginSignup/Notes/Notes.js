@@ -44,9 +44,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let notes = JSON.parse(localStorage.getItem('notes')) || [];
 
-    notes.forEach(note => {
+    notes.forEach((note, index) => {
         const noteBox = document.createElement('div');
         noteBox.className = 'note-box';
+        noteBox.id = `${1 + index}`;
 
         const noteContent = document.createElement('p');
         noteContent.className = 'note-content';
