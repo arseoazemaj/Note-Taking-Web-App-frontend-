@@ -1,3 +1,18 @@
+function getUserIdFromToken() {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+
+    try {
+        const base64Payload = token.split('.')[1];
+        const payload = atob(base64Payload);
+        const parsedPayload = JSON.parse(payload);
+        return parsedPayload.nameid || null;
+    } catch (e) {
+        console.error("Failed to parse JWT token", e);
+        return null;
+    }
+}
+
 function SubMenu() {
     const container = document.getElementById("container");
     const isVisible = container.style.display === "block";
@@ -42,18 +57,23 @@ function fill() {
 function save() {
     const title = document.getElementById("title").value.trim();
     const note_input = document.getElementById("note_input").value.trim();
-    const userId = localStorage.getItem("userId");
+    const userId = getUserIdFromToken();
     const important = filled;
 
     const save = document.getElementById("save");
 
-    if (save) {
-        alert("I am currently working to save your notes into the database. Please try again later.");
-        return;
-    }
+    // if (save) {
+    //     alert("I am currently working to save your notes into the database. Please try again later.");
+    //     return;
+    // }
+
+    // if (!userId) {       //TODO Uncoment in the future
+    //     alert("You must be logged in to save notes.");
+    //     return;
+    // }
 
     if (note_input === "") {
-        alert("Please enter some content in order to save the note.");
+        alert("Please enter some content before saveing the note.");
         return;
     }
 
@@ -68,6 +88,13 @@ function save() {
         userId: userId,
         important: important
     };
+
+    console.log(note);
+
+    let notes = JSON.parse(localStorage.getItem('notes')) || [];
+    notes.push(note);
+    localStorage.setItem('notes', JSON.stringify(notes));
+    window.location.href = "../Notes/Notes.html";
 }
 
 

@@ -1,5 +1,7 @@
 //TODO Uncomment the following code when everything is finished
 
+// const token = localStorage.getItem("token");
+
 // if (!token) {
 //     window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
 // } else {
@@ -24,7 +26,5 @@
 //             localStorage.removeItem("token");
 //             window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
 //         });
-//     } else {
-//         console.error("Logout button not found");
 //     }
 // });
