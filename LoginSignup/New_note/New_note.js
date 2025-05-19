@@ -58,7 +58,6 @@ function save() {
     const title = document.getElementById("title").value.trim();
     const note_input = document.getElementById("note_input").value.trim();
     const userId = getUserIdFromToken();
-    console.log("Extracted userId:", userId);
     const important = filled;
 
     const save = document.getElementById("save");
@@ -68,13 +67,13 @@ function save() {
     //     return;
     // }
 
-    if (!userId) {
-        alert("You must be logged in to save notes.");
-        return;
-    }
+    // if (!userId) {       //TODO Uncoment in the future
+    //     alert("You must be logged in to save notes.");
+    //     return;
+    // }
 
     if (note_input === "") {
-        alert("Please enter some content in order to save the note.");
+        alert("Please enter some content before saveing the note.");
         return;
     }
 
@@ -93,9 +92,9 @@ function save() {
     console.log(note);
 
     let notes = JSON.parse(localStorage.getItem('notes')) || [];
-notes.push(note);
-localStorage.setItem('notes', JSON.stringify(notes));
-window.location.href = "../Notes/Notes.html";
+    notes.push(note);
+    localStorage.setItem('notes', JSON.stringify(notes));
+    window.location.href = "../Notes/Notes.html";
 }
 
 
