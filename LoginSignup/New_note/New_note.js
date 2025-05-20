@@ -69,6 +69,7 @@ function save() {
 
     // if (!userId) {       //TODO Uncoment in the future
     //     alert("You must be logged in to save notes.");
+    //     window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
     //     return;
     // }
 
