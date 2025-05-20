@@ -1,6 +1,6 @@
 const menuOpener = document.getElementById("menuopener");
 const menuPage = document.getElementById("menu-page");
-const logoutBtn = document.getElementById("logoutBtn");
+const logoutBtn = document.getElementById("log-out_btn");
 const token = localStorage.getItem("token");
 
 let menuOpen = false;
@@ -22,6 +22,13 @@ document.addEventListener("click", (e) => {
     }
 });
 
+if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+        localStorage.removeItem("token");
+        window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
+    });
+}
+
 function truncateText(element, wordLimit) {
     let text = element.textContent.trim();
     let words = text.split(/\s+/);
@@ -42,7 +49,7 @@ window.onload = function() {
 document.addEventListener('DOMContentLoaded', function() {
     const containers = document.getElementById('containers');
 
-    let notes = JSON.parse(localStorage.getItem('notes')) || [];
+    let notes = JSON.parse(localStorage.getItem('notes')) || []; //TODO Remove this line when the database is connected//
 
     notes.forEach((note, index) => {
         const noteBox = document.createElement('div');
