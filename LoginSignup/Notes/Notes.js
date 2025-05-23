@@ -22,12 +22,13 @@ document.addEventListener("click", (e) => {
     }
 });
 
-if (logoutBtn) {
-    logoutBtn.addEventListener("click", () => {
-        localStorage.removeItem("token");
-        window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
-    });
-}
+//TODO Uncomment in the end
+// if (logoutBtn) {
+//     logoutBtn.addEventListener("click", () => {
+//         localStorage.removeItem("token");
+//         window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
+//     });
+// }
 
 function truncateText(element, wordLimit) {
     let text = element.textContent.trim();
