@@ -54,27 +54,17 @@ function fill() {
     filled = !filled;
 }
 
-function save() {
-    const title = document.getElementById("title").value.trim();
-    const note_input = document.getElementById("note_input").value.trim();
-    const userId = getUserIdFromToken();
-    const important = filled;
+async function save() {
+    const Title = document.getElementById("title").value.trim();
+    const Content = document.getElementById("note_input").value.trim();
+    const user_id = getUserIdFromToken();
+    const isImportant = filled;
 
-    const save = document.getElementById("save");
+    const token = localStorage.getItem('token');
+    console.log("JWT token from localStorage:", token);
 
-    // if (save) {
-    //     alert("I am currently working to save your notes into the database. Please try again later.");
-    //     return;
-    // }
-
-    // if (!userId) {       //TODO Uncoment in the future
-    //     alert("You must be logged in to save notes.");
-    //     window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
-    //     return;
-    // }
-
-    if (note_input === "") {
-        alert("Please enter some content before saveing the note.");
+    if (Content === "") {
+        alert("Please enter some content before saving the note.");
         return;
     }
 
@@ -84,18 +74,37 @@ function save() {
     }
 
     const note = {
-        title: title,
-        content: note_input,
-        userId: userId,
-        important: important
+        title: Title,
+        content: Content,
+        user_id: user_id,
+        isImportant: isImportant,
+        created_at: new Date().toISOString()
     };
 
-    console.log(note);
+    try {
+        const response = await fetch("https://localhost:5001/api/Notes/create-note", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(note)
+        });
 
-    let notes = JSON.parse(localStorage.getItem('notes')) || [];
-    notes.push(note);
-    localStorage.setItem('notes', JSON.stringify(notes));
-    window.location.href = "../Notes/Notes.html";
+        if (!response.ok) {
+            const errorData = await response.text();
+            throw new Error(`Server error: ${response.status} - ${errorData}`);
+        }
+
+        let notes = JSON.parse(localStorage.getItem('notes')) || [];
+        notes.push(note);
+        localStorage.setItem('notes', JSON.stringify(notes));
+        window.location.href = "../Notes/Notes.html";
+
+    } catch (error) {
+        console.error("Error saving note:", error);
+        alert("There was an error saving your note. Please try again.");
+    }
 }
 
 

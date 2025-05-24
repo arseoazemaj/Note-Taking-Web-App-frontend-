@@ -22,6 +22,7 @@ document.addEventListener("click", (e) => {
     }
 });
 
+//TODO Uncomment in the end
 if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
         localStorage.removeItem("token");
