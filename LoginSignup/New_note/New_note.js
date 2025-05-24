@@ -60,6 +60,9 @@ async function save() {
     const user_id = getUserIdFromToken();
     const isImportant = filled;
 
+    const token = localStorage.getItem('token');
+    console.log("JWT token from localStorage:", token);
+
     if (Content === "") {
         alert("Please enter some content before saving the note.");
         return;
@@ -74,7 +77,8 @@ async function save() {
         title: Title,
         content: Content,
         user_id: user_id,
-        isImportant: isImportant
+        isImportant: isImportant,
+        created_at: new Date().toISOString()
     };
 
     try {
