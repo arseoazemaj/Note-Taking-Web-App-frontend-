@@ -48,15 +48,8 @@ window.onload = function() {
 };
 
 document.addEventListener('DOMContentLoaded', async function() {
-    const containers = document.getElementById('containers');
-    if (!containers) {
-        console.error("No container element found with id 'containers'");
-        return;
-    }
-
     try {
         const token = localStorage.getItem('token');
-        console.log("JWT token:", token);
         if (!token) {
             containers.textContent = "You are not logged in.";
             return;
@@ -69,42 +62,32 @@ document.addEventListener('DOMContentLoaded', async function() {
             }
         });
 
-        console.log("Response status:", response.status);
         if (!response.ok) {
-            const errorText = await response.text();
-            console.error("API error response:", errorText);
             containers.textContent = "Failed to load notes: " + response.status;
             return;
         }
 
         const notes = await response.json();
-        console.log("Notes received:", notes);
 
-        if (!notes || notes.length === 0) {
-            containers.textContent = "No notes found.";
-            return;
-        }
+        notes.forEach(note => {
+            const noteBox = document.createElement('div');
+            noteBox.className = 'note-box';
 
-    notes.forEach((note, index) => {
-        const noteBox = document.createElement('div');
-        noteBox.className = 'note-box';
-        noteBox.id = `${1 + index}`;
+            const noteContent = document.createElement('p');
+            noteContent.className = 'note-content';
+            noteContent.textContent = note.content.length > 90 ? note.content.substring(0, 88) + "..." : note.content;
 
-        const noteContent = document.createElement('p');
-        noteContent.className = 'note-content';
-        noteContent.textContent = note.content.length > 90 ? note.content.substring(0, 88) + "..." : note.content;
+            const noteTitle = document.createElement('h3');
+            noteTitle.textContent = note.title.length > 9 ? note.title.substring(0, 12) + "..." : note.title;
+            noteTitle.className = 'title';
 
-        const noteTitle = document.createElement('h3');
-        noteTitle.textContent = note.title.length > 9 ? note.title.substring(0, 12) + "..." : note.title;
-        noteTitle.className = 'title';
+            noteBox.appendChild(noteContent);
+            noteBox.appendChild(noteTitle);
 
-        noteBox.appendChild(noteContent);
-        noteBox.appendChild(noteTitle);
-        
-        containers.appendChild(noteBox);
-    });
-
-    } catch (error) {
+            containers.appendChild(noteBox);
+        });
+    }
+    catch (error) {
         console.error("Fetch error:", error);
         containers.textContent = "Error loading notes.";
     }
