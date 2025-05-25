@@ -96,9 +96,6 @@ async function save() {
             throw new Error(`Server error: ${response.status} - ${errorData}`);
         }
 
-        let notes = JSON.parse(localStorage.getItem('notes')) || [];
-        notes.push(note);
-        localStorage.setItem('notes', JSON.stringify(notes));
         window.location.href = "../Notes/Notes.html";
 
     } catch (error) {

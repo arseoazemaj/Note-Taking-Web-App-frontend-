@@ -47,10 +47,43 @@ window.onload = function() {
     });
 };
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
     const containers = document.getElementById('containers');
+    if (!containers) {
+        console.error("No container element found with id 'containers'");
+        return;
+    }
 
-    let notes = JSON.parse(localStorage.getItem('notes')) || []; //TODO Remove this line when the database is connected//
+    try {
+        const token = localStorage.getItem('token');
+        console.log("JWT token:", token);
+        if (!token) {
+            containers.textContent = "You are not logged in.";
+            return;
+        }
+
+        const response = await fetch('https://localhost:5001/api/Notes/get-note', {
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        console.log("Response status:", response.status);
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error("API error response:", errorText);
+            containers.textContent = "Failed to load notes: " + response.status;
+            return;
+        }
+
+        const notes = await response.json();
+        console.log("Notes received:", notes);
+
+        if (!notes || notes.length === 0) {
+            containers.textContent = "No notes found.";
+            return;
+        }
 
     notes.forEach((note, index) => {
         const noteBox = document.createElement('div');
@@ -70,8 +103,16 @@ document.addEventListener('DOMContentLoaded', function() {
         
         containers.appendChild(noteBox);
     });
+
+    } catch (error) {
+        console.error("Fetch error:", error);
+        containers.textContent = "Error loading notes.";
+    }
 });
 
+function getNotes() {
+    
+}
 
 //*Will be used to clear the local storage for testing purposes*//
 
