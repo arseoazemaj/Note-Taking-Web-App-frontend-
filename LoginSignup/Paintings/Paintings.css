@@ -67,17 +67,17 @@ body {
 #notes, #paintings, #trash {
     position: absolute;
     left: 10%;
-    width: 80%;
+    width: 50%;
     height: 34px;
     background-color: #2b0066;
     border-radius: 5px / 5px;
     border: none;
-    text-align: center;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     text-decoration: none;
     color: #ffd6d6;
+    padding-left: 45px;
 }
 
 #notes:active, #paintings:active, #trash:active {

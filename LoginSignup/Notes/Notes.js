@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             return;
         }
 
-        const response = await fetch('https://localhost:5001/api/Notes/get-note', {
+        const response = await fetch('https://localhost:5001/api/Notes/get-notes', {
             headers: {
                 'Authorization': 'Bearer ' + token,
                 'Content-Type': 'application/json'
@@ -73,6 +73,8 @@ document.addEventListener('DOMContentLoaded', async function() {
             const noteBox = document.createElement('div');
             noteBox.className = 'note-box';
 
+            noteBox.setAttribute('data-id', note.id);
+
             const noteContent = document.createElement('p');
             noteContent.className = 'note-content';
             noteContent.textContent = note.content.length > 90 ? note.content.substring(0, 88) + "..." : note.content;
@@ -89,13 +91,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
     catch (error) {
         console.error("Fetch error:", error);
-        containers.textContent = "Error loading notes.";
     }
 });
 
-function getNotes() {
-    
-}
 
 //*Will be used to clear the local storage for testing purposes*//
 
