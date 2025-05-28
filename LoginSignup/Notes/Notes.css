@@ -199,7 +199,6 @@ i {
     gap: 45px 20px;
     padding: 5px;
     box-sizing: border-box;
-    /* background-color: #ff0000; */
 }
 
 @keyframes fade {
