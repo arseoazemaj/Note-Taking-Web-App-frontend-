@@ -83,6 +83,10 @@ document.addEventListener('DOMContentLoaded', async function() {
             noteTitle.textContent = note.title.length > 9 ? note.title.substring(0, 12) + "..." : note.title;
             noteTitle.className = 'title';
 
+            noteBox.addEventListener("click", () => {
+                window.location.href = "../Edit_notes/Edit_notes.html?id=" + note.id;
+            })
+
             noteBox.appendChild(noteContent);
             noteBox.appendChild(noteTitle);
 
@@ -95,6 +99,34 @@ document.addEventListener('DOMContentLoaded', async function() {
 });
 
 
+
 //*Will be used to clear the local storage for testing purposes*//
 
 // localStorage.clear();
+
+
+//TODO: Use only when wanting to see in your phone (when using comment code from line 50 to 95)
+// document.addEventListener('DOMContentLoaded', function() {
+//     const containers = document.getElementById('containers');
+
+//     let notes = JSON.parse(localStorage.getItem('notes')) || [];
+
+//     notes.forEach((note, index) => {
+//         const noteBox = document.createElement('div');
+//         noteBox.className = 'note-box';
+//         noteBox.id = `${1 + index}`;
+
+//         const noteContent = document.createElement('p');
+//         noteContent.className = 'note-content';
+//         noteContent.textContent = note.content.length > 90 ? note.content.substring(0, 88) + "..." : note.content;
+
+//         const noteTitle = document.createElement('h3');
+//         noteTitle.textContent = note.title.length > 9 ? note.title.substring(0, 12) + "..." : note.title;
+//         noteTitle.className = 'title';
+
+//         noteBox.appendChild(noteContent);
+//         noteBox.appendChild(noteTitle);
+
+//         containers.appendChild(noteBox);
+//     });
+// });

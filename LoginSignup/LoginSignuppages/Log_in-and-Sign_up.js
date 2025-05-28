@@ -123,7 +123,7 @@ async function signup(event) {
         const result = await response.json();
 
         if (response.ok) {
-            alert("Signup successful!");
+            alert("Signup successful! Please log in.");
             go_to_log_in();
         } else {
             const message = result.message?.toLowerCase() || "";

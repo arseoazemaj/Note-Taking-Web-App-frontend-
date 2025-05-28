@@ -36,7 +36,7 @@ body {
 }
 
 #menu-page {
-    position: absolute;
+    position: fixed;
     left: -100%;
     top: 0;
     background-color: #08002f;
@@ -66,7 +66,7 @@ body {
 
 #notes, #paintings, #trash {
     position: absolute;
-    left: 10%;
+    left: 15%;
     width: 50%;
     height: 34px;
     background-color: #2b0066;
@@ -77,7 +77,7 @@ body {
     align-items: center;
     text-decoration: none;
     color: #ffd6d6;
-    padding-left: 45px;
+    padding-left: 40px;
 }
 
 #notes:active, #paintings:active, #trash:active {
@@ -146,6 +146,6 @@ a, div {
 #note_icon, #paint_icon, #trash_icon {
     color: #fdd6bc;
     position: absolute;
-    left: 15px;
+    left: 10px;
     height: 20px;
 }
