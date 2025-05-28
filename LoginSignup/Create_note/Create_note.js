@@ -109,7 +109,7 @@ async function save() {
 // document.getElementById('save').addEventListener('click', function() {
 //     const title = document.getElementById('title').value.trim();
 //     const content = document.getElementById('note_input').value.trim();
-    
+
 //     if (content === "") {
 //         alert("Please enter some content before saving.");
 //         return;

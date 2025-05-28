@@ -77,10 +77,10 @@ document.addEventListener('DOMContentLoaded', async function() {
 
             const noteContent = document.createElement('p');
             noteContent.className = 'note-content';
-            noteContent.textContent = note.content.length > 90 ? note.content.substring(0, 88) + "..." : note.content;
+            noteContent.textContent = note.content.length > 90 ? note.content.substring(0, 78) + "..." : note.content; //148 char for < 360px screen width
 
             const noteTitle = document.createElement('h3');
-            noteTitle.textContent = note.title.length > 9 ? note.title.substring(0, 12) + "..." : note.title;
+            noteTitle.textContent = note.title.length > 9 ? note.title.substring(0, 12) + "..." : note.title; //35 char for < 360px screen width
             noteTitle.className = 'title';
 
 
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 // localStorage.clear();
 
 
-//TODO: Use only when wanting to see in your phone (when using comment code from line 50 to 95)
+//TODO: Use only when wanting to see in your phone (when using comment code from line 50 to 100)
 // document.addEventListener('DOMContentLoaded', function() {
 //     const containers = document.getElementById('containers');
 
