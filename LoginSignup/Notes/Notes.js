@@ -83,6 +83,10 @@ document.addEventListener('DOMContentLoaded', async function() {
             noteTitle.textContent = note.title.length > 9 ? note.title.substring(0, 12) + "..." : note.title;
             noteTitle.className = 'title';
 
+            noteBox.addEventListener("click", () => {
+                window.location.href = "../Edit_notes/Edit_notes.html?id=" + note.id;
+            })
+
             noteBox.appendChild(noteContent);
             noteBox.appendChild(noteTitle);
 
@@ -94,11 +98,6 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
 });
 
-const note = document.getElementBy("note-box");
-
-if (note) {
-    window.location.href = "../Edit_notes/Edit_notes.html";
-}
 
 
 //*Will be used to clear the local storage for testing purposes*//
