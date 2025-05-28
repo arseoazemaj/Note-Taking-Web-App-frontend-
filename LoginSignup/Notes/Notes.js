@@ -83,12 +83,18 @@ document.addEventListener('DOMContentLoaded', async function() {
             noteTitle.textContent = note.title.length > 9 ? note.title.substring(0, 12) + "..." : note.title;
             noteTitle.className = 'title';
 
+            const date = new Date(note.date);
+            const dateElement = document.createElement('small');
+            dateElement.className = 'note-date';
+            dateElement.textContent = date.toLocaleDateString(); 
+
             noteBox.addEventListener("click", () => {
                 window.location.href = "../Edit_notes/Edit_notes.html?id=" + note.id;
             })
 
             noteBox.appendChild(noteContent);
             noteBox.appendChild(noteTitle);
+            noteBox.appendChild(dateElement);
 
             containers.appendChild(noteBox);
         });
