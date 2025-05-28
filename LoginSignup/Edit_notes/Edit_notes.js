@@ -99,32 +99,7 @@ async function save() {
         window.location.href = "../Notes/Notes.html";
 
     } catch (error) {
-        console.error("Error saving note:", error);
-        alert("There was an error saving your note. Please try again.");
+        console.error("Error updating note:", error);
+        alert("There was an error updating your note. Please try again.");
     }
 }
-
-
-//*Used to save the notes in local storage for testing purposes*//
-// document.getElementById('save').addEventListener('click', function() {
-//     const title = document.getElementById('title').value.trim();
-//     const content = document.getElementById('note_input').value.trim();
-    
-//     if (content === "") {
-//         alert("Please enter some content before saving.");
-//         return;
-//     }
-
-//     const note = {
-//         title: title,
-//         content: content
-//     };
-
-//     let notes = JSON.parse(localStorage.getItem('notes')) || [];
-
-//     notes.push(note);
-
-//     localStorage.setItem('notes', JSON.stringify(notes));
-
-//     window.location.href = "../Notes/Notes.html";
-// });
