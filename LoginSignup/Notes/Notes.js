@@ -69,6 +69,16 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         const notes = await response.json();
 
+
+        notes.forEach(note => {
+            console.log(`Note ID: ${note.id}, Title: ${note.title}, Content: ${note.content}, IsImportant: ${note.isImportant}`);
+        });
+
+        if (notes.isImportant) {
+            noteBox.classList.add('important');
+        }
+
+
         notes.forEach(note => {
             const noteBox = document.createElement('div');
             noteBox.className = 'note-box';
@@ -83,6 +93,15 @@ document.addEventListener('DOMContentLoaded', async function() {
             noteTitle.textContent = note.title.length > 9 ? note.title.substring(0, 12) + "..." : note.title; //35 char for < 360px screen width
             noteTitle.className = 'title';
 
+            if (note.isImportant) {
+                noteBox.classList.add('important-note');
+                const isImportantIcon = document.createElement('i');
+                isImportantIcon.setAttribute('data-lucide', 'star');
+                isImportantIcon.id = 'star';
+                isImportantIcon.classList.add('important-icon');
+                noteBox.appendChild(isImportantIcon);
+            }
+
 
             noteBox.addEventListener("click", () => {
                 window.location.href = "../Edit_notes/Edit_notes.html?id=" + note.id;
@@ -93,6 +112,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
             containers.appendChild(noteBox);
         });
+        lucide.createIcons();
     }
     catch (error) {
         console.error("Fetch error:", error);

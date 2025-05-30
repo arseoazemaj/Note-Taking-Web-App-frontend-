@@ -258,3 +258,25 @@ i {
         left: 15px;
     }
 }
+
+.important-icon {
+    position: relative;
+    top: -15px;
+    left: 122px;
+    width: 24px;
+    height: 24px;
+    color: #b07ecf;
+    fill: #b07ecf;
+    transform: rotate(15deg);
+    pointer-events: none;
+}
+
+.important-note .note-content {
+    position: relative;
+    top: -39px;
+}
+
+.important-note .title {
+    position: relative;
+    top: -29px;
+}
