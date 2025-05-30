@@ -137,6 +137,16 @@ document.addEventListener('DOMContentLoaded', async function() {
 //         noteBox.className = 'note-box';
 //         noteBox.id = `${1 + index}`;
 
+//         if (note.isImportant) {
+//             noteBox.classList.add('important-note');
+
+//             const isImportantIcon = document.createElement('i');
+//             isImportantIcon.setAttribute('data-lucide', 'star');
+//             isImportantIcon.id = 'star';
+//             isImportantIcon.classList.add('important-icon');
+//             noteBox.appendChild(isImportantIcon);
+//         }
+
 //         const noteContent = document.createElement('p');
 //         noteContent.className = 'note-content';
 //         noteContent.textContent = note.content.length > 90 ? note.content.substring(0, 88) + "..." : note.content;
@@ -150,4 +160,5 @@ document.addEventListener('DOMContentLoaded', async function() {
 
 //         containers.appendChild(noteBox);
 //     });
+//     lucide.createIcons();
 // });

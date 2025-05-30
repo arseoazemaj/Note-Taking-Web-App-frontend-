@@ -115,9 +115,12 @@ async function save() {
 //         return;
 //     }
 
+//     const isImportant = filled;
+
 //     const note = {
 //         title: title,
-//         content: content
+//         content: content,
+//         isImportant: isImportant
 //     };
 
 //     let notes = JSON.parse(localStorage.getItem('notes')) || [];
