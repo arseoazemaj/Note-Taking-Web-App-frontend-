@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 // localStorage.clear();
 
 
-//TODO: Use only when wanting to see in your phone (when using comment code from line 50 to 100)
+//TODO: Use only when wanting to see in your phone (when using comment code from line 50 to 120)
 // document.addEventListener('DOMContentLoaded', function() {
 //     const containers = document.getElementById('containers');
 
