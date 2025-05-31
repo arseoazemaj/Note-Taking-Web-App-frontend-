@@ -81,10 +81,10 @@ document.addEventListener('DOMContentLoaded', async function() {
 
             const noteContent = document.createElement('p');
             noteContent.className = 'note-content';
-            noteContent.textContent = note.content.length > 90 ? note.content.substring(0, 78) + "..." : note.content; //148 char for < 360px screen width
+            noteContent.textContent = note.content.length > 90 ? note.content.substring(0, 78) + "..." : note.content;
 
             const noteTitle = document.createElement('h3');
-            noteTitle.textContent = note.title.length > 9 ? note.title.substring(0, 12) + "..." : note.title; //35 char for < 360px screen width
+            noteTitle.textContent = note.title.length > 9 ? note.title.substring(0, 12) + "..." : note.title;
             noteTitle.className = 'title';
 
             if (note.isImportant) {
