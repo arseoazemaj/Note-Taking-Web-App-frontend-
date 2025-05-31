@@ -54,7 +54,7 @@ function fill() {
     filled = !filled;
 }
 
-const notePromise = (async function fetchNote() {
+document.addEventListener('DOMContentLoaded', async function () {
     const urlParams = new URLSearchParams(window.location.search);
     const noteId = urlParams.get('id');
 
@@ -95,20 +95,4 @@ const notePromise = (async function fetchNote() {
     } catch (error) {
         console.error("Fetch error:", error);
     }
-})();
-
-document.addEventListener('DOMContentLoaded', async function () {
-    const note = await notePromise;
-    if (!note) return;
-
-    const titleEl = document.getElementById('title');
-    const contentEl = document.getElementById('note_input');
-    const importantIcon = document.getElementById('important-icon');
-
-    if (titleEl) titleEl.value = note.title;
-    if (contentEl) contentEl.value = note.content;
-    if (note.isImportant && importantIcon) {
-        importantIcon.style.fill = "#dda9ff";
-        filled = true;
-    }
-})
+});
