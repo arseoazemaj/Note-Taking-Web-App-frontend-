@@ -39,3 +39,76 @@ document.getElementById("sub-menu_icon").addEventListener("click", function (eve
     SubMenu();
 });
 
+let filled = false;
+
+function fill() {
+    const icon = document.getElementById("important-icon");
+    
+    if (filled) {
+        icon.style.fill = "none";
+    }
+    else {
+        icon.style.fill = "#dda9ff";
+    }
+    
+    filled = !filled;
+}
+
+const notePromise = (async function fetchNote() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const noteId = urlParams.get('id');
+
+    if (!noteId) {
+        console.error("No note ID found in URL");
+        return;
+    }
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+        alert("You are not logged in.");
+        return;
+    }
+
+    try {
+        const response = await fetch(`https://localhost:5001/api/Notes/get-note/${noteId}`, {
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            console.error("Failed to load note: " + response.status);
+            return;
+        }
+
+        const note = await response.json();
+
+        document.getElementById('title').value = note.title;
+        document.getElementById('note_input').value = note.content;
+
+        if (note.isImportant) {
+            document.getElementById('important-icon').style.fill = "#dda9ff";
+            filled = true;
+        }
+
+    } catch (error) {
+        console.error("Fetch error:", error);
+    }
+})();
+
+document.addEventListener('DOMContentLoaded', async function () {
+    const note = await notePromise;
+    if (!note) return;
+
+    const titleEl = document.getElementById('title');
+    const contentEl = document.getElementById('note_input');
+    const importantIcon = document.getElementById('important-icon');
+
+    if (titleEl) titleEl.value = note.title;
+    if (contentEl) contentEl.value = note.content;
+    if (note.isImportant && importantIcon) {
+        importantIcon.style.fill = "#dda9ff";
+        filled = true;
+    }
+})
