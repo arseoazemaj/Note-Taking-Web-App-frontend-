@@ -69,15 +69,9 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         const notes = await response.json();
 
-
-        notes.forEach(note => {
-            console.log(`Note ID: ${note.id}, Title: ${note.title}, Content: ${note.content}, IsImportant: ${note.isImportant}`);
-        });
-
         if (notes.isImportant) {
             noteBox.classList.add('important');
         }
-
 
         notes.forEach(note => {
             const noteBox = document.createElement('div');
