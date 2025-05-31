@@ -245,6 +245,7 @@ i {
     font-size: 1.1rem;
     position: relative;
     top: 1px;
+    height: 30px;
 }
 
 @media (max-width: 360px) {
