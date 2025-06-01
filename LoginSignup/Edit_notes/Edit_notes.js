@@ -96,3 +96,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         console.error("Fetch error:", error);
     }
 });
+
+async function update() {
+    
+}
