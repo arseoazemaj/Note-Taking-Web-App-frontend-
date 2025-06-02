@@ -1,3 +1,6 @@
+const urlParams = new URLSearchParams(window.location.search);
+const noteId = urlParams.get('id');
+
 function getUserIdFromToken() {
     const token = localStorage.getItem('token');
     if (!token) return null;
@@ -97,6 +100,48 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 });
 
-async function update() {
-    
+async function update(noteId) {
+    const Title = document.getElementById("title").value.trim();
+    const Content = document.getElementById("note_input").value.trim();
+    const isImportant = filled;
+
+    if (Content === "") {
+        alert("Please enter some content before saving the note.");
+        return;
+    }
+
+    if (!navigator.onLine) {
+        alert("Your device is currently offline. Please connect to the internet to save your notes.");
+        return;
+    }
+
+    const note = {
+        id: noteId,
+        title: Title,
+        content: Content,
+        isImportant: isImportant,
+        updated_at: new Date().toISOString()
+    };
+
+    try {
+        const response = await fetch("https://localhost:5001/api/Notes/edit-note", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(note)
+        });
+
+        if (!response.ok) {
+            const errorData = await response.text();
+            throw new Error(`Server error: ${response.status} - ${errorData}`);
+        }
+
+        window.location.href = "../Notes/Notes.html";
+
+    } catch (error) {
+        console.error("Error updating note:", error);
+        alert("There was an error updating your note. Please try again.");
+    }
 }
