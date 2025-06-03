@@ -281,3 +281,8 @@ i {
     position: relative;
     top: -29px;
 }
+
+#check-box {
+    color: red;
+    position: absolute;
+}
