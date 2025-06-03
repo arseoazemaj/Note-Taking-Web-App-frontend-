@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         const token = localStorage.getItem('token');
         if (!token) {
             containers.textContent = "You are not logged in.";
+            window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
             return;
         }
 
@@ -69,24 +70,33 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         const notes = await response.json();
 
+        if (notes.isImportant) {
+            noteBox.classList.add('important');
+        }
+
         notes.forEach(note => {
             const noteBox = document.createElement('div');
             noteBox.className = 'note-box';
 
-            noteBox.setAttribute('data-id', note.id);
+            noteBox.setAttribute('id', note.id);
 
             const noteContent = document.createElement('p');
             noteContent.className = 'note-content';
-            noteContent.textContent = note.content.length > 90 ? note.content.substring(0, 88) + "..." : note.content;
+            noteContent.textContent = note.content.length > 90 ? note.content.substring(0, 78) + "..." : note.content;
 
             const noteTitle = document.createElement('h3');
             noteTitle.textContent = note.title.length > 9 ? note.title.substring(0, 12) + "..." : note.title;
             noteTitle.className = 'title';
 
-            const date = new Date(note.date);
-            const dateElement = document.createElement('small');
-            dateElement.className = 'note-date';
-            dateElement.textContent = date.toLocaleDateString(); 
+            if (note.isImportant) {
+                noteBox.classList.add('important-note');
+                const isImportantIcon = document.createElement('i');
+                isImportantIcon.setAttribute('data-lucide', 'star');
+                isImportantIcon.id = 'star';
+                isImportantIcon.classList.add('important-icon');
+                noteBox.appendChild(isImportantIcon);
+            }
+
 
             noteBox.addEventListener("click", () => {
                 window.location.href = "../Edit_notes/Edit_notes.html?id=" + note.id;
@@ -94,10 +104,10 @@ document.addEventListener('DOMContentLoaded', async function() {
 
             noteBox.appendChild(noteContent);
             noteBox.appendChild(noteTitle);
-            noteBox.appendChild(dateElement);
 
             containers.appendChild(noteBox);
         });
+        lucide.createIcons();
     }
     catch (error) {
         console.error("Fetch error:", error);
@@ -111,7 +121,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 // localStorage.clear();
 
 
-//TODO: Use only when wanting to see in your phone (when using comment code from line 50 to 95)
+//TODO: Use only when wanting to see in your phone (when using comment code from line 50 to 120)
 // document.addEventListener('DOMContentLoaded', function() {
 //     const containers = document.getElementById('containers');
 
@@ -121,6 +131,16 @@ document.addEventListener('DOMContentLoaded', async function() {
 //         const noteBox = document.createElement('div');
 //         noteBox.className = 'note-box';
 //         noteBox.id = `${1 + index}`;
+
+//         if (note.isImportant) {
+//             noteBox.classList.add('important-note');
+
+//             const isImportantIcon = document.createElement('i');
+//             isImportantIcon.setAttribute('data-lucide', 'star');
+//             isImportantIcon.id = 'star';
+//             isImportantIcon.classList.add('important-icon');
+//             noteBox.appendChild(isImportantIcon);
+//         }
 
 //         const noteContent = document.createElement('p');
 //         noteContent.className = 'note-content';
@@ -135,4 +155,5 @@ document.addEventListener('DOMContentLoaded', async function() {
 
 //         containers.appendChild(noteBox);
 //     });
+//     lucide.createIcons();
 // });

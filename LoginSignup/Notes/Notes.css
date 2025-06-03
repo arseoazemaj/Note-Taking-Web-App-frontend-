@@ -199,7 +199,6 @@ i {
     gap: 45px 20px;
     padding: 5px;
     box-sizing: border-box;
-    /* background-color: #ff0000; */
 }
 
 @keyframes fade {
@@ -246,6 +245,7 @@ i {
     font-size: 1.1rem;
     position: relative;
     top: 1px;
+    height: 21px;
 }
 
 @media (max-width: 360px) {
@@ -258,4 +258,33 @@ i {
     #note_icon, #paint_icon, #trash_icon {
         left: 15px;
     }
+}
+
+.important-icon {
+    position: relative;
+    top: -15px;
+    left: 97%;
+    width: 24px;
+    height: 24px;
+    color: #b07ecf;
+    fill: #b07ecf;
+    transform: rotate(15deg);
+    pointer-events: none;
+}
+
+.important-note .note-content {
+    position: relative;
+    top: -39px;
+}
+
+.important-note .title {
+    position: relative;
+    top: -29px;
+}
+
+#check-box {
+    color: red;
+    position: absolute;
+    top: 201px;
+    left: 37px;
 }

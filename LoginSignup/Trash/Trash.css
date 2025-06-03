@@ -133,14 +133,89 @@ a, div {
     -webkit-tap-highlight-color: transparent;
 }
 
-#container {
+#containers {
+    width: 90%;
+    position: absolute;
+    left: 7%;
+    top: 190px;
+    border-radius: 25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
+    gap: 45px 20px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.note-box {
     height: 130px;
     width: 130px;
-    background-color: #4e2a88d6;
-    position: absolute;
-    left: 50px;
-    top: 190px;
+    background-color: #251e45;
+    padding: 10px;
     border-radius: 15px;
+    color: #ad7ecc;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    padding-bottom: 30px;
+}
+
+.note-content, .title {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 99%;
+    position: relative;
+    top: -8px;
+}
+
+.title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    position: relative;
+    top: 1px;
+    height: 21px;
+}
+
+@media (max-width: 360px) {
+    .note-box {
+        width: 86%;
+    }
+    #containers {
+        gap: 43px 11%;
+    }
+    #note_icon, #paint_icon, #trash_icon {
+        left: 15px;
+    }
+}
+
+.important-icon {
+    position: relative;
+    top: -15px;
+    left: 97%;
+    width: 24px;
+    height: 24px;
+    color: #b07ecf;
+    fill: #b07ecf;
+    transform: rotate(15deg);
+    pointer-events: none;
+}
+
+.important-note .note-content {
+    position: relative;
+    top: -39px;
+}
+
+.important-note .title {
+    position: relative;
+    top: -29px;
 }
 
 #note_icon, #paint_icon, #trash_icon {
