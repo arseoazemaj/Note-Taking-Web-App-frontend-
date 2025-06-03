@@ -54,8 +54,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const isFormValid = usernameValue !== "" &&
             emailValue !== "" &&
             isEmailValid &&
-            passwordValue !== "" &&
-            confirmPasswordValue !== "" &&
+            passwordValue > 8 &&
+            confirmPasswordValue > 8 &&
             passwordValue === confirmPasswordValue;
 
         signUpBtn.disabled = !isFormValid;
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const usernameValue = loginUsername.value.trim();
         const passwordValue = loginPassword.value.trim();
 
-        const isFormValid = usernameValue !== "" && passwordValue !== "";
+        const isFormValid = usernameValue !== "" && passwordValue > 8;
 
         logInBtn.disabled = !isFormValid;
     }
