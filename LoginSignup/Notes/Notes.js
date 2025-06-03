@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             const noteBox = document.createElement('div');
             noteBox.className = 'note-box';
 
-            noteBox.setAttribute('data-id', note.id);
+            noteBox.setAttribute('id', note.id);
 
             const noteContent = document.createElement('p');
             noteContent.className = 'note-content';
