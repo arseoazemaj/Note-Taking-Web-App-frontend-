@@ -54,6 +54,15 @@ function fill() {
     filled = !filled;
 }
 
+document.addEventListener('DOMContentLoaded', async function () {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        alert("You are not logged in.");
+        window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
+        return;
+    }
+});
+
 async function save() {
     const Title = document.getElementById("title").value.trim();
     const Content = document.getElementById("note_input").value.trim();

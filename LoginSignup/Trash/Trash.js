@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         const token = localStorage.getItem('token');
         if (!token) {
             containers.textContent = "You are not logged in.";
+            window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
             return;
         }
 
