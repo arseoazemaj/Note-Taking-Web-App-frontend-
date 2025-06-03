@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const usernameValue = loginUsername.value.trim();
         const passwordValue = loginPassword.value.trim();
 
-        const isFormValid = usernameValue !== "" && passwordValue > 8;
+        const isFormValid = usernameValue !== "" && passwordValue !== ""; //TODO: replace passwordYalue !== "" with passwordValue.length > 8
 
         logInBtn.disabled = !isFormValid;
     }
