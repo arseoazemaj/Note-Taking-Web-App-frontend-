@@ -97,7 +97,6 @@ document.addEventListener('DOMContentLoaded', async function() {
                 noteBox.appendChild(isImportantIcon);
             }
 
-
             noteBox.addEventListener("click", () => {
                 window.location.href = "../Edit_notes/Edit_notes.html?id=" + note.id;
             })
