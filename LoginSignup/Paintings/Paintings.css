@@ -70,10 +70,10 @@ body {
     width: 50%;
     height: 34px;
     background-color: #2b0066;
-    border-radius: 5px / 5px;
+    border-radius: 5px;
     border: none;
     display: flex;
-    justify-content: left;
+    justify-content: flex-start;
     align-items: center;
     text-decoration: none;
     color: #ffd6d6;
@@ -99,7 +99,7 @@ body {
     width: 80%;
     height: 34px;
     background-color: #d03737;
-    border-radius: 5px / 5px;
+    border-radius: 5px;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -119,10 +119,6 @@ body {
 #greetings {
     text-align: center;
     padding-top: 40px;
-    -webkit-user-select: none;
-    user-select: none;
-    -webkit-touch-callout: none;
-    -webkit-tap-highlight-color: transparent;
     color: #ae7fce;
 }
 
@@ -131,16 +127,6 @@ a, div {
     user-select: none;
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color: transparent;
-}
-
-#container {
-    height: 130px;
-    width: 130px;
-    background-color: #4e2a88d6;
-    position: absolute;
-    left: 50px;
-    top: 190px;
-    border-radius: 15px;
 }
 
 #note_icon, #paint_icon, #trash_icon {

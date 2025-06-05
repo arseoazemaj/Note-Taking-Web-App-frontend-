@@ -71,9 +71,9 @@ body {
     width: 50%;
     height: 34px;
     background-color: #2b0066;
-    border-radius: 5px / 5px;
+    border-radius: 5px;
     display: flex;
-    justify-content: left;
+    justify-content: flex-start;
     align-items: center;
     text-decoration: none;
     color: #ffd6d6;
@@ -103,7 +103,7 @@ body {
     width: 80%;
     height: 34px;
     background-color: #d03737;
-    border-radius: 5px / 5px;
+    border-radius: 5px;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -129,7 +129,7 @@ body {
 #search {
     margin: auto;
     display: block;
-    border-radius: 19px / 16px;
+    border-radius: 19px;
     height: 34px;
     width: 65%;
     border: 0;
@@ -232,7 +232,10 @@ i {
     justify-content: space-between;
     height: 99%;
     position: relative;
-    top: -8px;
+}
+
+.note-content {
+    top: -10px;
 }
 
 .title {
@@ -274,7 +277,7 @@ i {
 
 .important-note .note-content {
     position: relative;
-    top: -39px;
+    top: -40px;
 }
 
 .important-note .title {
@@ -285,6 +288,6 @@ i {
 #check-box {
     color: red;
     position: absolute;
-    top: 201px;
+    top: 200px;
     left: 37px;
 }
