@@ -159,6 +159,6 @@ a, div {
     color: #dda9ff;
 }
 
-#save:active, #download:active, #important:active {
+#save:active, #download:active, #important:active, #trash:active {
     background-color: #370085;
 }

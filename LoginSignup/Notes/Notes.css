@@ -144,6 +144,10 @@ body {
     opacity: 1;
 }
 
+#search:focus {
+    outline: none;
+}
+
 #new_note {
     height: 60px;
     width: 70px;
@@ -285,9 +289,10 @@ i {
     top: -29px;
 }
 
-#check-box {
+/*TODO: uncomment later */
+/* #check-box {
     color: red;
     position: absolute;
     top: 200px;
     left: 37px;
-}
+} */
