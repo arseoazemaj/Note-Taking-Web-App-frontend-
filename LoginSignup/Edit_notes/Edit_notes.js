@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 });
 
-async function update(noteId) {
+async function update(noteId) { //*Update the note
     const Title = document.getElementById("title").value.trim();
     const Content = document.getElementById("note_input").value.trim();
     const isImportant = filled;
@@ -158,6 +158,7 @@ async function deleteNote() {
         },
         body: JSON.stringify({
             id: noteId,
+            isImportant: isImportant,
             isDeleted: true,
             deleted_at: new Date().toISOString()
         })

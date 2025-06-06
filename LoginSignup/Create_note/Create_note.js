@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 });
 
-async function save() {
+async function save() { //* Save the note
     const Title = document.getElementById("title").value.trim();
     const Content = document.getElementById("note_input").value.trim();
     const user_id = getUserIdFromToken();

@@ -47,7 +47,7 @@ window.onload = function() {
     });
 };
 
-document.addEventListener('DOMContentLoaded', async function() {
+document.addEventListener('DOMContentLoaded', async function() { //*Show the saved notes
     try {
         const token = localStorage.getItem('token');
         if (!token) {

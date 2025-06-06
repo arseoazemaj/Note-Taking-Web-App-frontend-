@@ -20,7 +20,7 @@ document.addEventListener("click", (e) => {
     }
 });
 
-document.addEventListener('DOMContentLoaded', async function () {
+document.addEventListener('DOMContentLoaded', async function () { //*Show the deleted notes
     try {
         const token = localStorage.getItem('token');
         if (!token) {
