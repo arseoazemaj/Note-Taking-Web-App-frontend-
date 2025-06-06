@@ -146,3 +146,28 @@ async function update(noteId) {
         alert("There was an error updating your note. Please try again.");
     }
 }
+
+async function deleteNote(noteId) {
+    const token = localStorage.getItem("token");
+
+    console.log("Deleting note with ID:", noteId);
+    const response = await fetch("https://localhost:5001/api/Notes/delete-note", {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            id: noteId,
+            isDeleted: true
+        })
+    });
+
+    if (response.ok) {
+        const result = await response.json();
+        console.log("Note soft-deleted:", result);
+    } else {
+        const error = await response.text();
+        console.error("Error deleting note:", error);
+    }
+}
