@@ -147,10 +147,9 @@ async function update(noteId) {
     }
 }
 
-async function deleteNote(noteId) {
+async function deleteNote() {
     const token = localStorage.getItem("token");
 
-    console.log("Deleting note with ID:", noteId);
     const response = await fetch("https://localhost:5001/api/Notes/delete-note", {
         method: "PUT",
         headers: {
