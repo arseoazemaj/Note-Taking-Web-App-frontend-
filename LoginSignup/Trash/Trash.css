@@ -184,7 +184,7 @@ a, div {
     font-size: 1.1rem;
     position: relative;
     top: 1px;
-    height: 21px;
+    height: 25px;
 }
 
 @media (max-width: 360px) {

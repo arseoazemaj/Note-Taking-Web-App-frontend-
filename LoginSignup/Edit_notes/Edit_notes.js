@@ -158,15 +158,14 @@ async function deleteNote() {
         },
         body: JSON.stringify({
             id: noteId,
-            isDeleted: true
+            isDeleted: true,
+            deleted_at: new Date().toISOString()
         })
     });
 
     if (response.ok) {
-        const result = await response.json();
-        console.log("Note soft-deleted:", result);
+        window.location.href = "../Notes/Notes.html";
     } else {
-        const error = await response.text();
-        console.error("Error deleting note:", error);
+        alert("Failed to delete note. Please try again later.");
     }
 }
