@@ -16,7 +16,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
+    position: absolute;
     left: 25px;
     height: 30px;
 }
@@ -126,6 +126,13 @@ body {
     color: #ae7fce;
 }
 
+#delete-message {
+    color: #ae7fce;
+    text-align: center;
+    position: relative;
+    top: -20px;
+}
+
 a, div {
     -webkit-user-select: none;
     user-select: none;
@@ -137,7 +144,7 @@ a, div {
     width: 90%;
     position: absolute;
     left: 7%;
-    top: 130px;
+    top: 150px;
     border-radius: 25px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));

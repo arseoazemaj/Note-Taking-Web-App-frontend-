@@ -19,7 +19,6 @@ body {
     position: absolute;
     left: 25px;
     height: 30px;
-    z-index: 1;
 }
 
 #menu-icon {
