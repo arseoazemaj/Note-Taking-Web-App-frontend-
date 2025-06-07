@@ -20,7 +20,8 @@ document.addEventListener("click", (e) => {
     }
 });
 
-document.addEventListener('DOMContentLoaded', async function () { //*Deletes all notes older than 30 days
+document.addEventListener('DOMContentLoaded', async function () {
+    //*Deletes all notes older than 30 days
     const token = localStorage.getItem('token');
     if (!token) {
         containers.textContent = "You are not logged in.";
@@ -36,16 +37,15 @@ document.addEventListener('DOMContentLoaded', async function () { //*Deletes all
         }
     });
     if (response.ok) {
-        console.log('All notes deleted succesfuly.');
+        console.log("Notes older than 30 days are deleted succesfuly.");
     } else {
-        console.warn('Failed to delete all notes');
+        console.log("There is no note older than 30 days.");
     }
     } catch (error) {
         console.error('Error deleting old trash notes:', error);
     }
-});
 
-document.addEventListener('DOMContentLoaded', async function () { //*Show the deleted notes
+    //*Shows notes younger than 30 days
     try {
         const token = localStorage.getItem('token');
         if (!token) {
