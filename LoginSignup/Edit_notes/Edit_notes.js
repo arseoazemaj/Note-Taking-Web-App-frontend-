@@ -147,26 +147,38 @@ async function update(noteId) { //*Update the note
     }
 }
 
-async function deleteNote() {
+async function deleteNote() { //*Moves the note to trash
     const token = localStorage.getItem("token");
 
-    const response = await fetch("https://localhost:5001/api/Notes/delete-note", {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-        },
-        body: JSON.stringify({
-            id: noteId,
-            isImportant: isImportant,
-            isDeleted: true,
-            deleted_at: new Date().toISOString()
-        })
-    });
+    const Title = document.getElementById("title").value.trim();
+    const Content = document.getElementById("note_input").value.trim();
+    const isImportant = filled;
 
-    if (response.ok) {
-        window.location.href = "../Notes/Notes.html";
-    } else {
-        alert("Failed to delete note. Please try again later.");
+    try {
+        const response = await fetch("https://localhost:5001/api/Notes/delete-note", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                id: noteId,
+                title: Title,
+                Content: Content,
+                isDeleted: true,
+                deleted_at: new Date().toISOString(),
+                isImportant: isImportant
+            })
+        });
+
+        if (response.ok) {
+            window.location.href = "../Notes/Notes.html";
+        } else {
+            const error = await response.text();
+            alert("Failed to delete note: " + error);
+        }
+    } catch (err) {
+        console.error(err);
+        alert("Something went wrong. Please check your internet connection or try again later.");
     }
 }
