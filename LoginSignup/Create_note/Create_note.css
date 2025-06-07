@@ -122,9 +122,8 @@ a, div {
     }
 }
 
-#save {
+#save, #download, #important, #trash {
     position: absolute;
-    top: 15px;
     right: 12px;
     color: #dda9ff;
     font-size: large;
@@ -137,57 +136,29 @@ a, div {
     align-items: center;
 }
 
-#save-icon {
-    position: absolute;
-    top: 6px;
-    right: 131px;
-    color: #dda9ff;
+#save {
+    top: 15px;
 }
 
 #download {
-    position: absolute;
     top: 65px;
-    right: 12px;
-    color: #dda9ff;
-    font-size: large;
-    height: 36px;
-    width: 127px;
-    border-radius: 10px;
-    padding-left: 40px;
-    background-color: #1c004a;
-    display: flex;
-    align-items: center;
 }
 
-#download-icon {
+#important {
+    top: 115px;
+}
+
+#trash {
+    top: 165px;
+}
+
+#save-icon, #download-icon, #important-icon, #trash-icon {
     position: absolute;
     top: 6px;
     right: 131px;
     color: #dda9ff;
 }
 
-#important {
-    position: absolute;
-    top: 115px;
-    right: 12px;
-    color: #dda9ff;
-    font-size: large;
-    height: 36px;
-    width: 127px;
-    border-radius: 10px;
-    padding-left: 36px;
-    background-color: #1c004a;
-    display: flex;
-    align-items: center;
-}
-
-#important-icon {
-    position: absolute;
-    top: 7px;
-    right: 131px;
-    color: #dda9ff;
-}
-
-#save:active, #download:active, #important:active {
+#save:active, #download:active, #important:active, #trash:active {
     background-color: #370085;
 }
