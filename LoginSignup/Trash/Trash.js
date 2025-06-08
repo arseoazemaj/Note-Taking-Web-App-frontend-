@@ -21,30 +21,6 @@ document.addEventListener("click", (e) => {
 });
 
 document.addEventListener('DOMContentLoaded', async function () {
-    //*Deletes all notes older than 30 days
-    const token = localStorage.getItem('token');
-    if (!token) {
-        containers.textContent = "You are not logged in.";
-        window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
-        return;
-    }
-
-    try {
-    const response = await fetch('https://localhost:5001/api/Notes/permanently-delete-notes', {
-        method: 'DELETE',
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
-    });
-    if (response.ok) {
-        console.log("Notes older than 30 days are deleted succesfuly.");
-    } else {
-        console.log("There is no note older than 30 days.");
-    }
-    } catch (error) {
-        console.error('Error deleting old trash notes:', error);
-    }
-
     //*Shows notes younger than 30 days
     try {
         const token = localStorage.getItem('token');
