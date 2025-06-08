@@ -234,3 +234,24 @@ a, div {
     left: 10px;
     height: 20px;
 }
+
+#decide {
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    background-color: red;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+#restore, #delete {
+    height: 37px;
+    width: 40%;
+    background-color: #2b0066;
+    border-radius: 15px;
+    align-items: center;
+    color: #ffd6d6;
+}
