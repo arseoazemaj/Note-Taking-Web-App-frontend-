@@ -80,6 +80,11 @@ document.addEventListener('DOMContentLoaded', async function() { //*Show the sav
 
             noteBox.setAttribute('id', note.id);
 
+            const checkIcon = document.createElement('i');
+            checkIcon.setAttribute('data-lucide', 'circle-check');
+            checkIcon.classList.add('check-box');
+            noteBox.appendChild(checkIcon);
+
             const noteContent = document.createElement('p');
             noteContent.className = 'note-content';
             noteContent.textContent = note.content.length > 90 ? note.content.substring(0, 78) + "..." : note.content;
@@ -101,6 +106,7 @@ document.addEventListener('DOMContentLoaded', async function() { //*Show the sav
                 window.location.href = "../Edit_notes/Edit_notes.html?id=" + note.id;
             })
 
+            noteBox.appendChild(checkIcon);
             noteBox.appendChild(noteContent);
             noteBox.appendChild(noteTitle);
 
