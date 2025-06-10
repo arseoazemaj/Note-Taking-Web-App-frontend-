@@ -79,6 +79,7 @@ document.addEventListener('DOMContentLoaded', async function() { //*Show the sav
             noteBox.className = 'note-box';
 
             noteBox.setAttribute('id', note.id);
+            
 
             const checkIcon = document.createElement('i');
             checkIcon.setAttribute('data-lucide', 'circle-check');
@@ -102,9 +103,40 @@ document.addEventListener('DOMContentLoaded', async function() { //*Show the sav
                 noteBox.appendChild(isImportantIcon);
             }
 
-            noteBox.addEventListener("click", () => {
-                window.location.href = "../Edit_notes/Edit_notes.html?id=" + note.id;
-            })
+            let longPressTimer = null;
+            let longPressFired = false;
+            const LONG_PRESS_MS = 1000;
+
+            function startPress(e) {
+                e.preventDefault();
+                longPressFired = false;
+                longPressTimer = setTimeout(() => {
+                    longPressFired = true;
+                    const checkIcon = noteBox.querySelector('.check-icon');
+                    checkIcon.style.display = 'block';
+                    noteBox.classList.toggle('selected');
+                }, LONG_PRESS_MS);
+            }
+
+            function cancelPress() {
+                clearTimeout(longPressTimer);
+            }
+
+            function endPress(e) {
+                clearTimeout(longPressTimer);
+                if (!longPressFired) {
+                    window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
+                }
+            }
+
+            noteBox.addEventListener('touchstart', startPress);
+            noteBox.addEventListener('touchend',   endPress);
+            noteBox.addEventListener('touchmove',  cancelPress);
+            noteBox.addEventListener('touchcancel',cancelPress);
+
+            noteBox.addEventListener('mousedown', startPress);
+            noteBox.addEventListener('mouseup',   endPress);
+            noteBox.addEventListener('mouseleave',cancelPress);
 
             noteBox.appendChild(noteContent);
             noteBox.appendChild(noteTitle);

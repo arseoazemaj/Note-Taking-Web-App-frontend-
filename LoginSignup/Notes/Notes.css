@@ -238,7 +238,7 @@ i {
 }
 
 .note-content {
-    top: -40px;
+    top: -15px;
     height: 100%;
 }
 
@@ -251,7 +251,7 @@ i {
     font-weight: bold;
     font-size: 1.1rem;
     height: 25px;
-    top: -30px;
+    top: 0px;
 }
 
 @media (max-width: 360px) {
@@ -276,21 +276,11 @@ i {
     pointer-events: none;
 }
 
-.important-note .note-content {
-    position: relative;
-    top: -40px;
-}
-
-.important-note .title {
-    position: relative;
-    top: -29px;
-}
-
 /*TODO: uncomment later */
-#check-box {
+.check-icon {
     color: #b07ecf;
     position: absolute;
     left: 10px;
-    /* display: none; */
+    display: none;
     z-index: 1;
 }
