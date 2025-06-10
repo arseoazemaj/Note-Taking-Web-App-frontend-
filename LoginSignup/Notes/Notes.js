@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', async function() { //*Show the sav
 
             const checkIcon = document.createElement('i');
             checkIcon.setAttribute('data-lucide', 'circle-check');
-            checkIcon.classList.add('check-box');
+            checkIcon.classList.add('check-icon');
             noteBox.appendChild(checkIcon);
 
             const noteContent = document.createElement('p');
@@ -106,10 +106,8 @@ document.addEventListener('DOMContentLoaded', async function() { //*Show the sav
                 window.location.href = "../Edit_notes/Edit_notes.html?id=" + note.id;
             })
 
-            noteBox.appendChild(checkIcon);
             noteBox.appendChild(noteContent);
             noteBox.appendChild(noteTitle);
-
             containers.appendChild(noteBox);
         });
         lucide.createIcons();

@@ -43,7 +43,7 @@ body {
     height: 100%;
     width: 50%;
     transition: left 0.1s ease;
-    z-index: 1;
+    z-index: 2;
 }
 
 #menu-page.slide-in {
@@ -234,12 +234,12 @@ i {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 99%;
     position: relative;
 }
 
 .note-content {
-    top: -10px;
+    top: -40px;
+    height: 100%;
 }
 
 .title {
@@ -250,9 +250,8 @@ i {
     margin-top: 1rem;
     font-weight: bold;
     font-size: 1.1rem;
-    position: relative;
-    top: 1px;
     height: 25px;
+    top: -30px;
 }
 
 @media (max-width: 360px) {
@@ -268,11 +267,9 @@ i {
 }
 
 .important-icon {
-    position: relative;
-    top: -15px;
-    left: 95%;
-    width: 24px;
-    height: 24px;
+    position: absolute;
+    top: -8px;
+    left: 90%;
     color: #b07ecf;
     fill: #b07ecf;
     transform: rotate(15deg);
@@ -290,9 +287,10 @@ i {
 }
 
 /*TODO: uncomment later */
-.check-box {
-    color: red;
+#check-box {
+    color: #b07ecf;
     position: absolute;
     left: 10px;
     /* display: none; */
+    z-index: 1;
 }
