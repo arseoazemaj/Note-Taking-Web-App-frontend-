@@ -66,18 +66,17 @@ body {
 
 #notes, #paintings, #trash {
     position: absolute;
-    left: 15%;
-    width: 50%;
+    left: 10%;
+    width: 80%;
     height: 34px;
     background-color: #2b0066;
     border-radius: 5px;
-    border: none;
+    text-align: center;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     text-decoration: none;
     color: #ffd6d6;
-    padding-left: 40px;
 }
 
 #notes:active, #paintings:active, #trash:active {
@@ -106,6 +105,11 @@ body {
     align-items: center;
     text-decoration: none;
     color: #ffd6d6;
+}
+
+#log-out {
+    position: absolute;
+    left: 10px;
 }
 
 #log-out_btn:active {

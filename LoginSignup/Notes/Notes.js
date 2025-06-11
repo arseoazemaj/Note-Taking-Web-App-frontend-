@@ -49,12 +49,12 @@ window.onload = function() {
 
 document.addEventListener('DOMContentLoaded', async function() { //*Show the saved notes
     try {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            containers.textContent = "You are not logged in.";
-            window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
-            return;
-        }
+        // const token = localStorage.getItem('token');
+        // if (!token) {
+        //     containers.textContent = "You are not logged in.";
+        //     window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
+        //     return;
+        // }
 
         const response = await fetch('https://localhost:5001/api/Notes/get-notes', {
             headers: {
@@ -105,38 +105,57 @@ document.addEventListener('DOMContentLoaded', async function() { //*Show the sav
 
             let longPressTimer = null;
             let longPressFired = false;
+            let wasCanceled = false;
             const LONG_PRESS_MS = 1000;
+            const MOVE_THRESHOLD = 15;
+            let startX = 0;
+            let startY = 0;
 
             function startPress(e) {
                 e.preventDefault();
                 longPressFired = false;
+                wasCanceled = false;
+
+                const touch = e.touches[0];
+                startX = touch.clientX;
+                startY = touch.clientY;
+
                 longPressTimer = setTimeout(() => {
                     longPressFired = true;
                     const checkIcon = noteBox.querySelector('.check-icon');
                     checkIcon.style.display = 'block';
                     noteBox.classList.toggle('selected');
+                    noteBox.style.transform = "scale(.95)";
                 }, LONG_PRESS_MS);
             }
 
             function cancelPress() {
                 clearTimeout(longPressTimer);
+                wasCanceled = true;
+            }
+
+            function touchMove(e) {
+                const touch = e.touches[0];
+                const dx = touch.clientX - startX;
+                const dy = touch.clientY - startY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance > MOVE_THRESHOLD) {
+                    cancelPress();
+                }
             }
 
             function endPress(e) {
                 clearTimeout(longPressTimer);
-                if (!longPressFired) {
+                if (!longPressFired && !wasCanceled) {
                     window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
                 }
             }
 
             noteBox.addEventListener('touchstart', startPress);
             noteBox.addEventListener('touchend',   endPress);
-            noteBox.addEventListener('touchmove',  cancelPress);
+            noteBox.addEventListener('touchmove',  touchMove);
             noteBox.addEventListener('touchcancel',cancelPress);
-
-            noteBox.addEventListener('mousedown', startPress);
-            noteBox.addEventListener('mouseup',   endPress);
-            noteBox.addEventListener('mouseleave',cancelPress);
 
             noteBox.appendChild(noteContent);
             noteBox.appendChild(noteTitle);
@@ -156,39 +175,99 @@ document.addEventListener('DOMContentLoaded', async function() { //*Show the sav
 // localStorage.clear();
 
 
-//TODO: Use only when wanting to see in your phone (when using comment code from line 50 to 120)
-// document.addEventListener('DOMContentLoaded', function() {
-//     const containers = document.getElementById('containers');
+//TODO: Use only when wanting to see in your phone (when using comment code from line 50)
+document.addEventListener('DOMContentLoaded', function() {
+    const containers = document.getElementById('containers');
 
-//     let notes = JSON.parse(localStorage.getItem('notes')) || [];
+    let notes = JSON.parse(localStorage.getItem('notes')) || [];
 
-//     notes.forEach((note, index) => {
-//         const noteBox = document.createElement('div');
-//         noteBox.className = 'note-box';
-//         noteBox.id = `${1 + index}`;
+        notes.forEach(note => {
+            const noteBox = document.createElement('div');
+            noteBox.className = 'note-box';
 
-//         if (note.isImportant) {
-//             noteBox.classList.add('important-note');
+            noteBox.setAttribute('id', note.id);
+            
 
-//             const isImportantIcon = document.createElement('i');
-//             isImportantIcon.setAttribute('data-lucide', 'star');
-//             isImportantIcon.id = 'star';
-//             isImportantIcon.classList.add('important-icon');
-//             noteBox.appendChild(isImportantIcon);
-//         }
+            const checkIcon = document.createElement('i');
+            checkIcon.setAttribute('data-lucide', 'circle-check');
+            checkIcon.classList.add('check-icon');
+            noteBox.appendChild(checkIcon);
 
-//         const noteContent = document.createElement('p');
-//         noteContent.className = 'note-content';
-//         noteContent.textContent = note.content.length > 90 ? note.content.substring(0, 88) + "..." : note.content;
+            const noteContent = document.createElement('p');
+            noteContent.className = 'note-content';
+            noteContent.textContent = note.content.length > 90 ? note.content.substring(0, 78) + "..." : note.content;
 
-//         const noteTitle = document.createElement('h3');
-//         noteTitle.textContent = note.title.length > 9 ? note.title.substring(0, 12) + "..." : note.title;
-//         noteTitle.className = 'title';
+            const noteTitle = document.createElement('h3');
+            noteTitle.textContent = note.title.length > 9 ? note.title.substring(0, 12) + "..." : note.title;
+            noteTitle.className = 'title';
 
-//         noteBox.appendChild(noteContent);
-//         noteBox.appendChild(noteTitle);
+            if (note.isImportant) {
+                noteBox.classList.add('important-note');
+                const isImportantIcon = document.createElement('i');
+                isImportantIcon.setAttribute('data-lucide', 'star');
+                isImportantIcon.id = 'star';
+                isImportantIcon.classList.add('important-icon');
+                noteBox.appendChild(isImportantIcon);
+            }
 
-//         containers.appendChild(noteBox);
-//     });
-//     lucide.createIcons();
-// });
+            let longPressTimer = null;
+            let longPressFired = false;
+            let wasCanceled = false;
+            const LONG_PRESS_MS = 1000;
+            const MOVE_THRESHOLD = 15;
+            let startX = 0;
+            let startY = 0;
+
+            function startPress(e) {
+                e.preventDefault();
+                longPressFired = false;
+                wasCanceled = false;
+
+                const touch = e.touches[0];
+                startX = touch.clientX;
+                startY = touch.clientY;
+
+                longPressTimer = setTimeout(() => {
+                    longPressFired = true;
+                    const checkIcon = noteBox.querySelector('.check-icon');
+                    checkIcon.style.display = 'block';
+                    noteBox.classList.toggle('selected');
+                    noteBox.style.transform = "scale(.95)";
+                    noteContent.style.top = "0px"
+                }, LONG_PRESS_MS);
+            }
+
+            function cancelPress() {
+                clearTimeout(longPressTimer);
+                wasCanceled = true;
+            }
+
+            function touchMove(e) {
+                const touch = e.touches[0];
+                const dx = touch.clientX - startX;
+                const dy = touch.clientY - startY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance > MOVE_THRESHOLD) {
+                    cancelPress();
+                }
+            }
+
+            function endPress(e) {
+                clearTimeout(longPressTimer);
+                if (!longPressFired && !wasCanceled) {
+                    window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
+                }
+            }
+
+            noteBox.addEventListener('touchstart', startPress);
+            noteBox.addEventListener('touchend',   endPress);
+            noteBox.addEventListener('touchmove',  touchMove);
+            noteBox.addEventListener('touchcancel',cancelPress);
+
+            noteBox.appendChild(noteContent);
+            noteBox.appendChild(noteTitle);
+            containers.appendChild(noteBox);
+        });
+    lucide.createIcons();
+});

@@ -19,3 +19,7 @@ document.addEventListener("click", (e) => {
         menuOpen = false;
     }
 });
+
+window.addEventListener("DOMContentLoaded", () => {
+    lucide.createIcons();
+});
