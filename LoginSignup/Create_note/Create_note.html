@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Create_note.css">
+    <title>New note</title>
+</head>
+<body>
+    <div id="menu">
+        <a href="../Notes/Notes.html" id="back" draggable="false"><</a>
+        <input type="text" name="Title" id="title" placeholder="Title">
+        <a id="sub-menu_icon" draggable="false">
+            <i data-lucide="ellipsis-vertical" id="ellipsis-icon"></i>
+        </a>
+        <div id="container" style="display: none;">
+            <a id="save" draggable="false" onclick="save()">
+                <i data-lucide="save" id="save-icon"></i>
+                Save
+            </a>
+            <a id="download" draggable="false">
+                <i data-lucide="download" id="download-icon"></i>
+                Export
+            </a>
+            <a id="important" draggable="false" onclick="fill()">
+                <i data-lucide="star" id="important-icon"></i>
+                Important
+            </a>
+            <a id="trash" draggable="false" onclick="deleteNote()">
+                <i data-lucide="trash-2" id="trash-icon"></i>Delete
+            </a>
+        </div>
+    </div>
+    <textarea id="note_input" placeholder="Write your thoughts here..."></textarea>
+
+
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="Create_note.js"></script>
+    <script src="../common.js"></script>
+</body>
+</html>

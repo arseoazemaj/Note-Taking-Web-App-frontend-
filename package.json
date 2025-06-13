@@ -1,0 +1,29 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arseo01/Note-Taking-Web-App-frontend-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arseo01/Note-Taking-Web-App-frontend-/issues"
+  },
+  "homepage": "https://github.com/arseo01/Note-Taking-Web-App-frontend-#readme",
+  "description": "",
+  "dependencies": {
+    "@capacitor/android": "^7.2.0",
+    "@capacitor/app": "^7.0.1",
+    "@capacitor/cli": "^7.2.0",
+    "@capacitor/core": "^7.2.0",
+    "@capacitor/local-notifications": "^7.0.1",
+    "jsdom": "^26.1.0",
+    "jwt-decode": "^4.0.0"
+  }
+}

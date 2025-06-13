@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Notes.css">
+    <title>Notes</title>
+</head>
+<body>
+    <div id="menu">
+        <div id="menuopener">
+            <div id="menu-icon">
+                <div id="line"></div>
+                <div id="line"></div>
+                <div id="line"></div>
+            </div>
+        </div>
+        <div id="menu-page">
+            <a id="notes" draggable="false">
+                <i data-lucide="notebook-pen" id="note_icon"></i>Notes
+            </a>
+            <a href="../Paintings/Paintings.html" id="paintings" draggable="false">
+                <i data-lucide="palette" id="paint_icon"></i>Paintings
+            </a>
+            <a href="../Trash/Trash.html" id="trash" draggable="false">
+                <i data-lucide="trash-2" id="trash_icon"></i>Trash
+            </a>
+            <a id="log-out_btn" draggable="false">
+                <i data-lucide="log-out" id="log-out"></i>Log out
+            </a>
+        </div>
+    </div>
+    <h1 id="greetings">Notes</h1> <!--*Will greet using the username of the user-->
+    <input type="text" id="search" placeholder="Search notes">
+    
+    <a id="new_note" href="../Create_note/Create_note.html" draggable="false">+</a>
+    <div id="containers"></div>
+    
+
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="Notes.js"></script>
+    <script src="../common.js"></script>
+</body>
+</html>
