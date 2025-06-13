@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', async function() { //*Show the sav
                 }
             }
 
-            function endPress(e) {
+            function endPress() {
                 clearTimeout(longPressTimer);
                 if (!longPressFired && !wasCanceled) {
                     window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
 
-            function endPress(e) {
+            function endPress() {
                 clearTimeout(longPressTimer);
                 if (!longPressFired && !wasCanceled) {
                     window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
