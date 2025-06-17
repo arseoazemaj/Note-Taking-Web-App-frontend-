@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const usernameValue = loginUsername.value.trim();
         const passwordValue = loginPassword.value.trim();
 
-        const isFormValid = usernameValue !== "" && passwordValue !== ""; //TODO: replace passwordYalue !== "" with passwordValue.length > 8
+        const isFormValid = usernameValue !== "" && passwordValue !== ""; //TODO: replace passwordValue !== "" with passwordValue.length > 8
 
         logInBtn.disabled = !isFormValid;
     }
@@ -123,8 +123,7 @@ async function signup(event) {
         const result = await response.json();
 
         if (response.ok) {
-            alert("Signup successful! Please log in.");
-            go_to_log_in();
+            window.location.href = "../Notes/Notes.html";
         } else {
             const message = result.message?.toLowerCase() || "";
 
