@@ -48,6 +48,8 @@ window.onload = function() {
 
 document.addEventListener('DOMContentLoaded', async function() { //*Show the saved notes
     try {
+
+        //TODO: Comment it only when want to see in phone (Uncomment in the end)
         // const token = localStorage.getItem('token');
         // if (!token) {
         //     containers.textContent = "You are not logged in.";

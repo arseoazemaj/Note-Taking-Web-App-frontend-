@@ -23,13 +23,10 @@ body {
 
 #back {
     position: absolute;
-    top: 24px;
+    top: 34px;
     left: 16px;
-    text-decoration: none;
-    font-size: 35px;
     color: #ae7fce;
-    background-color: #07031b;
-    line-height: 35px;
+    scale: 1.5;
 }
 
 a, div {

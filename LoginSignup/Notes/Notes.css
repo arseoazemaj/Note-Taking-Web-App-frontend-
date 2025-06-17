@@ -155,22 +155,23 @@ body {
 }
 
 #new_note {
-    height: 60px;
-    width: 70px;
-    border-radius: 50%;
     position: fixed;
-    right: 4%;
-    bottom: 3%;
-    border: none;
-    font-size: 55.1px;
-    background-color: #b17fd1;
-    color: #000000;
+    right: 10%;
+    bottom: 5%;
+    color: #b17fd1;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-decoration: none;
-    padding-bottom: 10px;
     z-index: 1;
+    scale: 3;
+}
+
+#new_note svg.lucide path {
+    color: #000000;
+}
+
+#new_note svg.lucide {
+    fill: #b17fd1;
 }
 
 #new_note:active {
