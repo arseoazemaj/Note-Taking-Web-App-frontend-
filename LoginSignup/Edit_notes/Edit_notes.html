@@ -13,7 +13,7 @@
         <a id="sub-menu_icon" draggable="false">
             <i data-lucide="ellipsis-vertical" id="ellipsis-icon"></i>
         </a>
-        <div id="container" style="display: none;">
+        <div id="container">
             <a id="save" draggable="false" onclick="update(noteId)">
                 <i data-lucide="save" id="save-icon"></i>
                 Save
@@ -39,5 +39,8 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="Edit_notes.js"></script>
     <script src="../common.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
