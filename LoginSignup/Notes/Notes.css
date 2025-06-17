@@ -295,11 +295,23 @@ i {
     pointer-events: none;
 }
 
-/*TODO: uncomment later */
 .check-icon {
-    color: #b07ecf;
+    color: #ffffff; /*b07ecf*/
     position: absolute;
     left: 10px;
     display: none;
     z-index: 1;
+}
+
+#decide {
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    background-color: red;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    display: none;
 }

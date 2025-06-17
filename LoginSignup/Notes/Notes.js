@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', async function() { //*Show the sav
             let longPressTimer = null;
             let longPressFired = false;
             let wasCanceled = false;
-            const LONG_PRESS_MS = 1000;
+            const LONG_PRESS_MS = 700;
             const MOVE_THRESHOLD = 15;
             let startX = 0;
             let startY = 0;
@@ -126,6 +126,7 @@ document.addEventListener('DOMContentLoaded', async function() { //*Show the sav
                     checkIcon.style.display = 'block';
                     noteBox.classList.toggle('selected');
                     noteBox.style.transform = "scale(.95)";
+                    decide();
                 }, LONG_PRESS_MS);
             }
 
@@ -167,6 +168,12 @@ document.addEventListener('DOMContentLoaded', async function() { //*Show the sav
         console.error("Fetch error:", error);
     }
 });
+
+function decide() {
+    console.log("Show decisions.");
+    document.getElementById("decide").style.display = 'block';
+    document.getElementById("new_note").style.display = 'none';
+}
 
 
 
