@@ -22,7 +22,6 @@ document.addEventListener("click", (e) => {
     }
 });
 
-//TODO Uncomment in the end
 if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
         localStorage.removeItem("token");
@@ -110,6 +109,9 @@ document.addEventListener('DOMContentLoaded', async function() { //*Show the sav
             const MOVE_THRESHOLD = 15;
             let startX = 0;
             let startY = 0;
+            let SelectionMode = false;
+
+            window.SelectionMode = SelectionMode;
 
             function startPress(e) {
                 e.preventDefault();
@@ -120,15 +122,25 @@ document.addEventListener('DOMContentLoaded', async function() { //*Show the sav
                 startX = touch.clientX;
                 startY = touch.clientY;
 
-                longPressTimer = setTimeout(() => {
-                    longPressFired = true;
-                    const checkIcon = noteBox.querySelector('.check-icon');
-                    checkIcon.style.display = 'block';
-                    noteBox.classList.toggle('selected');
-                    noteBox.style.transform = "scale(.95)";
-                    decide();
-                }, LONG_PRESS_MS);
+                if (!SelectionMode) {
+                    longPressTimer = setTimeout(() => {
+                        longPressFired = true;
+                        const checkIcon = noteBox.querySelector('.check-icon');
+                        checkIcon.style.display = 'block';
+                        noteBox.classList.toggle('selected');
+                        noteBox.style.transform = "scale(.95)";
+                        decide();
+                        SelectionMode = true;
+                        window.SelectionMode = SelectionMode;
+                    }, LONG_PRESS_MS);
+                }
             }
+
+            noteBox.addEventListener('touchend', (e) => {
+                if (SelectionMode) {
+                    console.log("Selection mode is activated.")
+                }
+            });
 
             function cancelPress() {
                 clearTimeout(longPressTimer);
@@ -148,6 +160,14 @@ document.addEventListener('DOMContentLoaded', async function() { //*Show the sav
 
             function endPress() {
                 clearTimeout(longPressTimer);
+
+                if (SelectionMode) {
+                    
+                }
+
+
+
+
                 if (!longPressFired && !wasCanceled) {
                     window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
                 }
