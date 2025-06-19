@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                     checkIcon.style.display = 'block';
                     noteBox.classList.add('selected');
                     noteBox.style.transform = "scale(.95)";
-                    showDecisionMenu();
+                    showDecision();
                 }, LONG_PRESS_MS);
             });
 
