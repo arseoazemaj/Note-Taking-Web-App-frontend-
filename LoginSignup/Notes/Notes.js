@@ -222,93 +222,130 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let notes = JSON.parse(localStorage.getItem('notes')) || [];
 
-        notes.forEach(note => {
-            const noteBox = document.createElement('div');
-            noteBox.className = 'note-box';
+    // Shared variables for all notes
+    let longPressTimer = null;
+    let longPressFired = false;
+    let wasCanceled = false;
+    const LONG_PRESS_MS = 500;
+    const MOVE_THRESHOLD = 15;
+    let startX = 0;
+    let startY = 0;
+    let SelectionMode = false;
 
-            noteBox.setAttribute('id', note.id);
-            
+    function showDecisionMenu() {
+        document.getElementById("decide").style.display = 'block';
+        document.getElementById("new_note").style.display = 'none';
+    }
 
-            const checkIcon = document.createElement('i');
-            checkIcon.setAttribute('data-lucide', 'circle-check');
-            checkIcon.classList.add('check-icon');
-            noteBox.appendChild(checkIcon);
+    function hideDecisionMenu() {
+        document.getElementById("decide").style.display = 'none';
+        document.getElementById("new_note").style.display = 'block';
+    }
 
-            const noteContent = document.createElement('p');
-            noteContent.className = 'note-content';
-            noteContent.textContent = note.content.length > 90 ? note.content.substring(0, 78) + "..." : note.content;
+    function setupNoteEvents(noteBox, note) {
+        noteBox.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            longPressFired = false;
+            wasCanceled = false;
 
-            const noteTitle = document.createElement('h3');
-            noteTitle.textContent = note.title.length > 9 ? note.title.substring(0, 12) + "..." : note.title;
-            noteTitle.className = 'title';
+            const touch = e.touches[0];
+            startX = touch.clientX;
+            startY = touch.clientY;
 
-            if (note.isImportant) {
-                noteBox.classList.add('important-note');
-                const isImportantIcon = document.createElement('i');
-                isImportantIcon.setAttribute('data-lucide', 'star');
-                isImportantIcon.id = 'star';
-                isImportantIcon.classList.add('important-icon');
-                noteBox.appendChild(isImportantIcon);
-            }
+            longPressTimer = setTimeout(() => {
+                longPressFired = true;
+                SelectionMode = true;
+                const checkIcon = noteBox.querySelector('.check-icon');
+                checkIcon.style.display = 'block';
+                noteBox.classList.add('selected');
+                noteBox.style.transform = "scale(.95)";
+                showDecisionMenu();
+            }, LONG_PRESS_MS);
+        });
 
-            let longPressTimer = null;
-            let longPressFired = false;
-            let wasCanceled = false;
-            const LONG_PRESS_MS = 1000;
-            const MOVE_THRESHOLD = 15;
-            let startX = 0;
-            let startY = 0;
+        noteBox.addEventListener('touchmove', function(e) {
+            const touch = e.touches[0];
+            const dx = touch.clientX - startX;
+            const dy = touch.clientY - startY;
+            const distance = Math.sqrt(dx * dx + dy * dy);
 
-            function startPress(e) {
-                e.preventDefault();
-                longPressFired = false;
-                wasCanceled = false;
-
-                const touch = e.touches[0];
-                startX = touch.clientX;
-                startY = touch.clientY;
-
-                longPressTimer = setTimeout(() => {
-                    longPressFired = true;
-                    const checkIcon = noteBox.querySelector('.check-icon');
-                    checkIcon.style.display = 'block';
-                    noteBox.classList.toggle('selected');
-                    noteBox.style.transform = "scale(.95)";
-                    noteContent.style.top = "0px"
-                }, LONG_PRESS_MS);
-            }
-
-            function cancelPress() {
+            if (distance > MOVE_THRESHOLD) {
                 clearTimeout(longPressTimer);
                 wasCanceled = true;
             }
-
-            function touchMove(e) {
-                const touch = e.touches[0];
-                const dx = touch.clientX - startX;
-                const dy = touch.clientY - startY;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance > MOVE_THRESHOLD) {
-                    cancelPress();
-                }
-            }
-
-            function endPress() {
-                clearTimeout(longPressTimer);
-                if (!longPressFired && !wasCanceled) {
-                    window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
-                }
-            }
-
-            noteBox.addEventListener('touchstart', startPress);
-            noteBox.addEventListener('touchend',   endPress);
-            noteBox.addEventListener('touchmove',  touchMove);
-            noteBox.addEventListener('touchcancel',cancelPress);
-
-            noteBox.appendChild(noteContent);
-            noteBox.appendChild(noteTitle);
-            containers.appendChild(noteBox);
         });
+
+        noteBox.addEventListener('touchcancel', function() {
+            clearTimeout(longPressTimer);
+            wasCanceled = true;
+        });
+
+        noteBox.addEventListener('touchend', function() {
+            clearTimeout(longPressTimer);
+
+            if (SelectionMode) {
+                if (!longPressFired) {
+                    const checkIcon = noteBox.querySelector('.check-icon');
+                    const isSelected = noteBox.classList.toggle('selected');
+
+                    if (isSelected) {
+                        checkIcon.style.display = 'block';
+                        noteBox.style.transform = "scale(.95)";
+                    } else {
+                        checkIcon.style.display = 'none';
+                        noteBox.style.transform = "scale(1)";
+                    }
+
+                    const anySelected = document.querySelector('.note-box.selected');
+                    if (anySelected) {
+                        showDecisionMenu();
+                    } else {
+                        SelectionMode = false;
+                        hideDecisionMenu();
+                    }
+                }
+            } else if (!longPressFired && !wasCanceled) {
+                window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
+            }
+
+            longPressFired = false;
+        });
+    }
+
+    notes.forEach(note => {
+        const noteBox = document.createElement('div');
+        noteBox.className = 'note-box';
+        noteBox.setAttribute('id', note.id);
+
+        const checkIcon = document.createElement('i');
+        checkIcon.setAttribute('data-lucide', 'circle-check');
+        checkIcon.classList.add('check-icon');
+        checkIcon.style.display = 'none';
+        noteBox.appendChild(checkIcon);
+
+        const noteContent = document.createElement('p');
+        noteContent.className = 'note-content';
+        noteContent.textContent = note.content.length > 90 ? note.content.substring(0, 78) + "..." : note.content;
+
+        const noteTitle = document.createElement('h3');
+        noteTitle.textContent = note.title.length > 9 ? note.title.substring(0, 12) + "..." : note.title;
+        noteTitle.className = 'title';
+
+        if (note.isImportant) {
+            noteBox.classList.add('important-note');
+            const isImportantIcon = document.createElement('i');
+            isImportantIcon.setAttribute('data-lucide', 'star');
+            isImportantIcon.id = 'star';
+            isImportantIcon.classList.add('important-icon');
+            noteBox.appendChild(isImportantIcon);
+        }
+
+        noteBox.appendChild(noteContent);
+        noteBox.appendChild(noteTitle);
+        containers.appendChild(noteBox);
+
+        setupNoteEvents(noteBox, note);
+    });
+
     lucide.createIcons();
 });
