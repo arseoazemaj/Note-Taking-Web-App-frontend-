@@ -83,12 +83,12 @@ document.addEventListener('DOMContentLoaded', async function () {
         let startY = 0;
         let SelectionMode = false;
 
-        function showDecisionMenu() {
+        function showDecision() {
             document.getElementById("decide").style.display = 'block';
             document.getElementById("new_note").style.display = 'none';
         }
 
-        function hideDecisionMenu() {
+        function hideDecision() {
             document.getElementById("decide").style.display = 'none';
             document.getElementById("new_note").style.display = 'block';
         }
@@ -149,23 +149,18 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                         const anySelected = document.querySelector('.note-box.selected');
                         if (anySelected) {
-                            showDecisionMenu();
+                            showDecision();
                         } else {
                             SelectionMode = false;
-                            hideDecisionMenu();
+                            hideDecision();
                         }
                     }
                 } else if (!longPressFired && !wasCanceled) {
                     window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
                 }
-
                 longPressFired = false;
             });
         }
-
-
-
-
 
         notes.forEach(note => {
             const noteBox = document.createElement('div');
