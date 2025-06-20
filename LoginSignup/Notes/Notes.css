@@ -308,11 +308,23 @@ i {
     position: fixed;
     width: 100%;
     height: 60px;
-    background-color: red;
+    background-color: #251e45;
     bottom: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 30px;
     display: none;
+}
+
+#move {
+    height: 35px;
+    width: 50px;
+    position: fixed;
+    bottom: 15px;
+    left: 10px;
+    background-color: #251e45;
+    border: none;
+    border-radius: 20%;
+    color: #ad7ecc;
 }
