@@ -306,7 +306,7 @@ i {
 
 #decide {
     position: fixed;
-    width: 100%;
+    width: 105%;
     height: 60px;
     background-color: #251e45;
     bottom: 0px;
@@ -315,6 +315,7 @@ i {
     align-items: center;
     gap: 30px;
     display: none;
+    left: -10px;
 }
 
 #move {
