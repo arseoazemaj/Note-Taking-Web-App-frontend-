@@ -239,6 +239,11 @@ i {
     background-color: #251e45b5;
 }
 
+.note-box.important-note {
+    box-shadow: 0 0 12px 2px #3a3069;
+    background: linear-gradient(45deg, #251e45 0, #3a3069 50%, #5e4b91 100%);
+}
+
 .note-content, .title {
     word-wrap: break-word;
     overflow-wrap: break-word;
