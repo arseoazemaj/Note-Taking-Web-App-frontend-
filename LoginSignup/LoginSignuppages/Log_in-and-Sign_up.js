@@ -54,8 +54,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const isFormValid = usernameValue !== "" &&
             emailValue !== "" &&
             isEmailValid &&
-            passwordValue > 8 &&
-            confirmPasswordValue > 8 &&
+            passwordValue.length >= 8 &&
+            confirmPasswordValue.length >= 8 &&
             passwordValue === confirmPasswordValue;
 
         signUpBtn.disabled = !isFormValid;
@@ -123,7 +123,22 @@ async function signup(event) {
         const result = await response.json();
 
         if (response.ok) {
-            window.location.href = "../Notes/Notes.html";
+            const loginResponse = await fetch("https://localhost:5001/api/Auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username: username, password: password })
+            });
+
+            const loginResult = await loginResponse.json();
+
+            if (loginResponse.ok && loginResult.token) {
+                localStorage.setItem("token", loginResult.token);
+                window.location.href = "../Notes/Notes.html";
+            } else {
+                alert("Signup succeeded but auto-login failed: " + (loginResult.message || "Unknown error"));
+                go_to_log_in();
+            }
+
         } else {
             const message = result.message?.toLowerCase() || "";
 
