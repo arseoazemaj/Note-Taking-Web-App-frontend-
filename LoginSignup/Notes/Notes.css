@@ -235,13 +235,18 @@ i {
     padding-bottom: 30px;
 }
 
-.note-box.selected {
+.selected {
     background-color: #251e45b5;
 }
 
-.note-box.important-note {
+.important-note {
     box-shadow: 0 0 12px 2px #3a3069;
     background: linear-gradient(45deg, #251e45 0, #3a3069 50%, #5e4b91 100%);
+}
+
+.important-note.selected {
+    background: linear-gradient(45deg, #251e45b5 0, #3a3069b5 50%, #5e4b91b5 100%);
+    
 }
 
 .note-content, .title {
