@@ -38,7 +38,7 @@ body {
     width: 250px;
     height: 240px;
     display: none;
-    box-shadow: 0 0 30px #4e2a88d6;
+    box-shadow: 0 0 30px 10px #4e2a88d6;
 }
 
 #create_acc1, #have_acc1 {
@@ -157,7 +157,7 @@ body {
     background-color: #4e2a88d6;
     width: 250px;
     height: 290px;
-    box-shadow: 0 0 30px #4e2a88d6;
+    box-shadow: 0 0 30px 10px #4e2a88d6;
 }
 
 #sign_up_btn {
