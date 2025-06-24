@@ -320,10 +320,7 @@ i {
     height: 60px;
     background-color: #251e45;
     bottom: 0px;
-    display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 30px;
     display: none;
     left: -10px;
 }
@@ -334,6 +331,18 @@ i {
     position: fixed;
     bottom: 15px;
     left: 10px;
+    background-color: #251e45;
+    border: none;
+    border-radius: 20%;
+    color: #ad7ecc;
+}
+
+#lock {
+    height: 35px;
+    width: 50px;
+    position: fixed;
+    bottom: 15px;
+    left: 70px;
     background-color: #251e45;
     border: none;
     border-radius: 20%;
