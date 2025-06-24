@@ -22,6 +22,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- TXT -->
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\.txt" android:mimeType="text/plain" />
+
+                <!-- MD -->
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\.md" android:mimeType="text/markdown" />
+
+                <!-- JSON -->
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\.json" android:mimeType="application/json" />
+
+                <!-- SELUNA -->
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\.seluna" android:mimeType="application/seluna" />
+
+                <!-- HTML (optional) -->
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\.html" android:mimeType="text/html" />
+
+                <!-- CSV (optional) -->
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\.csv" android:mimeType="text/csv" />
+            </intent-filter>
+
         </activity>
 
         <provider

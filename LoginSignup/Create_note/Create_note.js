@@ -56,7 +56,7 @@ function fill() {
 
 document.addEventListener('DOMContentLoaded', async function () {
     const token = localStorage.getItem('token');
-    if (!token) {
+    if (!token) { //TODO: Comment on phone
         alert("You are not logged in.");
         window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
         return;
@@ -117,7 +117,7 @@ async function deleteNote() { //*Moves the note to trash
     const Content = document.getElementById("note_input").value.trim();
     const isImportant = filled;
 
-    if (!token) {
+    if (!token) { //TODO: Comment on phone
         alert("You are not logged in.");
         window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
         return;
