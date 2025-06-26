@@ -317,26 +317,33 @@ i {
     left: -10px;
 }
 
-#move {
+#move, #lock, #share, #delete, #more {
     height: 35px;
     width: 50px;
     position: fixed;
     bottom: 15px;
-    left: 10px;
     background-color: #251e45;
     border: none;
     border-radius: 20%;
     color: #ad7ecc;
 }
 
+#move {
+    left: 5%;
+}
+
 #lock {
-    height: 35px;
-    width: 50px;
-    position: fixed;
-    bottom: 15px;
-    left: 70px;
-    background-color: #251e45;
-    border: none;
-    border-radius: 20%;
-    color: #ad7ecc;
+    left: 25%;
+}
+
+#share {
+    left: 45%;
+}
+
+#delete {
+    left: 65%;
+}
+
+#more {
+    left: 85%;
 }
