@@ -65,7 +65,7 @@ body {
     to { left: -100%; }
 }
 
-#notes, #paintings, #trash {
+#note, #painting, #trash {
     position: absolute;
     left: 10%;
     width: 80%;
@@ -76,19 +76,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    text-decoration: none;
     color: #ffd6d6;
+    cursor: pointer;
 }
 
-#notes:active, #paintings:active, #trash:active {
+#note:active, #painting:active, #trash:active {
     background-color: #370085;
 }
 
-#notes {
+#note {
     top: 40px;
 }
 
-#paintings {
+#painting {
     top: 90px;
 }
 
@@ -183,13 +183,7 @@ a, div {
     user-select: none;
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color: transparent;
-}
-
-i {
-    width: 24px;
-    height: 24px;
-    color: #ffffff;
-    margin: 8px;
+    text-decoration: none;
 }
 
 #note_icon, #paint_icon, #trash_icon {

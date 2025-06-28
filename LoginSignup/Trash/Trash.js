@@ -20,6 +20,37 @@ document.addEventListener("click", (e) => {
     }
 });
 
+const trashButton = document.getElementById("trash");
+if (trashButton) {
+    trashButton.addEventListener("click", () => {
+        if (menuOpen) {
+            menuPage.classList.remove("slide-in");
+            menuPage.classList.add("slide-out");
+            menuOpen = false;
+        }
+    });
+}
+
+const goToNotes = document.getElementById("note");
+if (goToNotes) {
+    goToNotes.addEventListener("click", () => {
+            window.location.href = "../Notes/Notes.html";
+    });
+}
+
+const goToPainting = document.getElementById("painting");
+if (goToPainting) {
+    goToPainting.addEventListener("click", () => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert("You are not logged in.");
+            window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
+        }
+        else {
+            window.location.href = "../Painting/Painting.html";}
+    });
+}
+
 document.addEventListener('DOMContentLoaded', async function () {
     //*Shows notes younger than 30 days
     try {

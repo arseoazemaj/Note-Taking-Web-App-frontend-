@@ -1,7 +1,5 @@
 const menuOpener = document.getElementById("menuopener");
 const menuPage = document.getElementById("menu-page");
-const logoutBtn = document.getElementById("log-out_btn");
-const token = localStorage.getItem("token");
 
 let menuOpen = false;
 
@@ -22,12 +20,43 @@ document.addEventListener("click", (e) => {
     }
 });
 
-if (logoutBtn) {
-    logoutBtn.addEventListener("click", () => {
-        localStorage.removeItem("token");
-        window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
+const noteButton = document.getElementById("note");
+if (noteButton) {
+    noteButton.addEventListener("click", () => {
+        if (menuOpen) {
+            menuPage.classList.remove("slide-in");
+            menuPage.classList.add("slide-out");
+            menuOpen = false;
+        }
     });
 }
+
+const goToPainting = document.getElementById("painting");
+if (goToPainting) {
+    goToPainting.addEventListener("click", () => {
+            window.location.href = "../Painting/Painting.html";
+    });
+}
+
+const goToTrash = document.getElementById("trash");
+if (goToTrash) {
+    goToTrash.addEventListener("click", () => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert("You are not logged in.");
+            window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
+        }
+        else {
+            window.location.href = "../Trash/Trash.html";}
+    });
+}
+
+// if (logoutBtn) {
+//     logoutBtn.addEventListener("click", () => {
+//         localStorage.removeItem("token");
+//         window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
+//     });
+// }
 
 function truncateText(element, wordLimit) {
     let text = element.textContent.trim();

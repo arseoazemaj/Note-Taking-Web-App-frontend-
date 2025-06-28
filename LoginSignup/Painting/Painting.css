@@ -65,7 +65,7 @@ body {
     to { left: -100%; }
 }
 
-#notes, #painting, #trash {
+#note, #painting, #trash {
     position: absolute;
     left: 10%;
     width: 80%;
@@ -80,11 +80,11 @@ body {
     color: #ffd6d6;
 }
 
-#notes:active, #painting:active, #trash:active {
+#note:active, #painting:active, #trash:active {
     background-color: #370085;
 }
 
-#notes {
+#note {
     top: 40px;
 }
 
