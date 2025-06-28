@@ -45,12 +45,6 @@ if (goToNotes) {
 const goToTrash = document.getElementById("trash");
 if (goToTrash) {
     goToTrash.addEventListener("click", () => {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            alert("You are not logged in.");
-            window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
-        }
-        else {
-            window.location.href = "../Trash/Trash.html";}
+        window.location.href = "../Trash/Trash.html";
     });
 }

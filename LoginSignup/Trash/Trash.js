@@ -41,13 +41,7 @@ if (goToNotes) {
 const goToPainting = document.getElementById("painting");
 if (goToPainting) {
     goToPainting.addEventListener("click", () => {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            alert("You are not logged in.");
-            window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
-        }
-        else {
-            window.location.href = "../Painting/Painting.html";}
+        window.location.href = "../Painting/Painting.html";
     });
 }
 

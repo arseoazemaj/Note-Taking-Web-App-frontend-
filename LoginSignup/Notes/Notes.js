@@ -41,22 +41,16 @@ if (goToPainting) {
 const goToTrash = document.getElementById("trash");
 if (goToTrash) {
     goToTrash.addEventListener("click", () => {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            alert("You are not logged in.");
-            window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
-        }
-        else {
-            window.location.href = "../Trash/Trash.html";}
+        window.location.href = "../Trash/Trash.html";
     });
 }
 
-// if (logoutBtn) {
-//     logoutBtn.addEventListener("click", () => {
-//         localStorage.removeItem("token");
-//         window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
-//     });
-// }
+const createNote = document.getElementById("new_note");
+if (createNote) {
+    createNote.addEventListener("click", () => {
+        window.location.href = "../Create_note/Create_note.html";
+    });
+}
 
 function truncateText(element, wordLimit) {
     let text = element.textContent.trim();
