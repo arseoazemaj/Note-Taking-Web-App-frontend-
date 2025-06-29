@@ -66,13 +66,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         return;
     }
 
-    const token = localStorage.getItem('token');
-    if (!token) {
-        alert("You are not logged in.");
-        window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
-        return;
-    }
-
     try {
         const response = await fetch(`https://localhost:5001/api/Notes/get-note/${noteId}`, {
             headers: {

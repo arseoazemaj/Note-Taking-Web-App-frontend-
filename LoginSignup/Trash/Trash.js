@@ -34,12 +34,6 @@ if (trashButton) {
 document.addEventListener('DOMContentLoaded', async function () {
     //*Shows notes younger than 30 days
     try {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            containers.textContent = "You are not logged in.";
-            window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
-            return;
-        }
 
         const response = await fetch('https://localhost:5001/api/Notes/get-deleted-notes', {
             headers: {

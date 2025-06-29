@@ -50,14 +50,6 @@ window.onload = function() {
 
 document.addEventListener('DOMContentLoaded', async function () {
     try {
-        //TODO: Comment it only when want to see in phone (Uncomment in the end)
-        const token = localStorage.getItem('token');
-        if (!token) {
-            containers.textContent = "You are not logged in.";
-            window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
-            return;
-        }
-
         const response = await fetch('https://localhost:5001/api/Notes/get-notes', {
             headers: {
                 'Authorization': 'Bearer ' + token,
