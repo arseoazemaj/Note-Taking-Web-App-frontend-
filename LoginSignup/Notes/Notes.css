@@ -341,3 +341,13 @@ a, div {
 #more {
     left: 85%;
 }
+
+#more_options {
+    position: absolute;
+    top: -255px;
+    left: -130px;
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}

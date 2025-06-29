@@ -91,9 +91,8 @@ a, div {
 
 #sub-menu_icon {
     position: absolute;
-    z-index: 7;
     top: 32px;
-    left: 90%;
+    right: 4%;
     color: #b17fd1;
 }
 
