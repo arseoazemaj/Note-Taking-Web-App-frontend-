@@ -31,20 +31,6 @@ if (trashButton) {
     });
 }
 
-const goToNotes = document.getElementById("note");
-if (goToNotes) {
-    goToNotes.addEventListener("click", () => {
-            window.location.href = "../Notes/Notes.html";
-    });
-}
-
-const goToPainting = document.getElementById("painting");
-if (goToPainting) {
-    goToPainting.addEventListener("click", () => {
-        window.location.href = "../Painting/Painting.html";
-    });
-}
-
 document.addEventListener('DOMContentLoaded', async function () {
     //*Shows notes younger than 30 days
     try {

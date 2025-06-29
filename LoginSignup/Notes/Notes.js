@@ -31,27 +31,6 @@ if (noteButton) {
     });
 }
 
-const goToPainting = document.getElementById("painting");
-if (goToPainting) {
-    goToPainting.addEventListener("click", () => {
-            window.location.href = "../Painting/Painting.html";
-    });
-}
-
-const goToTrash = document.getElementById("trash");
-if (goToTrash) {
-    goToTrash.addEventListener("click", () => {
-        window.location.href = "../Trash/Trash.html";
-    });
-}
-
-const createNote = document.getElementById("new_note");
-if (createNote) {
-    createNote.addEventListener("click", () => {
-        window.location.href = "../Create_note/Create_note.html";
-    });
-}
-
 function truncateText(element, wordLimit) {
     let text = element.textContent.trim();
     let words = text.split(/\s+/);
@@ -72,12 +51,12 @@ window.onload = function() {
 document.addEventListener('DOMContentLoaded', async function () {
     try {
         //TODO: Comment it only when want to see in phone (Uncomment in the end)
-        // const token = localStorage.getItem('token');
-        // if (!token) {
-        //     containers.textContent = "You are not logged in.";
-        //     window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
-        //     return;
-        // }
+        const token = localStorage.getItem('token');
+        if (!token) {
+            containers.textContent = "You are not logged in.";
+            window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
+            return;
+        }
 
         const response = await fetch('https://localhost:5001/api/Notes/get-notes', {
             headers: {

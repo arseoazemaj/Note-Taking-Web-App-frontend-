@@ -34,17 +34,3 @@ if (paintButton) {
         }
     });
 }
-
-const goToNotes = document.getElementById("note");
-if (goToNotes) {
-    goToNotes.addEventListener("click", () => {
-            window.location.href = "../Notes/Notes.html";
-    });
-}
-
-const goToTrash = document.getElementById("trash");
-if (goToTrash) {
-    goToTrash.addEventListener("click", () => {
-        window.location.href = "../Trash/Trash.html";
-    });
-}
