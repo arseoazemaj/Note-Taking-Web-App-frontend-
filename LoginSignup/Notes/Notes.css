@@ -302,20 +302,21 @@ a, div {
 
 #decide {
     position: fixed;
-    width: 100%;
+    width: 105%;
     height: 70px;
-    background-color: #251e45;
+    background-color: #08002f;
     bottom: 0px;
     align-items: center;
     display: none;
+    left: -10px;
 }
 
 #move, #lock, #share, #delete, #more {
-    height: 35px;
-    width: 50px;
+    height: 45px;
+    width: 55px;
     position: fixed;
     bottom: 10px;
-    background-color: #251e45;
+    background-color: #08002f;
     border: none;
     border-radius: 20%;
     color: #ae7fce;
@@ -349,11 +350,11 @@ a, div {
 
 #more_options {
     background-color: #08002f;
-    bottom: 60px;
-    right: 20px;
+    bottom: 70px;
+    right: 15px;
     position: absolute;
     width: 45%;
-    height: 400%;
+    height: 335%;
     border-radius: 15px;
     display: grid;
     gap: 15px;
@@ -362,11 +363,12 @@ a, div {
 }
 
 #mark_important, #tag_color, #duplicate, #clear, #export {
-    width: 100%;
+    width: 95%;
     height: 36px;
     border-radius: 15px;
     background-color: #2b0066;
     color: #ae7fce;
+    border: none;
 }
 
 #mark_important:active, #tag_color:active, #duplicate:active, #clear:active, #export:active {
