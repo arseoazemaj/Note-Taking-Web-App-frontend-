@@ -76,7 +76,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ffd6d6;
+    color: #ae7fce;
     cursor: pointer;
 }
 
@@ -98,7 +98,7 @@ body {
 
 #log-out_btn {
     position: absolute;
-    top: 90%;
+    bottom: 2%;
     left: 10%;
     width: 80%;
     height: 34px;
@@ -187,7 +187,7 @@ a, div {
 }
 
 #note_icon, #paint_icon, #trash_icon {
-    color: #fdd6bc;
+    color: #ae7fce;
     position: absolute;
     left: 10px;
     height: 20px;
@@ -302,24 +302,29 @@ a, div {
 
 #decide {
     position: fixed;
-    width: 105%;
-    height: 60px;
+    width: 100%;
+    height: 70px;
     background-color: #251e45;
     bottom: 0px;
     align-items: center;
     display: none;
-    left: -10px;
 }
 
 #move, #lock, #share, #delete, #more {
     height: 35px;
     width: 50px;
     position: fixed;
-    bottom: 15px;
+    bottom: 10px;
     background-color: #251e45;
     border: none;
     border-radius: 20%;
-    color: #ad7ecc;
+    color: #ae7fce;
+    padding: 5px;
+    padding-bottom: 45px;
+}
+
+#move:active, #lock:active, #share:active, #delete:active, #more:active {
+    background-color: #370085;
 }
 
 #move {
@@ -343,7 +348,7 @@ a, div {
 }
 
 #more_options {
-    background-color: red;
+    background-color: #08002f;
     bottom: 60px;
     right: 20px;
     position: absolute;
@@ -360,5 +365,10 @@ a, div {
     width: 100%;
     height: 36px;
     border-radius: 15px;
+    background-color: #2b0066;
+    color: #ae7fce;
+}
 
+#mark_important:active, #tag_color:active, #duplicate:active, #clear:active, #export:active {
+    background-color: #370085;
 }

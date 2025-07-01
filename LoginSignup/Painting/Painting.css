@@ -77,7 +77,7 @@ body {
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    color: #ffd6d6;
+    color: #ae7fce;
 }
 
 #note:active, #painting:active, #trash:active {
@@ -94,7 +94,7 @@ body {
 
 #log-out_btn {
     position: absolute;
-    top: 90%;
+    bottom: 2%;
     left: 10%;
     width: 80%;
     height: 34px;
@@ -136,7 +136,7 @@ a, div {
 }
 
 #note_icon, #paint_icon, #trash_icon {
-    color: #fdd6bc;
+    color: #ae7fce;
     position: absolute;
     left: 10px;
     height: 20px;
