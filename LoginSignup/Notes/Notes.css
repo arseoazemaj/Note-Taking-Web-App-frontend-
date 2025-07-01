@@ -343,11 +343,22 @@ a, div {
 }
 
 #more_options {
-    position: absolute;
-    top: -255px;
-    left: -130px;
     background-color: red;
+    bottom: 60px;
+    right: 20px;
+    position: absolute;
+    width: 45%;
+    height: 400%;
+    border-radius: 15px;
+    display: grid;
+    gap: 15px;
+    justify-items: center;
+    padding: 15px;
+}
+
+#mark_important, #tag_color, #duplicate, #clear, #export {
     width: 100%;
-    height: 100%;
-    border-radius: 10px;
+    height: 36px;
+    border-radius: 15px;
+
 }
