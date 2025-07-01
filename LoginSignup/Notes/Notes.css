@@ -304,7 +304,7 @@ a, div {
     position: fixed;
     width: 105%;
     height: 70px;
-    background-color: #08002f;
+    background-color: #120f20;
     bottom: 0px;
     align-items: center;
     display: none;
@@ -316,7 +316,7 @@ a, div {
     width: 55px;
     position: fixed;
     bottom: 10px;
-    background-color: #08002f;
+    background-color: #120f20;
     border: none;
     border-radius: 20%;
     color: #ae7fce;
@@ -349,7 +349,7 @@ a, div {
 }
 
 #more_options {
-    background-color: #08002f;
+    background-color: #120f20;
     bottom: 70px;
     right: 15px;
     position: absolute;
@@ -363,14 +363,14 @@ a, div {
 }
 
 #mark_important, #tag_color, #duplicate, #clear, #export {
-    width: 95%;
-    height: 36px;
+    width: 105%;
+    height: 35px;
     border-radius: 15px;
-    background-color: #2b0066;
+    background-color: #120f20;
     color: #ae7fce;
     border: none;
 }
 
 #mark_important:active, #tag_color:active, #duplicate:active, #clear:active, #export:active {
-    background-color: #370085;
+    background-color: #251e45;
 }
