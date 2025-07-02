@@ -65,19 +65,20 @@ body {
     to { left: -100%; }
 }
 
-#note, #painting, #trash {
+#note, #painting, #trash, #log-out_btn {
     position: absolute;
     left: 10%;
-    width: 80%;
+    width: 50%;
     height: 34px;
     background-color: #2b0066;
     border-radius: 5px;
     text-align: center;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    text-decoration: none;
     color: #ae7fce;
+    font-size: 17px;
+    padding-left: 40px;
 }
 
 #note:active, #painting:active, #trash:active {
@@ -93,20 +94,10 @@ body {
 }
 
 #log-out_btn {
-    position: absolute;
     bottom: 2%;
-    left: 10%;
-    width: 80%;
-    height: 34px;
     background-color: #d03737;
-    border-radius: 5px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
+    text-align: left;
     color: #ffd6d6;
-    cursor: pointer;
 }
 
 #log-out {
@@ -133,6 +124,7 @@ a, div {
     user-select: none;
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
 }
 
 #note_icon, #paint_icon, #trash_icon {
