@@ -125,24 +125,8 @@ body {
     transition: background-color 0.3s;
 }
 
-#have_acc2:active, #have_acc2:hover {
+#have_acc1:active, #create_acc1:active, #have_acc2:active, #create_acc2:active {
     background-color: #3e1d74d6;
-    cursor: pointer;
-}
-
-#create_acc2:active, #create_acc2:hover {
-    background-color: #3e1d74d6;
-    cursor: pointer;
-}
-
-#have_acc1:active, #create_acc1:active {
-    background-color: #3e1d74d6;
-    cursor: pointer;
-}
-
-#have_acc1:hover, #create_acc1:hover {
-    background-color: #3e1d74d6;
-    cursor: pointer;
 }
 
 #sign_up {
