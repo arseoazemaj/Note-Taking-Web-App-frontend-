@@ -340,6 +340,7 @@ a, div {
 }
 
 #more_options {
+    visibility: hidden;
     background-color: #1a1433;
     bottom: 70px;
     right: 15px;
@@ -362,7 +363,7 @@ a, div {
     border: none;
     font-size: 17px;
     text-align: left;
-    padding-left: 10px;
+    padding-left: 15px;
 }
 
 #mark_important:active, #tag_color:active, #duplicate:active, #clear:active, #export:active {

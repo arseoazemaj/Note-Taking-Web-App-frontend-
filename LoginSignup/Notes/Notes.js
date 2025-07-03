@@ -197,6 +197,14 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 });
 
+function more() {
+    const menu = document.getElementById("more_options");
+    if (menu.style.visibility === 'visible') {
+        menu.style.visibility = 'hidden';
+    } else {
+        menu.style.visibility = 'visible';
+    }
+}
 
 
 
