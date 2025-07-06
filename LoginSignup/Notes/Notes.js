@@ -50,7 +50,7 @@ window.onload = function() {
 
 document.addEventListener('DOMContentLoaded', async function () {
     try {
-        const response = await fetch('https://localhost:5001/api/Notes/get-notes', {
+        const response = await fetch('http://localhost:5216/api/Notes/get-notes', {
             headers: {
                 'Authorization': 'Bearer ' + token,
                 'Content-Type': 'application/json'

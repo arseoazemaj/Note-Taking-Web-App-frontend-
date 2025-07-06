@@ -88,7 +88,7 @@ async function save() { //* Save the note
     };
 
     try {
-        const response = await fetch("https://localhost:5001/api/Notes/create-note", {
+        const response = await fetch("http://localhost:5216/api/Notes/create-note", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -128,7 +128,7 @@ async function deleteNote() { //*Moves the note to trash
     }
     else {
         try {
-            const response = await fetch("https://localhost:5001/api/Notes/delete-note", {
+            const response = await fetch("http://localhost:5216/api/Notes/delete-note", {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

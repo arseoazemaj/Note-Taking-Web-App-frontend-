@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     //*Shows notes younger than 30 days
     try {
 
-        const response = await fetch('https://localhost:5001/api/Notes/get-deleted-notes', {
+        const response = await fetch('http://localhost:5216/api/Notes/get-deleted-notes', {
             headers: {
                 'Authorization': 'Bearer ' + token,
                 'Content-Type': 'application/json'

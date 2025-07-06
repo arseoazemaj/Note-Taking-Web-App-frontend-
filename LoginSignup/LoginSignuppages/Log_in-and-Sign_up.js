@@ -114,7 +114,7 @@ async function signup(event) {
     };
 
     try {
-        const response = await fetch("https://localhost:5001/api/Auth/signup", {
+        const response = await fetch("http://localhost:5216/api/Auth/signup", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
@@ -123,7 +123,7 @@ async function signup(event) {
         const result = await response.json();
 
         if (response.ok) {
-            const loginResponse = await fetch("https://localhost:5001/api/Auth/login", {
+            const loginResponse = await fetch("http://localhost:5216/api/Auth/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username: username, password: password })
@@ -167,7 +167,7 @@ async function login(event) {
     };
 
     try {
-        const response = await fetch("https://localhost:5001/api/Auth/login", {
+        const response = await fetch("http://localhost:5216/api/Auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
