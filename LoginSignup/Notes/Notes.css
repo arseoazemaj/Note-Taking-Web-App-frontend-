@@ -293,18 +293,17 @@ a, div {
 
 #decide {
     position: fixed;
-    width: 105%;
+    width: 100%;
     height: 70px;
     background-color: #1a1433;
     bottom: 0px;
     align-items: center;
     display: none;
-    left: -10px;
 }
 
 #move, #lock, #share, #delete, #more {
-    height: 45px;
-    width: 55px;
+    height: 3%;
+    width: 62px;
     position: fixed;
     bottom: 10px;
     background-color: #1a1433;
@@ -320,23 +319,41 @@ a, div {
 }
 
 #move {
-    left: 5%;
+    left: 10%;
+    transform: translateX(-50%);
 }
 
 #lock {
-    left: 25%;
+    left: 30%;
+    transform: translateX(-50%);
 }
 
 #share {
-    left: 45%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #delete {
-    left: 65%;
+    left: 70%;
+    transform: translateX(-50%);
 }
 
 #more {
-    left: 85%;
+    left: 90%;
+    transform: translateX(-50%);
+}
+
+#move_menu {
+    height: 360%;
+    width: 80%;
+    border-radius: 25px;
+    background: red;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 9%;
+    padding: 15px;
+    z-index: 1;
 }
 
 #more_options {
