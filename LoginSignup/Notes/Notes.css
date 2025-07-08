@@ -293,7 +293,8 @@ a, div {
 
 #decide {
     position: fixed;
-    width: 100%;
+    width: 101%;
+    left: -5px;
     height: 70px;
     background-color: #1a1433;
     bottom: 0px;
