@@ -312,6 +312,7 @@ a, div {
     color: #ae7fce;
     padding: 5px;
     padding-bottom: 45px;
+    transform: translateX(-50%);
 }
 
 #move:active, #lock:active, #share:active, #delete:active, #more:active {
@@ -320,34 +321,30 @@ a, div {
 
 #move {
     left: 10%;
-    transform: translateX(-50%);
 }
 
 #lock {
     left: 30%;
-    transform: translateX(-50%);
 }
 
 #share {
     left: 50%;
-    transform: translateX(-50%);
 }
 
 #delete {
     left: 70%;
-    transform: translateX(-50%);
 }
 
 #more {
     left: 90%;
-    transform: translateX(-50%);
 }
 
 #move_menu {
+    visibility: hidden;
     height: 360%;
     width: 80%;
     border-radius: 25px;
-    background: red;
+    background: #251e45;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -355,6 +352,26 @@ a, div {
     padding: 15px;
     z-index: 1;
 }
+
+#folder-text {
+    color: #ad7ecc;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #more_options {
     visibility: hidden;

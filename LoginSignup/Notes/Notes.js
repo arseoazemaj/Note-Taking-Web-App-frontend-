@@ -197,6 +197,16 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 });
 
+function move() {
+    const move = document.getElementById("move_menu");
+    if (move.style.visibility === 'visible') {
+        move.style.visibility = 'hidden';
+    } else {
+        move.style.visibility = 'visible';
+    }
+}
+
+
 function more() {
     const menu = document.getElementById("more_options");
     if (menu.style.visibility === 'visible') {
