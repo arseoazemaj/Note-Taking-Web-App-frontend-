@@ -171,12 +171,20 @@ a, div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 99%;
+    height: 100%;
     position: relative;
 }
 
+.important-note .note-content {
+    top: -45px;
+}
+
+.important-note .title {
+    top: -30px;
+}
+
 .note-content {
-    top: -10px;
+    top: -15px;
 }
 
 .title {
@@ -199,25 +207,27 @@ a, div {
         gap: 43px 11%;
     }
     #note_icon, #paint_icon, #trash_icon {
-        left: 15px;
+        left: 10px;
+    }
+    .important-icon {
+        left: 97%;
+    }
+}
+
+@media (min-width: 361px) {
+    .important-icon {
+        left: 97%;
     }
 }
 
 .important-icon {
     position: relative;
-    top: -15px;
-    left: 97%;
-    width: 24px;
-    height: 24px;
+    top: -17px;
+    left: 122px;
     color: #b07ecf;
     fill: #b07ecf;
     transform: rotate(15deg);
     pointer-events: none;
-}
-
-.important-note .note-content {
-    position: relative;
-    top: -39px;
 }
 
 #note_icon, #paint_icon, #trash_icon {
