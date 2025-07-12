@@ -76,7 +76,7 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    color: #ae7fce;
+    color: #ffd6d6;
     font-size: 17px;
     padding-left: 40px;
 }
@@ -128,7 +128,7 @@ a, div {
 }
 
 #note_icon, #paint_icon, #trash_icon {
-    color: #ae7fce;
+    color: #ffd6d6;
     position: absolute;
     left: 10px;
     height: 20px;

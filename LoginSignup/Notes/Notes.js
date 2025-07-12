@@ -48,6 +48,8 @@ window.onload = function() {
     });
 };
 
+let SelectionMode = false;
+
 document.addEventListener('DOMContentLoaded', async function () {
     try {
         const response = await fetch('http://localhost:5216/api/Notes/get-notes', {
@@ -75,7 +77,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         const MOVE_THRESHOLD = 15;
         let startX = 0;
         let startY = 0;
-        let SelectionMode = false;
 
         function showDecision() {
             document.getElementById("decide").style.display = 'block';
@@ -147,6 +148,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                         } else {
                             SelectionMode = false;
                             hideDecision();
+                            setSelectionMode(false);
                         }
                     }
                 } else if (!longPressFired && !wasCanceled) {
@@ -198,21 +200,28 @@ document.addEventListener('DOMContentLoaded', async function () {
 });
 
 function move() {
-    const move = document.getElementById("move_menu");
-    if (move.style.visibility === 'visible') {
-        move.style.visibility = 'hidden';
+    const move_menu = document.getElementById("move_menu");
+    if (move_menu.style.visibility === 'visible') {
+        move_menu.style.visibility = 'hidden';
     } else {
-        move.style.visibility = 'visible';
+        move_menu.style.visibility = 'visible';
+    }
+}
+
+function setSelectionMode() {
+    if (!SelectionMode) {
+        move_menu.style.visibility = 'hidden';
+        more_options.style.visibility = 'hidden';
     }
 }
 
 
 function more() {
-    const menu = document.getElementById("more_options");
-    if (menu.style.visibility === 'visible') {
-        menu.style.visibility = 'hidden';
+    const more_options = document.getElementById("more_options");
+    if (more_options.style.visibility === 'visible') {
+        more_options.style.visibility = 'hidden';
     } else {
-        menu.style.visibility = 'visible';
+        more_options.style.visibility = 'visible';
     }
 }
 
