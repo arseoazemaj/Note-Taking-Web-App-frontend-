@@ -201,8 +201,8 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 function move() {
     const move_menu = document.getElementById("move_menu");
-    if (move_menu.style.visibility === 'visible') {
-        move_menu.style.visibility = 'hidden';
+    if (move_menu.style.visibility === 'hidden') {
+        move_menu.style.visibility = 'visible';
     } else {
         move_menu.style.visibility = 'visible';
     }
