@@ -360,7 +360,14 @@ a, div {
 
 
 
-
+#test_Logic {
+    position: fixed;
+    color: #ffffff;
+    left: 210px;
+    top: -55px;
+    scale: 0.65;
+    z-index: 9999;
+}
 
 
 
@@ -383,7 +390,6 @@ a, div {
     width: 46%;
     height: 335%;
     border-radius: 15px;
-    display: grid;
     gap: 15px;
     justify-items: center;
     padding: 15px;

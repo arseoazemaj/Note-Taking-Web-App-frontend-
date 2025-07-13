@@ -106,6 +106,8 @@ document.addEventListener('DOMContentLoaded', async function () {
                     noteBox.classList.add('selected');
                     noteBox.style.transform = "scale(.95)";
                     showDecision();
+                    console.log("Selection mode is on");
+                    document.getElementById("test_Logic").innerText = "Selection mode is on";
                 }, LONG_PRESS_MS);
             });
 
@@ -130,6 +132,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 clearTimeout(longPressTimer);
 
                 if (SelectionMode) {
+
                     if (!longPressFired) {
                         const checkIcon = noteBox.querySelector('.check-icon');
                         const isSelected = noteBox.classList.toggle('selected');
@@ -148,7 +151,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                         } else {
                             SelectionMode = false;
                             hideDecision();
-                            setSelectionMode(false);
+                            setSelectionMode();
                         }
                     }
                 } else if (!longPressFired && !wasCanceled) {
@@ -199,30 +202,34 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 });
 
-function move() {
-    const move_menu = document.getElementById("move_menu");
-    if (move_menu.style.visibility === 'hidden') {
-        move_menu.style.visibility = 'visible';
-    } else {
-        move_menu.style.visibility = 'visible';
-    }
-}
-
-function setSelectionMode() {
-    if (!SelectionMode) {
-        move_menu.style.visibility = 'hidden';
-        more_options.style.visibility = 'hidden';
-    }
-}
-
+const move_menu = document.getElementById("move_menu");
+const more_options = document.getElementById("more_options");
 
 function more() {
-    const more_options = document.getElementById("more_options");
     if (more_options.style.visibility === 'visible') {
         more_options.style.visibility = 'hidden';
     } else {
         more_options.style.visibility = 'visible';
     }
+}
+
+function move() {
+    if (move_menu) {
+        move_menu.style.visibility = 'visible';
+    }
+}
+
+function setSelectionMode() {
+    const anySelected = document.querySelector('.note-box.selected');
+
+        move_menu.style.visibility = 'hidden';
+        more_options.style.visibility = 'hidden';
+        console.log("Selection mode is off");
+
+        document.getElementById("test_Logic").innerText = "Selection mode is off";
+
+
+        SelectionMode = false;
 }
 
 
@@ -246,7 +253,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const MOVE_THRESHOLD = 15;
     let startX = 0;
     let startY = 0;
-    let SelectionMode = false;
 
     function showDecisionMenu() {
         document.getElementById("decide").style.display = 'block';
