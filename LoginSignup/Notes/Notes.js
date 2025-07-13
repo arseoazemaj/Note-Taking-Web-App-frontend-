@@ -220,14 +220,11 @@ function move() {
 }
 
 function setSelectionMode() {
-    const anySelected = document.querySelector('.note-box.selected');
-
         move_menu.style.visibility = 'hidden';
         more_options.style.visibility = 'hidden';
+
         console.log("Selection mode is off");
-
         document.getElementById("test_Logic").innerText = "Selection mode is off";
-
 
         SelectionMode = false;
 }
@@ -323,6 +320,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         showDecisionMenu();
                     } else {
                         SelectionMode = false;
+                        setSelectionMode();
                         hideDecisionMenu();
                     }
                 }
