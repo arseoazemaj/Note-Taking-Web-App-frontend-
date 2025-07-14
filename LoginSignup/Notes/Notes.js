@@ -279,6 +279,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 noteBox.classList.add('selected');
                 noteBox.style.transform = "scale(.95)";
                 showDecisionMenu();
+                console.log("Selection mode is on");
+                document.getElementById("test_Logic").innerText = "Selection mode is on";
             }, LONG_PRESS_MS);
         });
 
