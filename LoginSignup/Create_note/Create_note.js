@@ -54,15 +54,6 @@ function fill() {
     filled = !filled;
 }
 
-document.addEventListener('DOMContentLoaded', async function () {
-    const token = localStorage.getItem('token');
-    if (!token) { //TODO: Comment on phone
-        alert("You are not logged in.");
-        window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
-        return;
-    }
-});
-
 async function save() { //* Save the note
     const Title = document.getElementById("title").value.trim();
     const Content = document.getElementById("note_input").value.trim();
@@ -117,12 +108,6 @@ async function deleteNote() { //*Moves the note to trash
     const Content = document.getElementById("note_input").value.trim();
     const isImportant = filled;
 
-    if (!token) { //TODO: Comment on phone
-        alert("You are not logged in.");
-        window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
-        return;
-    }
-    
     if (Content === "" && Title === "") {
         window.location.href = "../Notes/Notes.html";
     }
@@ -158,28 +143,28 @@ async function deleteNote() { //*Moves the note to trash
 
 
 //*Used to save the notes in local storage for testing purposes*//
-// document.getElementById('save').addEventListener('click', function() {
-//     const title = document.getElementById('title').value.trim();
-//     const content = document.getElementById('note_input').value.trim();
+document.getElementById('save').addEventListener('click', function() {
+    const title = document.getElementById('title').value.trim();
+    const content = document.getElementById('note_input').value.trim();
 
-//     if (content === "") {
-//         alert("Please enter some content before saving.");
-//         return;
-//     }
+    if (content === "") {
+        alert("Please enter some content before saving.");
+        return;
+    }
 
-//     const isImportant = filled;
+    const isImportant = filled;
 
-//     const note = {
-//         title: title,
-//         content: content,
-//         isImportant: isImportant
-//     };
+    const note = {
+        title: title,
+        content: content,
+        isImportant: isImportant
+    };
 
-//     let notes = JSON.parse(localStorage.getItem('notes')) || [];
+    let notes = JSON.parse(localStorage.getItem('notes')) || [];
 
-//     notes.push(note);
+    notes.push(note);
 
-//     localStorage.setItem('notes', JSON.stringify(notes));
+    localStorage.setItem('notes', JSON.stringify(notes));
 
-//     window.location.href = "../Notes/Notes.html";
-// });
+    window.location.href = "../Notes/Notes.html";
+});
