@@ -358,31 +358,9 @@ a, div {
     color: #ad7ecc;
 }
 
-
-
-#test_Logic {
-    position: fixed;
-    color: #ffffff;
-    left: 210px;
-    top: -55px;
-    scale: 0.65;
-    z-index: 9999;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 #more_options {
     visibility: hidden;
+    display: grid;
     background-color: #1a1433;
     bottom: 70px;
     right: 15px;
@@ -409,4 +387,17 @@ a, div {
 
 #mark_important:active, #tag_color:active, #duplicate:active, #clear:active, #export:active {
     background-color: #251e45;
+}
+
+
+
+
+
+#test_Logic {
+    position: fixed;
+    color: #ffffff;
+    left: 245px;
+    top: -35px;
+    scale: 0.65;
+    z-index: 9999;
 }
