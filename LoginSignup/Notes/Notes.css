@@ -407,6 +407,7 @@ a, div {
     bottom: 20px;
     text-align: center;
     left: -50%;
+    padding-right: 90px;
     transform: translateX(50%);
     background-color: transparent;
     border: none;
@@ -419,7 +420,7 @@ a, div {
 
 #plus {
     position: fixed;
-    right: 65px;
+    left: 20px;
     top: 10px;
     scale: 1.2;
 }
