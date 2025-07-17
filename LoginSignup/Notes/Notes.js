@@ -106,8 +106,6 @@ document.addEventListener('DOMContentLoaded', async function () {
                     noteBox.classList.add('selected');
                     noteBox.style.transform = "scale(.95)";
                     showDecision();
-                    console.log("Selection mode is on");
-                    document.getElementById("test_Logic").innerText = "Selection mode is on";
                 }, LONG_PRESS_MS);
             });
 
@@ -151,7 +149,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                         } else {
                             SelectionMode = false;
                             hideDecision();
-                            hideDecision_menu();
+                            hideDecisions();
                         }
                     }
                 } else if (!longPressFired && !wasCanceled) {
@@ -227,13 +225,10 @@ function more() {
     }
 }
 
-function hideDecision_menu() {
+function hideDecisions() {
         move_menu.style.visibility = 'hidden';
         more_options.style.visibility = 'hidden';
         create_folder_menu.style.visibility = 'hidden';
-
-        console.log("Selection mode is off");
-        document.getElementById("test_Logic").innerText = "Selection mode is off";
 
         SelectionMode = false;
 }
@@ -288,7 +283,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 noteBox.classList.add('selected');
                 noteBox.style.transform = "scale(.95)";
                 showDecisionMenu();
-                console.log("Selection mode is on");
                 document.getElementById("test_Logic").innerText = "Selection mode is on";
             }, LONG_PRESS_MS);
         });
@@ -331,7 +325,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         showDecisionMenu();
                     } else {
                         SelectionMode = false;
-                        hideDecision_menu();
+                        hideDecisions();
                         hideDecisionMenu();
                     }
                 }
