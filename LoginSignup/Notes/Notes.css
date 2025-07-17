@@ -429,6 +429,7 @@ a, div {
 }
 
 #create_folder {
+    visibility: hidden;
     height: 100px;
     width: 100%;
     left: 50%;

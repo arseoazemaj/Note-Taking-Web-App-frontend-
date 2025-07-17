@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                         } else {
                             SelectionMode = false;
                             hideDecision();
-                            setSelectionMode();
+                            hideDecision_menu();
                         }
                     }
                 } else if (!longPressFired && !wasCanceled) {
@@ -204,6 +204,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 const move_menu = document.getElementById("move_menu");
 const more_options = document.getElementById("more_options");
+const create_folder_menu = document.getElementById("create_folder");
 
 function more() {
     if (more_options.style.visibility === 'visible') {
@@ -213,15 +214,22 @@ function more() {
     }
 }
 
+function create_folder() {
+    if (create_folder_menu.style.visibility !== 'visible') {
+        create_folder_menu.style.visibility = 'visible';
+    }
+}
+
 function move() {
     if (move_menu) {
         move_menu.style.visibility = 'visible';
     }
 }
 
-function setSelectionMode() {
+function hideDecision_menu() {
         move_menu.style.visibility = 'hidden';
         more_options.style.visibility = 'hidden';
+        create_folder_menu.style.visibility = 'hidden';
 
         console.log("Selection mode is off");
         document.getElementById("test_Logic").innerText = "Selection mode is off";
@@ -322,7 +330,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         showDecisionMenu();
                     } else {
                         SelectionMode = false;
-                        setSelectionMode();
+                        hideDecision_menu();
                         hideDecisionMenu();
                     }
                 }
