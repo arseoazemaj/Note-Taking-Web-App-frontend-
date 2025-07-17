@@ -291,13 +291,12 @@ a, div {
 }
 
 #decide {
-    position: fixed;
+    position: absolute;
     width: 101%;
     left: -5px;
     height: 70px;
     background-color: #1a1433;
     bottom: 0px;
-    align-items: center;
     display: none;
 }
 
@@ -352,13 +351,16 @@ a, div {
     position: absolute;
     left: 50%;
     transform: translateX(calc(-50% + 5px));
-    bottom: 9%;
+    top: -267px;
     padding: 15px;
     z-index: 1;
 }
 
 #folder-text {
     color: #ad7ecc;
+    position: fixed;
+    left: 21px;
+    top: 0;
 }
 
 #more_options {
