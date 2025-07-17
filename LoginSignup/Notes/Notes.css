@@ -458,6 +458,7 @@ a, div {
     color: #ae7fce;
     font-size: 20px;
     padding-top: 2px;
+    outline: none;
 }
 
 #folder_namer::placeholder {
