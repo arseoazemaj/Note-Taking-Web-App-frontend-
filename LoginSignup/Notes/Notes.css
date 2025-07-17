@@ -430,13 +430,39 @@ a, div {
 
 #create_folder {
     visibility: hidden;
-    height: 100px;
+    height: 300px;
     width: 100%;
     left: 50%;
     transform: translateX(-50%);
-    background: red;
+    background: #251e45;
     position: fixed;
-    bottom: 110px;
+    bottom: -104%;
+    border-radius: 25px;
+}
+
+#folder_text {
+    text-align: start;
+    padding-left: 20px;
+}
+
+#folder_namer {
+    position: absolute;
+    left: 20px;
+    top: 80px;
+    height: 35px;
+    width: 77%;
+    background-color: #1d1737;
+    border: none;
+    border-radius: 5px;
+    padding-left: 20px;
+    color: #ae7fce;
+    font-size: 20px;
+    padding-top: 2px;
+}
+
+#folder_namer::placeholder {
+    color: #ae7fce;
+    font-size: 20px;
 }
 
 

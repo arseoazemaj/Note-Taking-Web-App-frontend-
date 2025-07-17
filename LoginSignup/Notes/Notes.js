@@ -206,23 +206,24 @@ const move_menu = document.getElementById("move_menu");
 const more_options = document.getElementById("more_options");
 const create_folder_menu = document.getElementById("create_folder");
 
-function more() {
-    if (more_options.style.visibility === 'visible') {
-        more_options.style.visibility = 'hidden';
-    } else {
-        more_options.style.visibility = 'visible';
-    }
-}
-
 function create_folder() {
     if (create_folder_menu.style.visibility !== 'visible') {
         create_folder_menu.style.visibility = 'visible';
+        move_menu.style.visibility = 'hidden';
     }
 }
 
 function move() {
     if (move_menu) {
         move_menu.style.visibility = 'visible';
+    }
+}
+
+function more() {
+    if (more_options.style.visibility === 'visible') {
+        more_options.style.visibility = 'hidden';
+    } else {
+        more_options.style.visibility = 'visible';
     }
 }
 
