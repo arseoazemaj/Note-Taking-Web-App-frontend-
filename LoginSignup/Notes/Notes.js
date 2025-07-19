@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         let longPressFired = false;
         let wasCanceled = false;
         const LONG_PRESS_MS = 500;
-        const MOVE_THRESHOLD = 15;
+        const MOVE_THRESHOLD = 25;
         let startX = 0;
         let startY = 0;
 
@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let longPressFired = false;
     let wasCanceled = false;
     const LONG_PRESS_MS = 500;
-    const MOVE_THRESHOLD = 15;
+    const MOVE_THRESHOLD = 25;
     let startX = 0;
     let startY = 0;
 
@@ -311,6 +311,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         noteBox.addEventListener('touchend', function() {
             clearTimeout(longPressTimer);
+
+            if (wasCanceled) {
+                return;
+            }
 
             if (SelectionMode) {
                 if (!longPressFired) {
