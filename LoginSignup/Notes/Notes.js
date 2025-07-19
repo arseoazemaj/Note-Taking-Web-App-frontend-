@@ -98,15 +98,15 @@ document.addEventListener('DOMContentLoaded', async function () {
                 startX = touch.clientX;
                 startY = touch.clientY;
 
-                longPressTimer = setTimeout(() => {
-                    longPressFired = true;
-                    SelectionMode = true;
-                    const checkIcon = noteBox.querySelector('.check-icon');
-                    checkIcon.style.display = 'block';
-                    noteBox.classList.add('selected');
-                    noteBox.style.transform = "scale(.95)";
-                    showDecision();
-                }, LONG_PRESS_MS);
+                    longPressTimer = setTimeout(() => {
+                        longPressFired = true;
+                        SelectionMode = true;
+                        const checkIcon = noteBox.querySelector('.check-icon');
+                        checkIcon.style.display = 'block';
+                        noteBox.classList.add('selected');
+                        noteBox.style.transform = "scale(.95)";
+                        showDecision();
+                    }, LONG_PRESS_MS);
             });
 
             noteBox.addEventListener('touchmove', function(e) {
@@ -128,6 +128,10 @@ document.addEventListener('DOMContentLoaded', async function () {
 
             noteBox.addEventListener('touchend', function() {
                 clearTimeout(longPressTimer);
+
+                if (wasCanceled) {
+                    return;
+                }
 
                 if (SelectionMode) {
 
@@ -200,7 +204,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 });
 
-const decide = document.getElementById("decide");
 const move_menu = document.getElementById("move_menu");
 const more_options = document.getElementById("more_options");
 const create_folder_menu = document.getElementById("create_folder");
@@ -215,7 +218,7 @@ function create_folder() {
 function move() {
     if (move_menu) {
         move_menu.style.visibility = 'visible';
-        decide.style.visibility = 'hidden';
+        
     }
 }
 
@@ -231,7 +234,6 @@ function hideDecisions() {
         move_menu.style.visibility = 'hidden';
         more_options.style.visibility = 'hidden';
         create_folder_menu.style.visibility = 'hidden';
-        decide.style.visibility = 'visible';
 
         SelectionMode = false;
 }
