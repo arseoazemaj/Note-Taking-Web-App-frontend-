@@ -250,6 +250,7 @@ a, div {
     text-overflow: ellipsis;
     margin-top: 1rem;
     height: 25px;
+    pointer-events: none;
 }
 
 @media (max-width: 360px) {
@@ -291,7 +292,7 @@ a, div {
 }
 
 #decide {
-    position: absolute;
+    position: fixed;
     width: 101%;
     left: -5px;
     height: 70px;
@@ -410,9 +411,9 @@ a, div {
     height: 45px;
     position: fixed;
     bottom: 20px;
-    text-align: center;
+    text-align: left;
     left: 50%;
-    padding-right: 90px;
+    padding-left: 50px;
     transform: translateX(-50%);
     background-color: transparent;
     border: none;
@@ -466,15 +467,4 @@ a, div {
 #folder_namer::placeholder {
     color: #ae7fce;
     font-size: 20px;
-}
-
-
-/*For testing*/
-#test_Logic {
-    position: fixed;
-    color: #ffffff;
-    left: 245px;
-    top: -35px;
-    scale: 0.65;
-    z-index: 9999;
 }

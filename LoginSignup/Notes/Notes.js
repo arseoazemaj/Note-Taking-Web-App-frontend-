@@ -200,6 +200,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 });
 
+const decide = document.getElementById("decide");
 const move_menu = document.getElementById("move_menu");
 const more_options = document.getElementById("more_options");
 const create_folder_menu = document.getElementById("create_folder");
@@ -214,6 +215,7 @@ function create_folder() {
 function move() {
     if (move_menu) {
         move_menu.style.visibility = 'visible';
+        decide.style.visibility = 'hidden';
     }
 }
 
@@ -229,6 +231,7 @@ function hideDecisions() {
         move_menu.style.visibility = 'hidden';
         more_options.style.visibility = 'hidden';
         create_folder_menu.style.visibility = 'hidden';
+        decide.style.visibility = 'visible';
 
         SelectionMode = false;
 }
