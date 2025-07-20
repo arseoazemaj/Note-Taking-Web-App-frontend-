@@ -358,14 +358,14 @@ a, div {
 
 #move_menu {
     visibility: hidden;
-    height: 300px;
-    width: 90%;
+    height: 295px;
+    width: 85%;
     border-radius: 25px;
     background: #251e45;
     position: absolute;
     left: 50%;
-    transform: translateX(calc(-50% + 3.5px));
-    top: -267px;
+    transform: translateX(calc(-50% + 3.2px));
+    bottom: -67px;
     padding: 15px;
     z-index: 1;
 }
@@ -464,7 +464,7 @@ a, div {
 #folder_namer {
     position: absolute;
     left: 20px;
-    top: 80px;
+    top: 65px;
     height: 35px;
     width: 77%;
     background-color: #1d1737;
@@ -480,4 +480,19 @@ a, div {
 #folder_namer::placeholder {
     color: #ae7fce;
     font-size: 20px;
+}
+
+#color_text {
+    position: fixed;
+    left: 20px;
+    top: 120px;
+}
+
+#dotted_line {
+    border-bottom: 2px dotted;
+    position: relative;
+    top: 80px;
+    margin-left: 34px;
+    margin-right: 23%;
+    left: 40px;
 }
