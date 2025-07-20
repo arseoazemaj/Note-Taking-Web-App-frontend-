@@ -302,15 +302,16 @@ a, div {
 }
 
 #blur-background {
+    visibility: hidden;
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    backdrop-filter: blur(7px);
-    background: #1d173778;
-    pointer-events: none;
-    z-index: 1;
+    backdrop-filter: blur(1px);
+    background: #1d17374a;
+    /* pointer-events: none; */
+    z-index: 0;
 }
 
 #move, #lock, #share, #delete, #more {
@@ -358,12 +359,12 @@ a, div {
 #move_menu {
     visibility: hidden;
     height: 300px;
-    width: 80%;
+    width: 88%;
     border-radius: 25px;
     background: #251e45;
     position: absolute;
     left: 50%;
-    transform: translateX(calc(-50% + 5px));
+    transform: translateX(calc(-50% + 3.5px));
     top: -267px;
     padding: 15px;
     z-index: 1;
