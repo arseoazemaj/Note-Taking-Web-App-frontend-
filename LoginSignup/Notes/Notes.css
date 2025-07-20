@@ -301,6 +301,18 @@ a, div {
     display: none;
 }
 
+#blur-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(7px);
+    background: #1d173778;
+    pointer-events: none;
+    z-index: 1;
+}
+
 #move, #lock, #share, #delete, #more {
     height: 3%;
     width: 62px;
