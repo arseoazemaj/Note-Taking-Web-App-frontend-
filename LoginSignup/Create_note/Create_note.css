@@ -4,12 +4,8 @@ body {
 }
 
 @keyframes fade {
-    0% {
-        opacity: .3;
-    }
-    100% {
-        opacity: 1;
-    }
+    0% {opacity: .3;}
+    100% {opacity: 1;}
 }
 
 #menu {
@@ -55,9 +51,7 @@ a, div {
     opacity: 1;
 }
 
-#title:focus {
-    outline: none;
-}
+#title:focus {outline: none;}
 
 #note {
     position: fixed;
@@ -85,9 +79,7 @@ a, div {
     z-index: -1;
 }
 
-#note_input::placeholder {
-    color: #c7c5ff;
-}
+#note_input::placeholder {color: #c7c5ff;}
 
 #sub-menu_icon {
     position: absolute;
@@ -110,12 +102,8 @@ a, div {
 }
 
 @keyframes fadeSlideDown {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
 
 #save, #download, #important, #trash {
@@ -132,21 +120,10 @@ a, div {
     align-items: center;
 }
 
-#save {
-    top: 15px;
-}
-
-#download {
-    top: 65px;
-}
-
-#important {
-    top: 115px;
-}
-
-#trash {
-    top: 165px;
-}
+#save {top: 15px;}
+#download {top: 65px;}
+#important {top: 115px;}
+#trash {top: 165px;}
 
 #save-icon, #download-icon, #important-icon, #trash-icon {
     position: absolute;
@@ -155,6 +132,4 @@ a, div {
     color: #dda9ff;
 }
 
-#save:active, #download:active, #important:active, #trash:active {
-    background-color: #370085;
-}
+#save:active, #download:active, #important:active, #trash:active {background-color: #370085;}

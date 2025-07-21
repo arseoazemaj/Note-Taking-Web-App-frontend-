@@ -4,12 +4,8 @@ body {
 }
 
 @keyframes fade {
-    0% {
-        opacity: .3;
-    }
-    100% {
-        opacity: 1;
-    }
+    0% {opacity: .3;}
+    100% {opacity: 1;}
 }
 
 #menuopener {
@@ -47,13 +43,8 @@ body {
     z-index: 1;
 }
 
-#menu-page.slide-in {
-    animation: in 0.3s forwards;
-}
-
-#menu-page.slide-out {
-    animation: out 0.3s forwards;
-}
+#menu-page.slide-in {animation: in 0.3s forwards;}
+#menu-page.slide-out {animation: out 0.3s forwards;}
 
 @keyframes in {
     from { left: -100%; }
@@ -81,21 +72,10 @@ body {
     padding-left: 40px;
 }
 
-#note:active, #painting:active, #trash:active {
-    background-color: #370085;
-}
-
-#note {
-    top: 40px;
-}
-
-#painting {
-    top: 90px;
-}
-
-#trash {
-    top: 140px;
-}
+#note:active, #painting:active, #trash:active {background-color: #370085;}
+#note {top: 40px;}
+#painting {top: 90px;}
+#trash {top: 140px;}
 
 #log-out_btn {
     bottom: 2%;
@@ -109,9 +89,7 @@ body {
     left: 10px;
 }
 
-#log-out_btn:active {
-    background-color: #b31d1d;
-}
+#log-out_btn:active {background-color: #b31d1d;}
 
 #greetings {
     text-align: center;
@@ -175,17 +153,9 @@ a, div {
     position: relative;
 }
 
-.important-note .note-content {
-    top: -45px;
-}
-
-.important-note .title {
-    top: -30px;
-}
-
-.note-content {
-    top: -15px;
-}
+.important-note .note-content {top: -45px;}
+.important-note .title {top: -30px;}
+.note-content {top: -15px;}
 
 .title {
     white-space: nowrap;
@@ -215,9 +185,7 @@ a, div {
 }
 
 @media (min-width: 361px) {
-    .important-icon {
-        left: 97%;
-    }
+    .important-icon {left: 97%;}
 }
 
 .important-icon {
