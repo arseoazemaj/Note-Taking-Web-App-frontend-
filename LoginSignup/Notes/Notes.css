@@ -496,3 +496,13 @@ a, div {
     margin-right: 23%;
     left: 40px;
 }
+
+#color_picker {
+    position: fixed;
+    left: 20px;
+    top: 175px;
+    height: 35px;
+    width: 77%;
+    background-color: red;
+    padding-left: 20px;
+}
