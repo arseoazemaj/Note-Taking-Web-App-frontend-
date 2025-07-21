@@ -458,7 +458,7 @@ a, div {
 
 #folder_text {
     text-align: start;
-    padding-left: 20px;
+    padding-left: 30px;
 }
 
 #folder_namer {
@@ -498,11 +498,43 @@ a, div {
 }
 
 #color_picker {
-    position: fixed;
-    left: 20px;
-    top: 175px;
-    height: 35px;
-    width: 77%;
-    background-color: red;
-    padding-left: 20px;
+    position: absolute;
+    left: 45%;
+    width: 75%;
+    transform: translateX(-50%);
+    top: 185px;
+    display: grid;
+    grid-template-columns: repeat(6, 10%);
+    column-gap: 10%;
+    row-gap: 15px;
 }
+
+.colors {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+}
+
+#color_1 {background-color: #B388EB;}
+
+#color_2 {background-color: #FF8ED4;}
+
+#color_3 {background-color: #7FB3FF;}
+
+#color_4 {background-color: #70E6D9;}
+
+#color_5 {background-color: #A0F9B0;}
+
+#color_6 {background-color: #FFD580;}
+
+#color_7 {background-color: #FF6B6B;}
+
+#color_8 {background-color: #C4C4C4;}
+
+#color_9 {background-color: #6C5CE7;}
+
+#color_10 {background-color: #FFA75F;}
+
+#color_11 {background-color: #3D3D5C;}
+
+#color_12 {background-color: #72F0FF;}
