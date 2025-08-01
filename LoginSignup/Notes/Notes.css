@@ -463,3 +463,10 @@ a, div {
 }
 
 #mark_important:active, #tag_color:active, #duplicate:active, #clear:active, #export:active {background-color: #251e45;}
+
+.check_color {
+    position: absolute;
+    z-index: 1111111;
+    color: red;
+    scale: 1.25;
+}
