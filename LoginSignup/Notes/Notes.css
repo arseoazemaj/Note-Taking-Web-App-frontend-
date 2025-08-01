@@ -432,8 +432,47 @@ a, div {
 #color_11 {background-color: #3D3D5C;   box-shadow: 0 0 5px #3D3D5Cbd;}
 #color_12 {background-color: #72F0FF;   box-shadow: 0 0 5px #72F0FFbd;}
 
+.check_color {
+    position: relative;
+    top: 1px;
+    z-index: 1111111;
+    color: #000000;
+    scale: 2.85;
+    stroke-width: 0.7px;
+}
 
+.check_color circle {
+    display: none;
+}
 
+#chose {
+    position: fixed;
+    bottom: 5px;
+    column-gap: 10px;
+    display: flex;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#cancel {
+    height: 30px;
+    width: 114px;
+    padding-top: 5px;
+    padding-left: 45px;
+    border-radius:70% / 300%;
+}
+
+#add {
+    height: 30px;
+    width: 100px;
+    padding-top: 5px;
+    padding-left: 58px;
+    border-radius: 70% / 300%;
+}
+
+#cancel:active, #add:active {
+    background-color: #1d1737;
+}
 
 #more_options {
     visibility: hidden;
@@ -463,10 +502,3 @@ a, div {
 }
 
 #mark_important:active, #tag_color:active, #duplicate:active, #clear:active, #export:active {background-color: #251e45;}
-
-.check_color {
-    position: absolute;
-    z-index: 1111111;
-    color: red;
-    scale: 1.25;
-}
