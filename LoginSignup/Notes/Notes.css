@@ -389,13 +389,13 @@ a, div {
 #color_text {
     position: fixed;
     left: 20px;
-    top: 120px;
+    top: 100px;
 }
 
 #dotted_line {
     border-bottom: 2px dotted;
     position: relative;
-    top: 80px;
+    top: 60px;
     margin-left: 34px;
     margin-right: 23%;
     left: 40px;
@@ -406,7 +406,7 @@ a, div {
     left: 45%;
     width: 75%;
     transform: translateX(-50%);
-    top: 185px;
+    top: 170px;
     display: grid;
     grid-template-columns: repeat(6, 10%);
     column-gap: 10%;
@@ -414,8 +414,12 @@ a, div {
 }
 
 .colors {
-    height: 25px;
-    width: 25px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -10px;
+    height: 30px;
+    width: 30px;
     border-radius: 50%;
 }
 
@@ -434,11 +438,14 @@ a, div {
 
 .check_color {
     position: relative;
-    top: 1px;
+    top: 3px;
+    left: 50%;
+    transform: translateX(-18%);
     z-index: 1111111;
     color: #000000;
     scale: 2.85;
-    stroke-width: 0.7px;
+    stroke-width: 1px;
+    display: none;
 }
 
 .check_color circle {
@@ -455,18 +462,18 @@ a, div {
 }
 
 #cancel {
-    height: 30px;
+    height: 32px;
     width: 114px;
-    padding-top: 5px;
+    padding-top: 7px;
     padding-left: 45px;
-    border-radius:70% / 300%;
+    border-radius: 70% / 300%;
 }
 
 #add {
     height: 30px;
-    width: 100px;
-    padding-top: 5px;
-    padding-left: 58px;
+    width: 105px;
+    padding-top: 9px;
+    padding-left: 55px;
     border-radius: 70% / 300%;
 }
 
