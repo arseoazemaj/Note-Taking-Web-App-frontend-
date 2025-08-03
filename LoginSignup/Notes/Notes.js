@@ -153,7 +153,6 @@ document.addEventListener('DOMContentLoaded', async function () {
                         } else {
                             SelectionMode = false;
                             hideDecision();
-                            hideDecisions();
                         }
                     }
                 } else if (!longPressFired && !wasCanceled) {
@@ -213,12 +212,12 @@ const colorBox = document.querySelectorAll(".colors");
 colorBox.forEach(box => {
     box.addEventListener('touchstart', () => {
         document.querySelectorAll('.check_color').forEach(icon => {
-            icon.style.display = 'none';
+            icon.style.visibility = 'hidden';
         });
 
         const checkIcon = box.querySelector('.check_color');
         if (checkIcon) {
-            checkIcon.style.display = 'block';
+            checkIcon.style.visibility = 'visible';
         }
     });
 });
@@ -251,17 +250,12 @@ document.addEventListener("touchstart", function (event) {
         more_options.style.visibility = 'hidden';
         create_folder_menu.style.visibility = 'hidden';
         blur_background.style.visibility = 'hidden';
+
+        document.querySelectorAll('.check_color').forEach(icon => {
+            icon.style.visibility = 'hidden';
+        });
     }
 });
-
-function hideDecisions() {
-        move_menu.style.visibility = 'hidden';
-        more_options.style.visibility = 'hidden';
-        create_folder_menu.style.visibility = 'hidden';
-        blur_background.style.visibility = 'hidden';
-
-        SelectionMode = false;
-}
 
 
 
@@ -359,7 +353,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         showDecisionMenu();
                     } else {
                         SelectionMode = false;
-                        hideDecisions();
                         hideDecisionMenu();
                     }
                 }

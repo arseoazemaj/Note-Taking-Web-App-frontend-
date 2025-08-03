@@ -440,16 +440,10 @@ a, div {
     position: relative;
     top: 3px;
     left: 50%;
-    transform: translateX(-18%);
-    z-index: 1111111;
+    transform: translateX(-50%);
     color: #000000;
-    scale: 2.85;
-    stroke-width: 1px;
-    display: none;
-}
-
-.check_color circle {
-    display: none;
+    stroke-width: 2px;
+    visibility: hidden;
 }
 
 #chose {
