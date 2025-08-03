@@ -406,7 +406,7 @@ a, div {
     left: 45%;
     width: 75%;
     transform: translateX(-50%);
-    top: 170px;
+    top: 155px;
     display: grid;
     grid-template-columns: repeat(6, 10%);
     column-gap: 10%;
@@ -415,11 +415,11 @@ a, div {
 
 .colors {
     position: relative;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    top: -10px;
-    height: 30px;
-    width: 30px;
+    transform: translate(-50%, -50%);
+    height: 32px;
+    width: 32px;
     border-radius: 50%;
 }
 
