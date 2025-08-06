@@ -223,7 +223,8 @@ colorBox.forEach(box => {
 });
 
 function create_folder() {
-    if (create_folder_menu.style.visibility !== 'visible') {
+    if (create_folder_menu.style.display !== 'block') {
+        console.log("Working.");
         create_folder_menu.style.visibility = 'visible';
         create_folder_menu.style.display = 'block';
         move_menu.style.visibility = 'hidden';
@@ -249,7 +250,7 @@ document.addEventListener("touchstart", function (event) {
     if (!move_menu.contains(event.target)) {
         move_menu.style.visibility = 'hidden';
         more_options.style.visibility = 'hidden';
-        create_folder_menu.style.visibility = 'hidden';
+        create_folder_menu.style.display = 'none';
         blur_background.style.visibility = 'hidden';
 
         document.querySelectorAll('.check_color').forEach(icon => {
@@ -259,7 +260,7 @@ document.addEventListener("touchstart", function (event) {
 });
 
 function cancel() {
-    if (create_folder_menu.style.visibility === 'visible') {
+    if (create_folder_menu.style.display === 'block') {
         create_folder_menu.style.display = 'none';
         move_menu.style.visibility = 'visible';
     }
