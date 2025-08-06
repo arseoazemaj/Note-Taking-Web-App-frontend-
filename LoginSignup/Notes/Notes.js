@@ -225,6 +225,7 @@ colorBox.forEach(box => {
 function create_folder() {
     if (create_folder_menu.style.visibility !== 'visible') {
         create_folder_menu.style.visibility = 'visible';
+        create_folder_menu.style.display = 'block';
         move_menu.style.visibility = 'hidden';
     }
 }
@@ -256,6 +257,13 @@ document.addEventListener("touchstart", function (event) {
         });
     }
 });
+
+function cancel() {
+    if (create_folder_menu.style.visibility === 'visible') {
+        create_folder_menu.style.display = 'none';
+        move_menu.style.visibility = 'visible';
+    }
+}
 
 
 
