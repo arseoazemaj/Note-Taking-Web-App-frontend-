@@ -224,7 +224,6 @@ colorBox.forEach(box => {
 
 function create_folder() {
     if (create_folder_menu.style.display !== 'block') {
-        console.log("Working.");
         create_folder_menu.style.visibility = 'visible';
         create_folder_menu.style.display = 'block';
         move_menu.style.visibility = 'hidden';
