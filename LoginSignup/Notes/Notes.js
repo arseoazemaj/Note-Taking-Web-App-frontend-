@@ -265,13 +265,15 @@ function cancel() {
     }
 }
 
+const folders_menu = document.getElementById("folders_menu");
+
 function add() {
     console.log("Does it work?");
 
     const folder = document.createElement('div');
     folder.setAttribute('data-lucide', 'folder');
     folder.classList.add('folder_1');
-    containers.appendChild(folder);
+    folders_menu.appendChild(folder);
     lucide.createIcons();
 }
 

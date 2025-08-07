@@ -163,22 +163,17 @@ a, div {
     box-sizing: border-box;
 }
 
-#folder {
-    color: #ffffff;
-    position: absolute;
-    top: -50px;
-    left: 10px;
-    scale: 2;
-    stroke-width: 1.5px;
-}
-
 .folder_1 {
     color: #ff0000;
     position: absolute;
     top: -50px;
-    left: 100px;
+    left: 20px;
     scale: 2;
     stroke-width: 1.5px;
+}
+
+#folders_menu {
+    position: absolute;
 }
 
 @keyframes fade {
