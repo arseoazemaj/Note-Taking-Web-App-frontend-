@@ -172,6 +172,15 @@ a, div {
     stroke-width: 1.5px;
 }
 
+.folder_1 {
+    color: #ff0000;
+    position: absolute;
+    top: -50px;
+    left: 100px;
+    scale: 2;
+    stroke-width: 1.5px;
+}
+
 @keyframes fade {
     0% {opacity: .5;}
     100% {opacity: 1;}

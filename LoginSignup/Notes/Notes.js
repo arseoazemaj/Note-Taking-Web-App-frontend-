@@ -266,7 +266,13 @@ function cancel() {
 }
 
 function add() {
-    
+    console.log("Does it work?");
+
+    const folder = document.createElement('div');
+    folder.setAttribute('data-lucide', 'folder');
+    folder.classList.add('folder_1');
+    containers.appendChild(folder);
+    lucide.createIcons();
 }
 
 
