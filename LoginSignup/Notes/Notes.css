@@ -451,8 +451,8 @@ a, div {
 
 #chose {
     position: fixed;
-    bottom: 5px;
-    column-gap: 40px;
+    bottom: 15px;
+    column-gap: 30px;
     display: flex;
     left: 50%;
     transform: translateX(-50%);
@@ -460,23 +460,23 @@ a, div {
 }
 
 #cancel {
-    height: 35px;
-    width: 115px;
+    height: 40px;
+    width: 140px;
     border-radius: 70% / 300%;
     background: transparent;
     border: none;
     color: #ae7fce;
-    font-size: 16px;
+    font-size: 17px;
 }
 
 #add {
-    height: 35px;
-    width: 115px;
+    height: 40px;
+    width: 140px;
     border-radius: 70% / 300%;
     background: transparent;
     border: none;
     color: #ae7fce;
-    font-size: 16px;
+    font-size: 17px;
 }
 
 #cancel:active, #add:active {

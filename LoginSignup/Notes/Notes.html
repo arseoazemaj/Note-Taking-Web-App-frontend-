@@ -37,15 +37,15 @@
     </a>
     <div id="containers"></div>
     <div id="decide">
-        <div id="blur-background" onclick="blur()"></div>
+        <div id="blur-background"></div>
         <div id="move_container">
-            <button id="move" onclick="move()">
+            <button id="move" ontouchend="move()">
                 <i data-lucide="folder-input"></i>Move
             </button>
             <div id="move_menu">
                 <h3 id="folder-text">Select a folder</h3>
                 <div id="folders">
-                    <button id="create_folder-btn" onclick="create_folder()">Create a new file
+                    <button id="create_folder-btn" ontouchend="create_folder()">Create a new file
                         <i data-lucide="plus" id="plus"></i>
                     </button>
                 </div>
@@ -93,8 +93,8 @@
                             </div>
                         </div>
                         <div id="chose">
-                            <button id="cancel" role="button" onclick="cancel()">Cancel</button>
-                            <button id="add" role="button" onclick="add()">Add</button>
+                            <button id="cancel" role="button" ontouchend="cancel()">Cancel</button>
+                            <button id="add" role="button" ontouchend="add()">Add</button>
                         </div>
                     </div>
             </div>
