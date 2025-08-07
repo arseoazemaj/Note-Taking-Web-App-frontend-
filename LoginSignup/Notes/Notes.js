@@ -265,6 +265,10 @@ function cancel() {
     }
 }
 
+function add() {
+    
+}
+
 
 
 //*Will be used to clear the local storage for testing purposes*//

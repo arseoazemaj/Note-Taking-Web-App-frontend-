@@ -155,9 +155,8 @@ a, div {
 #containers {
     width: 90%;
     position: absolute;
-    left: 50%;
+    left: 7%;
     top: 240px;
-    transform: translateX(-50%);
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
     gap: 45px 20px;
