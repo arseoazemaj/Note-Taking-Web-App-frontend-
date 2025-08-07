@@ -155,13 +155,22 @@ a, div {
 #containers {
     width: 90%;
     position: absolute;
-    left: 7%;
-    top: 190px;
-    border-radius: 25px;
+    left: 50%;
+    top: 240px;
+    transform: translateX(-50%);
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
     gap: 45px 20px;
     box-sizing: border-box;
+}
+
+#folder {
+    color: #ffffff;
+    position: absolute;
+    top: -50px;
+    left: 10px;
+    scale: 2;
+    stroke-width: 1.5px;
 }
 
 @keyframes fade {
