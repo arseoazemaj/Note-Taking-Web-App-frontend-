@@ -452,7 +452,7 @@ a, div {
 #chose {
     position: fixed;
     bottom: 5px;
-    column-gap: 10px;
+    column-gap: 40px;
     display: flex;
     left: 50%;
     transform: translateX(-50%);
@@ -460,19 +460,23 @@ a, div {
 }
 
 #cancel {
-    height: 32px;
-    width: 114px;
-    padding-top: 7px;
-    padding-left: 45px;
+    height: 35px;
+    width: 115px;
     border-radius: 70% / 300%;
+    background: transparent;
+    border: none;
+    color: #ae7fce;
+    font-size: 16px;
 }
 
 #add {
-    height: 30px;
-    width: 103px;
-    padding-top: 9px;
-    padding-left: 57px;
+    height: 35px;
+    width: 115px;
     border-radius: 70% / 300%;
+    background: transparent;
+    border: none;
+    color: #ae7fce;
+    font-size: 16px;
 }
 
 #cancel:active, #add:active {
