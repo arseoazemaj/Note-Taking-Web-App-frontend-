@@ -237,7 +237,7 @@ a, div {
 }
 
 @media (min-width: 361px) {
-    .important-icon {left: 92%;}
+    .important-icon {left: 89%;}
 }
 
 .important-icon {
@@ -415,9 +415,9 @@ a, div {
 
 #color_picker {
     position: absolute;
-    left: 50%;
-    width: 70%;
-    transform: translateX(-50%);
+    left: 45%;
+    width: 75%;
+    transform: translateX(-53%);
     top: 170px;
     display: grid;
     grid-template-columns: repeat(6, 10%);
@@ -427,8 +427,8 @@ a, div {
 
 .colors {
     position: relative;
-    top: 0%;
-    left: -00%;
+    top: 0;
+    left: 0;
     height: 35px;
     width: 35px;
     border-radius: 50%;
