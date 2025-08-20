@@ -281,13 +281,12 @@ function add() {
 
 //*Will be used to clear the local storage for testing purposes*//
 
-// localStorage.clear();
+// localStorage.removeItem('notes');
 
 
 //TODO: Use only when wanting to see in your phone (when using comment code from line 50)
 document.addEventListener('DOMContentLoaded', function() {
     const containers = document.getElementById('containers');
-
     let notes = JSON.parse(localStorage.getItem('notes')) || [];
 
     // Shared variables for all notes
@@ -384,40 +383,42 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    notes.forEach(note => {
-        const noteBox = document.createElement('div');
-        noteBox.className = 'note-box';
-        noteBox.setAttribute('id', note.id);
+    if (!token) {
+            notes.forEach(note => {
+            const noteBox = document.createElement('div');
+            noteBox.className = 'note-box';
+            noteBox.setAttribute('id', note.id);
 
-        const checkIcon = document.createElement('i');
-        checkIcon.setAttribute('data-lucide', 'circle-check');
-        checkIcon.classList.add('check-icon');
-        checkIcon.style.display = 'none';
-        noteBox.appendChild(checkIcon);
+            const checkIcon = document.createElement('i');
+            checkIcon.setAttribute('data-lucide', 'circle-check');
+            checkIcon.classList.add('check-icon');
+            checkIcon.style.display = 'none';
+            noteBox.appendChild(checkIcon);
 
-        const noteContent = document.createElement('p');
-        noteContent.className = 'note-content';
-        noteContent.textContent = note.content.length > 92 ? note.content.substring(0, 92) + "..." : note.content;
+            const noteContent = document.createElement('p');
+            noteContent.className = 'note-content';
+            noteContent.textContent = note.content.length > 92 ? note.content.substring(0, 92) + "..." : note.content;
 
-        const noteTitle = document.createElement('h3');
-        noteTitle.textContent = note.title.length > 11 ? note.title.substring(0, 11) + "..." : note.title;
-        noteTitle.className = 'title';
+            const noteTitle = document.createElement('h3');
+            noteTitle.textContent = note.title.length > 11 ? note.title.substring(0, 11) + "..." : note.title;
+            noteTitle.className = 'title';
 
-        if (note.isImportant) {
-            noteBox.classList.add('important-note');
-            const isImportantIcon = document.createElement('i');
-            isImportantIcon.setAttribute('data-lucide', 'star');
-            isImportantIcon.id = 'star';
-            isImportantIcon.classList.add('important-icon');
-            noteBox.appendChild(isImportantIcon);
-        }
+            if (note.isImportant) {
+                noteBox.classList.add('important-note');
+                const isImportantIcon = document.createElement('i');
+                isImportantIcon.setAttribute('data-lucide', 'star');
+                isImportantIcon.id = 'star';
+                isImportantIcon.classList.add('important-icon');
+                noteBox.appendChild(isImportantIcon);
+            }
 
-        noteBox.appendChild(noteContent);
-        noteBox.appendChild(noteTitle);
-        containers.appendChild(noteBox);
+            noteBox.appendChild(noteContent);
+            noteBox.appendChild(noteTitle);
+            containers.appendChild(noteBox);
 
-        setupNoteEvents(noteBox, note);
-    });
+            setupNoteEvents(noteBox, note);
+        });
 
-    lucide.createIcons();
+        lucide.createIcons();
+    }
 });
