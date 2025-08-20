@@ -415,9 +415,9 @@ a, div {
 
 #color_picker {
     position: absolute;
-    left: 45%;
-    width: 73%;
-    transform: translateX(-53%);
+    left: 50%;
+    width: 70%;
+    transform: translateX(-50%);
     top: 170px;
     display: grid;
     grid-template-columns: repeat(6, 10%);
@@ -427,9 +427,8 @@ a, div {
 
 .colors {
     position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0%;
+    left: -00%;
     height: 35px;
     width: 35px;
     border-radius: 50%;
