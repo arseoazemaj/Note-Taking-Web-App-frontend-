@@ -1,0 +1,14 @@
+body {
+    background-color: #120f20;
+}
+
+#log-out_btn {
+    position: absolute;
+    bottom: 2%;
+    background-color: #d03737;
+}
+
+#log-out {
+    position: absolute;
+    left: 10px;
+}

@@ -1,6 +1,6 @@
 body {
     background-color: #120f20;
-    animation: fade 2s;
+    animation: fade .5s;
 }
 
 @keyframes fade {
@@ -56,40 +56,40 @@ body {
     to { left: -100%; }
 }
 
-#note, #painting, #trash, #log-out_btn {
-    position: absolute;
+#pages {
+    position: sticky;
+    top: 10%;
+}
+
+#profile {
+    display: flex;
+    height: 50px;
+    width: 50px;
+    background-color: red;
+    border-radius: 50%;
+    position: relative;
+    top: 2%;
     left: 10%;
-    width: 50%;
-    height: 34px;
-    background-color: #2b0066;
+}
+
+#note, #painting, #trash {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 40px;
     border-radius: 5px;
     text-align: center;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    color: #ffd6d6;
-    font-size: 17px;
-    padding-left: 40px;
+    color: #ae7fce;
+    font-size: 18px;
 }
 
-#note:active, #painting:active, #trash:active {background-color: #370085;}
-#note {top: 40px;}
-#painting {top: 90px;}
+#note:active, #painting:active, #trash:active {background-color: #35007e59;}
 
-#log-out_btn {
-    bottom: 2%;
-    background-color: #d03737;
-    text-align: left;
-    color: #ffd6d6;
-}
-
-#log-out {
-    position: absolute;
-    left: 10px;
-}
-
-#log-out_btn:active {background-color: #b31d1d;}
-#trash {top: 140px;}
+#painting {background-color: #35007e59;}
 
 #greetings {
     text-align: center;
@@ -106,7 +106,7 @@ a, div {
 }
 
 #note_icon, #paint_icon, #trash_icon {
-    color: #ffd6d6;
+    color: #ae7fce;
     position: absolute;
     left: 10px;
     height: 20px;

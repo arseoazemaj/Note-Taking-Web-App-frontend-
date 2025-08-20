@@ -1,6 +1,6 @@
 body {
     background-color: #120f20;
-    animation: fade 2s;
+    animation: fade .5s;
 }
 
 @keyframes fade {
@@ -56,40 +56,40 @@ body {
     to { left: -100%; }
 }
 
-#note, #painting, #trash, #log-out_btn {
-    position: absolute;
+#pages {
+    position: sticky;
+    top: 10%;
+}
+
+#profile {
+    display: flex;
+    height: 50px;
+    width: 50px;
+    background-color: red;
+    border-radius: 50%;
+    position: relative;
+    top: 2%;
     left: 10%;
-    width: 50%;
-    height: 34px;
-    background-color: #2b0066;
+}
+
+#note, #painting, #trash {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 40px;
     border-radius: 5px;
     text-align: center;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    color: #ffd6d6;
-    font-size: 17px;
-    padding-left: 40px;
+    color: #ae7fce;
+    font-size: 18px;
 }
 
-#note:active, #painting:active, #trash:active {background-color: #370085;}
-#note {top: 40px;}
-#painting {top: 90px;}
-#trash {top: 140px;}
+#note:active, #painting:active, #trash:active {background-color: #35007e59;}
 
-#log-out_btn {
-    bottom: 2%;
-    background-color: #d03737;
-    text-align: left;
-    color: #ffd6d6;
-}
-
-#log-out {
-    position: absolute;
-    left: 10px;
-}
-
-#log-out_btn:active {background-color: #b31d1d;}
+#note {background-color: #35007e59;}
 
 #greetings {
     text-align: center;
@@ -146,7 +146,7 @@ a, div {
 }
 
 #note_icon, #paint_icon, #trash_icon {
-    color: #ffd6d6;
+    color: #ae7fce;
     position: absolute;
     left: 10px;
     height: 20px;
@@ -155,11 +155,12 @@ a, div {
 #containers {
     width: 90%;
     position: absolute;
-    left: 7%;
+    left: 50%;
+    transform: translateX(-50%);
     top: 240px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
-    gap: 45px 20px;
+    gap: 45px 30px;
     box-sizing: border-box;
 }
 
@@ -176,15 +177,10 @@ a, div {
     position: absolute;
 }
 
-@keyframes fade {
-    0% {opacity: .5;}
-    100% {opacity: 1;}
-}
-
 .note-box {
     position: relative;
     height: 130px;
-    width: 130px;
+    width: 90%;
     background-color: #251e45;
     padding: 10px;
     border-radius: 15px;
@@ -229,7 +225,8 @@ a, div {
         width: 86%;
     }
     #containers {
-        gap: 43px 11%;
+        row-gap: 43px;
+        column-gap: 21%;
     }
     #note_icon, #paint_icon, #trash_icon {
         left: 10px;
@@ -240,7 +237,7 @@ a, div {
 }
 
 @media (min-width: 361px) {
-    .important-icon {left: 89%;}
+    .important-icon {left: 92%;}
 }
 
 .important-icon {
@@ -248,7 +245,7 @@ a, div {
     top: -8px;
     color: #b07ecf;
     fill: #b07ecf;
-    transform: rotate(15deg);
+    transform: rotate(20deg);
     pointer-events: none;
 }
 
