@@ -106,7 +106,6 @@ a, div {
 }
 
 #note_icon, #paint_icon, #trash_icon {
-    color: #ae7fce;
     position: absolute;
     left: 10px;
     height: 20px;
