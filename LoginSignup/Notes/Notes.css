@@ -127,8 +127,6 @@ body {
     bottom: 5%;
     color: #b17fd1;
     display: flex;
-    justify-content: center;
-    align-items: center;
     z-index: 1;
     scale: 3;
 }
@@ -179,7 +177,7 @@ a, div {
 .note-box {
     position: relative;
     height: 130px;
-    width: 90%;
+    width: 85%;
     background-color: #251e45;
     padding: 10px;
     border-radius: 15px;
@@ -208,20 +206,26 @@ a, div {
 
 .note-content {
     top: -15px;
-    height: 100%;
+    height: 150px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 8;
+    line-clamp: 8;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .title {
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-top: 1rem;
+    margin-top: -20px;
     height: 25px;
     pointer-events: none;
 }
 
 @media (max-width: 360px) {
     .note-box {
-        width: 86%;
+        width: 92%;
     }
     #containers {
         row-gap: 43px;
