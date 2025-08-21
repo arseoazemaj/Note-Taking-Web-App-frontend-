@@ -277,10 +277,6 @@ function add() {
     lucide.createIcons();
 }
 
-document.getElementById("note_icon").innerHTML = note_icon;
-document.getElementById("paint_icon").innerHTML = paint_icon;
-document.getElementById("trash_icon").innerHTML = trash_icon;
-
 
 
 //*Will be used to clear the local storage for testing purposes*//

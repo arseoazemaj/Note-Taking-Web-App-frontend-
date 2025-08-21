@@ -19,21 +19,21 @@
             <a href="../Profile/Profile.html" id="profile"></a>
             <div id="pages">
                 <a id="note" draggable="false">
-                    <i id="note_icon"></i>Notes
+                    <i data-lucide="notebook-pen" id="note_icon"></i>Notes
                 </a>
                 <a href="../Painting/Painting.html" id="painting" draggable="false">
-                    <i id="paint_icon"></i>Painting
+                    <i data-lucide="palette" id="paint_icon"></i>Painting
                 </a>
                 <a href="../Trash/Trash.html" id="trash" draggable="false">
-                    <i id="trash_icon"></i>Trash
+                    <i data-lucide="trash-2" id="trash_icon"></i>Trash
                 </a>
             </div>
         </div>
     </div>
     <h1 id="greetings">Notes</h1> <!--*Will greet using the username of the user-->
     <input type="text" id="search" placeholder="Search notes">
-    <a id="new_note" href="../Create_note/Create_note.html" draggable="false">
-        <i data-lucide="circle-plus"></i>
+    <a id="new" href="../Create_note/Create_note.html" draggable="false">
+        <i id="new_note"></i>
     </a>
     <div id="containers">
         <div id="folders_menu"></div>
@@ -125,8 +125,7 @@
         </div>
     </div>
 
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="../Icons/Icons.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script src="Notes.js"></script>
     <script src="../common.js"></script>
 </body>

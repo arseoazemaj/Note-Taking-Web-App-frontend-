@@ -82,7 +82,3 @@ document.addEventListener('DOMContentLoaded', async function () {
         console.error("Fetch error:", error);
     }
 });
-
-document.getElementById("note_icon").innerHTML = note_icon;
-document.getElementById("paint_icon").innerHTML = paint_icon;
-document.getElementById("trash_icon").innerHTML = trash_icon;
