@@ -248,7 +248,6 @@ function more() {
 document.addEventListener("touchstart", function (event) {
     if (!move_menu.contains(event.target)) {
         move_menu.style.visibility = 'hidden';
-        more_options.style.visibility = 'hidden';
         create_folder_menu.style.display = 'none';
         blur_background.style.visibility = 'hidden';
 

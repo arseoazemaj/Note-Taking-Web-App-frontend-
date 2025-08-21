@@ -223,7 +223,7 @@ a, div {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    column-gap: 30px;
 }
 
 #restore, #delete {

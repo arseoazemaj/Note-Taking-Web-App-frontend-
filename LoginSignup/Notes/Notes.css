@@ -123,15 +123,15 @@ body {
 
 #new_note {
     position: fixed;
-    right: 10%;
-    bottom: 5%;
+    right: 8%;
+    bottom: 3%;
     color: #b17fd1;
-    display: flex;
     z-index: 1;
     scale: 3;
+    pointer-events: none;
 }
 
-#new_note svg.lucide path {color: #000000;}
+#new_note path {color: #000000;}
 #new_note svg.lucide {fill: #b17fd1;}
 #new_note:active {background-color: #a7a7a713;}
 
