@@ -124,11 +124,11 @@ body {
 #new_note {
     position: fixed;
     right: 8%;
-    bottom: 3%;
+    bottom: 5%;
     color: #b17fd1;
     z-index: 1;
     scale: 3;
-    pointer-events: none;
+    height: 23px;
 }
 
 #new_note path {color: #000000;}
