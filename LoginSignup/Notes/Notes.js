@@ -271,9 +271,10 @@ function add() {
 
     const folder = document.createElement('div');
     folder.setAttribute('data-lucide', 'folder');
-    folder.classList.add('folder_1');
+    folder.classList.add('folder');
     folders_menu.appendChild(folder);
     lucide.createIcons();
+    cancel();
 }
 
 

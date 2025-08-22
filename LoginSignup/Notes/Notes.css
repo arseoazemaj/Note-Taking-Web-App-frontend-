@@ -161,7 +161,7 @@ a, div {
     box-sizing: border-box;
 }
 
-.folder_1 {
+.folder {
     color: #ff0000;
     position: absolute;
     top: -50px;
@@ -373,7 +373,6 @@ a, div {
 }
 
 #folder_text {
-    text-align: start;
     padding-left: 30px;
     color: #ae7fce;
 }
