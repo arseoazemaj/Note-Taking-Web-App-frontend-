@@ -142,7 +142,6 @@ async function update(noteId) { //*Update the note
 
 async function deleteNote() { //*Moves the note to trash
     const token = localStorage.getItem("token");
-
     const Title = document.getElementById("title").value.trim();
     const Content = document.getElementById("note_input").value.trim();
     const isImportant = filled;

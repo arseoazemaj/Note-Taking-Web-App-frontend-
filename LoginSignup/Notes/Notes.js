@@ -223,6 +223,7 @@ colorBox.forEach(box => {
         }
         
         selectedColor = box.getAttribute("data-color");
+        console.log(selectedColor)
     });
 });
 
@@ -237,14 +238,54 @@ function create_folder() {
 const folders_menu = document.getElementById("folders_menu");
 
 async function add() {
-    const folder = document.createElement('div');
-    folder.setAttribute('data-lucide', 'folder');
-    folder.classList.add('folder');
-    folders_menu.appendChild(folder);
-    lucide.createIcons();
-    cancel();
+    const folderName = document.getElementById("folder_namer").value.trim();
+    const folderColor = selectedColor;
+
+    if (!folderName) {
+        alert("Folder name cannot be empty.");
+        return;
+    }
+
+    if (!folderColor) {
+        alert("Please select a color.");
+        return;
+    }
+
+    const folder  = {
+        Name: folderName,
+        Color: folderColor
+    }
     
-    const folderName = document.getElementById("folder_name").ariaValueMax.trim();
+    try {
+        const response = await fetch('http://localhost:5216/api/Folders/create_folder', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(folder)
+        });
+
+        if (!response.ok) {
+            console.error("Failed to create folder");
+        }
+
+        const result = await response.json();
+        console.log("Folder created:", result);
+    }catch (err) {
+        console.error("Error while creating a folder:", err);
+    }
+
+    const folder_element = document.createElement('div');
+    folder_element.setAttribute('data-lucide', 'folder');
+    folder_element.classList.add('folder');
+    folders_menu.appendChild(folder_element);
+    lucide.createIcons();
+    
+    document.getElementById("folder_namer").value = "";
+    selectedColor = null;
+
+    cancel();
 }
 
 function move() {
