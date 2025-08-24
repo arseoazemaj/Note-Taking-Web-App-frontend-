@@ -114,7 +114,7 @@ async function signup(event) {
     };
 
     try {
-        const response = await fetch("http://localhost:5216/api/Auth/signup", {
+        const response = await fetch("http://localhost:5216/api/Auth/sign_up", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
@@ -167,7 +167,7 @@ async function login(event) {
     };
 
     try {
-        const response = await fetch("http://localhost:5216/api/Auth/login", {
+        const response = await fetch("http://localhost:5216/api/Auth/log_in", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

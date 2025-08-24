@@ -52,7 +52,7 @@ let SelectionMode = false;
 
 document.addEventListener('DOMContentLoaded', async function () {
     try {
-        const response = await fetch('http://localhost:5216/api/Notes/get-notes', {
+        const response = await fetch('http://localhost:5216/api/Notes/get_notes', {
             headers: {
                 'Authorization': 'Bearer ' + token,
                 'Content-Type': 'application/json'
@@ -209,6 +209,8 @@ const create_folder_menu = document.getElementById("create_folder");
 const blur_background = document.getElementById("blur-background");
 const colorBox = document.querySelectorAll(".colors");
 
+let selectedColor = null;
+
 colorBox.forEach(box => {
     box.addEventListener('touchstart', () => {
         document.querySelectorAll('.check_color').forEach(icon => {
@@ -219,6 +221,8 @@ colorBox.forEach(box => {
         if (checkIcon) {
             checkIcon.style.visibility = 'visible';
         }
+        
+        selectedColor = box.getAttribute("data-color");
     });
 });
 
@@ -228,6 +232,19 @@ function create_folder() {
         create_folder_menu.style.display = 'block';
         move_menu.style.visibility = 'hidden';
     }
+}
+
+const folders_menu = document.getElementById("folders_menu");
+
+async function add() {
+    const folder = document.createElement('div');
+    folder.setAttribute('data-lucide', 'folder');
+    folder.classList.add('folder');
+    folders_menu.appendChild(folder);
+    lucide.createIcons();
+    cancel();
+    
+    const folderName = document.getElementById("folder_name").ariaValueMax.trim();
 }
 
 function move() {
@@ -264,18 +281,7 @@ function cancel() {
     }
 }
 
-const folders_menu = document.getElementById("folders_menu");
 
-function add() {
-    console.log("Does it work?");
-
-    const folder = document.createElement('div');
-    folder.setAttribute('data-lucide', 'folder');
-    folder.classList.add('folder');
-    folders_menu.appendChild(folder);
-    lucide.createIcons();
-    cancel();
-}
 
 
 
