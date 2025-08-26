@@ -161,10 +161,23 @@ a, div {
     box-sizing: border-box;
 }
 
-.folder-icon {
-    color: #002fff;
+#folders_menu {
+    display: flex;
+    gap: 35px;
     position: absolute;
     top: -50px;
+    left: 20px;
+}
+
+.folder {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.folder-icon {
+    color: #6C5CE7;
     left: 20px;
     scale: 2.4;
     stroke-width: 1.5px;
@@ -172,15 +185,24 @@ a, div {
 
 .folder-text {
     position: absolute;
-    color: red;
-    top: -46px;
-    left: 12px;
-    font-size: 12px;
+    color: #ae7fce;
+    top: -3px;
+    margin-left: -8px;
     font-weight: bold;
 }
 
-#folders_menu {
-    position: absolute;
+#folder_page {
+    position: fixed;
+    background: #121137;
+    height: 300px;
+    width: 300px;
+    z-index: 5;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -50px;
+    border-radius: 30px;
+    opacity: 0.7;
+    display: none;
 }
 
 .note-box {
