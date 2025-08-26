@@ -269,9 +269,6 @@ async function add() {
         if (!response.ok) {
             console.error("Failed to create folder");
         }
-
-        const result = await response.json();
-        console.log("Folder created:", result);
     }catch (err) {
         console.error("Error while creating a folder:", err);
     }
