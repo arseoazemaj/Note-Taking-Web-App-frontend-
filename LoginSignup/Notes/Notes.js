@@ -223,7 +223,6 @@ colorBox.forEach(box => {
         }
         
         selectedColor = box.getAttribute("data-color");
-        console.log(selectedColor)
     });
 });
 
@@ -256,31 +255,41 @@ async function add() {
         Color: folderColor
     }
     
-    try {
-        const response = await fetch('http://localhost:5216/api/Folders/create_folder', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify(folder)
-        });
+    // try {
+    //     const response = await fetch('http://localhost:5216/api/Folders/create_folder', {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             "Authorization": `Bearer ${token}`
+    //         },
+    //         body: JSON.stringify(folder)
+    //     });
 
-        if (!response.ok) {
-            console.error("Failed to create folder");
-        }
-    }catch (err) {
-        console.error("Error while creating a folder:", err);
-    }
+    //     if (!response.ok) {
+    //         console.error("Failed to create folder");
+    //     }
+    // }catch (err) {
+    //     console.error("Error while creating a folder:", err);
+    // }
 
     const folder_element = document.createElement('div');
-    folder_element.setAttribute('data-lucide', 'folder');
+    const folder_icon = document.createElement('i');
+    const folder_text = document.createElement('p');
     folder_element.classList.add('folder');
+    folder_icon.classList.add('folder-icon');
+    folder_text.classList.add('folder-text');
+    folder_icon.setAttribute('data-lucide', 'folder-closed');
+    folder_text.textContent = "Hi";
+    folder_element.appendChild(folder_icon);
+    folder_element.appendChild(folder_text);
     folders_menu.appendChild(folder_element);
     lucide.createIcons();
     
     document.getElementById("folder_namer").value = "";
     selectedColor = null;
+    document.querySelectorAll('.check_color').forEach(icon => {
+        icon.style.visibility = 'hidden';
+    });
 
     cancel();
 }

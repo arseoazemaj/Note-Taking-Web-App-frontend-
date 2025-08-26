@@ -161,13 +161,22 @@ a, div {
     box-sizing: border-box;
 }
 
-.folder {
-    color: #ff0000;
+.folder-icon {
+    color: #002fff;
     position: absolute;
     top: -50px;
     left: 20px;
-    scale: 2;
+    scale: 2.4;
     stroke-width: 1.5px;
+}
+
+.folder-text {
+    position: absolute;
+    color: red;
+    top: -46px;
+    left: 12px;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 #folders_menu {
