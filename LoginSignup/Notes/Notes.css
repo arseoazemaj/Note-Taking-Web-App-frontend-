@@ -165,8 +165,8 @@ a, div {
     display: flex;
     gap: 35px;
     position: absolute;
-    top: -50px;
-    left: 20px;
+    top: -60px;
+    padding: 10px;
 }
 
 .folder {
@@ -188,7 +188,7 @@ a, div {
 .folder-text {
     position: absolute;
     color: #ae7fce;
-    top: -3px;
+    top: 6px;
     margin-left: -8px;
     font-weight: bold;
 }
@@ -203,7 +203,7 @@ a, div {
     transform: translateX(-50%);
     top: -50px;
     border-radius: 30px;
-    opacity: 0.85;
+    opacity: .95;
     display: none;
     filter: drop-shadow(0 0 15px #302758);
 }

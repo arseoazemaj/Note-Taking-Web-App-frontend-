@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         let longPressFired = false;
         let wasCanceled = false;
         const LONG_PRESS_MS = 500;
-        const MOVE_THRESHOLD = 25;
+        const MOVE_THRESHOLD = 5;
         let startX = 0;
         let startY = 0;
 
@@ -90,7 +90,6 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         function setupNoteEvents(noteBox, note) {
             noteBox.addEventListener('touchstart', function(e) {
-                e.preventDefault();
                 longPressFired = false;
                 wasCanceled = false;
 
@@ -347,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let longPressFired = false;
     let wasCanceled = false;
     const LONG_PRESS_MS = 500;
-    const MOVE_THRESHOLD = 25;
+    const MOVE_THRESHOLD = 5;
     let startX = 0;
     let startY = 0;
 
@@ -363,7 +362,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function setupNoteEvents(noteBox, note) {
         noteBox.addEventListener('touchstart', function(e) {
-            e.preventDefault();
             longPressFired = false;
             wasCanceled = false;
 
