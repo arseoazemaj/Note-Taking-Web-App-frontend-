@@ -17,7 +17,9 @@
         "ignore": [
           "user-select",
           "-webkit-user-drag",
-          "backdrop-filter"
+          "backdrop-filter",
+          "scrollbar-width",
+          "scrollbar-width: none"
         ]
       }
     ],

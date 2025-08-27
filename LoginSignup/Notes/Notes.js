@@ -197,6 +197,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
 
         lucide.createIcons();
+        LoadFolders();
     } catch (error) {
         console.error("Fetch error:", error);
     }
@@ -254,35 +255,22 @@ async function add() {
         Color: folderColor
     }
     
-    // try {
-    //     const response = await fetch('http://localhost:5216/api/Folders/create_folder', {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             "Authorization": `Bearer ${token}`
-    //         },
-    //         body: JSON.stringify(folder)
-    //     });
+    try {
+        const response = await fetch('http://localhost:5216/api/Folders/create_folder', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(folder)
+        });
 
-    //     if (!response.ok) {
-    //         console.error("Failed to create folder");
-    //     }
-    // }catch (err) {
-    //     console.error("Error while creating a folder:", err);
-    // }
-
-    const folder_element = document.createElement('div');
-    const folder_icon = document.createElement('i');
-    const folder_text = document.createElement('p');
-    folder_element.classList.add('folder');
-    folder_icon.classList.add('folder-icon');
-    folder_text.classList.add('folder-text');
-    folder_icon.setAttribute('data-lucide', 'folder-closed');
-    folder_text.textContent = "Hi";
-    folder_element.appendChild(folder_icon);
-    folder_element.appendChild(folder_text);
-    folders_menu.appendChild(folder_element);
-    lucide.createIcons();
+        if (!response.ok) {
+            console.error("Failed to create folder");
+        }
+    }catch (err) {
+        console.error("Error while creating a folder:", err);
+    }
     
     document.getElementById("folder_namer").value = "";
     selectedColor = null;
@@ -290,6 +278,7 @@ async function add() {
         icon.style.visibility = 'hidden';
     });
 
+    LoadFolders();
     cancel();
 }
 
@@ -329,6 +318,64 @@ function cancel() {
     }
 }
 
+
+async function LoadFolders(){
+    try {
+        const response = await fetch('http://localhost:5216/api/Folders/get_folder', {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        });
+
+        if (!response.ok) {
+            folders_menu.textContent = "Failed to load folders: " + response.status;
+            return;
+        }
+
+        const folders = await response.json();
+
+        folders_menu.innerHTML = "";
+
+        folders.forEach(folder => {
+            const folderBox = document.createElement('div');
+            folderBox.className = 'folder-box';
+            folderBox.setAttribute('id', folder.id);
+
+            const folderIcon = document.createElement('i');
+            folderIcon.setAttribute('data-lucide', 'folder-closed');
+            folderIcon.classList.add('folder-icon');
+
+            const Color = folder.color;
+            const fillColor = withAlpha(folder.color, "73");
+            const shadowColor = withAlpha(folder.color, "BD");
+            folderIcon.style.color = Color;
+            folderIcon.style.fill = fillColor;
+            folderIcon.style.filter = `drop-shadow(2px 2px 4px ${shadowColor})`;
+
+            const folderName = document.createElement('p');
+            folderName.className = 'folder-text';
+            folderName.style.color = Color;
+            folderName.textContent = folder.name.length > 14 ? folder.name.substring(0, 14) + "..." : folder.name;
+
+            folderBox.appendChild(folderIcon);
+            folderBox.appendChild(folderName);
+            folders_menu.appendChild(folderBox);
+        });
+
+        lucide.createIcons();
+
+    } catch (err) {
+        console.error("Error loading folders:", err);
+        folders_menu.textContent = "Error loading folders";
+    }
+}
+
+function withAlpha(hexColor, alphaHex) {
+    let base = hexColor.replace("#", "");
+    if (base.length === 8) base = base.substring(0, 6);
+    return `#${base}${alphaHex}`;
+}
 
 
 
