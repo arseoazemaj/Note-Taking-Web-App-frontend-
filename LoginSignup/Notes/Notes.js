@@ -297,6 +297,7 @@ function move() {
     if (move_menu) {
         move_menu.style.visibility = 'visible';
         blur_background.style.visibility = 'visible';
+        document.body.style.overflow = 'hidden';
     }
 }
 
@@ -313,6 +314,7 @@ document.addEventListener("touchstart", function (event) {
         move_menu.style.visibility = 'hidden';
         create_folder_menu.style.display = 'none';
         blur_background.style.visibility = 'hidden';
+        document.body.style.overflow = 'visible';
 
         document.querySelectorAll('.check_color').forEach(icon => {
             icon.style.visibility = 'hidden';
