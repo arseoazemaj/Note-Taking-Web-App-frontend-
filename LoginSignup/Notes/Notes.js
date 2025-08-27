@@ -354,7 +354,7 @@ async function LoadFolders(){
             folderIcon.style.filter = `drop-shadow(2px 2px 4px ${shadowColor})`;
 
             const folderName = document.createElement('p');
-            folderName.className = 'folder-text';
+            folderName.className = 'folder-name';
             folderName.style.color = Color;
             folderName.textContent = folder.name.length > 14 ? folder.name.substring(0, 14) + "..." : folder.name;
 

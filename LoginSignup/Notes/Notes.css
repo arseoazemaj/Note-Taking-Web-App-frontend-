@@ -190,12 +190,15 @@ display: flex;
     stroke-width: 1.5px;
 }
 
-.folder-text {
+.folder-name {
     position: absolute;
     color: #ae7fce;
     margin-top: 32px;
     margin-left: -10px;
     font-weight: bold;
+    width: 45px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #folder_page {
