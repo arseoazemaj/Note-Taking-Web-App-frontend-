@@ -348,10 +348,8 @@ async function LoadFolders(){
 
             const Color = folder.color;
             const fillColor = withAlpha(folder.color, "73");
-            const shadowColor = withAlpha(folder.color, "BD");
             folderIcon.style.color = Color;
             folderIcon.style.fill = fillColor;
-            folderIcon.style.filter = `drop-shadow(2px 2px 4px ${shadowColor})`;
 
             const folderName = document.createElement('p');
             folderName.className = 'folder-name';

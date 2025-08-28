@@ -192,7 +192,6 @@ display: flex;
 
 .folder-name {
     position: absolute;
-    color: #ae7fce;
     margin-top: 32px;
     margin-left: -10px;
     font-weight: bold;
