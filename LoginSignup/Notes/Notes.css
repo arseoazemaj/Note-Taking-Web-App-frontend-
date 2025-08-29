@@ -384,11 +384,22 @@ display: flex;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     padding-top: 15px;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(55%, 1fr));
+    scrollbar-width: none;
+    gap: 1px;
 }
 
 .folders {
     background: #ffffff;
-    height: 25%;
+    height: 60px;
+}
+
+.folders_icon {
+    position: relative;
+    top: 25%;
+    left: 20px;
 }
 
 #create_folder-btn {
