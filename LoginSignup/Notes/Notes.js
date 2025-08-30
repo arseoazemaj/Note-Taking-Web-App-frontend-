@@ -375,6 +375,50 @@ function withAlpha(hexColor, alphaHex) {
     return `#${base}${alphaHex}`;
 }
 
+document.addEventListener("DOMContentLoaded", async function () {
+    try {
+        const response = await fetch('http://localhost:5216/api/Folders/get_folderName', {
+            headers: {
+                Authorization: 'Bearer ' + token,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            console.error("Failed to fetch folder name:", response.status);
+            return;
+        }
+
+        const folderNames = await response.json();
+        const folderList = document.getElementById("folder_list");
+
+        folderNames.forEach(folder => {
+            const folder_element = document.createElement('div');
+            folder_element.className = 'folders';
+
+            const folderIcon = document.createElement('i');
+            folderIcon.setAttribute('data-lucide', 'folder');
+            folderIcon.classList.add('folders_icon');
+            folderIcon.style.color = folder.color;
+
+            const folderName = document.createElement('p');
+            folderName.className = 'folder_name';
+            folderName.textContent = folder.name;
+            folderName.style.color = folder.color;
+
+            folder_element.appendChild(folderIcon);
+            folder_element.appendChild(folderName);
+            folderList.appendChild(folder_element);
+        });
+
+        lucide.createIcons();
+
+    } catch (err) {
+        console.error("Error loading folders:", err);
+        folders_menu.textContent = "Error loading folders";
+    }
+});
+
 
 
 

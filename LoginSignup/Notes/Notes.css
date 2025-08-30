@@ -379,27 +379,31 @@ display: flex;
 
 #folder_list {
     height: 71%;
-    background: red;
     position: relative;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
     padding-top: 15px;
     overflow-y: auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(55%, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
     scrollbar-width: none;
-    gap: 1px;
 }
 
 .folders {
-    background: #ffffff;
     height: 60px;
+    display: flex;
 }
+
+.folders:active {background-color: #251e45;}
 
 .folders_icon {
     position: relative;
     top: 25%;
     left: 20px;
+    scale: 1.2;
+}
+
+.folder_name {
+    position: relative;
+    left: 30px;
 }
 
 #create_folder-btn {
@@ -437,6 +441,12 @@ display: flex;
     position: fixed;
     bottom: 0%;
     border-radius: 25px;
+    opacity: 0;
+    animation: fadeIn .5s ease forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
 }
 
 #folder_text {
