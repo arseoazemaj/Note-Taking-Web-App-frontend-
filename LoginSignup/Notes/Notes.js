@@ -78,16 +78,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         let startX = 0;
         let startY = 0;
 
-        function showDecision() {
-            document.getElementById("decide").style.display = 'block';
-            document.getElementById("new_note").style.display = 'none';
-        }
-
-        function hideDecision() {
-            document.getElementById("decide").style.display = 'none';
-            document.getElementById("new_note").style.display = 'block';
-        }
-
         function setupNoteEvents(noteBox, note) {
             noteBox.addEventListener('touchstart', function(e) {
                 longPressFired = false;
@@ -203,6 +193,18 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 });
 
+function showDecision() {
+    document.getElementById("decide").style.display = 'block';
+    document.getElementById("new_note").style.display = 'none';
+}
+
+function hideDecision() {
+    document.getElementById("decide").style.display = 'none';
+    document.getElementById("new_note").style.display = 'block';
+    document.getElementById("more_options").style.visibility = 'hidden';
+}
+
+const selectionMore = document.querySelectorAll('.note-box.selected');
 const move_menu = document.getElementById("move_menu");
 const more_options = document.getElementById("more_options");
 const create_folder_menu = document.getElementById("create_folder");
@@ -287,6 +289,7 @@ function move() {
         move_menu.style.visibility = 'visible';
         blur_background.style.visibility = 'visible';
         document.body.style.overflow = 'hidden';
+        more_options.style.visibility = 'hidden';
     }
 }
 
@@ -441,16 +444,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let startX = 0;
     let startY = 0;
 
-    function showDecisionMenu() {
-        document.getElementById("decide").style.display = 'block';
-        document.getElementById("new_note").style.display = 'none';
-    }
-
-    function hideDecisionMenu() {
-        document.getElementById("decide").style.display = 'none';
-        document.getElementById("new_note").style.display = 'block';
-    }
-
     function setupNoteEvents(noteBox, note) {
         noteBox.addEventListener('touchstart', function(e) {
             longPressFired = false;
@@ -467,8 +460,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 checkIcon.style.display = 'block';
                 noteBox.classList.add('selected');
                 noteBox.style.transform = "scale(.95)";
-                showDecisionMenu();
-                document.getElementById("test_Logic").innerText = "Selection mode is on";
+                showDecision();
             }, LONG_PRESS_MS);
         });
 
@@ -511,10 +503,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     const anySelected = document.querySelector('.note-box.selected');
                     if (anySelected) {
-                        showDecisionMenu();
+                        showDecision();
                     } else {
                         SelectionMode = false;
-                        hideDecisionMenu();
+                        hideDecision();
                     }
                 }
             } else if (!longPressFired && !wasCanceled) {
