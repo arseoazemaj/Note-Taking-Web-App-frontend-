@@ -374,7 +374,8 @@ display: flex;
     left: 50%;
     transform: translateX(-50%);
     top: 50px;
-    border-radius: 15px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
 }
 
 #folder_list {
@@ -390,20 +391,28 @@ display: flex;
 .folders {
     height: 60px;
     display: flex;
+    align-items: center;
 }
 
-.folders:active {background-color: #251e45;}
+.folders:active {
+    background-color: #251e45;
+}
 
 .folders_icon {
     position: relative;
-    top: 25%;
     left: 20px;
     scale: 1.2;
 }
 
 .folder_name {
-    position: relative;
-    left: 30px;
+    margin-left: 30px;
+}
+
+.note_counter {
+    position: absolute;
+    right: 20px;
+    color: #ffffff;
+    font-family: monospace;
 }
 
 #create_folder-btn {
