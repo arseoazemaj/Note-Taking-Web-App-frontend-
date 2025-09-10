@@ -398,6 +398,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         folderNames.forEach(folder => {
             const folder_element = document.createElement('div');
             folder_element.className = 'folders';
+            folder_element.setAttribute('id', folder.id);
 
             const folderIcon = document.createElement('i');
             folderIcon.setAttribute('data-lucide', 'folder');
@@ -416,6 +417,10 @@ document.addEventListener("DOMContentLoaded", async function () {
             folder_element.appendChild(folderName);
             folder_element.appendChild(note_counter);
             folderList.appendChild(folder_element);
+
+            folder_element.addEventListener('touchstart', () => {
+                console.log(`Folder ID: ${folder.id}`);
+            });
         });
 
         lucide.createIcons();
