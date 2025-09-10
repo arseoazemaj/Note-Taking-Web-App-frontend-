@@ -420,6 +420,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             folder_element.addEventListener('touchstart', () => {
                 console.log(`Folder ID: ${folder.id}`);
+                const selectedNotes = document.querySelectorAll('.note-box.selected');
+                const selectedNoteIds = Array.from(selectedNotes).map(n => n.id);
+                console.log(`Selected note IDs: ${selectedNoteIds.join(', ')}`);
             });
         });
 
