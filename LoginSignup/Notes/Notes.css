@@ -162,14 +162,14 @@ a, div {
 }
 
 #folders_menu {
-display: flex;
+    display: flex;
     flex-direction: row;
     gap: 45px;
     overflow-x: overlay;
     padding: 35px 10px;
-    width: 100%;
+    width: 90%;
     position: absolute;
-    top: -90px;
+    top: 160px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 4444;

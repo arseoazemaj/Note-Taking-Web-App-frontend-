@@ -50,7 +50,10 @@ window.onload = function() {
 
 let SelectionMode = false;
 
-document.addEventListener('DOMContentLoaded', async function () {
+document.addEventListener('DOMContentLoaded', loadNotes );
+
+async function loadNotes() {
+    const containers = document.getElementById("containers");
     try {
         const response = await fetch('http://localhost:5216/api/Notes/get_notes', {
             headers: {
@@ -65,6 +68,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
 
         const notes = await response.json();
+
+        containers.innerHTML = "";
 
         if (notes.isImportant) {
             noteBox.classList.add('important');
@@ -191,7 +196,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     } catch (error) {
         console.error("Fetch error:", error);
     }
-});
+}
 
 function showDecision() {
     document.getElementById("decide").style.display = 'block';
@@ -423,9 +428,6 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const selectedNotes = document.querySelectorAll('.note-box.selected');
                 const selectedNoteIds = Array.from(selectedNotes).map(n => n.id);
 
-                console.log(`Folder ID: ${folderId}`);
-                console.log(`Selected note IDs: ${selectedNoteIds.join(', ')}`);
-
                 selectedNoteIds.forEach(noteId => {
                     sendNoteToFolder(noteId, folderId);
                 });
@@ -461,7 +463,7 @@ async function sendNoteToFolder(noteId, folderId) {
 
         const result = await response.text();
         console.log(result);
-        window.location.reload();
+        await loadNotes();
     } catch (error) {
         console.error('Error moving note:', error);
     }
