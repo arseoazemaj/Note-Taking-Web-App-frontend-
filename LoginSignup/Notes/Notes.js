@@ -419,10 +419,16 @@ document.addEventListener("DOMContentLoaded", async function () {
             folderList.appendChild(folder_element);
 
             folder_element.addEventListener('touchstart', () => {
-                console.log(`Folder ID: ${folder.id}`);
+                const folderId = folder.id;
                 const selectedNotes = document.querySelectorAll('.note-box.selected');
                 const selectedNoteIds = Array.from(selectedNotes).map(n => n.id);
+
+                console.log(`Folder ID: ${folderId}`);
                 console.log(`Selected note IDs: ${selectedNoteIds.join(', ')}`);
+
+                selectedNoteIds.forEach(noteId => {
+                    sendNoteToFolder(noteId, folderId);
+                });
             });
         });
 
@@ -434,6 +440,32 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 });
 
+async function sendNoteToFolder(noteId, folderId) {
+    try {
+        const response = await fetch('http://localhost:5216/api/Folders/SendNoteToFolder', {
+            method: 'PUT',
+            headers: {
+                Authorization: 'Bearer ' + token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                Id: noteId,
+                folderId: folderId
+            })
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(errorText);
+        }
+
+        const result = await response.text();
+        console.log(result);
+        window.location.reload();
+    } catch (error) {
+        console.error('Error moving note:', error);
+    }
+}
 
 
 
