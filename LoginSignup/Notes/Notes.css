@@ -182,7 +182,7 @@ a, div {
     align-items: flex-start;
     justify-content: center;
     position: relative;
-    left: 10px;
+    left: -50px;
 }
 
 .folder-icon {
@@ -205,13 +205,12 @@ a, div {
     background: #121137;
     height: 300px;
     width: 300px;
-    z-index: 5;
+    z-index: 5555;
     left: 50%;
     transform: translateX(-50%);
-    top: -50px;
+    top: 250px;
     border-radius: 30px;
-    opacity: .95;
-    display: none;
+    opacity: 0;
     filter: drop-shadow(0 0 15px #302758);
 }
 

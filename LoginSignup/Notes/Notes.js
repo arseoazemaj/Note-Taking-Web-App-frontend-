@@ -349,6 +349,7 @@ async function LoadFolders(){
             const folderBox = document.createElement('div');
             folderBox.className = 'folder-box';
             folderBox.setAttribute('id', folder.id);
+            folderBox.addEventListener('touchstart', open_move);
 
             const folderIcon = document.createElement('i');
             folderIcon.setAttribute('data-lucide', 'folder-closed');
@@ -375,6 +376,12 @@ async function LoadFolders(){
         console.error("Error loading folders:", err);
         folders_menu.textContent = "Error loading folders";
     }
+}
+
+function open_move() {
+    console.log("Folder touched");
+    const folderPage = document.getElementById("folder_page");
+    folderPage.style.opacity = '.95';
 }
 
 function withAlpha(hexColor, alphaHex) {
