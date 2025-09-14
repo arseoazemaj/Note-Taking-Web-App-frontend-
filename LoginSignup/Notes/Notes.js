@@ -381,6 +381,7 @@ async function LoadFolders(){
 function open_move() {
     console.log("Folder touched");
     const folderPage = document.getElementById("folder_page");
+    folderPage.style.display = 'block';
     folderPage.style.opacity = '.95';
 }
 

@@ -210,7 +210,7 @@ a, div {
     transform: translateX(-50%);
     top: 250px;
     border-radius: 30px;
-    opacity: 0;
+    display: none;
     filter: drop-shadow(0 0 15px #302758);
 }
 
