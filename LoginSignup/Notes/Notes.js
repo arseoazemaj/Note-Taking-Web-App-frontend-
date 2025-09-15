@@ -378,12 +378,20 @@ async function LoadFolders(){
     }
 }
 
+const folderPage = document.getElementById("folder_page");
+const folder_blur = document.getElementById("folder_blur");
+
 function open_move() {
     console.log("Folder touched");
-    const folderPage = document.getElementById("folder_page");
     folderPage.style.display = 'block';
     folderPage.style.opacity = '.95';
+    folder_blur.style.visibility = 'visible';
 }
+
+folder_blur.addEventListener('touchstart', () => {
+    folderPage.style.display = 'none';
+    folder_blur.style.visibility = 'hidden';
+});
 
 function withAlpha(hexColor, alphaHex) {
     let base = hexColor.replace("#", "");

@@ -172,7 +172,6 @@ a, div {
     top: 160px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 4444;
     scrollbar-width: none;
 }
 
@@ -182,7 +181,7 @@ a, div {
     align-items: flex-start;
     justify-content: center;
     position: relative;
-    left: -50px;
+    left: 10px;
 }
 
 .folder-icon {
@@ -315,11 +314,23 @@ a, div {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     backdrop-filter: blur(1px);
     background: #1d17374a;
-    z-index: 0;
+    z-index: 10;
+}
+
+#folder_blur {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(1px);
+    background: #1d17374a;
+    z-index: 10;
 }
 
 #move, #lock, #share, #delete, #more {
