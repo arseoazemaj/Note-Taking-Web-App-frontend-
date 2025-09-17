@@ -439,7 +439,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             folder_element.appendChild(note_counter);
             folderList.appendChild(folder_element);
 
-            folder_element.addEventListener('touchstart', () => {
+            folder_element.addEventListener('touchend', () => {
                 const folderId = folder.id;
                 const selectedNotes = document.querySelectorAll('.note-box.selected');
                 const selectedNoteIds = Array.from(selectedNotes).map(n => n.id);
@@ -480,6 +480,8 @@ async function sendNoteToFolder(noteId, folderId) {
         const result = await response.text();
         console.log(result);
         await loadNotes();
+        SelectionMode = false;
+        hideDecision();
     } catch (error) {
         console.error('Error moving note:', error);
     }
