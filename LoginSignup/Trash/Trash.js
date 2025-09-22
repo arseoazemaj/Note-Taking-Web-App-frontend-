@@ -3,7 +3,7 @@ const menuPage = document.getElementById("menu-page");
 
 let menuOpen = false;
 
-menuOpener.addEventListener("click", (e) => {
+menuOpener.addEventListener("touchstart", (e) => {
     e.stopPropagation();
     if (!menuOpen) {
         menuPage.classList.remove("slide-out");
@@ -12,8 +12,16 @@ menuOpener.addEventListener("click", (e) => {
     }
 });
 
-document.addEventListener("click", (e) => {
+document.addEventListener("touchstart", (e) => {
     if (menuOpen && !menuPage.contains(e.target)) {
+        menuPage.classList.remove("slide-in");
+        menuPage.classList.add("slide-out");
+        menuOpen = false;
+    }
+});
+
+document.addEventListener("touchmove", (e) => {
+        if (menuOpen && !menuPage.contains(e.target)) {
         menuPage.classList.remove("slide-in");
         menuPage.classList.add("slide-out");
         menuOpen = false;
