@@ -20,14 +20,6 @@ document.addEventListener("touchstart", (e) => {
     }
 });
 
-document.addEventListener("touchmove", (e) => {
-        if (menuOpen && !menuPage.contains(e.target)) {
-        menuPage.classList.remove("slide-in");
-        menuPage.classList.add("slide-out");
-        menuOpen = false;
-    }
-});
-
 window.addEventListener("DOMContentLoaded", () => {
     lucide.createIcons();
 });
