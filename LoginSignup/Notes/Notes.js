@@ -363,7 +363,7 @@ async function LoadFolders(){
             const folderName = document.createElement('p');
             folderName.className = 'folder-name';
             folderName.style.color = Color;
-            folderName.textContent = folder.name.length > 14 ? folder.name.substring(0, 14) + "..." : folder.name;
+            folderName.textContent = folder.name;
 
             folderBox.appendChild(folderIcon);
             folderBox.appendChild(folderName);
@@ -374,7 +374,6 @@ async function LoadFolders(){
 
     } catch (err) {
         console.error("Error loading folders:", err);
-        folders_menu.textContent = "Error loading folders";
     }
 }
 
@@ -453,8 +452,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         lucide.createIcons();
 
     } catch (err) {
-        console.error("Error loading folders:", err);
-        folders_menu.textContent = "Error loading folders";
+        console.error("Error loading folders name:", err);
     }
 });
 
