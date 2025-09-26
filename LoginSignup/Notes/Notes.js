@@ -369,7 +369,6 @@ const folderPage = document.getElementById("folder_page");
 const folder_blur = document.getElementById("folder_blur");
 
 function open_folder() {
-    console.log("Folder touched...");
     folderPage.style.display = 'block';
     folder_blur.style.visibility = 'visible';
     SelectionMode = false;
