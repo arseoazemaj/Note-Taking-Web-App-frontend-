@@ -371,15 +371,17 @@ const folder_blur = document.getElementById("folder_blur");
 function open_folder() {
     console.log("Folder touched...");
     folderPage.style.display = 'block';
-    folderPage.style.opacity = '.95';
     folder_blur.style.visibility = 'visible';
     SelectionMode = false;
     hideDecision();
-    const noteBox = document.querySelector('.note-box.selected');
-    noteBox.classList.remove('selected');
-    noteBox.style.transform = "scale(1)";
-    const checkIcon = noteBox.querySelector('.check-icon');
-    checkIcon.style.display = 'none';
+    const SelectedNotes = document.querySelectorAll('.note-box.selected');
+
+    SelectedNotes.forEach(noteBox => {
+        noteBox.classList.remove('selected');
+        noteBox.style.transform = "scale(1)";
+        const checkIcon = noteBox.querySelector('.check-icon');
+        checkIcon.style.display = 'none';
+    })
 }
 
 folder_blur.addEventListener('touchstart', () => {

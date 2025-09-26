@@ -211,6 +211,7 @@ a, div {
     border-radius: 30px;
     display: none;
     filter: drop-shadow(0 0 15px #302758);
+    opacity: .95;
 }
 
 .note-box {
