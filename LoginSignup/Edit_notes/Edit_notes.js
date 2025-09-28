@@ -57,7 +57,7 @@ function fill() {
     filled = !filled;
 }
 
-document.addEventListener('DOMContentLoaded', async function () {
+document.addEventListener('DOMContentLoaded', async function () { //*Loads the note *//
     const urlParams = new URLSearchParams(window.location.search);
     const noteId = urlParams.get('id');
 

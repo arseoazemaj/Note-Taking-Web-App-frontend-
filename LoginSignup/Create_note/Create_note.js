@@ -141,7 +141,7 @@ async function deleteNote() { //*Moves the note to trash
 }
 
 
-//*Used to save the notes in local storage for testing purposes*//
+//*Used to save the notes in local storage for testing purposes (will be deleted in the end)*//
 document.getElementById('save').addEventListener('click', function() {
     const title = document.getElementById('title').value.trim();
     const content = document.getElementById('note_input').value.trim();
