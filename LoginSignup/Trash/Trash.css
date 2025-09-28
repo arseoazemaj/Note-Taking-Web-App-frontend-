@@ -146,11 +146,8 @@ a, div {
     word-wrap: break-word;
     overflow-wrap: break-word;
     white-space: normal;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
     position: relative;
+    color: #ad7ecc;
 }
 
 .important-note .note-content {top: -45px;}
@@ -161,22 +158,22 @@ a, div {
     height: 150px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 9;
-    line-clamp: 9;
+    -webkit-line-clamp: 8;
+    line-clamp: 8;
     overflow: hidden;
     text-overflow: ellipsis;    
 }
 
 .title {
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 100%;
     margin-top: -20px;
-    font-weight: bold;
-    font-size: 1.1rem;
-    position: relative;
     height: 25px;
+    pointer-events: none;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
 }
 
 @media (max-width: 360px) {

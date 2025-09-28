@@ -247,9 +247,6 @@ a, div {
     word-wrap: break-word;
     overflow-wrap: break-word;
     white-space: normal;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     position: relative;
     color: #ad7ecc;
 }
@@ -271,6 +268,10 @@ a, div {
     margin-top: -20px;
     height: 25px;
     pointer-events: none;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
 }
 
 @media (max-width: 360px) {

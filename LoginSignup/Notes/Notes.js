@@ -153,7 +153,7 @@ async function loadNotes() {
             noteContent.textContent = note.content;
 
             const noteTitle = document.createElement('h3');
-            noteTitle.textContent = note.title.length > 11 ? note.title.substring(0, 11) + "..." : note.title;
+            noteTitle.textContent = note.title;
             noteTitle.className = 'title';
 
             if (note.isImportant) {
@@ -535,7 +535,7 @@ async function opened_folder(folderId) {
             noteContent.textContent = note.content;
 
             const noteTitle = document.createElement('h3');
-            noteTitle.textContent = note.title.length > 11 ? note.title.substring(0, 11) + "..." : note.title;
+            noteTitle.textContent = note.title;
             noteTitle.className = 'title';
 
             if (note.isImportant) {
@@ -673,7 +673,7 @@ document.addEventListener('DOMContentLoaded', function() {
             noteContent.textContent = note.content;
 
             const noteTitle = document.createElement('h3');
-            noteTitle.textContent = note.title.length > 11 ? note.title.substring(0, 11) + "..." : note.title;
+            noteTitle.textContent = note.title;
             noteTitle.className = 'title';
 
             if (note.isImportant) {
