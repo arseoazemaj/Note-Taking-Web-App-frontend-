@@ -31,13 +31,6 @@ if (noteButton) {
     });
 }
 
-window.onload = function() {
-    const noteContents = document.querySelectorAll('.note-content');
-    noteContents.forEach(function(noteContent) {
-        truncateText(noteContent, 10);
-    });
-};
-
 let SelectionMode = false;
 
 document.addEventListener('DOMContentLoaded', loadNotes );
@@ -337,8 +330,7 @@ async function LoadFolders(){
             const folderBox = document.createElement('div');
             folderBox.className = 'folder-box';
             folderBox.setAttribute('id', folder.id);
-            
-            
+
             let startX = 0;
             let startY = 0;
             let moved = false;

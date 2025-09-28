@@ -154,7 +154,7 @@ a, div {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 250px;
+    top: 260px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
     gap: 45px 30px;
@@ -221,6 +221,7 @@ a, div {
     opacity: .95;
     padding: 15px;
     overflow-y: auto;
+    scrollbar-width: none;
 }
 
 .note-box {
