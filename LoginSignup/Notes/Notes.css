@@ -185,17 +185,21 @@ a, div {
 }
 
 .folder-icon {
-    scale: 2.4;
-    stroke-width: 1.5px;
+    scale: 2.5;
+    stroke-width: 1px;
 }
 
 .folder-name {
     position: absolute;
-    margin-top: 32px;
-    margin-left: -10px;
+    margin-top: 75px;
+    margin-left: -20px;
     font-weight: bold;
-    width: 45px;
+    width: 73px;
     overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
     text-overflow: ellipsis;
 }
 
