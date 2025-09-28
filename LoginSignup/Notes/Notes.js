@@ -337,7 +337,7 @@ async function LoadFolders(){
             const folderBox = document.createElement('div');
             folderBox.className = 'folder-box';
             folderBox.setAttribute('id', folder.id);
-            folderBox.addEventListener('touchstart', open_folder);
+            folderBox.addEventListener('touchstart', () => open_folder(folder.id));
 
             const folderIcon = document.createElement('i');
             folderIcon.setAttribute('data-lucide', 'folder-closed');
@@ -368,13 +368,14 @@ async function LoadFolders(){
 const folderPage = document.getElementById("folder_page");
 const folder_blur = document.getElementById("folder_blur");
 
-function open_folder() {
-    folderPage.style.display = 'block';
+function open_folder(folderId) {
+    opened_folder(folderId);
+    folderPage.style.display = 'grid';
     folder_blur.style.visibility = 'visible';
     SelectionMode = false;
     hideDecision();
-    const SelectedNotes = document.querySelectorAll('.note-box.selected');
 
+    const SelectedNotes = document.querySelectorAll('.note-box.selected');
     SelectedNotes.forEach(noteBox => {
         noteBox.classList.remove('selected');
         noteBox.style.transform = "scale(1)";
@@ -478,6 +479,68 @@ async function sendNoteToFolder(noteId, folderId) {
         hideDecision();
     } catch (error) {
         console.error('Error moving note:', error);
+    }
+}
+
+async function opened_folder(folderId) {
+    const folder_page = document.getElementById("folder_page");
+    folder_page.innerHTML = '';
+    try {
+        const response = await fetch(`http://localhost:5216/api/Notes/folder/${folderId}`, {
+            method: 'GET', //* By default it's GET so now it was just me wanting to add it but for other methods you need to specify it *//
+            headers: {
+                Authorization: 'Bearer ' + token,
+                'Content-Type': 'application/json'
+            },
+        });
+
+        if (!response.ok) {
+            console.error("Failed to fetch notes from folder:", response.status);
+            return;
+        }
+
+        const notes = await response.json();
+
+        notes.forEach(note => {
+            const noteBox = document.createElement('div');
+            noteBox.className = 'note-box';
+            noteBox.setAttribute('id', note.id);
+
+            const checkIcon = document.createElement('i');
+            checkIcon.setAttribute('data-lucide', 'circle-check');
+            checkIcon.classList.add('check-icon');
+            checkIcon.style.display = 'none';
+            noteBox.appendChild(checkIcon);
+
+            const noteContent = document.createElement('p');
+            noteContent.className = 'note-content';
+            noteContent.textContent = note.content;
+
+            const noteTitle = document.createElement('h3');
+            noteTitle.textContent = note.title.length > 11 ? note.title.substring(0, 11) + "..." : note.title;
+            noteTitle.className = 'title';
+
+            if (note.isImportant) {
+                noteBox.classList.add('important-note');
+                const isImportantIcon = document.createElement('i');
+                isImportantIcon.setAttribute('data-lucide', 'star');
+                isImportantIcon.id = 'star';
+                isImportantIcon.classList.add('important-icon');
+                noteBox.appendChild(isImportantIcon);
+            }
+
+            noteBox.appendChild(noteContent);
+            noteBox.appendChild(noteTitle);
+            folder_page.appendChild(noteBox);
+
+                noteBox.appendChild(noteContent);
+                noteBox.appendChild(noteTitle);
+                folder_page.appendChild(noteBox);
+            });
+
+        lucide.createIcons();
+    } catch (err) {
+        console.error("Error loading notes from folder:", err);
     }
 }
 
