@@ -54,8 +54,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const isFormValid = usernameValue !== "" &&
             emailValue !== "" &&
             isEmailValid &&
-            passwordValue.length >= 8 &&
-            confirmPasswordValue.length >= 8 &&
+            // passwordValue.length >= 8 &&
+            // confirmPasswordValue.length >= 8 &&
             passwordValue === confirmPasswordValue;
 
         signUpBtn.disabled = !isFormValid;
@@ -123,7 +123,7 @@ async function signup(event) {
         const result = await response.json();
 
         if (response.ok) {
-            const loginResponse = await fetch("http://localhost:5216/api/Auth/login", {
+            const loginResponse = await fetch("http://localhost:5216/api/Auth/log_in", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username: username, password: password })
