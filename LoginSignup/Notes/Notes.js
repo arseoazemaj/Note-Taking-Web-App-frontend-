@@ -337,7 +337,33 @@ async function LoadFolders(){
             const folderBox = document.createElement('div');
             folderBox.className = 'folder-box';
             folderBox.setAttribute('id', folder.id);
-            folderBox.addEventListener('touchstart', () => open_folder(folder.id));
+            
+            
+            let startX = 0;
+            let startY = 0;
+            let moved = false;
+
+            folderBox.addEventListener('touchstart', (e) => {
+                const touch = e.touches[0];
+                startX = touch.clientX;
+                startY = touch.clientY;
+                moved = false;
+            });
+
+            folderBox.addEventListener('touchmove', (e) => {
+                const touch = e.touches[0];
+                const dx = touch.clientX - startX;
+                const dy = touch.clientY - startY;
+                if (Math.abs(dx) > 10 || Math.abs(dy) > 10) {
+                    moved = true;
+                }
+            });
+
+            folderBox.addEventListener('touchend', () => {
+                if (!moved) {
+                    open_folder(folder.id);
+                }
+            });
 
             const folderIcon = document.createElement('i');
             folderIcon.setAttribute('data-lucide', 'folder-closed');

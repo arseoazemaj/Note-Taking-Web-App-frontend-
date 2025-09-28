@@ -192,9 +192,9 @@ a, div {
 .folder-name {
     position: absolute;
     margin-top: 75px;
-    margin-left: -20px;
+    margin-left: -10px;
     font-weight: bold;
-    width: 73px;
+    width: 52px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -220,6 +220,7 @@ a, div {
     filter: drop-shadow(0 0 15px #302758);
     opacity: .95;
     padding: 15px;
+    overflow-y: auto;
 }
 
 .note-box {
