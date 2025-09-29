@@ -184,17 +184,25 @@ a, div {
     left: 10px;
 }
 
+.folder-check-icon {
+    color: #ffffff; /*b07ecf*/
+    position: absolute;
+    left: 10px;
+    /* display: none; */
+    z-index: 1;
+}
+
 .folder-icon {
-    scale: 2.5;
+    transform: scale(2.6, 2.4);
     stroke-width: 1px;
 }
 
 .folder-name {
     position: absolute;
     margin-top: 75px;
-    margin-left: -10px;
+    margin-left: -13px;
     font-weight: bold;
-    width: 52px;
+    width: 55px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -304,14 +312,6 @@ a, div {
 }
 
 .note-check-icon {
-    color: #ffffff; /*b07ecf*/
-    position: absolute;
-    left: 10px;
-    display: none;
-    z-index: 1;
-}
-
-.folder-check-icon {
     color: #ffffff; /*b07ecf*/
     position: absolute;
     left: 10px;
