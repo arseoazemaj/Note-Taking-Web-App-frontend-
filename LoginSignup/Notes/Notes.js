@@ -79,7 +79,7 @@ async function loadNotes() {
                     longPressTimer = setTimeout(() => {
                         longPressFired = true;
                         SelectionMode = true;
-                        const checkIcon = noteBox.querySelector('.check-icon');
+                        const checkIcon = noteBox.querySelector('.note-check-icon');
                         checkIcon.style.display = 'block';
                         noteBox.classList.add('selected');
                         noteBox.style.transform = "scale(.95)";
@@ -114,7 +114,7 @@ async function loadNotes() {
 
                 if (SelectionMode) {
                     if (!longPressFired) {
-                        const checkIcon = noteBox.querySelector('.check-icon');
+                        const checkIcon = noteBox.querySelector('.note-check-icon');
                         const isSelected = noteBox.classList.toggle('selected');
                         if (isSelected) {
                             checkIcon.style.display = 'block';
@@ -146,7 +146,7 @@ async function loadNotes() {
 
             const checkIcon = document.createElement('i');
             checkIcon.setAttribute('data-lucide', 'circle-check');
-            checkIcon.classList.add('check-icon');
+            checkIcon.classList.add('note-check-icon');
             checkIcon.style.display = 'none';
             noteBox.appendChild(checkIcon);
 
@@ -363,6 +363,11 @@ async function LoadFolders(){
             folderIcon.setAttribute('data-lucide', 'folder-closed');
             folderIcon.classList.add('folder-icon');
 
+            const checkIcon = document.createElement('i');
+            checkIcon.setAttribute('data-lucide', 'circle-check');
+            checkIcon.classList.add('folder-check-icon');
+            checkIcon.style.display = 'none';
+
             const Color = folder.color;
             const fillColor = withAlpha(folder.color, "73");
             folderIcon.style.color = Color;
@@ -373,6 +378,7 @@ async function LoadFolders(){
             folderName.style.color = Color;
             folderName.textContent = folder.name;
 
+            folderBox.appendChild(checkIcon);
             folderBox.appendChild(folderIcon);
             folderBox.appendChild(folderName);
             folders_menu.appendChild(folderBox);
@@ -542,7 +548,7 @@ async function opened_folder(folderId) {
                     longPressTimer = setTimeout(() => {
                         longPressFired = true;
                         SelectionMode = true;
-                        const checkIcon = noteBox.querySelector('.check-icon');
+                        const checkIcon = noteBox.querySelector('.note-check-icon');
                         checkIcon.style.display = 'block';
                         noteBox.classList.add('selected');
                         noteBox.style.transform = "scale(.95)";
@@ -577,7 +583,7 @@ async function opened_folder(folderId) {
 
                 if (SelectionMode) {
                     if (!longPressFired) {
-                        const checkIcon = noteBox.querySelector('.check-icon');
+                        const checkIcon = noteBox.querySelector('.note-check-icon');
                         const isSelected = noteBox.classList.toggle('selected');
                         if (isSelected) {
                             checkIcon.style.display = 'block';
@@ -609,7 +615,7 @@ async function opened_folder(folderId) {
 
             const checkIcon = document.createElement('i');
             checkIcon.setAttribute('data-lucide', 'circle-check');
-            checkIcon.classList.add('check-icon');
+            checkIcon.classList.add('note-check-icon');
             checkIcon.style.display = 'none';
             noteBox.appendChild(checkIcon);
 

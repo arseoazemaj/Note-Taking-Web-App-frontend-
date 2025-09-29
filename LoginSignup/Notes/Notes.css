@@ -303,7 +303,15 @@ a, div {
     pointer-events: none;
 }
 
-.check-icon {
+.note-check-icon {
+    color: #ffffff; /*b07ecf*/
+    position: absolute;
+    left: 10px;
+    display: none;
+    z-index: 1;
+}
+
+.folder-check-icon {
     color: #ffffff; /*b07ecf*/
     position: absolute;
     left: 10px;
