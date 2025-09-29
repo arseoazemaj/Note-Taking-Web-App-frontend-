@@ -268,8 +268,9 @@ async function add() {
         icon.style.visibility = 'hidden';
     });
 
-    LoadFolders();
     cancel();
+    LoadFolders();
+    LoadFolderName();
 }
 
 function move() {
@@ -366,7 +367,7 @@ async function LoadFolders(){
             const checkIcon = document.createElement('i');
             checkIcon.setAttribute('data-lucide', 'circle-check');
             checkIcon.classList.add('folder-check-icon');
-            checkIcon.style.display = 'none';
+            // checkIcon.style.display = 'none'; //Will change back after fixing it//
 
             const Color = folder.color;
             const fillColor = withAlpha(folder.color, "73");
@@ -421,7 +422,9 @@ function withAlpha(hexColor, alphaHex) {
     return `#${base}${alphaHex}`;
 }
 
-document.addEventListener("DOMContentLoaded", async function () {
+document.addEventListener('DOMContentLoaded', LoadFolderName );
+
+async function LoadFolderName () {
     try {
         const response = await fetch('http://localhost:5216/api/Folders/get_folderName', {
             headers: {
@@ -437,6 +440,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         const folderNames = await response.json();
         const folderList = document.getElementById("folder_list");
+
+        folderList.innerHTML = "";
 
         folderNames.forEach(folder => {
             const folder_element = document.createElement('div');
@@ -477,7 +482,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     } catch (err) {
         console.error("Error loading folders name:", err);
     }
-});
+}
 
 async function sendNoteToFolder(noteId, folderId) {
     try {
@@ -535,7 +540,7 @@ async function opened_folder(folderId) {
         let startX = 0;
         let startY = 0;
 
-        function setupNoteEvents(noteBox, note) {
+        function NoteEvents(noteBox, note) {
             noteBox.addEventListener('touchstart', function(e) {
                 console.log("Touch start detected");
                 longPressFired = false;
@@ -639,7 +644,7 @@ async function opened_folder(folderId) {
             noteBox.appendChild(noteContent);
             noteBox.appendChild(noteTitle);
             folder_page.appendChild(noteBox);
-            setupNoteEvents(noteBox, note);
+            NoteEvents(noteBox, note);
             });
 
         lucide.createIcons();
