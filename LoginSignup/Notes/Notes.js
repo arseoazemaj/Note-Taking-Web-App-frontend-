@@ -68,6 +68,7 @@ async function loadNotes() {
 
         function setupNoteEvents(noteBox, note) {
             noteBox.addEventListener('touchstart', function(e) {
+                console.log("Touch start detected");
                 longPressFired = false;
                 wasCanceled = false;
 
@@ -104,6 +105,7 @@ async function loadNotes() {
             });
 
             noteBox.addEventListener('touchend', function() {
+                console.log("Touch end detected");
                 clearTimeout(longPressTimer);
 
                 if (wasCanceled) {
@@ -519,6 +521,87 @@ async function opened_folder(folderId) {
 
         const notes = await response.json();
 
+        let longPressTimer = null;
+        let longPressFired = false;
+        let wasCanceled = false;
+        const LONG_PRESS_MS = 500;
+        const MOVE_THRESHOLD = 5;
+        let startX = 0;
+        let startY = 0;
+
+        function setupNoteEvents(noteBox, note) {
+            noteBox.addEventListener('touchstart', function(e) {
+                console.log("Touch start detected");
+                longPressFired = false;
+                wasCanceled = false;
+
+                const touch = e.touches[0];
+                startX = touch.clientX;
+                startY = touch.clientY;
+
+                    longPressTimer = setTimeout(() => {
+                        longPressFired = true;
+                        SelectionMode = true;
+                        const checkIcon = noteBox.querySelector('.check-icon');
+                        checkIcon.style.display = 'block';
+                        noteBox.classList.add('selected');
+                        noteBox.style.transform = "scale(.95)";
+                        showDecision();
+                    }, LONG_PRESS_MS);
+            });
+
+            noteBox.addEventListener('touchmove', function(e) {
+                const touch = e.touches[0];
+                const dx = touch.clientX - startX;
+                const dy = touch.clientY - startY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance > MOVE_THRESHOLD) {
+                    clearTimeout(longPressTimer);
+                    wasCanceled = true;
+                }
+            });
+
+            noteBox.addEventListener('touchcancel', function() {
+                clearTimeout(longPressTimer);
+                wasCanceled = true;
+            });
+
+            noteBox.addEventListener('touchend', function() {
+                console.log("Touch end detected");
+                clearTimeout(longPressTimer);
+
+                if (wasCanceled) {
+                    return;
+                }
+
+                if (SelectionMode) {
+                    if (!longPressFired) {
+                        const checkIcon = noteBox.querySelector('.check-icon');
+                        const isSelected = noteBox.classList.toggle('selected');
+                        if (isSelected) {
+                            checkIcon.style.display = 'block';
+                            noteBox.style.transform = "scale(.95)";
+                        } else {
+                            checkIcon.style.display = 'none';
+                            noteBox.style.transform = "scale(1)";
+                        }
+
+                        const anySelected = document.querySelector('.note-box.selected');
+                        if (anySelected) {
+                            SelectionMode = true;
+                        } else {
+                            SelectionMode = false;
+                            hideDecision();
+                        }
+                    }
+                } else if (!longPressFired && !wasCanceled) {
+                    window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
+                }
+                longPressFired = false;
+            });
+        }
+
         notes.forEach(note => {
             const noteBox = document.createElement('div');
             noteBox.className = 'note-box';
@@ -550,10 +633,7 @@ async function opened_folder(folderId) {
             noteBox.appendChild(noteContent);
             noteBox.appendChild(noteTitle);
             folder_page.appendChild(noteBox);
-
-                noteBox.appendChild(noteContent);
-                noteBox.appendChild(noteTitle);
-                folder_page.appendChild(noteBox);
+            setupNoteEvents(noteBox, note);
             });
 
         lucide.createIcons();
