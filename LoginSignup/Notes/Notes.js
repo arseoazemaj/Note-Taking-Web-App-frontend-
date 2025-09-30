@@ -35,6 +35,21 @@ let SelectionMode = false;
 
 document.addEventListener('DOMContentLoaded', loadNotes );
 
+function anySelected() {
+    return document.querySelectorAll('.note-box.selected, .folder-box.selected').length > 0;
+}
+
+function updateSelectionModeFromDOM() {
+    const any = anySelected();
+    if (any && !SelectionMode) {
+        SelectionMode = true;
+        showDecision();
+    } else if (!any && SelectionMode) {
+        SelectionMode = false;
+        hideDecision();
+    }
+}
+
 async function loadNotes() {
     const containers = document.getElementById("containers");
     try {
@@ -68,7 +83,6 @@ async function loadNotes() {
 
         function setupNoteEvents(noteBox, note) {
             noteBox.addEventListener('touchstart', function(e) {
-                console.log("Touch start detected");
                 longPressFired = false;
                 wasCanceled = false;
 
@@ -76,15 +90,15 @@ async function loadNotes() {
                 startX = touch.clientX;
                 startY = touch.clientY;
 
-                    longPressTimer = setTimeout(() => {
-                        longPressFired = true;
-                        SelectionMode = true;
-                        const checkIcon = noteBox.querySelector('.note-check-icon');
-                        checkIcon.style.display = 'block';
-                        noteBox.classList.add('selected');
-                        noteBox.style.transform = "scale(.95)";
-                        showDecision();
-                    }, LONG_PRESS_MS);
+                longPressTimer = setTimeout(() => {
+                    longPressFired = true;
+                    SelectionMode = true;
+                    const checkIcon = noteBox.querySelector('.note-check-icon');
+                    checkIcon.style.display = 'block';
+                    noteBox.classList.add('selected');
+                    noteBox.style.transform = "scale(.95)";
+                    showDecision();
+                }, LONG_PRESS_MS);
             });
 
             noteBox.addEventListener('touchmove', function(e) {
@@ -105,7 +119,6 @@ async function loadNotes() {
             });
 
             noteBox.addEventListener('touchend', function() {
-                console.log("Touch end detected");
                 clearTimeout(longPressTimer);
 
                 if (wasCanceled) {
@@ -124,13 +137,7 @@ async function loadNotes() {
                             noteBox.style.transform = "scale(1)";
                         }
 
-                        const anySelected = document.querySelector('.note-box.selected');
-                        if (anySelected) {
-                            SelectionMode = true;
-                        } else {
-                            SelectionMode = false;
-                            hideDecision();
-                        }
+                        updateSelectionModeFromDOM();
                     }
                 } else if (!longPressFired && !wasCanceled) {
                     window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
@@ -311,7 +318,7 @@ function cancel() {
 }
 
 
-async function LoadFolders(){
+async function LoadFolders() {
     try {
         const response = await fetch('http://localhost:5216/api/Folders/get_folder', {
             headers: {
@@ -326,48 +333,93 @@ async function LoadFolders(){
         }
 
         const folders = await response.json();
-
         folders_menu.innerHTML = "";
 
-        folders.forEach(folder => {
-            const folderBox = document.createElement('div');
-            folderBox.className = 'folder-box';
-            folderBox.setAttribute('id', folder.id);
+        let longPressTimer = null;
+        let longPressFired = false;
+        let wasCanceled = false;
+        const LONG_PRESS_MS = 500;
+        const MOVE_THRESHOLD = 5;
+        let startX = 0;
+        let startY = 0;
 
-            let startX = 0;
-            let startY = 0;
-            let moved = false;
-
+        function setupFolderEvents(folderBox, folder) {
             folderBox.addEventListener('touchstart', (e) => {
+                longPressFired = false;
+                wasCanceled = false;
+
                 const touch = e.touches[0];
                 startX = touch.clientX;
                 startY = touch.clientY;
-                moved = false;
+
+                longPressTimer = setTimeout(() => {
+                    longPressFired = true;
+                    SelectionMode = true;
+
+                    const checkIcon = folderBox.querySelector('.folder-check-icon');
+                    checkIcon.style.display = 'block';
+                    folderBox.classList.add('selected');
+                }, LONG_PRESS_MS);
             });
 
             folderBox.addEventListener('touchmove', (e) => {
                 const touch = e.touches[0];
                 const dx = touch.clientX - startX;
                 const dy = touch.clientY - startY;
-                if (Math.abs(dx) > 10 || Math.abs(dy) > 10) {
-                    moved = true;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance > MOVE_THRESHOLD) {
+                    clearTimeout(longPressTimer);
+                    wasCanceled = true;
                 }
+            });
+
+            folderBox.addEventListener('touchcancel', () => {
+                clearTimeout(longPressTimer);
+                wasCanceled = true;
             });
 
             folderBox.addEventListener('touchend', () => {
-                if (!moved) {
+                clearTimeout(longPressTimer);
+
+                if (wasCanceled) return;
+
+                if (SelectionMode) {
+                    if (!longPressFired) {
+                        const checkIcon = folderBox.querySelector('.folder-check-icon');
+                        const isSelected = folderBox.classList.toggle('selected');
+
+                        if (isSelected) {
+                            checkIcon.style.display = 'block';
+                            folderBox.style.transform = "scale(.95)";
+                        } else {
+                            checkIcon.style.display = 'none';
+                            folderBox.style.transform = "scale(1)";
+                        }
+
+                        updateSelectionModeFromDOM();
+                    }
+                } else if (!longPressFired && !wasCanceled) {
                     open_folder(folder.id);
                 }
-            });
 
-            const folderIcon = document.createElement('i');
-            folderIcon.setAttribute('data-lucide', 'folder-closed');
-            folderIcon.classList.add('folder-icon');
+                longPressFired = false;
+            });
+        }
+
+        folders.forEach(folder => {
+            const folderBox = document.createElement('div');
+            folderBox.className = 'folder-box';
+            folderBox.setAttribute('id', folder.id);
 
             const checkIcon = document.createElement('i');
             checkIcon.setAttribute('data-lucide', 'circle-check');
             checkIcon.classList.add('folder-check-icon');
-            // checkIcon.style.display = 'none'; //Will change back after fixing it//
+            checkIcon.style.display = 'none';
+
+            const folderIcon = document.createElement('i');
+            folderIcon.setAttribute('data-lucide', 'folder-closed');
+            folderIcon.classList.add('folder-icon');
 
             const Color = folder.color;
             const fillColor = withAlpha(folder.color, "73");
@@ -383,6 +435,8 @@ async function LoadFolders(){
             folderBox.appendChild(folderIcon);
             folderBox.appendChild(folderName);
             folders_menu.appendChild(folderBox);
+
+            setupFolderEvents(folderBox, folder);
         });
 
         lucide.createIcons();
@@ -414,6 +468,17 @@ function open_folder(folderId) {
 folder_blur.addEventListener('touchstart', () => {
     folderPage.style.display = 'none';
     folder_blur.style.visibility = 'hidden';
+    document.querySelectorAll('.note-box.selected, .folder-box.selected').forEach(el => {
+        el.classList.remove('selected');
+        el.style.transform = "scale(1)";
+        const checkIcon = el.querySelector('.note-check-icon, .folder-check-icon');
+        if (checkIcon) {
+            checkIcon.style.display = 'none';
+        }
+    });
+
+    SelectionMode = false;
+    hideDecision();
 });
 
 function withAlpha(hexColor, alphaHex) {
@@ -542,7 +607,6 @@ async function opened_folder(folderId) {
 
         function NoteEvents(noteBox, note) {
             noteBox.addEventListener('touchstart', function(e) {
-                console.log("Touch start detected");
                 longPressFired = false;
                 wasCanceled = false;
 
@@ -579,7 +643,6 @@ async function opened_folder(folderId) {
             });
 
             noteBox.addEventListener('touchend', function() {
-                console.log("Touch end detected");
                 clearTimeout(longPressTimer);
 
                 if (wasCanceled) {

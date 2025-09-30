@@ -164,7 +164,7 @@ a, div {
 #folders_menu {
     display: flex;
     flex-direction: row;
-    gap: 45px;
+    gap: 50px;
     overflow-x: overlay;
     padding: 35px 10px;
     width: 90%;
@@ -193,7 +193,7 @@ a, div {
 }
 
 .folder-icon {
-    transform: scale(2.6, 2.4);
+    transform: scale(2.8, 2.5);
     stroke-width: 1px;
 }
 
@@ -327,6 +327,7 @@ a, div {
     background-color: #1a1433;
     bottom: 0px;
     display: none;
+    z-index: 10;
 }
 
 #blur-background {
