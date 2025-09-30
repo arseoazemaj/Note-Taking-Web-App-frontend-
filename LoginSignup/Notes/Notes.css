@@ -214,7 +214,7 @@ a, div {
 #folder_page {
     position: fixed;
     background: #121137;
-    height: 400px;
+    height: 420px;
     width: 90%;
     grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
     gap: 45px 30px;
