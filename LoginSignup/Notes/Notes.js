@@ -740,7 +740,7 @@ document.addEventListener('DOMContentLoaded', function() {
             longPressTimer = setTimeout(() => {
                 longPressFired = true;
                 SelectionMode = true;
-                const checkIcon = noteBox.querySelector('.check-icon');
+                const checkIcon = noteBox.querySelector('.note-check-icon');
                 checkIcon.style.display = 'block';
                 noteBox.classList.add('selected');
                 noteBox.style.transform = "scale(.95)";
@@ -774,7 +774,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (SelectionMode) {
                 if (!longPressFired) {
-                    const checkIcon = noteBox.querySelector('.check-icon');
+                    const checkIcon = noteBox.querySelector('.note-check-icon');
                     const isSelected = noteBox.classList.toggle('selected');
 
                     if (isSelected) {
