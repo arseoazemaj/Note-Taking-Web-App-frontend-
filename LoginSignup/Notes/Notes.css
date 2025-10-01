@@ -188,7 +188,6 @@ a, div {
     color: #ffffff; /*b07ecf*/
     position: absolute;
     left: 10px;
-    /* display: none; */
     z-index: 1;
 }
 
@@ -217,7 +216,7 @@ a, div {
     height: 420px;
     width: 90%;
     grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
-    gap: 40px 25px;
+    gap: 45px 30px;
     box-sizing: border-box;
     z-index: 5555;
     left: 50%;
@@ -227,19 +226,19 @@ a, div {
     display: none;
     filter: drop-shadow(0 0 15px #302758);
     opacity: .95;
-    padding: 20px;
+    padding: 15px;
     overflow-y: auto;
     scrollbar-width: none;
 }
 
 .note-box {
     position: relative;
-    height: 125px;
+    height: 130px;
     width: 85%;
     background-color: #251e45;
-    padding: 15px;
+    padding: 10px;
     border-radius: 15px;
-    padding-bottom: 35px;
+    padding-bottom: 30px;
 }
 
 .selected {background-color: #251e45b5;}

@@ -443,7 +443,7 @@ async function LoadFolders() {
 
         document.querySelectorAll('.folder-icon').forEach(svg => {
             const path = svg.querySelector('path:nth-child(2)');
-            if (path) path.setAttribute('d', 'M2 10h19.5');
+            if (path) path.setAttribute('d', 'M2.2 10h19.5');
         });
 
     } catch (err) {
