@@ -440,12 +440,6 @@ async function LoadFolders() {
         });
 
         lucide.createIcons();
-
-        document.querySelectorAll('.folder-icon').forEach(svg => {
-            const path = svg.querySelector('path:nth-child(2)');
-            if (path) path.setAttribute('d', 'M2.2 10h19.5');
-        });
-
     } catch (err) {
         console.error("Error loading folders:", err);
     }
