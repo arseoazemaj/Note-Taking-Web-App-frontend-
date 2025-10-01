@@ -359,6 +359,7 @@ async function LoadFolders() {
                     const checkIcon = folderBox.querySelector('.folder-check-icon');
                     checkIcon.style.display = 'block';
                     folderBox.classList.add('selected');
+                    showDecision();
                 }, LONG_PRESS_MS);
             });
 
