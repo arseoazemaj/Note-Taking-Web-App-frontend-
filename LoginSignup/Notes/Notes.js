@@ -716,6 +716,7 @@ async function opened_folder(folderId) {
 
 //TODO: Use only when wanting to see in your phone (when using comment code from line 50)
 document.addEventListener('DOMContentLoaded', function() {
+    let SelectionMode = false;
     const containers = document.getElementById('containers');
     let notes = JSON.parse(localStorage.getItem('notes')) || [];
 
@@ -809,7 +810,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const checkIcon = document.createElement('i');
             checkIcon.setAttribute('data-lucide', 'circle-check');
-            checkIcon.classList.add('check-icon');
+            checkIcon.classList.add('note-check-icon');
             checkIcon.style.display = 'none';
             noteBox.appendChild(checkIcon);
 
