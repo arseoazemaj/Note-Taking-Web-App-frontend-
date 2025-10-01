@@ -454,16 +454,6 @@ function open_folder(folderId) {
     opened_folder(folderId);
     folderPage.style.display = 'grid';
     folder_blur.style.visibility = 'visible';
-    SelectionMode = false;
-    hideDecision();
-
-    const SelectedNotes = document.querySelectorAll('.note-box.selected');
-    SelectedNotes.forEach(noteBox => {
-        noteBox.classList.remove('selected');
-        noteBox.style.transform = "scale(1)";
-        const checkIcon = noteBox.querySelector('.check-icon');
-        checkIcon.style.display = 'none';
-    })
 }
 
 folder_blur.addEventListener('touchstart', () => {
