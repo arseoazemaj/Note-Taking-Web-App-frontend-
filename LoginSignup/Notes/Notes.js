@@ -317,7 +317,6 @@ function cancel() {
     }
 }
 
-
 async function LoadFolders() {
     try {
         const response = await fetch('http://localhost:5216/api/Folders/get_folder', {
@@ -441,6 +440,11 @@ async function LoadFolders() {
         });
 
         lucide.createIcons();
+
+        document.querySelectorAll('.folder-icon').forEach(svg => {
+            const path = svg.querySelector('path:nth-child(2)');
+            if (path) path.setAttribute('d', 'M2 10h19.5');
+        });
 
     } catch (err) {
         console.error("Error loading folders:", err);

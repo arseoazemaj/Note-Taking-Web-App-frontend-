@@ -217,7 +217,7 @@ a, div {
     height: 420px;
     width: 90%;
     grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
-    gap: 45px 30px;
+    gap: 40px 25px;
     box-sizing: border-box;
     z-index: 5555;
     left: 50%;
@@ -227,19 +227,19 @@ a, div {
     display: none;
     filter: drop-shadow(0 0 15px #302758);
     opacity: .95;
-    padding: 15px;
+    padding: 20px;
     overflow-y: auto;
     scrollbar-width: none;
 }
 
 .note-box {
     position: relative;
-    height: 130px;
+    height: 125px;
     width: 85%;
     background-color: #251e45;
-    padding: 10px;
+    padding: 15px;
     border-radius: 15px;
-    padding-bottom: 30px;
+    padding-bottom: 35px;
 }
 
 .selected {background-color: #251e45b5;}
