@@ -269,6 +269,28 @@ a, div {
     text-overflow: ellipsis;
 }
 
+.lock-background {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    width: 100%;
+    background-color: #251e45c9;
+    border-radius: 15px;
+    z-index: 1;
+}
+
+.lock-icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 100px;
+    width: 100px;
+    color: #b17fd1;
+}
+
 .title {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -308,6 +330,7 @@ a, div {
     fill: #b07ecf;
     transform: rotate(20deg);
     pointer-events: none;
+    z-index: 2;
 }
 
 .note-check-icon {

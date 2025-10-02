@@ -157,6 +157,24 @@ async function loadNotes() {
             checkIcon.style.display = 'none';
             noteBox.appendChild(checkIcon);
 
+            if (note.isImportant) {
+                const isImportantIcon = document.createElement('i');
+                isImportantIcon.setAttribute('data-lucide', 'star');
+                noteBox.classList.add('important-note');
+                isImportantIcon.classList.add('important-icon');
+                noteBox.appendChild(isImportantIcon);
+            }
+
+            // if (note.isLocked) {
+                const lcokIcon = document.createElement('i');
+                lcokIcon.setAttribute('data-lucide', 'lock-keyhole');
+                lcokIcon.classList.add('lock-icon');
+                const lockBackground = document.createElement('div');
+                lockBackground.classList.add('lock-background');
+                lockBackground.appendChild(lcokIcon);
+                noteBox.appendChild(lockBackground);
+            // }
+
             const noteContent = document.createElement('p');
             noteContent.className = 'note-content';
             noteContent.textContent = note.content;
@@ -164,15 +182,6 @@ async function loadNotes() {
             const noteTitle = document.createElement('h3');
             noteTitle.textContent = note.title;
             noteTitle.className = 'title';
-
-            if (note.isImportant) {
-                noteBox.classList.add('important-note');
-                const isImportantIcon = document.createElement('i');
-                isImportantIcon.setAttribute('data-lucide', 'star');
-                isImportantIcon.id = 'star';
-                isImportantIcon.classList.add('important-icon');
-                noteBox.appendChild(isImportantIcon);
-            }
 
             noteBox.appendChild(noteContent);
             noteBox.appendChild(noteTitle);
@@ -440,6 +449,7 @@ async function LoadFolders() {
         });
 
         lucide.createIcons();
+
     } catch (err) {
         console.error("Error loading folders:", err);
     }
