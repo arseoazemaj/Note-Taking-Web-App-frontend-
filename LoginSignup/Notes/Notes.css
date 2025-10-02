@@ -289,6 +289,7 @@ a, div {
     height: 100px;
     width: 100px;
     color: #b17fd1;
+    filter: drop-shadow(0 0 3px #b17fd1);
 }
 
 .title {
@@ -338,7 +339,7 @@ a, div {
     position: absolute;
     left: 10px;
     display: none;
-    z-index: 1;
+    z-index: 2;
 }
 
 #decide {
