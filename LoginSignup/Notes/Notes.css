@@ -626,6 +626,20 @@ a, div {
     background-color: #1d1737;
 }
 
+#lock_menu {
+    visibility: hidden;
+    height: 295px;
+    width: 85%;
+    border-radius: 25px;
+    background: #251e45;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 3px;
+    padding: 15px;
+    z-index: 1;
+}
+
 #more_options {
     visibility: hidden;
     display: grid;

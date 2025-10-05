@@ -69,10 +69,6 @@ async function loadNotes() {
 
         containers.innerHTML = "";
 
-        if (notes.isImportant) {
-            noteBox.classList.add('important');
-        }
-
         let longPressTimer = null;
         let longPressFired = false;
         let wasCanceled = false;
@@ -159,8 +155,8 @@ async function loadNotes() {
 
             if (note.isImportant) {
                 const isImportantIcon = document.createElement('i');
-                isImportantIcon.setAttribute('data-lucide', 'star');
                 noteBox.classList.add('important-note');
+                isImportantIcon.setAttribute('data-lucide', 'star');
                 isImportantIcon.classList.add('important-icon');
                 noteBox.appendChild(isImportantIcon);
             }
@@ -210,6 +206,7 @@ function hideDecision() {
 
 const selectionMore = document.querySelectorAll('.note-box.selected');
 const move_menu = document.getElementById("move_menu");
+const lock_menu = document.getElementById("lock_menu");
 const more_options = document.getElementById("more_options");
 const create_folder_menu = document.getElementById("create_folder");
 const blur_background = document.getElementById("blur-background");
@@ -298,6 +295,11 @@ function move() {
     }
 }
 
+function lock() {
+    lock_menu.style.visibility = 'visible';
+    blur_background.style.visibility = 'visible';
+}
+
 function more() {
     if (more_options.style.visibility === 'visible') {
         more_options.style.visibility = 'hidden';
@@ -310,6 +312,7 @@ document.addEventListener("touchstart", function (event) {
     if (!move_menu.contains(event.target)) {
         move_menu.style.visibility = 'hidden';
         create_folder_menu.style.display = 'none';
+        lock_menu.style.visibility = 'hidden';
         blur_background.style.visibility = 'hidden';
         document.body.style.overflow = 'visible';
 
@@ -695,10 +698,9 @@ async function opened_folder(folderId) {
             noteTitle.className = 'title';
 
             if (note.isImportant) {
-                noteBox.classList.add('important-note');
                 const isImportantIcon = document.createElement('i');
+                noteBox.classList.add('important-note');
                 isImportantIcon.setAttribute('data-lucide', 'star');
-                isImportantIcon.id = 'star';
                 isImportantIcon.classList.add('important-icon');
                 noteBox.appendChild(isImportantIcon);
             }
@@ -831,10 +833,9 @@ document.addEventListener('DOMContentLoaded', function() {
             noteTitle.className = 'title';
 
             if (note.isImportant) {
-                noteBox.classList.add('important-note');
                 const isImportantIcon = document.createElement('i');
+                noteBox.classList.add('important-note');
                 isImportantIcon.setAttribute('data-lucide', 'star');
-                isImportantIcon.id = 'star';
                 isImportantIcon.classList.add('important-icon');
                 noteBox.appendChild(isImportantIcon);
             }
