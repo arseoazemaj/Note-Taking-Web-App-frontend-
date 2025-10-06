@@ -32,6 +32,8 @@ if (noteButton) {
 }
 
 let SelectionMode = false;
+let SelectedNotes = false;
+let SelectedFolders = false;
 
 document.addEventListener('DOMContentLoaded', loadNotes );
 
@@ -89,6 +91,7 @@ async function loadNotes() {
                 longPressTimer = setTimeout(() => {
                     longPressFired = true;
                     SelectionMode = true;
+                    SelectedNotes = true;
                     const checkIcon = noteBox.querySelector('.note-check-icon');
                     checkIcon.style.display = 'block';
                     noteBox.classList.add('selected');
@@ -126,9 +129,11 @@ async function loadNotes() {
                         const checkIcon = noteBox.querySelector('.note-check-icon');
                         const isSelected = noteBox.classList.toggle('selected');
                         if (isSelected) {
+                            SelectedNotes = true;
                             checkIcon.style.display = 'block';
                             noteBox.style.transform = "scale(.95)";
                         } else {
+                            SelectedNotes = false;
                             checkIcon.style.display = 'none';
                             noteBox.style.transform = "scale(1)";
                         }
@@ -379,7 +384,7 @@ async function LoadFolders() {
                 longPressTimer = setTimeout(() => {
                     longPressFired = true;
                     SelectionMode = true;
-
+                    SelectedFolders = true;
                     const checkIcon = folderBox.querySelector('.folder-check-icon');
                     checkIcon.style.display = 'block';
                     folderBox.classList.add('selected');
@@ -415,9 +420,11 @@ async function LoadFolders() {
                         const isSelected = folderBox.classList.toggle('selected');
 
                         if (isSelected) {
+                            SelectedFolders = true;
                             checkIcon.style.display = 'block';
                             folderBox.style.transform = "scale(.95)";
                         } else {
+                            SelectedFolders = false;
                             checkIcon.style.display = 'none';
                             folderBox.style.transform = "scale(1)";
                         }
