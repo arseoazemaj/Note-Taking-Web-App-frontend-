@@ -211,6 +211,10 @@ const more_options = document.getElementById("more_options");
 const create_folder_menu = document.getElementById("create_folder");
 const blur_background = document.getElementById("blur-background");
 const colorBox = document.querySelectorAll(".colors");
+const color_check = document.getElementsByClassName("check_color");
+const folders_menu = document.getElementById("folders_menu");
+
+blur_background.addEventListener('touchstart', blur_backgroundHandler);
 
 let selectedColor = null;
 
@@ -224,20 +228,16 @@ colorBox.forEach(box => {
         if (checkIcon) {
             checkIcon.style.visibility = 'visible';
         }
-        
+
         selectedColor = box.getAttribute("data-color");
     });
 });
 
 function create_folder() {
-    if (create_folder_menu.style.display !== 'block') {
-        create_folder_menu.style.visibility = 'visible';
-        create_folder_menu.style.display = 'block';
-        move_menu.style.visibility = 'hidden';
-    }
+    create_folder_menu.style.visibility = 'visible';
+    move_menu.style.visibility = 'hidden';
 }
 
-const folders_menu = document.getElementById("folders_menu");
 
 async function add() {
     const folderName = document.getElementById("folder_namer").value.trim();
@@ -257,7 +257,7 @@ async function add() {
         Name: folderName,
         Color: folderColor
     }
-    
+
     try {
         const response = await fetch('http://localhost:5216/api/Folders/create_folder', {
             method: "POST",
@@ -308,24 +308,24 @@ function more() {
     }
 }
 
-document.addEventListener("touchstart", function (event) {
-    if (!move_menu.contains(event.target)) {
-        move_menu.style.visibility = 'hidden';
-        create_folder_menu.style.display = 'none';
-        lock_menu.style.visibility = 'hidden';
-        blur_background.style.visibility = 'hidden';
-        document.body.style.overflow = 'visible';
 
-        document.querySelectorAll('.check_color').forEach(icon => {
-            icon.style.visibility = 'hidden';
-        });
+function blur_backgroundHandler() {
+    console.log("Blur background activated");
+    move_menu.style.visibility = 'hidden';
+    create_folder_menu.style.visibility = 'hidden';
+    for (let i = 0; i < color_check.length; i++) {
+        color_check[i].style.visibility = 'hidden';
     }
-});
+    lock_menu.style.visibility = 'hidden';
+
+    blur_background.style.visibility = 'hidden';
+}
 
 function cancel() {
-    if (create_folder_menu.style.display === 'block') {
-        create_folder_menu.style.display = 'none';
-        move_menu.style.visibility = 'visible';
+    create_folder_menu.style.visibility = 'hidden';
+    move_menu.style.visibility = 'visible';
+    for (let i = 0; i < color_check.length; i++) {
+        color_check[i].style.visibility = 'hidden';
     }
 }
 
