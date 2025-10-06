@@ -639,6 +639,7 @@ async function opened_folder(folderId) {
                     longPressTimer = setTimeout(() => {
                         longPressFired = true;
                         SelectionMode = true;
+                        SelectedNotes = true;
                         const checkIcon = noteBox.querySelector('.note-check-icon');
                         checkIcon.style.display = 'block';
                         noteBox.classList.add('selected');
@@ -676,9 +677,11 @@ async function opened_folder(folderId) {
                         const checkIcon = noteBox.querySelector('.note-check-icon');
                         const isSelected = noteBox.classList.toggle('selected');
                         if (isSelected) {
+                            SelectedNotes = true;
                             checkIcon.style.display = 'block';
                             noteBox.style.transform = "scale(.95)";
                         } else {
+                            SelectedNotes = false;
                             checkIcon.style.display = 'none';
                             noteBox.style.transform = "scale(1)";
                         }
