@@ -137,7 +137,6 @@ async function loadNotes() {
                             checkIcon.style.display = 'none';
                             noteBox.style.transform = "scale(1)";
                         }
-
                         updateSelectionModeFromDOM();
                     }
                 } else if (!longPressFired && !wasCanceled) {
@@ -211,7 +210,7 @@ function hideDecision() {
 
 const selectionMore = document.querySelectorAll('.note-box.selected');
 const blur_background = document.getElementById("blur-background");
-
+const move_btn = document.getElementById("move");
 const move_menu = document.getElementById("move_menu");
 const create_folder_menu = document.getElementById("create_folder");
 const folder_namer = document.getElementById("folder_namer");
@@ -423,12 +422,13 @@ async function LoadFolders() {
                             SelectedFolders = true;
                             checkIcon.style.display = 'block';
                             folderBox.style.transform = "scale(.95)";
+                            chosingDecisions();
                         } else {
                             SelectedFolders = false;
                             checkIcon.style.display = 'none';
                             folderBox.style.transform = "scale(1)";
+                            chosingDecisions();
                         }
-
                         updateSelectionModeFromDOM();
                     }
                 } else if (!longPressFired && !wasCanceled) {
@@ -477,6 +477,17 @@ async function LoadFolders() {
         console.error("Error loading folders:", err);
     }
 }
+
+function chosingDecisions() {
+    if (SelectedFolders) {
+        move_btn.disabled = true;
+        move_btn.style.opacity = 0.5;
+    } else {
+        move_btn.disabled = false;
+        move_btn.style.opacity = 1;
+    }
+}
+
 
 const folderPage = document.getElementById("folder_page");
 const folder_blur = document.getElementById("folder_blur");

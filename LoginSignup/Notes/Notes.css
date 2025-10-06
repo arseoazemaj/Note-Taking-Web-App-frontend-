@@ -393,6 +393,7 @@ a, div {
 
 #move:active, #lock:active, #share:active, #delete:active, #more:active {background-color: #251e45;}
 #move {left: 10%;}
+#move:disabled { pointer-events: none;}
 #lock {left: 30%;}
 #share {left: 50%;}
 #delete {left: 70%;}
