@@ -205,14 +205,15 @@ function hideDecision() {
 }
 
 const selectionMore = document.querySelectorAll('.note-box.selected');
-const move_menu = document.getElementById("move_menu");
-const lock_menu = document.getElementById("lock_menu");
-const more_options = document.getElementById("more_options");
-const create_folder_menu = document.getElementById("create_folder");
 const blur_background = document.getElementById("blur-background");
+
+const move_menu = document.getElementById("move_menu");
+const create_folder_menu = document.getElementById("create_folder");
+const folder_namer = document.getElementById("folder_namer");
 const colorBox = document.querySelectorAll(".colors");
 const color_check = document.getElementsByClassName("check_color");
-const folders_menu = document.getElementById("folders_menu");
+const lock_menu = document.getElementById("lock_menu");
+const more_options = document.getElementById("more_options");
 
 blur_background.addEventListener('touchstart', blur_backgroundHandler);
 
@@ -308,11 +309,11 @@ function more() {
     }
 }
 
-
 function blur_backgroundHandler() {
     console.log("Blur background activated");
     move_menu.style.visibility = 'hidden';
     create_folder_menu.style.visibility = 'hidden';
+    folder_namer.value = "";
     for (let i = 0; i < color_check.length; i++) {
         color_check[i].style.visibility = 'hidden';
     }
@@ -324,10 +325,13 @@ function blur_backgroundHandler() {
 function cancel() {
     create_folder_menu.style.visibility = 'hidden';
     move_menu.style.visibility = 'visible';
+    folder_namer.value = "";
     for (let i = 0; i < color_check.length; i++) {
         color_check[i].style.visibility = 'hidden';
     }
 }
+
+const folders_menu = document.getElementById("folders_menu");
 
 async function LoadFolders() {
     try {
