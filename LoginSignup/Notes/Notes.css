@@ -393,12 +393,11 @@ a, div {
 
 #move:active, #lock:active, #share:active, #delete:active, #more:active {background-color: #251e45;}
 #move {left: 10%;}
-#move:disabled { pointer-events: none;}
+#move:disabled { pointer-events: none; opacity: .5;}
 #lock {left: 30%;}
 #share {left: 50%;}
 #delete {left: 70%;}
 #more {left: 90%;}
-#move_container {position: relative;}
 
 #move_menu {
     visibility: hidden;
@@ -409,7 +408,7 @@ a, div {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: -67px;
+    bottom: 10px;
     padding: 15px;
     z-index: 1;
 }

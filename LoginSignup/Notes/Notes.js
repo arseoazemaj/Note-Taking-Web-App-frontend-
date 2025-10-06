@@ -388,6 +388,7 @@ async function LoadFolders() {
                     checkIcon.style.display = 'block';
                     folderBox.classList.add('selected');
                     showDecision();
+                    chosingDecisions();
                 }, LONG_PRESS_MS);
             });
 
@@ -481,10 +482,8 @@ async function LoadFolders() {
 function chosingDecisions() {
     if (SelectedFolders) {
         move_btn.disabled = true;
-        move_btn.style.opacity = 0.5;
     } else {
         move_btn.disabled = false;
-        move_btn.style.opacity = 1;
     }
 }
 
