@@ -244,6 +244,11 @@ async function add() {
     const folderName = document.getElementById("folder_namer").value.trim();
     const folderColor = selectedColor;
 
+    if (!folderName && !folderColor) {
+        alert("Folder name and color cannot be empty.");
+        return;
+    }
+
     if (!folderName) {
         alert("Folder name cannot be empty.");
         return;
