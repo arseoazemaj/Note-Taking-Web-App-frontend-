@@ -627,17 +627,40 @@ input::selection {
 
 #lock_menu_ask {
     visibility: hidden;
-    height: 295px;
-    width: 85%;
+    height: 260px;
+    width: 80%;
     border-radius: 25px;
     background: #251e45;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 3px;
-    padding: 15px;
+    bottom: 10px;
+    padding: 20px;
     z-index: 1;
 }
+
+#lock_decide {
+    position: fixed;
+    left: 0px;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    column-gap: 30px;
+}
+
+.lock_menu_answere {
+    height: 37px;
+    width: 40%;
+    background-color: transparent;
+    border-radius: 15px;
+    align-items: center;
+    border: none;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.lock_menu_answere:active {background-color: #1d1737;}
 
 #more_options {
     visibility: hidden;
