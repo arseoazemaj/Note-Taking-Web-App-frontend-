@@ -47,7 +47,7 @@
                 <i data-lucide="folder-input"></i>Move
             </button>
             <div id="move_menu">
-                <h3 id="folder-text">Select a folder</h3>
+                <h3 class="folder_header_text">Select a folder</h3>
                 <div id="folders">
                     <div id="folder_list"></div>
                     <button id="create_folder-btn" ontouchend="create_folder()">Create a new folder
@@ -55,9 +55,9 @@
                     </button>
                 </div>
                     <div id="create_folder">
-                        <h3 id="folder_text">Create a new folder</h3>
+                        <h3 class="folder_header_text">Create a new folder</h3>
                         <input type="text" placeholder="Folder name" id="folder_namer">
-                        <p id="color_text">Color</p>
+                        <h3 id="color_text">Color</h3>
                         <div id="dotted_line"></div>
                         <div id="color_picker">
                             <div class="colors" id="color_1" data-color="#644CE6">
@@ -108,8 +108,9 @@
             <button id="lock" ontouchend="lock()">
                 <i data-lucide="lock-keyhole"></i>Lock
             </button>
-            <div id="lock_menu">
-
+            <div id="lock_menu_ask">
+                <h3>Do you really want to lock this note?</h3>
+                <p>By continuing with this procedure you understand that by locking your note there will be no way to see what you note have without entering the right password.</p>
             </div>
         </div>
         <button id="share" ontouchend="share()">

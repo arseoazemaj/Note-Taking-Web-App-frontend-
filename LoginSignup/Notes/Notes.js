@@ -216,7 +216,9 @@ const create_folder_menu = document.getElementById("create_folder");
 const folder_namer = document.getElementById("folder_namer");
 const colorBox = document.querySelectorAll(".colors");
 const color_check = document.getElementsByClassName("check_color");
-const lock_menu = document.getElementById("lock_menu");
+
+const lock_menu = document.getElementById("lock_menu_ask");
+
 const more_container = document.getElementById("more_container");
 const more_options = document.getElementById("more_options");
 
