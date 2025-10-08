@@ -113,8 +113,14 @@
                 <p>Once locked, your note will remain hidden. Only the correct password can unlock it and reveal its content.</p>
                 <h3>Do you want to continue?</h3>
                 <div id="lock_decide">
-                    <button class="lock_menu_answere" id="no">No</button>
-                    <button class="lock_menu_answere" id="yes">Yes</button>
+                    <button class="lock_menu_answere" id="no" ontouchend="not_lock()">No</button>
+                    <button class="lock_menu_answere" id="yes" ontouchend="do_lock()">Yes</button>
+                </div>
+                <div id="lock_password_menu">
+                    <input type="text" class="lock_password" id="lock_password" placeholder="Enter a password">
+                    <input type="text" class="lock_password" id="confirm_lock_password" placeholder="Confirm your password">
+                    <button id="canccel_lock">Cancel</button>
+                    <button id="continue_lock">Lock</button>
                 </div>
             </div>
         </div>
@@ -135,7 +141,7 @@
         </div>
     </div>
 
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="Notes.js"></script>
     <script src="../common.js"></script>
 </body>

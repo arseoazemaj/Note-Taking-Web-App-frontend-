@@ -16,7 +16,7 @@
             <i data-lucide="ellipsis-vertical" id="ellipsis-icon"></i>
         </a>
         <div id="container">
-            <a id="save" draggable="false" onclick="update(noteId)">
+            <a id="save" draggable="false" ontouchend="update(noteId)">
                 <i data-lucide="save" id="save-icon"></i>
                 Save
             </a>
@@ -24,12 +24,12 @@
                 <i data-lucide="download" id="download-icon"></i>
                 Export
             </a>
-            <a id="important" draggable="false" onclick="fill()">
+            <a id="important" draggable="false" ontouchend="fill()">
                 <!-- <img src="../Icons/star.png" alt=""> -->
                 <i data-lucide="star" id="important-icon"></i>
                 Important
             </a>
-            <a id="trash" draggable="false" onclick="deleteNote()">
+            <a id="trash" draggable="false" ontouchend="deleteNote()">
                 <i data-lucide="trash-2" id="trash-icon"></i>Delete
             </a>
         </div>

@@ -218,6 +218,7 @@ const colorBox = document.querySelectorAll(".colors");
 const color_check = document.getElementsByClassName("check_color");
 
 const lock_menu = document.getElementById("lock_menu_ask");
+const lock_password = document.getElementById("lock_password_menu");
 
 const more_container = document.getElementById("more_container");
 const more_options = document.getElementById("more_options");
@@ -330,6 +331,16 @@ function cancel() {
 function lock() {
     lock_menu.style.visibility = 'visible';
     blur_background.style.visibility = 'visible';
+}
+
+function not_lock() {
+    lock_menu.style.visibility = 'hidden';
+    blur_background.style.visibility = 'hidden';
+}
+
+function do_lock() {
+    lock_menu.style.visibility = 'hidden';
+    lock_password.style.visibility = 'visible';
 }
 
 function more() {

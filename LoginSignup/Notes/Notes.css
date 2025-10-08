@@ -408,7 +408,7 @@ input::selection {
 
 #move_menu {
     visibility: hidden;
-    height: 295px;
+    height: 300px;
     width: 85%;
     border-radius: 25px;
     background: #251e45;
@@ -661,6 +661,41 @@ input::selection {
 }
 
 .lock_menu_answere:active {background-color: #1d1737;}
+
+#lock_password_menu {
+    visibility: hidden;
+    height: 100%;
+    width: 100%;
+    border-radius: 25px;
+    background: #251e45;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 250px;
+    padding: 20px;
+    z-index: 1;
+}
+
+.lock_password {
+    position: absolute;
+    left: 20px;
+    height: 35px;
+    width: 77%;
+    background-color: #1d1737;
+    border: none;
+    border-radius: 5px;
+    padding-top: 2px;
+    padding-left: 20px;
+    outline: none;
+}
+
+#lock_password {
+    top: 15%;
+}
+
+#confirm_lock_password {
+    top: 30%;
+}
 
 #more_options {
     visibility: hidden;
