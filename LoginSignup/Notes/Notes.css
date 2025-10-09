@@ -420,10 +420,16 @@ input::selection {
     z-index: 1;
 }
 
-.folder_header_text {
-    position: fixed;
-    left: 21px;
-    top: 0;
+#folder_header_text_1 {
+    position: relative;
+    left: 10px;
+    top: -20px;
+}
+
+#folder_header_text_2 {
+    position: relative;
+    top: -10px;
+    left: 5px;
 }
 
 #folders {
@@ -486,8 +492,8 @@ input::selection {
     transform: translateX(-50%);
     background-color: transparent;
     border: none;
-    color: #ae7fce;
-    font-size: 1.17em;
+    font-size: 17px;
+    font-weight: bold;
 }
 
 #create_folder-btn:active {background-color: #251e45;}
@@ -502,14 +508,15 @@ input::selection {
 
 #create_folder {
     visibility: hidden;
-    height: 340px;
+    height: 100%;
     width: 100%;
     left: 50%;
     transform: translateX(-50%);
     background: #251e45;
-    position: fixed;
-    bottom: 0%;
+    position: relative;
+    bottom: 82px;
     border-radius: 25px;
+    padding: 15px;
 }
 
 #folder_namer {
@@ -532,16 +539,15 @@ input::selection {
 }
 
 #color_text {
-    position: fixed;
-    left: 20px;
-    top: 95px;
-    color: #ae7fce;
+    position: relative;
+    left: 5px;
+    top: 30px;
 }
 
 #dotted_line {
     border-bottom: 2px dotted;
     position: relative;
-    top: 145px;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
     color: #ae7fce;
@@ -601,27 +607,25 @@ input::selection {
     transform: translateX(-50%);
 }
 
-#cancel {
+#cancel_folder {
     height: 40px;
     width: 140px;
     border-radius: 70% / 300%;
     background: transparent;
     border: none;
-    color: #ae7fce;
     font-size: 17px;
 }
 
-#add {
+#add_folder {
     height: 40px;
     width: 140px;
     border-radius: 70% / 300%;
     background: transparent;
     border: none;
-    color: #ae7fce;
     font-size: 17px;
 }
 
-#cancel:active, #add:active {
+#cancel_folder:active, #add_folder:active {
     background-color: #1d1737;
 }
 
@@ -639,7 +643,7 @@ input::selection {
     z-index: 1;
 }
 
-#lock_decide {
+.lock_decide {
     position: fixed;
     left: 0px;
     bottom: 20px;
@@ -664,14 +668,14 @@ input::selection {
 
 #lock_password_menu {
     visibility: hidden;
-    height: 100%;
+    height: 70%;
     width: 100%;
     border-radius: 25px;
     background: #251e45;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 250px;
+    bottom: 173px;
     padding: 20px;
     z-index: 1;
 }
@@ -690,11 +694,26 @@ input::selection {
 }
 
 #lock_password {
-    top: 15%;
+    top: 20%;
 }
 
 #confirm_lock_password {
-    top: 30%;
+    top: 45%;
+}
+
+#cancel_lock, #continue_lock {
+    height: 40px;
+    width: 140px;
+    border-radius: 70% / 300%;
+    background: transparent;
+    border: none;
+    color: #ae7fce;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#cancel_lock:active, #continue_lock:active {
+    background-color: #1d1737;
 }
 
 #more_options {

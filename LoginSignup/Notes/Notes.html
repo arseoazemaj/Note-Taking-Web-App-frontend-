@@ -43,19 +43,19 @@
     <div id="decide">
         <div id="blur-background"></div>
         <div id="move_container">
-            <button id="move" ontouchend="move()">
+            <button id="move" ontouchstart="move()">
                 <i data-lucide="folder-input"></i>Move
             </button>
             <div id="move_menu">
-                <h3 class="folder_header_text">Select a folder</h3>
+                <h3 id="folder_header_text_1">Select a folder</h3>
                 <div id="folders">
                     <div id="folder_list"></div>
-                    <button id="create_folder-btn" ontouchend="create_folder()">Create a new folder
+                    <button id="create_folder-btn" ontouchstart="create_folder()">Create a new folder
                         <i data-lucide="plus" id="plus"></i>
                     </button>
                 </div>
                     <div id="create_folder">
-                        <h3 class="folder_header_text">Create a new folder</h3>
+                        <h3 id="folder_header_text_2">Create a new folder</h3>
                         <input type="text" placeholder="Folder name" id="folder_namer">
                         <h3 id="color_text">Color</h3>
                         <div id="dotted_line"></div>
@@ -98,40 +98,42 @@
                             </div>
                         </div>
                         <div id="chose">
-                            <button id="cancel" ontouchend="cancel()">Cancel</button>
-                            <button id="add" ontouchend="add()">Add</button>
+                            <button id="cancel_folder" ontouchstart="cancel_folder()">Cancel</button>
+                            <button id="add_folder" ontouchstart="add_folder()">Add</button>
                         </div>
                     </div>
             </div>
         </div>
         <div id="lock_container">
-            <button id="lock" ontouchend="lock()">
+            <button id="lock" ontouchstart="lock()">
                 <i data-lucide="lock-keyhole"></i>Lock
             </button>
             <div id="lock_menu_ask">
                 <h3>Do you really want to lock this note?</h3>
                 <p>Once locked, your note will remain hidden. Only the correct password can unlock it and reveal its content.</p>
                 <h3>Do you want to continue?</h3>
-                <div id="lock_decide">
-                    <button class="lock_menu_answere" id="no" ontouchend="not_lock()">No</button>
-                    <button class="lock_menu_answere" id="yes" ontouchend="do_lock()">Yes</button>
+                <div class="lock_decide">
+                    <button class="lock_menu_answere" id="no" ontouchstart="not_lock()">No</button>
+                    <button class="lock_menu_answere" id="yes" ontouchstart="do_lock()">Yes</button>
                 </div>
                 <div id="lock_password_menu">
                     <input type="text" class="lock_password" id="lock_password" placeholder="Enter a password">
                     <input type="text" class="lock_password" id="confirm_lock_password" placeholder="Confirm your password">
-                    <button id="canccel_lock">Cancel</button>
-                    <button id="continue_lock">Lock</button>
+                    <div class="lock_decide">
+                        <button id="cancel_lock" ontouchstart="cancel_lock()">Cancel</button>
+                        <button id="continue_lock">Lock</button>
+                    </div>
                 </div>
             </div>
         </div>
-        <button id="share" ontouchend="share()">
+        <button id="share" ontouchstart="share()">
             <i data-lucide="share-2"></i>Share
         </button>
-        <button id="delete" ontouchend="send_to_trash()">
+        <button id="delete" ontouchstart="send_to_trash()">
             <i data-lucide="trash-2"></i>Delete
         </button>
         <div id="more_container">
-            <button id="more" ontouchend="more()">
+            <button id="more" ontouchstart="more()">
                 <i data-lucide="ellipsis-vertical"></i>More
             </button>
             <div id="more_options">

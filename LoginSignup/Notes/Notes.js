@@ -251,6 +251,7 @@ function blur_backgroundHandler() {
         color_check[i].style.visibility = 'hidden';
     }
     lock_menu.style.visibility = 'hidden';
+    lock_password.style.visibility = 'hidden';
 
     blur_background.style.visibility = 'hidden';
 }
@@ -269,7 +270,7 @@ function create_folder() {
     move_menu.style.visibility = 'hidden';
 }
 
-async function add() {
+async function add_folder() {
     const folderName = document.getElementById("folder_namer").value.trim();
     const folderColor = selectedColor;
 
@@ -319,7 +320,7 @@ async function add() {
     LoadFolderName();
 }
 
-function cancel() {
+function cancel_folder() {
     create_folder_menu.style.visibility = 'hidden';
     move_menu.style.visibility = 'visible';
     folder_namer.value = "";
@@ -341,6 +342,11 @@ function not_lock() {
 function do_lock() {
     lock_menu.style.visibility = 'hidden';
     lock_password.style.visibility = 'visible';
+}
+
+function cancel_lock() {
+    lock_password.style.visibility = 'hidden';
+    lock_menu.style.visibility = 'visible';
 }
 
 function more() {
