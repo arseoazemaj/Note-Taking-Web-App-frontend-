@@ -109,15 +109,15 @@
                 <i data-lucide="lock-keyhole"></i>Lock
             </button>
             <div id="lock_menu_ask">
-                <h3>Do you really want to lock this note?</h3>
-                <p>Once locked, your note will remain hidden. Only the correct password can unlock it and reveal its content.</p>
+                <h3>Are you sure you want to lock this note?</h3>
+                <p>Once locked, it will stay hidden and protected. Only your password can bring it back to view.</p>
                 <h3>Do you want to continue?</h3>
                 <div class="lock_decide">
                     <button class="lock_menu_answere" id="no" ontouchstart="not_lock()">No</button>
                     <button class="lock_menu_answere" id="yes" ontouchstart="do_lock()">Yes</button>
                 </div>
                 <div id="lock_password_menu">
-                    <p>Create a strong password and keep it safe this note will only open for you.</p>
+                    <h3 id="lock_password_menu_text">Create a strong password and keep it safe this note will only open for you.</h3>
                     <input type="text" class="lock_password" id="lock_password" placeholder="Enter a password">
                     <input type="text" class="lock_password" id="confirm_lock_password" placeholder="Confirm your password">
                     <div class="lock_decide">
