@@ -668,14 +668,14 @@ input::selection {
 
 #lock_password_menu {
     visibility: hidden;
-    height: 70%;
+    height: 100%;
     width: 100%;
     border-radius: 25px;
     background: #251e45;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 173px;
+    bottom: 251px;
     padding: 20px;
     z-index: 1;
 }
@@ -694,11 +694,11 @@ input::selection {
 }
 
 #lock_password {
-    top: 20%;
+    top: 35%;
 }
 
 #confirm_lock_password {
-    top: 45%;
+    top: 55%;
 }
 
 #cancel_lock, #continue_lock {
