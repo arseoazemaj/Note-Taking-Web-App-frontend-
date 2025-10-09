@@ -687,7 +687,7 @@ input::selection {
     transform: translateX(-50%);
 }
 
-.lock_password {
+#lock_password, #confirm_lock_password {
     position: absolute;
     left: 20px;
     height: 35px;
