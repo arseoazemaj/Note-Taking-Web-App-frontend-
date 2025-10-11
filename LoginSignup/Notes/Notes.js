@@ -165,15 +165,16 @@ async function loadNotes() {
                 noteBox.appendChild(isImportantIcon);
             }
 
-            // if (note.isLocked) {
+            if (note.isLocked) {
                 const lcokIcon = document.createElement('i');
                 lcokIcon.setAttribute('data-lucide', 'lock-keyhole');
                 lcokIcon.classList.add('lock-icon');
                 const lockBackground = document.createElement('div');
                 lockBackground.classList.add('lock-background');
                 lockBackground.appendChild(lcokIcon);
+                noteBox.classList.add('locked-note');
                 noteBox.appendChild(lockBackground);
-            // }
+            }
 
             const noteContent = document.createElement('p');
             noteContent.className = 'note-content';
@@ -359,10 +360,10 @@ function cancel_lock() {
 continueLockBtn.disabled = true;
 
 function lock_password_validation() {
-    const password = lock_password.value; // do NOT trim here
-    const confirm = lock_password_confirm.value; // do NOT trim here
+    const password = lock_password.value;
+    const confirm = lock_password_confirm.value;
 
-    const noSpaces = !password.includes(" ") && !confirm.includes(" "); // catches all spaces
+    const noSpaces = !password.includes(" ") && !confirm.includes(" ");
     const lock_password_Filled = password.length > 0 && confirm.length > 0;
     const longEnough_lock_passwords = password.length >= 8 && confirm.length >= 8;
     const lock_match = password === confirm;
@@ -378,7 +379,30 @@ lock_password.addEventListener("input", lock_password_validation);
 lock_password_confirm.addEventListener("input", lock_password_validation);
 
 async function continue_lock() {
-    const noteId = SelectedNotes.id;
+    const selectedNote = document.querySelector('.note-box.selected'); // Find the selected note
+    if (!selectedNote) {
+        alert("No note selected.");
+        return;
+    }
+
+    const noteId = selectedNote.id;
+    const password = lock_password.value.trim();
+    const confirmPassword = lock_password_confirm.value.trim();
+
+    if (!password || !confirmPassword) {
+        alert("Please fill both password fields.");
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return;
+    }
+
+    if (password.length < 8) {
+        alert("Password must be at least 8 characters long.");
+        return;
+    }
 
     const payload = {
         Id: noteId,
@@ -403,13 +427,13 @@ async function continue_lock() {
         }
 
         alert(result.message || "Note locked successfully.");
+        loadNotes();
 
         const lockIcon = selectedNote.querySelector('.lock-icon');
         if (lockIcon) lockIcon.style.display = 'block';
 
         lock_password_menu.style.visibility = 'hidden';
         blur_background.style.visibility = 'hidden';
-
     } catch (error) {
         console.error("Error locking note:", error);
         alert("Error locking note. See console for details.");
@@ -809,14 +833,6 @@ async function opened_folder(folderId) {
             checkIcon.style.display = 'none';
             noteBox.appendChild(checkIcon);
 
-            const noteContent = document.createElement('p');
-            noteContent.className = 'note-content';
-            noteContent.textContent = note.content;
-
-            const noteTitle = document.createElement('h3');
-            noteTitle.textContent = note.title;
-            noteTitle.className = 'title';
-
             if (note.isImportant) {
                 const isImportantIcon = document.createElement('i');
                 noteBox.classList.add('important-note');
@@ -824,6 +840,25 @@ async function opened_folder(folderId) {
                 isImportantIcon.classList.add('important-icon');
                 noteBox.appendChild(isImportantIcon);
             }
+
+            if (note.isLocked) {
+                const lcokIcon = document.createElement('i');
+                lcokIcon.setAttribute('data-lucide', 'lock-keyhole');
+                lcokIcon.classList.add('lock-icon');
+                const lockBackground = document.createElement('div');
+                lockBackground.classList.add('lock-background');
+                lockBackground.appendChild(lcokIcon);
+                noteBox.classList.add('locked-note');
+                noteBox.appendChild(lockBackground);
+            }
+
+            const noteContent = document.createElement('p');
+            noteContent.className = 'note-content';
+            noteContent.textContent = note.content;
+
+            const noteTitle = document.createElement('h3');
+            noteTitle.textContent = note.title;
+            noteTitle.className = 'title';
 
             noteBox.appendChild(noteContent);
             noteBox.appendChild(noteTitle);
@@ -944,14 +979,6 @@ document.addEventListener('DOMContentLoaded', function() {
             checkIcon.style.display = 'none';
             noteBox.appendChild(checkIcon);
 
-            const noteContent = document.createElement('p');
-            noteContent.className = 'note-content';
-            noteContent.textContent = note.content;
-
-            const noteTitle = document.createElement('h3');
-            noteTitle.textContent = note.title;
-            noteTitle.className = 'title';
-
             if (note.isImportant) {
                 const isImportantIcon = document.createElement('i');
                 noteBox.classList.add('important-note');
@@ -959,6 +986,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 isImportantIcon.classList.add('important-icon');
                 noteBox.appendChild(isImportantIcon);
             }
+
+            if (note.isLocked) {
+                const lcokIcon = document.createElement('i');
+                lcokIcon.setAttribute('data-lucide', 'lock-keyhole');
+                lcokIcon.classList.add('lock-icon');
+                const lockBackground = document.createElement('div');
+                lockBackground.classList.add('lock-background');
+                lockBackground.appendChild(lcokIcon);
+                noteBox.classList.add('locked-note');
+                noteBox.appendChild(lockBackground);
+            }
+
+            const noteContent = document.createElement('p');
+            noteContent.className = 'note-content';
+            noteContent.textContent = note.content;
+
+            const noteTitle = document.createElement('h3');
+            noteTitle.textContent = note.title;
+            noteTitle.className = 'title';
 
             noteBox.appendChild(noteContent);
             noteBox.appendChild(noteTitle);
