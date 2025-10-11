@@ -207,6 +207,8 @@ function hideDecision() {
     document.getElementById("decide").style.display = 'none';
     document.getElementById("more_options").style.visibility = 'hidden';
     document.getElementById("new_note").style.display = 'block';
+    blur_background.style.visibility = 'hidden';
+    lock_password_menu.style.visibility = 'hidden';
 }
 
 const blur_background = document.getElementById("blur-background");
@@ -379,7 +381,8 @@ lock_password.addEventListener("input", lock_password_validation);
 lock_password_confirm.addEventListener("input", lock_password_validation);
 
 async function continue_lock() {
-    const selectedNote = document.querySelector('.note-box.selected'); // Find the selected note
+    const selectedNote = document.querySelector('.note-box.selected');
+    
     if (!selectedNote) {
         alert("No note selected.");
         return;
@@ -426,14 +429,14 @@ async function continue_lock() {
             return;
         }
 
-        alert(result.message || "Note locked successfully.");
-        loadNotes();
-
         const lockIcon = selectedNote.querySelector('.lock-icon');
         if (lockIcon) lockIcon.style.display = 'block';
-
-        lock_password_menu.style.visibility = 'hidden';
-        blur_background.style.visibility = 'hidden';
+        
+        hideDecision();
+        loadNotes();
+        SelectionMode = false;
+        const checkIcon = selectedNote.querySelector('.note-check-icon');
+        checkIcon.style.display = 'none';
     } catch (error) {
         console.error("Error locking note:", error);
         alert("Error locking note. See console for details.");
@@ -880,139 +883,139 @@ async function opened_folder(folderId) {
 
 
 //TODO: Use only when wanting to see in your phone (when using comment code from line 50)
-document.addEventListener('DOMContentLoaded', function() {
-    let SelectionMode = false;
-    const containers = document.getElementById('containers');
-    let notes = JSON.parse(localStorage.getItem('notes')) || [];
+// document.addEventListener('DOMContentLoaded', function() {
+//     let SelectionMode = false;
+//     const containers = document.getElementById('containers');
+//     let notes = JSON.parse(localStorage.getItem('notes')) || [];
 
-    // Shared variables for all notes
-    let longPressTimer = null;
-    let longPressFired = false;
-    let wasCanceled = false;
-    const LONG_PRESS_MS = 500;
-    const MOVE_THRESHOLD = 5;
-    let startX = 0;
-    let startY = 0;
+//     // Shared variables for all notes
+//     let longPressTimer = null;
+//     let longPressFired = false;
+//     let wasCanceled = false;
+//     const LONG_PRESS_MS = 500;
+//     const MOVE_THRESHOLD = 5;
+//     let startX = 0;
+//     let startY = 0;
 
-    function setupNoteEvents(noteBox, note) {
-        noteBox.addEventListener('touchstart', function(e) {
-            longPressFired = false;
-            wasCanceled = false;
+//     function setupNoteEvents(noteBox, note) {
+//         noteBox.addEventListener('touchstart', function(e) {
+//             longPressFired = false;
+//             wasCanceled = false;
 
-            const touch = e.touches[0];
-            startX = touch.clientX;
-            startY = touch.clientY;
+//             const touch = e.touches[0];
+//             startX = touch.clientX;
+//             startY = touch.clientY;
 
-            longPressTimer = setTimeout(() => {
-                longPressFired = true;
-                SelectionMode = true;
-                const checkIcon = noteBox.querySelector('.note-check-icon');
-                checkIcon.style.display = 'block';
-                noteBox.classList.add('selected');
-                noteBox.style.transform = "scale(.95)";
-                showDecision();
-            }, LONG_PRESS_MS);
-        });
+//             longPressTimer = setTimeout(() => {
+//                 longPressFired = true;
+//                 SelectionMode = true;
+//                 const checkIcon = noteBox.querySelector('.note-check-icon');
+//                 checkIcon.style.display = 'block';
+//                 noteBox.classList.add('selected');
+//                 noteBox.style.transform = "scale(.95)";
+//                 showDecision();
+//             }, LONG_PRESS_MS);
+//         });
 
-        noteBox.addEventListener('touchmove', function(e) {
-            const touch = e.touches[0];
-            const dx = touch.clientX - startX;
-            const dy = touch.clientY - startY;
-            const distance = Math.sqrt(dx * dx + dy * dy);
+//         noteBox.addEventListener('touchmove', function(e) {
+//             const touch = e.touches[0];
+//             const dx = touch.clientX - startX;
+//             const dy = touch.clientY - startY;
+//             const distance = Math.sqrt(dx * dx + dy * dy);
 
-            if (distance > MOVE_THRESHOLD) {
-                clearTimeout(longPressTimer);
-                wasCanceled = true;
-            }
-        });
+//             if (distance > MOVE_THRESHOLD) {
+//                 clearTimeout(longPressTimer);
+//                 wasCanceled = true;
+//             }
+//         });
 
-        noteBox.addEventListener('touchcancel', function() {
-            clearTimeout(longPressTimer);
-            wasCanceled = true;
-        });
+//         noteBox.addEventListener('touchcancel', function() {
+//             clearTimeout(longPressTimer);
+//             wasCanceled = true;
+//         });
 
-        noteBox.addEventListener('touchend', function() {
-            clearTimeout(longPressTimer);
+//         noteBox.addEventListener('touchend', function() {
+//             clearTimeout(longPressTimer);
 
-            if (wasCanceled) {
-                return;
-            }
+//             if (wasCanceled) {
+//                 return;
+//             }
 
-            if (SelectionMode) {
-                if (!longPressFired) {
-                    const checkIcon = noteBox.querySelector('.note-check-icon');
-                    const isSelected = noteBox.classList.toggle('selected');
+//             if (SelectionMode) {
+//                 if (!longPressFired) {
+//                     const checkIcon = noteBox.querySelector('.note-check-icon');
+//                     const isSelected = noteBox.classList.toggle('selected');
 
-                    if (isSelected) {
-                        checkIcon.style.display = 'block';
-                        noteBox.style.transform = "scale(.95)";
-                    } else {
-                        checkIcon.style.display = 'none';
-                        noteBox.style.transform = "scale(1)";
-                    }
+//                     if (isSelected) {
+//                         checkIcon.style.display = 'block';
+//                         noteBox.style.transform = "scale(.95)";
+//                     } else {
+//                         checkIcon.style.display = 'none';
+//                         noteBox.style.transform = "scale(1)";
+//                     }
 
-                    const anySelected = document.querySelector('.note-box.selected');
-                    if (anySelected) {
-                        showDecision();
-                    } else {
-                        SelectionMode = false;
-                        hideDecision();
-                    }
-                }
-            } else if (!longPressFired && !wasCanceled) {
-                window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
-            }
+//                     const anySelected = document.querySelector('.note-box.selected');
+//                     if (anySelected) {
+//                         showDecision();
+//                     } else {
+//                         SelectionMode = false;
+//                         hideDecision();
+//                     }
+//                 }
+//             } else if (!longPressFired && !wasCanceled) {
+//                 window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
+//             }
 
-            longPressFired = false;
-        });
-    }
+//             longPressFired = false;
+//         });
+//     }
 
-    if (!token) {
-            notes.forEach(note => {
-            const noteBox = document.createElement('div');
-            noteBox.className = 'note-box';
-            noteBox.setAttribute('id', note.id);
+//     if (!token) {
+//             notes.forEach(note => {
+//             const noteBox = document.createElement('div');
+//             noteBox.className = 'note-box';
+//             noteBox.setAttribute('id', note.id);
 
-            const checkIcon = document.createElement('i');
-            checkIcon.setAttribute('data-lucide', 'circle-check');
-            checkIcon.classList.add('note-check-icon');
-            checkIcon.style.display = 'none';
-            noteBox.appendChild(checkIcon);
+//             const checkIcon = document.createElement('i');
+//             checkIcon.setAttribute('data-lucide', 'circle-check');
+//             checkIcon.classList.add('note-check-icon');
+//             checkIcon.style.display = 'none';
+//             noteBox.appendChild(checkIcon);
 
-            if (note.isImportant) {
-                const isImportantIcon = document.createElement('i');
-                noteBox.classList.add('important-note');
-                isImportantIcon.setAttribute('data-lucide', 'star');
-                isImportantIcon.classList.add('important-icon');
-                noteBox.appendChild(isImportantIcon);
-            }
+//             if (note.isImportant) {
+//                 const isImportantIcon = document.createElement('i');
+//                 noteBox.classList.add('important-note');
+//                 isImportantIcon.setAttribute('data-lucide', 'star');
+//                 isImportantIcon.classList.add('important-icon');
+//                 noteBox.appendChild(isImportantIcon);
+//             }
 
-            if (note.isLocked) {
-                const lcokIcon = document.createElement('i');
-                lcokIcon.setAttribute('data-lucide', 'lock-keyhole');
-                lcokIcon.classList.add('lock-icon');
-                const lockBackground = document.createElement('div');
-                lockBackground.classList.add('lock-background');
-                lockBackground.appendChild(lcokIcon);
-                noteBox.classList.add('locked-note');
-                noteBox.appendChild(lockBackground);
-            }
+//             if (note.isLocked) {
+//                 const lcokIcon = document.createElement('i');
+//                 lcokIcon.setAttribute('data-lucide', 'lock-keyhole');
+//                 lcokIcon.classList.add('lock-icon');
+//                 const lockBackground = document.createElement('div');
+//                 lockBackground.classList.add('lock-background');
+//                 lockBackground.appendChild(lcokIcon);
+//                 noteBox.classList.add('locked-note');
+//                 noteBox.appendChild(lockBackground);
+//             }
 
-            const noteContent = document.createElement('p');
-            noteContent.className = 'note-content';
-            noteContent.textContent = note.content;
+//             const noteContent = document.createElement('p');
+//             noteContent.className = 'note-content';
+//             noteContent.textContent = note.content;
 
-            const noteTitle = document.createElement('h3');
-            noteTitle.textContent = note.title;
-            noteTitle.className = 'title';
+//             const noteTitle = document.createElement('h3');
+//             noteTitle.textContent = note.title;
+//             noteTitle.className = 'title';
 
-            noteBox.appendChild(noteContent);
-            noteBox.appendChild(noteTitle);
-            containers.appendChild(noteBox);
+//             noteBox.appendChild(noteContent);
+//             noteBox.appendChild(noteTitle);
+//             containers.appendChild(noteBox);
 
-            setupNoteEvents(noteBox, note);
-        });
+//             setupNoteEvents(noteBox, note);
+//         });
 
-        lucide.createIcons();
-    }
-});
+//         lucide.createIcons();
+//     }
+// });
