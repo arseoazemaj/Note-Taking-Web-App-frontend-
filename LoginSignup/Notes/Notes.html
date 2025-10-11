@@ -113,8 +113,8 @@
                 <p>Once locked, it will stay hidden and protected. Only your password can bring it back to view.</p>
                 <h3>Do you want to continue?</h3>
                 <div class="lock_decide">
-                    <button class="lock_menu_answere" id="no" ontouchstart="not_lock()">No</button>
-                    <button class="lock_menu_answere" id="yes" ontouchstart="do_lock()">Yes</button>
+                    <button class="lock_menu_answere" ontouchstart="not_lock()">No</button>
+                    <button class="lock_menu_answere" ontouchstart="do_lock()">Yes</button>
                 </div>
                 <div id="lock_password_menu">
                     <h3 id="lock_password_menu_text">Create a strong password and keep it safe this note will only open for you.</h3>
@@ -122,7 +122,7 @@
                     <input type="text" id="confirm_lock_password" placeholder="Confirm your password">
                     <div class="lock_decide">
                         <button id="cancel_lock" ontouchstart="cancel_lock()">Cancel</button>
-                        <button id="continue_lock">Lock</button>
+                        <button id="continue_lock" ontouchstart="continue_lock()">Lock</button>
                     </div>
                 </div>
             </div>

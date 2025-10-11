@@ -208,8 +208,9 @@ function hideDecision() {
     document.getElementById("new_note").style.display = 'block';
 }
 
-const selectionMore = document.querySelectorAll('.note-box.selected');
 const blur_background = document.getElementById("blur-background");
+blur_background.addEventListener('touchstart', blur_backgroundHandler);
+
 const move_btn = document.getElementById("move");
 const move_menu = document.getElementById("move_menu");
 const create_folder_menu = document.getElementById("create_folder");
@@ -218,12 +219,16 @@ const colorBox = document.querySelectorAll(".colors");
 const color_check = document.getElementsByClassName("check_color");
 
 const lock_menu = document.getElementById("lock_menu_ask");
-const lock_password = document.getElementById("lock_password_menu");
+const lock_password_menu = document.getElementById("lock_password_menu");
+const lock_password = document.getElementById("lock_password");
+const lock_password_confirm = document.getElementById("confirm_lock_password");
+const continueLockBtn = document.getElementById("continue_lock");
+const lockPasswordInput = document.getElementById("lock_password");
+const confirmLockPasswordInput = document.getElementById("confirm_lock_password");
 
 const more_container = document.getElementById("more_container");
 const more_options = document.getElementById("more_options");
 
-blur_background.addEventListener('touchstart', blur_backgroundHandler);
 
 let selectedColor = null;
 
@@ -251,7 +256,7 @@ function blur_backgroundHandler() {
         color_check[i].style.visibility = 'hidden';
     }
     lock_menu.style.visibility = 'hidden';
-    lock_password.style.visibility = 'hidden';
+    lock_password_menu.style.visibility = 'hidden';
 
     blur_background.style.visibility = 'hidden';
 }
@@ -341,13 +346,76 @@ function not_lock() {
 
 function do_lock() {
     lock_menu.style.visibility = 'hidden';
-    lock_password.style.visibility = 'visible';
+    lock_password_menu.style.visibility = 'visible';
+    lock_password.value = "";
+    lock_password_confirm.value = "";
 }
 
 function cancel_lock() {
-    lock_password.style.visibility = 'hidden';
+    lock_password_menu.style.visibility = 'hidden';
     lock_menu.style.visibility = 'visible';
 }
+
+continueLockBtn.disabled = true;
+
+function lock_password_validation() {
+    const password = lock_password.value; // do NOT trim here
+    const confirm = lock_password_confirm.value; // do NOT trim here
+
+    const noSpaces = !password.includes(" ") && !confirm.includes(" "); // catches all spaces
+    const lock_password_Filled = password.length > 0 && confirm.length > 0;
+    const longEnough_lock_passwords = password.length >= 8 && confirm.length >= 8;
+    const lock_match = password === confirm;
+
+    if (lock_password_Filled && longEnough_lock_passwords && lock_match && noSpaces) {
+        continueLockBtn.disabled = false;
+    } else {
+        continueLockBtn.disabled = true;
+    }
+}
+
+lock_password.addEventListener("input", lock_password_validation);
+lock_password_confirm.addEventListener("input", lock_password_validation);
+
+async function continue_lock() {
+    const noteId = SelectedNotes.id;
+
+    const payload = {
+        Id: noteId,
+        Lock_Password: password
+    };
+
+    try {
+        const response = await fetch('http://localhost:5216/api/Notes/lock_note', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            alert(result.message || "Failed to lock note.");
+            return;
+        }
+
+        alert(result.message || "Note locked successfully.");
+
+        const lockIcon = selectedNote.querySelector('.lock-icon');
+        if (lockIcon) lockIcon.style.display = 'block';
+
+        lock_password_menu.style.visibility = 'hidden';
+        blur_background.style.visibility = 'hidden';
+
+    } catch (error) {
+        console.error("Error locking note:", error);
+        alert("Error locking note. See console for details.");
+    }
+}
+
 
 function more() {
     if (more_options.style.visibility === 'visible') {
