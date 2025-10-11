@@ -14,11 +14,23 @@ function togglePassword(inputId, eyeId, hiddenEyeId) {
     }
 }
 
+const username = document.getElementById("username");
+const email = document.getElementById("email");
+const password = document.getElementById("Password");
+const confirmPassword = document.getElementById("confirmPassword");
+
+const loginUsername = document.getElementById("login_username");
+const loginPassword = document.getElementById("login_password");
+
 function go_to_log_in() {
     document.getElementById("sign_up").style.display = "none";
     document.getElementById("log_in").style.display = "flex";
     document.getElementById("redirect_sign_up").style.display = "none";
     document.getElementById("redirect_log_in").style.display = "block";
+    username.value = "";
+    email.value = "";
+    password.value = "";
+    confirmPassword.value = "";
 }
 
 function go_to_sign_up() {
@@ -26,6 +38,8 @@ function go_to_sign_up() {
     document.getElementById("sign_up").style.display = "flex";
     document.getElementById("redirect_log_in").style.display = "none";
     document.getElementById("redirect_sign_up").style.display = "flex";
+    loginUsername.value = "";
+    loginPassword.value = "";
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -51,12 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const confirmPasswordValue = confirmPassword.value;
 
         const isEmailValid = isValidEmail(emailValue);
-        const isFormValid = usernameValue !== "" &&
-            emailValue !== "" &&
-            isEmailValid &&
-            // passwordValue.length >= 8 &&
-            // confirmPasswordValue.length >= 8 &&
-            passwordValue === confirmPasswordValue;
+        const isFormValid = usernameValue !== "" && emailValue !== "" && isEmailValid && passwordValue.length >= 8 && confirmPasswordValue.length >= 8 && passwordValue === confirmPasswordValue;
 
         signUpBtn.disabled = !isFormValid;
     }
@@ -65,14 +74,18 @@ document.addEventListener("DOMContentLoaded", function () {
         const usernameValue = loginUsername.value.trim();
         const passwordValue = loginPassword.value.trim();
 
-        const isFormValid = usernameValue !== "" && passwordValue !== ""; //TODO: replace passwordValue !== "" with passwordValue.length > 8
+        const isFormValid = usernameValue !== "" && passwordValue.length >= 8; //TODO: replace passwordValue !== "" with passwordValue.length >= 8
 
         logInBtn.disabled = !isFormValid;
     }
 
     const inputsWithNoSpaces = [
-        username, email, loginUsername,
-        password, loginPassword, confirmPassword
+        username,
+        email,
+        loginUsername,
+        password,
+        loginPassword,
+        confirmPassword
     ];
 
     inputsWithNoSpaces.forEach(input => {
