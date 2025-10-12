@@ -429,11 +429,6 @@ async function continue_lock() {
             return;
         }
 
-        const lockIcon = selectedNote.querySelector('.lock-icon');
-        if (noteBox.classList.contains('locked-note')) {
-            lockIcon.style.display = 'block';
-        }
-        
         hideDecision();
         loadNotes();
         SelectionMode = false;
@@ -597,9 +592,13 @@ async function LoadFolders() {
 }
 
 function chosingDecisions() {
-    if (SelectedFolders) {
+    const anySelectedFolder = document.querySelector('.folder-box.selected');
+
+    if (anySelectedFolder) {
+        SelectedFolders = true;
         move_btn.disabled = true;
     } else {
+        SelectedFolders = false;
         move_btn.disabled = false;
     }
 }
