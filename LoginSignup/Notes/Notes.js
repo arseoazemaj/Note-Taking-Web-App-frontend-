@@ -412,28 +412,41 @@ async function continue_lock() {
         Lock_Password: password
     };
 
-    try {
-        const response = await fetch('http://localhost:5216/api/Notes/lock_note', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify(payload)
-        });
+try {
+    const response = await fetch('http://localhost:5216/api/Notes/lock_note', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(payload)
+    });
 
-        const result = await response.json();
+    const result = await response.json();
 
-        if (!response.ok) {
-            alert(result.message || "Failed to lock note.");
-            return;
+    if (!response.ok) {
+        alert(result.message || "Failed to lock note.");
+        return;
+    }
+
+    hideDecision();
+    SelectionMode = false;
+
+    const checkIcon = selectedNote.querySelector('.note-check-icon');
+    checkIcon.style.display = 'none';
+
+    const folderPage = document.getElementById("folder_page");
+    const isInsideFolder = folderPage && folderPage.style.display === 'grid';
+
+    if (isInsideFolder) {
+        const openedFolder = document.querySelector('.folder-box.opened'); 
+        if (openedFolder) {
+            const folderId = openedFolder.id;
+            await opened_folder(folderId);
         }
-
-        hideDecision();
-        loadNotes();
-        SelectionMode = false;
-        const checkIcon = selectedNote.querySelector('.note-check-icon');
-        checkIcon.style.display = 'none';
+    } else {
+        await loadNotes();
+    }
 
     } catch (error) {
         console.error("Error locking note:", error);
@@ -608,6 +621,11 @@ const folderPage = document.getElementById("folder_page");
 const folder_blur = document.getElementById("folder_blur");
 
 function open_folder(folderId) {
+    document.querySelectorAll('.folder-box').forEach(f => f.classList.remove('opened'));
+    const openedFolder = document.getElementById(folderId);
+    if (openedFolder) {
+        openedFolder.classList.add('opened');
+    }
     opened_folder(folderId);
     folderPage.style.display = 'grid';
     folder_blur.style.visibility = 'visible';
