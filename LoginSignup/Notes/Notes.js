@@ -166,12 +166,12 @@ async function loadNotes() {
             }
 
             if (note.isLocked) {
-                const lcokIcon = document.createElement('i');
-                lcokIcon.setAttribute('data-lucide', 'lock-keyhole');
-                lcokIcon.classList.add('lock-icon');
+                const lockIcon = document.createElement('i');
+                lockIcon.setAttribute('data-lucide', 'lock-keyhole');
+                lockIcon.classList.add('lock-icon');
                 const lockBackground = document.createElement('div');
                 lockBackground.classList.add('lock-background');
-                lockBackground.appendChild(lcokIcon);
+                lockBackground.appendChild(lockIcon);
                 noteBox.classList.add('locked-note');
                 noteBox.appendChild(lockBackground);
             }
@@ -430,13 +430,16 @@ async function continue_lock() {
         }
 
         const lockIcon = selectedNote.querySelector('.lock-icon');
-        if (lockIcon) lockIcon.style.display = 'block';
+        if (noteBox.classList.contains('locked-note')) {
+            lockIcon.style.display = 'block';
+        }
         
         hideDecision();
         loadNotes();
         SelectionMode = false;
         const checkIcon = selectedNote.querySelector('.note-check-icon');
         checkIcon.style.display = 'none';
+
     } catch (error) {
         console.error("Error locking note:", error);
         alert("Error locking note. See console for details.");
@@ -845,12 +848,12 @@ async function opened_folder(folderId) {
             }
 
             if (note.isLocked) {
-                const lcokIcon = document.createElement('i');
-                lcokIcon.setAttribute('data-lucide', 'lock-keyhole');
-                lcokIcon.classList.add('lock-icon');
+                const lockIcon = document.createElement('i');
+                lockIcon.setAttribute('data-lucide', 'lock-keyhole');
+                lockIcon.classList.add('lock-icon');
                 const lockBackground = document.createElement('div');
                 lockBackground.classList.add('lock-background');
-                lockBackground.appendChild(lcokIcon);
+                lockBackground.appendChild(lockIcon);
                 noteBox.classList.add('locked-note');
                 noteBox.appendChild(lockBackground);
             }
@@ -991,12 +994,12 @@ async function opened_folder(folderId) {
 //             }
 
 //             if (note.isLocked) {
-//                 const lcokIcon = document.createElement('i');
-//                 lcokIcon.setAttribute('data-lucide', 'lock-keyhole');
-//                 lcokIcon.classList.add('lock-icon');
+//                 const lockIcon = document.createElement('i');
+//                 lockIcon.setAttribute('data-lucide', 'lock-keyhole');
+//                 lockIcon.classList.add('lock-icon');
 //                 const lockBackground = document.createElement('div');
 //                 lockBackground.classList.add('lock-background');
-//                 lockBackground.appendChild(lcokIcon);
+//                 lockBackground.appendChild(lockIcon);
 //                 noteBox.classList.add('locked-note');
 //                 noteBox.appendChild(lockBackground);
 //             }
