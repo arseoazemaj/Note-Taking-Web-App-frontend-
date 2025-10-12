@@ -460,8 +460,6 @@ async function continue_lock() {
             await loadNotes();
         }
 
-        alert(result.message);
-
     } catch (error) {
         console.error("Error locking notes:", error);
         alert("Error locking notes. See console for details.");
