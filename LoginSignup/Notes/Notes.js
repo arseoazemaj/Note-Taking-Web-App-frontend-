@@ -381,14 +381,13 @@ lock_password.addEventListener("input", lock_password_validation);
 lock_password_confirm.addEventListener("input", lock_password_validation);
 
 async function continue_lock() {
-    const selectedNote = document.querySelector('.note-box.selected');
-    
-    if (!selectedNote) {
+    const selectedNotes = document.querySelectorAll('.note-box.selected');
+
+    if (selectedNotes.length === 0) {
         alert("No note selected.");
         return;
     }
 
-    const noteId = selectedNote.id;
     const password = lock_password.value.trim();
     const confirmPassword = lock_password_confirm.value.trim();
 
@@ -407,36 +406,43 @@ async function continue_lock() {
         return;
     }
 
-    const payload = {
-        Id: noteId,
-        Lock_Password: password
-    };
-
-try {
-    const response = await fetch('http://localhost:5216/api/Notes/lock_note', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify(payload)
-    });
-
-    const result = await response.json();
-
-    if (!response.ok) {
-        alert(result.message || "Failed to lock note.");
-        return;
-    }
-
     hideDecision();
     SelectionMode = false;
 
-    const checkIcon = selectedNote.querySelector('.note-check-icon');
-    checkIcon.style.display = 'none';
-
     const folderPage = document.getElementById("folder_page");
     const isInsideFolder = folderPage && folderPage.style.display === 'grid';
+
+    for (const note of selectedNotes) {
+        const noteId = note.id;
+        const payload = {
+            Id: noteId,
+            Lock_Password: password
+        };
+
+        try {
+            const response = await fetch('http://localhost:5216/api/Notes/lock_note', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(payload)
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                console.warn(`Failed to lock note ${noteId}:`, result.message);
+                continue;
+            }
+
+            const checkIcon = note.querySelector('.note-check-icon');
+            if (checkIcon) checkIcon.style.display = 'none';
+
+        } catch (error) {
+            console.error(`Error locking note ${noteId}:`, error);
+        }
+    }
 
     if (isInsideFolder) {
         const openedFolder = document.querySelector('.folder-box.opened'); 
@@ -446,11 +452,6 @@ try {
         }
     } else {
         await loadNotes();
-    }
-
-    } catch (error) {
-        console.error("Error locking note:", error);
-        alert("Error locking note. See console for details.");
     }
 }
 
