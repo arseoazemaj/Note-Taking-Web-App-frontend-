@@ -95,7 +95,7 @@ async function loadNotes() {
                     const checkIcon = noteBox.querySelector('.note-check-icon');
                     checkIcon.style.display = 'block';
                     noteBox.classList.add('selected');
-                    noteBox.style.transform = "scale(.95)";
+                    noteBox.style.transform = "scale(.9)";
                     showDecision();
                 }, LONG_PRESS_MS);
             });
@@ -131,7 +131,7 @@ async function loadNotes() {
                         if (isSelected) {
                             SelectedNotes = true;
                             checkIcon.style.display = 'block';
-                            noteBox.style.transform = "scale(.95)";
+                            noteBox.style.transform = "scale(.9)";
                         } else {
                             SelectedNotes = false;
                             checkIcon.style.display = 'none';
@@ -576,7 +576,7 @@ async function LoadFolders() {
                         if (isSelected) {
                             SelectedFolders = true;
                             checkIcon.style.display = 'block';
-                            folderBox.style.transform = "scale(.95)";
+                            folderBox.style.transform = "scale(.9)";
                             chosingDecisions();
                         } else {
                             SelectedFolders = false;
@@ -816,7 +816,7 @@ async function opened_folder(folderId) {
                         const checkIcon = noteBox.querySelector('.note-check-icon');
                         checkIcon.style.display = 'block';
                         noteBox.classList.add('selected');
-                        noteBox.style.transform = "scale(.95)";
+                        noteBox.style.transform = "scale(.9)";
                         showDecision();
                     }, LONG_PRESS_MS);
             });
@@ -852,7 +852,7 @@ async function opened_folder(folderId) {
                         if (isSelected) {
                             SelectedNotes = true;
                             checkIcon.style.display = 'block';
-                            noteBox.style.transform = "scale(.95)";
+                            noteBox.style.transform = "scale(.9)";
                         } else {
                             SelectedNotes = false;
                             checkIcon.style.display = 'none';
@@ -966,7 +966,7 @@ async function opened_folder(folderId) {
 //                 const checkIcon = noteBox.querySelector('.note-check-icon');
 //                 checkIcon.style.display = 'block';
 //                 noteBox.classList.add('selected');
-//                 noteBox.style.transform = "scale(.95)";
+//                 noteBox.style.transform = "scale(.9)";
 //                 showDecision();
 //             }, LONG_PRESS_MS);
 //         });
@@ -1002,7 +1002,7 @@ async function opened_folder(folderId) {
 
 //                     if (isSelected) {
 //                         checkIcon.style.display = 'block';
-//                         noteBox.style.transform = "scale(.95)";
+//                         noteBox.style.transform = "scale(.9)";
 //                     } else {
 //                         checkIcon.style.display = 'none';
 //                         noteBox.style.transform = "scale(1)";

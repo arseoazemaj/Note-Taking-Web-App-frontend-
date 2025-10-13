@@ -159,14 +159,14 @@ input::selection {
 }
 
 #containers {
-    width: 90%;
     position: absolute;
+    top: 260px;
     left: 50%;
     transform: translateX(-50%);
-    top: 260px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
     gap: 45px 30px;
+    width: 90%;
     box-sizing: border-box;
 }
 
@@ -337,7 +337,7 @@ input::selection {
     top: -8px;
     color: #b07ecf;
     fill: #b07ecf;
-    transform: rotate(20deg);
+    transform: rotate(45deg);
     pointer-events: none;
     z-index: 2;
 }

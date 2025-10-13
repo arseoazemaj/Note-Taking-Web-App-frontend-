@@ -71,6 +71,17 @@ document.addEventListener('DOMContentLoaded', async function () {
                 noteBox.appendChild(isImportantIcon);
             }
 
+            if (note.isLocked) {
+                const lockIcon = document.createElement('i');
+                lockIcon.setAttribute('data-lucide', 'lock-keyhole');
+                lockIcon.classList.add('lock-icon');
+                const lockBackground = document.createElement('div');
+                lockBackground.classList.add('lock-background');
+                lockBackground.appendChild(lockIcon);
+                noteBox.classList.add('locked-note');
+                noteBox.appendChild(lockBackground);
+            }
+
             noteBox.appendChild(noteContent);
             noteBox.appendChild(noteTitle);
 
