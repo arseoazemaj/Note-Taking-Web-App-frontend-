@@ -728,6 +728,20 @@ input::selection {
     pointer-events: none;
 }
 
+#unlock_notes {
+    visibility: hidden;
+    position: fixed;
+    background: #121137;
+    height: 420px;
+    width: 90%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+    filter: drop-shadow(0 0 15px #302758);
+    opacity: .98;
+}
+
 #more_options {
     visibility: hidden;
     display: grid;

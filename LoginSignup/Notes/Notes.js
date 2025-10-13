@@ -140,7 +140,12 @@ async function loadNotes() {
                         updateSelectionModeFromDOM();
                     }
                 } else if (!longPressFired && !wasCanceled) {
+                    if (note.isLocked) {
+                        console.log("This note is locked. Please unlock it to view or edit.");
+                        showUnlockPrompt();
+                    } else {
                     window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
+                    }
                 }
                 longPressFired = false;
             });
@@ -228,6 +233,7 @@ const lock_password_confirm = document.getElementById("confirm_lock_password");
 const continueLockBtn = document.getElementById("continue_lock");
 const lockPasswordInput = document.getElementById("lock_password");
 const confirmLockPasswordInput = document.getElementById("confirm_lock_password");
+const unlock_menu = document.getElementById("unlock_notes");
 
 const more_container = document.getElementById("more_container");
 const more_options = document.getElementById("more_options");
@@ -260,6 +266,7 @@ function blur_backgroundHandler() {
     }
     lock_menu.style.visibility = 'hidden';
     lock_password_menu.style.visibility = 'hidden';
+    unlock_menu.style.visibility = 'hidden';
 
     blur_background.style.visibility = 'hidden';
 }
@@ -464,6 +471,16 @@ async function continue_lock() {
         console.error("Error locking notes:", error);
         alert("Error locking notes. See console for details.");
     }
+}
+
+function showUnlockPrompt() {
+
+    blur_background.style.visibility = 'visible';
+    unlock_menu.style.visibility = 'visible';
+
+
+
+    console.log("Note unlocked.")
 }
 
 
@@ -851,7 +868,12 @@ async function opened_folder(folderId) {
                         }
                     }
                 } else if (!longPressFired && !wasCanceled) {
+                    if (note.isLocked) {
+                        console.log("This note is locked. Please unlock it to view or edit.");
+                        showUnlockPrompt();
+                    } else {
                     window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
+                    }
                 }
                 longPressFired = false;
             });
