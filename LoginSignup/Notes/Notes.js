@@ -234,6 +234,7 @@ const continueLockBtn = document.getElementById("continue_lock");
 const lockPasswordInput = document.getElementById("lock_password");
 const confirmLockPasswordInput = document.getElementById("confirm_lock_password");
 const unlock_menu = document.getElementById("unlock_notes");
+const unlock_password = document.getElementById("unlock_password");
 
 const more_container = document.getElementById("more_container");
 const more_options = document.getElementById("more_options");
@@ -478,10 +479,16 @@ function showUnlockPrompt() {
     blur_background.style.visibility = 'visible';
     unlock_menu.style.visibility = 'visible';
 
-
-
     console.log("Note unlocked.")
 }
+
+
+function cancel_unlock() {
+    unlock_menu.style.visibility = 'hidden';
+    blur_background.style.visibility = 'hidden';
+    unlock_password.value = "";
+}
+
 
 
 function more() {

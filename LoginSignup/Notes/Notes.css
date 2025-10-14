@@ -123,7 +123,7 @@ input::selection {
 #search {
     margin: auto;
     display: block;
-    border-radius: 19px;
+    border-radius: 20px;
     height: 34px;
     width: 65%;
     border: 0;
@@ -222,7 +222,7 @@ input::selection {
 #folder_page {
     position: fixed;
     background: #121137;
-    height: 420px;
+    height: 400px;
     width: 90%;
     grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
     gap: 45px 30px;
@@ -731,8 +731,8 @@ input::selection {
 #unlock_notes {
     visibility: hidden;
     position: fixed;
-    background: #121137;
-    height: 420px;
+    background: #251e45;
+    height: 370px;
     width: 80%;
     padding: 20px;
     left: 50%;
@@ -743,6 +743,42 @@ input::selection {
     opacity: .98;
     z-index: 2;
 }
+
+#unlock_password {
+    background-color: #1d1737;
+    border: none;
+    outline: none;
+    padding-left: 20px;
+    border-radius: 20px;
+    height: 34px;
+    padding-top: 2px;
+}
+
+#unlock_btn {
+    position: fixed;
+    left: 0px;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    column-gap: 30px;
+}
+
+#cancel_unlock, #continue_unlock {
+    height: 37px;
+    width: 40%;
+    background-color: transparent;
+    border-radius: 15px;
+    align-items: center;
+    border: none;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#cancel_unlock:active, #continue_unlock:active {
+    background-color: #1d1737;
+}
+
 
 #more_options {
     visibility: hidden;

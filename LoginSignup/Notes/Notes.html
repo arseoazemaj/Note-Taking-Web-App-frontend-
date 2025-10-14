@@ -118,8 +118,8 @@
                 </div>
                 <div id="lock_password_menu">
                     <h3 id="lock_password_menu_text">Create a strong password and keep it safe this note will only open for you.</h3>
-                    <input type="text" id="lock_password" placeholder="Enter a password">
-                    <input type="text" id="confirm_lock_password" placeholder="Confirm your password">
+                    <input type="text" id="lock_password" placeholder="Enter a password"> <!--Change to type="password"-->
+                    <input type="text" id="confirm_lock_password" placeholder="Confirm your password"> <!--Change to type="password"-->
                     <div class="lock_decide">
                         <button id="cancel_lock" ontouchstart="cancel_lock()">Cancel</button>
                         <button id="continue_lock" ontouchstart="continue_lock()">Lock</button>
@@ -144,7 +144,12 @@
         </div>
     </div>
     <div id="unlock_notes">
-        <h3>You are opening a locked note, you need to enter the password of the note in order to view or edit its content</h3>
+        <h3 id="unlock_text">You are opening a locked note, you need to enter the password of the note in order to view or edit its content.</h3>
+        <input type="text" id="unlock_password" placeholder="Enter the password">
+        <div id="unlock_btn">
+            <button id="cancel_unlock" ontouchstart="cancel_unlock()">Cancel</button>
+            <button id="continue_unlock" ontouchstart="continue_unlock()">Continue</button>
+        </div>
     </div>
 
 
