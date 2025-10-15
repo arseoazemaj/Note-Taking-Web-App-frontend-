@@ -942,6 +942,14 @@ function cancel_unlock() {
     unlock_password.value = "";
 }
 
+async function continue_unlock() {
+    console.log("Unlocking note...");
+
+    const unlockPassword = unlock_password.value.trim();
+
+    console.log("Password entered:", unlockPassword);
+}
+
 
 //*Will be used to clear the local storage for testing purposes*//
 
