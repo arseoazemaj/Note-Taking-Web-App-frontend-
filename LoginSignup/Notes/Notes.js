@@ -142,7 +142,7 @@ async function loadNotes() {
                 } else if (!longPressFired && !wasCanceled) {
                     if (note.isLocked) {
                         console.log("This note is locked. Please unlock it to view or edit.");
-                        showUnlockPrompt();
+                        showUnlockPrompt(note.id);
                     } else {
                     window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
                     }
@@ -732,7 +732,7 @@ async function opened_folder(folderId) {
                 } else if (!longPressFired && !wasCanceled) {
                     if (note.isLocked) {
                         console.log("This note is locked. Please unlock it to view or edit.");
-                        showUnlockPrompt();
+                        showUnlockPrompt(note.id);
                     } else {
                     window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
                     }
@@ -928,10 +928,11 @@ async function continue_lock() {
     }
 }
 
-function showUnlockPrompt() {
-
+function showUnlockPrompt(noteId) {
     blur_background.style.visibility = 'visible';
     unlock_menu.style.visibility = 'visible';
+
+    unlock_menu.dataset.noteId = noteId;
 
     console.log("Note unlocked.")
 }
@@ -943,11 +944,48 @@ function cancel_unlock() {
 }
 
 async function continue_unlock() {
-    console.log("Unlocking note...");
+    try {
+        const noteId = parseInt(unlock_menu.dataset.noteId);
+        const unlockInput = document.getElementById("unlock_password");
+        const unlockPassword = unlockInput.value.replace(/\s+/g, '');
+        unlockInput.value = "";
 
-    const unlockPassword = unlock_password.value.trim();
+        if (!unlockPassword || unlockPassword.length < 8) {
+            alert("Password must be at least 8 characters long.");
+            return;
+        }
 
-    console.log("Password entered:", unlockPassword);
+        const token = localStorage.getItem("token");
+        if (!token) {
+            alert("You must be logged in to unlock notes.");
+            return;
+        }
+
+        const response = await fetch("http://localhost:5216/api/notes/open_locked_note", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                Id: noteId,
+                Lock_Password: unlockPassword
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            alert(data.message || "Failed to unlock note.");
+            return;
+        }
+
+        window.location.href = `../Edit_notes/Edit_notes.html?id=${noteId}`;
+
+    } catch (error) {
+        console.error("Error unlocking note:", error);
+        alert("An unexpected error occurred while unlocking the note.");
+    }
 }
 
 
