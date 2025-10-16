@@ -235,6 +235,7 @@ const lockPasswordInput = document.getElementById("lock_password");
 const confirmLockPasswordInput = document.getElementById("confirm_lock_password");
 const unlock_menu = document.getElementById("unlock_notes");
 const unlock_password = document.getElementById("unlock_password");
+const continueUnlockBtn = document.getElementById("continue_unlock");
 
 const more_container = document.getElementById("more_container");
 const more_options = document.getElementById("more_options");
@@ -268,6 +269,7 @@ function blur_backgroundHandler() {
     lock_menu.style.visibility = 'hidden';
     lock_password_menu.style.visibility = 'hidden';
     unlock_menu.style.visibility = 'hidden';
+    unlock_password.value = "";
 
     blur_background.style.visibility = 'hidden';
 }
@@ -943,12 +945,26 @@ function cancel_unlock() {
     unlock_password.value = "";
 }
 
+continueUnlockBtn.disabled = true;
+
+function unlock_password_validation() {
+    const password = unlock_password.value;
+    const noSpaces = !password.includes(" ");
+    const longEnough = password.length >= 8;
+
+    if (noSpaces && longEnough) {
+        continueUnlockBtn.disabled = false;
+    } else {
+        continueUnlockBtn.disabled = true;
+    }
+}
+
+unlock_password.addEventListener("input", unlock_password_validation);
+
 async function continue_unlock() {
     try {
         const noteId = parseInt(unlock_menu.dataset.noteId);
-        const unlockInput = document.getElementById("unlock_password");
-        const unlockPassword = unlockInput.value.replace(/\s+/g, '');
-        unlockInput.value = "";
+        const unlockPassword = unlock_password.value.replace(/\s+/g, '');
 
         if (!unlockPassword || unlockPassword.length < 8) {
             alert("Password must be at least 8 characters long.");

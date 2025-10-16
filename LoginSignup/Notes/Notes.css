@@ -779,6 +779,11 @@ input::selection {
     background-color: #1d1737;
 }
 
+#continue_unlock:disabled {
+    opacity: .5;
+    pointer-events: none;
+}
+
 
 #more_options {
     visibility: hidden;
