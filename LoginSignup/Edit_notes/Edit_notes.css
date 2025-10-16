@@ -94,11 +94,10 @@ a, div {
     top: 35px;
     right: 3%;
     position: absolute;
-    padding-top: 250px;
-    width: 190px;
+    height: 270px;
+    width: 200px;
     border-radius: 15px;
     animation: fadeSlideDown 0.25s ease-out;
-    z-index: 11;
 }
 
 @keyframes fadeSlideDown {
@@ -106,14 +105,16 @@ a, div {
     to {opacity: 1;}
 }
 
-#save, #download, #important, #trash {
+#save, #important, #lock, #download, #trash {
     position: absolute;
-    right: 12px;
+    left: 50%;
+    transform: translateX(-50%);
     color: #dda9ff;
     font-size: large;
     height: 36px;
-    width: 127px;
+    width: 85%;
     border-radius: 10px;
+    border: none;
     padding-left: 40px;
     background-color: #1c004a;
     display: flex;
@@ -121,15 +122,16 @@ a, div {
 }
 
 #save {top: 15px;}
-#download {top: 65px;}
-#important {top: 115px;}
-#trash {top: 165px;}
+#important {top: 65px;}
+#lock {top: 115px;}
+#download {top: 165px;}
+#trash {top: 215px;}
 
-#save-icon, #download-icon, #important-icon, #trash-icon {
+#save-icon, #important-icon, #lock-icon, #download-icon, #trash-icon {
     position: absolute;
     top: 6px;
-    right: 131px;
+    right: 80%;
     color: #dda9ff;
 }
 
-#save:active, #download:active, #important:active, #trash:active {background-color: #370085;}
+#save:active, #important:active, #lock:active, #download:active #trash:active {background-color: #370085;}

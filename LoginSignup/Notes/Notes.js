@@ -1004,6 +1004,10 @@ async function continue_unlock() {
     }
 }
 
+function share() {
+    
+}
+
 
 //*Will be used to clear the local storage for testing purposes*//
 
