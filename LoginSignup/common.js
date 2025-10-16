@@ -25,3 +25,17 @@ if (logoutBtn) {
         window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
     });
 }
+
+function getUserIdFromToken() {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+    try {
+        const base64Payload = token.split('.')[1];
+        const payload = atob(base64Payload);
+        const parsedPayload = JSON.parse(payload);
+        return parsedPayload.nameid || null;
+    } catch (e) {
+        console.error("Failed to parse JWT token", e);
+        return null;
+    }
+}

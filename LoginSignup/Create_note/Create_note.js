@@ -1,17 +1,3 @@
-function getUserIdFromToken() {
-    const token = localStorage.getItem('token');
-    if (!token) return null;
-    try {
-        const base64Payload = token.split('.')[1];
-        const payload = atob(base64Payload);
-        const parsedPayload = JSON.parse(payload);
-        return parsedPayload.nameid || null;
-    } catch (e) {
-        console.error("Failed to parse JWT token", e);
-        return null;
-    }
-}
-
 function SubMenu() {
     const container = document.getElementById("container");
     const isVisible = container.style.display === "block";
