@@ -16,6 +16,9 @@ a, p, h1, h3, button {
     user-select: none;
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color: transparent;
+}
+
+a {
     text-decoration: none;
 }
 
@@ -324,17 +327,17 @@ input::selection {
         left: 10px;
     }
     .important-icon {
-        left: 94%;
+        left: 95%;
     }
 }
 
 @media (min-width: 361px) {
-    .important-icon {left: 89%;}
+    .important-icon {left: 95%;}
 }
 
 .important-icon {
-    position: absolute;
-    top: -8px;
+    position: relative;
+    top: -15px;
     color: #b07ecf;
     fill: #b07ecf;
     transform: rotate(45deg);

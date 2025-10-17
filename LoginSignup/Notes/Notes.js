@@ -1005,6 +1005,8 @@ async function continue_unlock() {
 }
 
 function share() {
+    console.log("Sharing...")
+
     
 }
 
