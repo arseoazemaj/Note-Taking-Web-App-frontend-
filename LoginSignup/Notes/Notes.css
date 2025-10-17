@@ -168,9 +168,10 @@ input::selection {
     transform: translateX(-50%);
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
-    gap: 45px 30px;
-    width: 90%;
+    gap: 45px 25px;
+    width: 85%;
     box-sizing: border-box;
+    padding-bottom: 150px;
 }
 
 #folders_menu {
@@ -271,7 +272,7 @@ input::selection {
 }
 
 .note-content {
-    top: -10px;
+    top: -5px;
     height: 150px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -307,7 +308,6 @@ input::selection {
 .title {
     overflow: hidden;
     text-overflow: ellipsis;
-    position: absolute;
     top: 155px;
     height: 25px;
     pointer-events: none;
