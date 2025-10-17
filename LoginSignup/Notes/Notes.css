@@ -307,7 +307,8 @@ input::selection {
 .title {
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-top: 135px;
+    position: absolute;
+    top: 155px;
     height: 25px;
     pointer-events: none;
     display: -webkit-box;
