@@ -234,6 +234,8 @@ const unlock_menu = document.getElementById("unlock_notes");
 const unlock_password = document.getElementById("unlock_password");
 const continueUnlockBtn = document.getElementById("continue_unlock");
 
+const more_background_blur = document.getElementById("more_background_blur");
+more_background_blur.addEventListener('touchstart', hide_more_blur);
 const more_container = document.getElementById("more_container");
 const more_options = document.getElementById("more_options");
 
@@ -786,14 +788,6 @@ async function opened_folder(folderId) {
     }
 }
 
-function more() {
-    if (more_options.style.visibility === 'visible') {
-        more_options.style.visibility = 'hidden';
-    } else {
-        more_options.style.visibility = 'visible';
-    }
-}
-
 function lock() {
     lock_menu.style.visibility = 'visible';
     blur_background.style.visibility = 'visible';
@@ -1030,17 +1024,27 @@ async function send_to_trash() {
         }
 
         console.log(result.message);
-
         hideDecision();
-
         loadNotes();
-
     } catch (error) {
         console.error("Error deleting notes:", error);
         alert("Error deleting notes.");
     }
 }
 
+function more() {
+    if (more_options.style.visibility === 'visible') {
+        more_options.style.visibility = 'hidden';
+    } else {
+        more_options.style.visibility = 'visible';
+        more_background_blur.style.visibility = 'visible';
+    }
+}
+
+function hide_more_blur() {
+    more_background_blur.style.visibility = 'hidden';
+    more_options.style.visibility = 'hidden';
+}
 
 //*Will be used to clear the local storage for testing purposes*//
 
