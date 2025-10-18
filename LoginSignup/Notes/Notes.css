@@ -169,7 +169,7 @@ input::selection {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
     gap: 45px 25px;
-    width: 85%;
+    width: 90%;
     box-sizing: border-box;
     padding-bottom: 150px;
 }
