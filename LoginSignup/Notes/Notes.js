@@ -206,7 +206,6 @@ function showDecision() {
 
 function hideDecision() {
     document.getElementById("decide").style.display = 'none';
-    document.getElementById("more_options").style.visibility = 'hidden';
     document.getElementById("new_note").style.display = 'block';
     blur_background.style.visibility = 'hidden';
     lock_password_menu.style.visibility = 'hidden';
@@ -233,12 +232,6 @@ const confirmLockPasswordInput = document.getElementById("confirm_lock_password"
 const unlock_menu = document.getElementById("unlock_notes");
 const unlock_password = document.getElementById("unlock_password");
 const continueUnlockBtn = document.getElementById("continue_unlock");
-
-const more_background_blur = document.getElementById("more_background_blur");
-more_background_blur.addEventListener('touchstart', hide_more_blur);
-const more_container = document.getElementById("more_container");
-const more_options = document.getElementById("more_options");
-
 
 let selectedColor = null;
 
@@ -275,7 +268,6 @@ function blur_backgroundHandler() {
 
 function move() {
         document.body.style.overflow = 'hidden';
-        more_options.style.visibility = 'hidden';
         move_menu.style.visibility = 'visible';
         blur_background.style.visibility = 'visible';
 }
@@ -343,12 +335,6 @@ function cancel_folder() {
         color_check[i].style.visibility = 'hidden';
     }
 }
-
-document.addEventListener("touchstart", function(event) {
-    if (!more_container.contains(event.target)) {
-        more_options.style.visibility = "hidden";
-    }
-});
 
 const folders_menu = document.getElementById("folders_menu");
 
@@ -990,12 +976,6 @@ async function continue_unlock() {
     }
 }
 
-function share() {
-    console.log("Sharing...")
-
-    
-}
-
 async function send_to_trash() {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -1030,20 +1010,6 @@ async function send_to_trash() {
         console.error("Error deleting notes:", error);
         alert("Error deleting notes.");
     }
-}
-
-function more() {
-    if (more_options.style.visibility === 'visible') {
-        more_options.style.visibility = 'hidden';
-    } else {
-        more_options.style.visibility = 'visible';
-        more_background_blur.style.visibility = 'visible';
-    }
-}
-
-function hide_more_blur() {
-    more_background_blur.style.visibility = 'hidden';
-    more_options.style.visibility = 'hidden';
 }
 
 //*Will be used to clear the local storage for testing purposes*//

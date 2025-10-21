@@ -127,24 +127,15 @@
                 </div>
             </div>
         </div>
-        <div id="share_container">
-            <button id="share" ontouchstart="share()">
-                <i data-lucide="share-2"></i>Share
-            </button>
-        </div>
         <button id="delete" ontouchstart="send_to_trash()">
             <i data-lucide="trash-2"></i>Delete
         </button>
-        <div id="more_container">
-            <button id="more" ontouchstart="more()">
-                <i data-lucide="ellipsis-vertical"></i>More
-            </button>
-            <div id="more_background_blur"></div>
-            <div id="more_options">
-                <button id="mark_important">Mark as Important</button>
-                <button id="export">Export</button>
-            </div>
-        </div>
+        <button id="mark_important">
+            <i data-lucide="star"></i>Important
+        </button>
+        <button id="export">
+            <i data-lucide="download"></i>Export
+        </button>
     </div>
     <div id="unlock_notes">
         <h3 id="unlock_text">You are opening a locked note, you need to enter the password of the note in order to view or edit its content.</h3>

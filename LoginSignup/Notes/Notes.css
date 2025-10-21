@@ -390,7 +390,7 @@ input::selection {
     z-index: 1;
 }
 
-#move, #lock, #share, #delete, #more {
+#move, #lock, #delete, #mark_important, #export {
     height: 3%;
     width: 62px;
     position: fixed;
@@ -403,13 +403,13 @@ input::selection {
     transform: translateX(-50%);
 }
 
-#move:active, #lock:active, #share:active, #delete:active, #more:active {background-color: #251e45;}
+#move:active, #lock:active, #delete:active, #mark_important:active, #export:active {background-color: #251e45;}
 #move {left: 10%;}
 #move:disabled { pointer-events: none; opacity: .5;}
 #lock {left: 30%;}
-#share {left: 50%;}
-#delete {left: 70%;}
-#more {left: 90%;}
+#delete {left: 50%;}
+#mark_important { left: 70%;}
+#export { left: 90%;}
 
 #move_menu {
     visibility: hidden;
@@ -788,48 +788,3 @@ input::selection {
     opacity: .5;
     pointer-events: none;
 }
-
-#more_background_blur {
-    visibility: hidden;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-}
-
-#more_options {
-    visibility: hidden;
-    display: grid;
-    background-color: #1a1433;
-    bottom: 70px;
-    right: 15px;
-    position: absolute;
-    width: 48%;
-    height: 170%;
-    border-radius: 15px;
-    justify-items: center;
-}
-
-#mark_important, #export {
-    width: 100%;
-    height: 100%;
-    background-color: #1a1433;
-    border: none;
-    font-size: 18px;
-    text-align: left;
-    padding-left: 20px;
-}
-
-#mark_important {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-}
-
-#export {
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-}
-
-#mark_important:active, #tag_color:active, #duplicate:active, #clear:active, #export:active {background-color: #251e45;}
