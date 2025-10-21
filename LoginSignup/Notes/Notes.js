@@ -34,6 +34,13 @@ if (noteButton) {
 let SelectionMode = false;
 let SelectedNotes = false;
 let SelectedFolders = false;
+let longPressTimer = null;
+let longPressFired = false;
+let wasCanceled = false;
+const LONG_PRESS_MS = 500;
+const MOVE_THRESHOLD = 5;
+let startX = 0;
+let startY = 0;
 
 document.addEventListener('DOMContentLoaded', loadNotes );
 
@@ -68,14 +75,6 @@ async function loadNotes() {
         const notes = await response.json();
 
         containers.innerHTML = "";
-
-        let longPressTimer = null;
-        let longPressFired = false;
-        let wasCanceled = false;
-        const LONG_PRESS_MS = 500;
-        const MOVE_THRESHOLD = 5;
-        let startX = 0;
-        let startY = 0;
 
         function setupNoteEvents(noteBox, note) {
             noteBox.addEventListener('touchstart', function(e) {
@@ -359,14 +358,6 @@ async function LoadFolders() {
         const folders = await response.json();
         folders_menu.innerHTML = "";
 
-        let longPressTimer = null;
-        let longPressFired = false;
-        let wasCanceled = false;
-        const LONG_PRESS_MS = 500;
-        const MOVE_THRESHOLD = 5;
-        let startX = 0;
-        let startY = 0;
-
         function setupFolderEvents(folderBox, folder) {
             folderBox.addEventListener('touchstart', (e) => {
                 longPressFired = false;
@@ -383,7 +374,7 @@ async function LoadFolders() {
                     checkIcon.style.display = 'block';
                     folderBox.classList.add('selected');
                     showDecision();
-                    chosingDecisions();
+                    chosingMoveDecisions();
                 }, LONG_PRESS_MS);
             });
 
@@ -417,11 +408,11 @@ async function LoadFolders() {
                         if (isSelected) {
                             checkIcon.style.display = 'block';
                             folderBox.style.transform = "scale(.9)";
-                            chosingDecisions();
+                            chosingMoveDecisions();
                         } else {
                             checkIcon.style.display = 'none';
                             folderBox.style.transform = "scale(1)";
-                            chosingDecisions();
+                            chosingMoveDecisions();
                         }
                         updateSelectionModeFromDOM();
                     }
@@ -472,7 +463,7 @@ async function LoadFolders() {
     }
 }
 
-function chosingDecisions() {
+function chosingMoveDecisions() {
     const anySelectedFolder = document.querySelector('.folder-box.selected');
 
     if (anySelectedFolder) {
@@ -645,14 +636,6 @@ async function opened_folder(folderId) {
         }
 
         const notes = await response.json();
-
-        let longPressTimer = null;
-        let longPressFired = false;
-        let wasCanceled = false;
-        const LONG_PRESS_MS = 500;
-        const MOVE_THRESHOLD = 5;
-        let startX = 0;
-        let startY = 0;
 
         function NoteEvents(noteBox, note) {
             noteBox.addEventListener('touchstart', function(e) {
@@ -1031,9 +1014,6 @@ function fill() {
     filled = !filled;
 }
 
-async function mark_important() {
-    fill();
-}
 
 //*Will be used to clear the local storage for testing purposes*//
 
@@ -1045,14 +1025,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let SelectionMode = false;
     const containers = document.getElementById('containers');
     let notes = JSON.parse(localStorage.getItem('notes')) || [];
-
-    let longPressTimer = null;
-    let longPressFired = false;
-    let wasCanceled = false;
-    const LONG_PRESS_MS = 500;
-    const MOVE_THRESHOLD = 5;
-    let startX = 0;
-    let startY = 0;
 
     function setupNoteEvents(noteBox, note) {
         noteBox.addEventListener('touchstart', function(e) {
