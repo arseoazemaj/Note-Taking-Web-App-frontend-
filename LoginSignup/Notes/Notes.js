@@ -999,19 +999,8 @@ async function send_to_trash() {
     }
 }
 
-let filled = false;
-
-function fill() {
-    const icon = document.getElementById("important-icon");
-
-    if (filled) {
-        icon.style.fill = "none";
-    }
-    else {
-        icon.style.fill = "#dda9ff";
-    }
-    
-    filled = !filled;
+async function mark_important() {
+    console.log("Notes will get marked as important.");
 }
 
 
