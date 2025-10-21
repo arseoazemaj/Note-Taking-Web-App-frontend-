@@ -1020,7 +1020,7 @@ let filled = false;
 
 function fill() {
     const icon = document.getElementById("important-icon");
-    
+
     if (filled) {
         icon.style.fill = "none";
     }

@@ -360,7 +360,7 @@ input::selection {
     width: 100%;
     left: 50%;
     transform: translateX(-50%);
-    height: 80px;
+    height: 70px;
     background-color: #1a1433;
     bottom: 0px;
     display: none;
@@ -392,8 +392,8 @@ input::selection {
 }
 
 #move, #lock, #delete, #mark_important, #export {
-    width: 63px;
-    height: 80px;
+    width: 64px;
+    height: 70px;
     position: fixed;
     bottom: -5px;
     background-color: #1a1433;
@@ -409,14 +409,6 @@ input::selection {
 #delete {left: 50%;}
 #mark_important { left: 70%;}
 #export { left: 90%;}
-
-#mark_important {
-    width: 65px;
-}
-
-#folder_icon, #lock_icon, #bin_icon, #download_icon {
-    
-}
 
 #move_menu {
     visibility: hidden;
