@@ -357,13 +357,14 @@ input::selection {
 
 #decide {
     position: fixed;
-    width: 101%;
-    left: -5px;
-    height: 70px;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 80px;
     background-color: #1a1433;
     bottom: 0px;
     display: none;
-    z-index: 10;
+    z-index: 2;
 }
 
 #blur-background {
@@ -391,15 +392,13 @@ input::selection {
 }
 
 #move, #lock, #delete, #mark_important, #export {
-    height: 3%;
-    width: 62px;
+    width: 63px;
+    height: 80px;
     position: fixed;
-    bottom: 10px;
+    bottom: -5px;
     background-color: #1a1433;
     border: none;
     border-radius: 20%;
-    padding: 5px;
-    padding-bottom: 45px;
     transform: translateX(-50%);
 }
 
@@ -410,6 +409,14 @@ input::selection {
 #delete {left: 50%;}
 #mark_important { left: 70%;}
 #export { left: 90%;}
+
+#mark_important {
+    width: 65px;
+}
+
+#folder_icon, #lock_icon, #bin_icon, #download_icon {
+    
+}
 
 #move_menu {
     visibility: hidden;

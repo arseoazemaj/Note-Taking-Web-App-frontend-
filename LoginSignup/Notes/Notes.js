@@ -233,6 +233,10 @@ const unlock_menu = document.getElementById("unlock_notes");
 const unlock_password = document.getElementById("unlock_password");
 const continueUnlockBtn = document.getElementById("continue_unlock");
 
+const icon = document.getElementById("important-icon");
+
+
+
 let selectedColor = null;
 
 colorBox.forEach(box => {
@@ -1012,6 +1016,25 @@ async function send_to_trash() {
     }
 }
 
+let filled = false;
+
+function fill() {
+    const icon = document.getElementById("important-icon");
+    
+    if (filled) {
+        icon.style.fill = "none";
+    }
+    else {
+        icon.style.fill = "#dda9ff";
+    }
+    
+    filled = !filled;
+}
+
+async function mark_important() {
+    fill();
+}
+
 //*Will be used to clear the local storage for testing purposes*//
 
 // localStorage.removeItem('notes');
@@ -1092,6 +1115,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (anySelected) {
                         showDecision();
                     } else {
+                        SelectionMode = false;
                         hideDecision();
                     }
                 }

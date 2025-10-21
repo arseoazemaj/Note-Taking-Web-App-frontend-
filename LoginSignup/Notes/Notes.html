@@ -44,7 +44,7 @@
     <div id="decide">
         <div id="move_container">
             <button id="move" ontouchstart="move()">
-                <i data-lucide="folder-input"></i>Move
+                <i data-lucide="folder-input" id="folder_icon"></i>Move
             </button>
             <div id="move_menu">
                 <h3 id="folder_header_text_1">Select a folder</h3>
@@ -106,7 +106,7 @@
         </div>
         <div id="lock_container">
             <button id="lock" ontouchstart="lock()">
-                <i data-lucide="lock-keyhole"></i>Lock
+                <i data-lucide="lock-keyhole" id="lock_icon"></i>Lock
             </button>
             <div id="lock_menu_ask">
                 <h3>Are you sure you want to lock this note?</h3>
@@ -128,13 +128,13 @@
             </div>
         </div>
         <button id="delete" ontouchstart="send_to_trash()">
-            <i data-lucide="trash-2"></i>Delete
+            <i data-lucide="trash-2" id="bin_icon"></i>Delete
         </button>
-        <button id="mark_important">
-            <i data-lucide="star"></i>Important
+        <button id="mark_important" ontouchstart="mark_important()">
+            <i data-lucide="star" id="important-icon"></i>Mark important
         </button>
         <button id="export">
-            <i data-lucide="download"></i>Export
+            <i data-lucide="download" id="download_icon"></i>Export
         </button>
     </div>
     <div id="unlock_notes">
