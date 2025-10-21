@@ -232,10 +232,6 @@ const unlock_menu = document.getElementById("unlock_notes");
 const unlock_password = document.getElementById("unlock_password");
 const continueUnlockBtn = document.getElementById("continue_unlock");
 
-const icon = document.getElementById("important-icon");
-
-
-
 let selectedColor = null;
 
 colorBox.forEach(box => {
