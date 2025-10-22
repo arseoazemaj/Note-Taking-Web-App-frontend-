@@ -135,7 +135,6 @@ async function loadNotes() {
                     }
                 } else if (!longPressFired && !wasCanceled) {
                     if (note.isLocked) {
-                        console.log("This note is locked. Please unlock it to view or edit.");
                         showUnlockPrompt(note.id);
                     } else {
                     window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
@@ -250,7 +249,6 @@ colorBox.forEach(box => {
 });
 
 function blur_backgroundHandler() {
-    console.log("Blur background activated");
     move_menu.style.visibility = 'hidden';
     create_folder_menu.style.visibility = 'hidden';
     folder_namer.value = "";
@@ -599,8 +597,6 @@ async function sendNoteToFolder(noteId, folderId) {
             throw new Error(errorText);
         }
 
-        const result = await response.text();
-        console.log(result);
         await loadNotes();
         hideDecision();
         hideFolder();
@@ -697,7 +693,6 @@ async function opened_folder(folderId) {
                     }
                 } else if (!longPressFired && !wasCanceled) {
                     if (note.isLocked) {
-                        console.log("This note is locked. Please unlock it to view or edit.");
                         showUnlockPrompt(note.id);
                     } else {
                     window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
@@ -890,8 +885,6 @@ function showUnlockPrompt(noteId) {
     unlock_menu.style.visibility = 'visible';
 
     unlock_menu.dataset.noteId = noteId;
-
-    console.log("Note unlocked.")
 }
 
 function cancel_unlock() {
@@ -986,7 +979,6 @@ async function send_to_trash() {
             throw new Error(result.message || "Failed to delete notes.");
         }
 
-        console.log(result.message);
         hideDecision();
         loadNotes();
     } catch (error) {
@@ -996,7 +988,41 @@ async function send_to_trash() {
 }
 
 async function mark_important() {
-    console.log("Notes will get marked as important.");
+    const token = localStorage.getItem("token");
+    if (!token) {
+        alert("You must be logged in to mark notes as important.");
+        return;
+    }
+
+    const noteIds = Array.from(document.querySelectorAll(".note-box.selected"))
+        .map(note => parseInt(note.id))
+        .filter(id => !isNaN(id));
+
+    try {
+        const response = await fetch("http://localhost:5216/api/Notes/mark_important", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                NoteIds: noteIds,
+                isImportant: true
+            })
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error("Error from backend:", errorText);
+            throw new Error("Failed to update importance.");
+        }
+
+        hideDecision();
+        loadNotes();
+    } catch (error) {
+        console.error("Error updating notes:", error);
+        alert("Error updating notes.");
+    }
 }
 
 
