@@ -220,6 +220,7 @@ const folder_namer = document.getElementById("folder_namer");
 const colorBox = document.querySelectorAll(".colors");
 const color_check = document.getElementsByClassName("check_color");
 
+const lock_btn = document.getElementById("lock");
 const lock_menu = document.getElementById("lock_menu_ask");
 const lock_password_menu = document.getElementById("lock_password_menu");
 const lock_password = document.getElementById("lock_password");
@@ -230,6 +231,8 @@ const confirmLockPasswordInput = document.getElementById("confirm_lock_password"
 const unlock_menu = document.getElementById("unlock_notes");
 const unlock_password = document.getElementById("unlock_password");
 const continueUnlockBtn = document.getElementById("continue_unlock");
+
+const important_btn = document.getElementById("mark_important");
 
 let selectedColor = null;
 
@@ -463,9 +466,13 @@ function chosingMoveDecisions() {
     if (anySelectedFolder) {
         SelectedFolders = true;
         move_btn.disabled = true;
+        lock_btn.disabled = true;
+        important_btn.disabled = true;
     } else {
         SelectedFolders = false;
         move_btn.disabled = false;
+        lock_btn.disabled = false;
+        important_btn.disabled = false;
     }
 }
 

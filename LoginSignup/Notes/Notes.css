@@ -402,11 +402,13 @@ input::selection {
 
 #move:active, #lock:active, #delete:active, #mark_important:active, #export:active {background-color: #251e45;}
 #move {left: 10%;}
-#move:disabled { pointer-events: none; opacity: .5;}
 #lock {left: 30%;}
-#delete {left: 50%;}
-#mark_important { left: 70%;}
-#export { left: 90%;}
+#mark_important { left: 50%;}
+#export { left: 70%;}
+#delete {left: 90%;}
+
+#move:disabled, #lock:disabled, #mark_important:disabled { pointer-events: none; opacity: .5;}
+
 
 #folder_icon, #lock_icon, #bin_icon, #important_icon, #download_icon {
     width: 100%;
