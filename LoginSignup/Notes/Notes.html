@@ -130,9 +130,11 @@
         <button id="mark_important" ontouchstart="mark_important()">
             <i data-lucide="star" id="important_icon"></i>Mark important
         </button>
-        <button id="export">
-            <i data-lucide="download" id="download_icon"></i>Export
-        </button>
+        <div id="export_container">
+            <button id="export" ontouchstart="export_note()">
+                <i data-lucide="download" id="download_icon"></i>Export
+            </button>
+        </div>
         <button id="delete" ontouchstart="send_to_trash()">
             <i data-lucide="trash-2" id="bin_icon"></i>Delete
         </button>

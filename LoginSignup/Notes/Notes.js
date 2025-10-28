@@ -959,41 +959,6 @@ async function continue_unlock() {
     }
 }
 
-async function send_to_trash() {
-    const token = localStorage.getItem("token");
-    if (!token) {
-        alert("You must be logged in to delete notes.");
-        return;
-    }
-
-    const noteIds = Array.from(document.querySelectorAll(".note-box.selected"))
-        .map(note => parseInt(note.id))
-        .filter(id => !isNaN(id));
-
-    try {
-        const response = await fetch("http://localhost:5216/api/Notes/delete_multiple_notes", {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify({ noteIds })
-        });
-
-        const result = await response.json();
-
-        if (!response.ok) {
-            throw new Error(result.message || "Failed to delete notes.");
-        }
-
-        hideDecision();
-        loadNotes();
-    } catch (error) {
-        console.error("Error deleting notes:", error);
-        alert("Error deleting notes.");
-    }
-}
-
 async function mark_important() {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -1029,6 +994,45 @@ async function mark_important() {
     } catch (error) {
         console.error("Error updating notes:", error);
         alert("Error updating notes.");
+    }
+}
+
+function export_note() {
+    console.log("Exporting note...");
+}
+
+async function send_to_trash() {
+    const token = localStorage.getItem("token");
+    if (!token) {
+        alert("You must be logged in to delete notes.");
+        return;
+    }
+
+    const noteIds = Array.from(document.querySelectorAll(".note-box.selected"))
+        .map(note => parseInt(note.id))
+        .filter(id => !isNaN(id));
+
+    try {
+        const response = await fetch("http://localhost:5216/api/Notes/delete_multiple_notes", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({ noteIds })
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(result.message || "Failed to delete notes.");
+        }
+
+        hideDecision();
+        loadNotes();
+    } catch (error) {
+        console.error("Error deleting notes:", error);
+        alert("Error deleting notes.");
     }
 }
 
