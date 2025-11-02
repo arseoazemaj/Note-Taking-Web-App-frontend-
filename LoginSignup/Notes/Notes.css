@@ -254,7 +254,7 @@ input::selection {
     padding-bottom: 30px;
 }
 
-.selected {background-color: #251e45b5;}
+.note-box.selected {background-color: #251e45b5;}
 
 .important-note {
     box-shadow: 0 0 12px 2px #3a3069;
