@@ -99,6 +99,7 @@ a, div {
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color: transparent;
     text-decoration: none;
+    font-weight: bold;
 }
 
 #note_icon, #paint_icon, #trash_icon {
