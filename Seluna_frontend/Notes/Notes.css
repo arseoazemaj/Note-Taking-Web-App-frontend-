@@ -428,7 +428,7 @@ input::selection {
 #folder_header_text_1 {
     position: relative;
     left: 10px;
-    top: -20px;
+    top: -15px;
 }
 
 #folder_header_text_2 {
@@ -527,7 +527,7 @@ input::selection {
 #folder_namer {
     position: absolute;
     left: 20px;
-    top: 65px;
+    top: 60px;
     height: 35px;
     width: 77%;
     background-color: #1d1737;
@@ -553,10 +553,8 @@ input::selection {
     border-bottom: 2px dotted;
     position: relative;
     top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
     color: #ae7fce;
-    width: 320px;
+    width: 100%;
 }
 
 #color_picker {
@@ -687,7 +685,7 @@ input::selection {
 
 #lock_password_menu_text {
     position: relative;
-    top: -25px;
+    top: -5px;
     left: 50%;
     transform: translateX(-50%);
 }
