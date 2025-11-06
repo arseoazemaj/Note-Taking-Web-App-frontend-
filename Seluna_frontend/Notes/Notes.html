@@ -32,13 +32,13 @@
     </div>
     <h1 id="greetings">Notes</h1> <!--*Will greet using the username of the user-->
     <input type="text" id="search" placeholder="Search notes">
-    <a id="new_note" href="../Create_note/Create_note.html" draggable="false">
-        <i data-lucide="circle-plus"></i>
+    <a href="../Create_note/Create_note.html" draggable="false">
+        <i data-lucide="circle-plus" id="new_note"></i>
     </a>
     <div id="folders_menu"></div>
     <div id="folder_blur"></div>
     <div id="folder_page"></div>
-    <div id="containers"></div>
+    <div id="container"></div>
 
     <div id="blur-background"></div>
     <div id="decide">
@@ -54,54 +54,54 @@
                         <i data-lucide="plus" id="plus"></i>
                     </button>
                 </div>
-                    <div id="create_folder">
-                        <h3 id="folder_header_text_2">Create a new folder</h3>
-                        <input type="text" placeholder="Folder name" id="folder_namer">
-                        <h3 id="color_text">Color</h3>
-                        <div id="dotted_line"></div>
-                        <div id="color_picker">
-                            <div class="colors" id="color_1" data-color="#644CE6">
-                                <i data-lucide="check" class="check_color"></i>
-                            </div>
-                            <div class="colors" id="color_2" data-color="#FF7BCF">
-                                <i data-lucide="check" class="check_color"></i>
-                            </div>
-                            <div class="colors" id="color_3" data-color="#74B8FF">
-                                <i data-lucide="check" class="check_color"></i>
-                            </div>
-                            <div class="colors" id="color_4" data-color="#5FE0C6">
-                                <i data-lucide="check" class="check_color"></i>
-                            </div>
-                            <div class="colors" id="color_5" data-color="#AEEA7E">
-                                <i data-lucide="check" class="check_color"></i>
-                            </div>
-                            <div class="colors" id="color_6" data-color="#FFD48A">
-                                <i data-lucide="check" class="check_color"></i>
-                            </div>
-                            <div class="colors" id="color_7" data-color="#FF6A6A">
-                                <i data-lucide="check" class="check_color"></i>
-                            </div>
-                            <div class="colors" id="color_8" data-color="#D3D6DA">
-                                <i data-lucide="check" class="check_color"></i>
-                            </div>
-                            <div class="colors" id="color_9" data-color="#7A5BFF">
-                                <i data-lucide="check" class="check_color"></i>
-                            </div>
-                            <div class="colors" id="color_10" data-color="#FFA36B">
-                                <i data-lucide="check" class="check_color"></i>
-                            </div>
-                            <div class="colors" id="color_11" data-color="#230099">
-                                <i data-lucide="check" class="check_color"></i>
-                            </div>
-                            <div class="colors" id="color_12" data-color="#41F0FF">
-                                <i data-lucide="check" class="check_color"></i>
-                            </div>
+                <div id="create_folder">
+                    <h3 id="folder_header_text_2">Create a new folder</h3>
+                    <input type="text" placeholder="Folder name" id="folder_namer">
+                    <h3 id="color_text">Color</h3>
+                    <div id="dotted_line"></div>
+                    <div id="color_picker">
+                        <div class="colors" id="color_1" data-color="#644CE6">
+                            <i data-lucide="check" class="check_color"></i>
                         </div>
-                        <div id="chose">
-                            <button id="cancel_folder" ontouchstart="cancel_folder()">Cancel</button>
-                            <button id="add_folder" ontouchstart="add_folder()">Add</button>
+                        <div class="colors" id="color_2" data-color="#FF7BCF">
+                            <i data-lucide="check" class="check_color"></i>
+                        </div>
+                        <div class="colors" id="color_3" data-color="#74B8FF">
+                            <i data-lucide="check" class="check_color"></i>
+                        </div>
+                        <div class="colors" id="color_4" data-color="#5FE0C6">
+                            <i data-lucide="check" class="check_color"></i>
+                        </div>
+                        <div class="colors" id="color_5" data-color="#AEEA7E">
+                            <i data-lucide="check" class="check_color"></i>
+                        </div>
+                        <div class="colors" id="color_6" data-color="#FFD48A">
+                            <i data-lucide="check" class="check_color"></i>
+                        </div>
+                        <div class="colors" id="color_7" data-color="#FF6A6A">
+                            <i data-lucide="check" class="check_color"></i>
+                        </div>
+                        <div class="colors" id="color_8" data-color="#D3D6DA">
+                            <i data-lucide="check" class="check_color"></i>
+                        </div>
+                        <div class="colors" id="color_9" data-color="#7A5BFF">
+                            <i data-lucide="check" class="check_color"></i>
+                        </div>
+                        <div class="colors" id="color_10" data-color="#FFA36B">
+                            <i data-lucide="check" class="check_color"></i>
+                        </div>
+                        <div class="colors" id="color_11" data-color="#230099">
+                            <i data-lucide="check" class="check_color"></i>
+                        </div>
+                        <div class="colors" id="color_12" data-color="#41F0FF">
+                            <i data-lucide="check" class="check_color"></i>
                         </div>
                     </div>
+                    <div id="chose">
+                        <button id="cancel_folder" ontouchstart="cancel_folder()">Cancel</button>
+                        <button id="add_folder" ontouchstart="add_folder()">Add</button>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="lock_container">
@@ -130,10 +130,11 @@
         <button id="mark_important" ontouchstart="mark_important()">
             <i data-lucide="star" id="important_icon"></i>Mark important
         </button>
-        <div id="export_container">
-            <button id="export" ontouchstart="export_note()">
-                <i data-lucide="download" id="download_icon"></i>Export
+        <div id="download_container">
+            <button id="download" ontouchstart="download_note()">
+                <i data-lucide="download" id="download_icon"></i>Download
             </button>
+            <div id="download_menu"></div>
         </div>
         <button id="delete" ontouchstart="send_to_trash()">
             <i data-lucide="trash-2" id="bin_icon"></i>Delete

@@ -33,13 +33,9 @@ input::selection {
 }
 
 #menuopener {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: absolute;
     left: 25px;
     height: 30px;
-    cursor: pointer;
 }
 
 #menu-icon {
@@ -148,12 +144,11 @@ input::selection {
     bottom: 5%;
     z-index: 1;
     scale: 3;
-    height: 23px;
+    fill: #b17fd1;
+    border-radius: 50%;
 }
 
 #new_note path {color: #000000;}
-#new_note svg.lucide {fill: #b17fd1;}
-#new_note:active {background-color: #a7a7a713;}
 
 #note_icon, #paint_icon, #trash_icon {
     position: absolute;
@@ -161,7 +156,7 @@ input::selection {
     height: 20px;
 }
 
-#containers {
+#container {
     position: absolute;
     top: 260px;
     left: 50%;
@@ -171,7 +166,7 @@ input::selection {
     gap: 45px 25px;
     width: 90%;
     box-sizing: border-box;
-    padding-bottom: 150px;
+    padding-bottom: 130px;
 }
 
 #folders_menu {
@@ -321,7 +316,7 @@ input::selection {
     .note-box {
         width: 92%;
     }
-    #containers {
+    #container {
         row-gap: 43px;
         column-gap: 21%;
     }
@@ -391,7 +386,7 @@ input::selection {
     z-index: 1;
 }
 
-#move, #lock, #delete, #mark_important, #export {
+#move, #lock, #delete, #mark_important, #download {
     width: 20%;
     height: 80px;
     position: fixed;
@@ -400,11 +395,11 @@ input::selection {
     transform: translateX(-50%);
 }
 
-#move:active, #lock:active, #delete:active, #mark_important:active, #export:active {background-color: #251e45;}
+#move:active, #lock:active, #delete:active, #mark_important:active, #download:active {background-color: #251e45;}
 #move {left: 10%;}
 #lock {left: 30%;}
 #mark_important { left: 50%;}
-#export { left: 70%;}
+#download { left: 70%;}
 #delete {left: 90%;}
 
 #move:disabled, #lock:disabled, #mark_important:disabled { pointer-events: none; opacity: .5;}
@@ -790,4 +785,18 @@ input::selection {
 #continue_unlock:disabled {
     opacity: .5;
     pointer-events: none;
+}
+
+#download_menu {
+    visibility: hidden;
+    height: 260px;
+    width: 80%;
+    border-radius: 25px;
+    background: #251e45;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px;
+    padding: 20px;
+    z-index: 1;
 }

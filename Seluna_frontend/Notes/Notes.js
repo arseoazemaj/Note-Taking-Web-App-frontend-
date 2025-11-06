@@ -58,7 +58,7 @@ function updateSelectionModeFromDOM() {
 }
 
 async function loadNotes() {
-    const containers = document.getElementById("containers");
+    const container = document.getElementById("container");
     try {
         const response = await fetch('http://localhost:5216/api/Notes/get_notes', {
             headers: {
@@ -68,13 +68,13 @@ async function loadNotes() {
         });
 
         if (!response.ok) {
-            containers.textContent = "Failed to load notes: " + response.status;
+            container.textContent = "Failed to load notes: " + response.status;
             return;
         }
 
         const notes = await response.json();
 
-        containers.innerHTML = "";
+        container.innerHTML = "";
 
         function setupNoteEvents(noteBox, note) {
             noteBox.addEventListener('touchstart', function(e) {
@@ -184,7 +184,7 @@ async function loadNotes() {
 
             noteBox.appendChild(noteContent);
             noteBox.appendChild(noteTitle);
-            containers.appendChild(noteBox);
+            container.appendChild(noteBox);
 
             setupNoteEvents(noteBox, note);
         });
@@ -370,6 +370,7 @@ async function LoadFolders() {
                     const checkIcon = folderBox.querySelector('.folder-check-icon');
                     checkIcon.style.display = 'block';
                     folderBox.classList.add('selected');
+                    folderBox.style.transform = "scale(.9)";
                     showDecision();
                     chosingMoveDecisions();
                 }, LONG_PRESS_MS);
@@ -997,8 +998,8 @@ async function mark_important() {
     }
 }
 
-function export_note() {
-    console.log("Exporting note...");
+function download_note() {
+    console.log("Downloading note...");
 }
 
 async function send_to_trash() {
@@ -1045,7 +1046,7 @@ async function send_to_trash() {
 //TODO: Use only when wanting to see in your phone (when using comment code from line 50)
 document.addEventListener('DOMContentLoaded', function() {
     let SelectionMode = false;
-    const containers = document.getElementById('containers');
+    const container = document.getElementById('container');
     let notes = JSON.parse(localStorage.getItem('notes')) || [];
 
     function setupNoteEvents(noteBox, note) {
@@ -1162,7 +1163,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             noteBox.appendChild(noteContent);
             noteBox.appendChild(noteTitle);
-            containers.appendChild(noteBox);
+            container.appendChild(noteBox);
 
             setupNoteEvents(noteBox, note);
         });

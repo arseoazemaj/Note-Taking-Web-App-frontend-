@@ -13,13 +13,9 @@ h1, h3, p, a, button, input, input::placeholder {
 }
 
 #menuopener {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: absolute;
     left: 25px;
     height: 30px;
-    cursor: pointer;
 }
 
 #menu-icon {
@@ -44,7 +40,7 @@ h1, h3, p, a, button, input, input::placeholder {
     height: 100%;
     width: 50%;
     transition: left 0.1s ease;
-    z-index: 1;
+    z-index: 11;
 }
 
 #menu-page.slide-in {animation: in 0.3s forwards;}

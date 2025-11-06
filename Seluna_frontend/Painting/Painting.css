@@ -9,13 +9,9 @@ body {
 }
 
 #menuopener {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
+    position: absolute;
     left: 25px;
     height: 30px;
-    cursor: pointer;
 }
 
 #menu-icon {
@@ -40,7 +36,7 @@ body {
     height: 100%;
     width: 50%;
     transition: left 0.1s ease;
-    z-index: 1;
+    z-index: 11;
 }
 
 #menu-page.slide-in {animation: in 0.3s forwards;}
