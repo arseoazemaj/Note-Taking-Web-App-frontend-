@@ -234,6 +234,8 @@ const continueUnlockBtn = document.getElementById("continue_unlock");
 
 const important_btn = document.getElementById("mark_important");
 
+const download_menu = document.getElementById("download_menu");
+
 let selectedColor = null;
 
 colorBox.forEach(box => {
@@ -262,6 +264,7 @@ function blur_backgroundHandler() {
     lock_password_menu.style.visibility = 'hidden';
     unlock_menu.style.visibility = 'hidden';
     unlock_password.value = "";
+    download_menu.style.visibility = 'hidden';
 
     blur_background.style.visibility = 'hidden';
 }
@@ -1000,6 +1003,8 @@ async function mark_important() {
 
 function download_note() {
     console.log("Downloading note...");
+    download_menu.style.visibility = 'visible';
+    blur_background.style.visibility = 'visible';
 }
 
 async function send_to_trash() {
