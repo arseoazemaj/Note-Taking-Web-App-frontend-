@@ -49,11 +49,11 @@ a, p, h1, h3, button {
     height: 100%;
     width: 50%;
     transition: left 0.1s ease;
-    z-index: 11;
+    z-index: 3;
 }
 
 #menu-page.slide-in {animation: in 0.3s forwards;}
-#menu-page.slide-out {animation: out 0.3s forwards;}
+#menu-page.slide-out {animation: out 1s forwards;}
 
 @keyframes in {
     from { left: -100%; }
