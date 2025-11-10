@@ -49,6 +49,15 @@ input::selection {
     background-color: #575757;
 }
 
+#menu_bg {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+
 #menu-page {
     position: fixed;
     left: -100%;
