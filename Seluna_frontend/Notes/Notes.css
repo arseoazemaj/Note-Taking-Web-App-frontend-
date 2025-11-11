@@ -799,3 +799,13 @@ input::selection {
     padding: 20px;
     z-index: 1;
 }
+
+.download_format {
+    width: 100%;
+    height: 60px;
+    padding-right: 150px;
+    background-color: #1d1737;
+    border: none;
+    border-radius: 10% / 50%;
+    font-size: 17px;
+}
