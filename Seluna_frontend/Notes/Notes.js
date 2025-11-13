@@ -200,7 +200,7 @@ async function loadNotes() {
 }
 
 function showDecision() {
-    document.getElementById("decide").style.display = 'block';
+    document.getElementById("decide").style.display = 'flex';
     document.getElementById("new_note").style.display = 'none';
     SelectionMode = true
 }
@@ -208,13 +208,13 @@ function showDecision() {
 function hideDecision() {
     document.getElementById("decide").style.display = 'none';
     document.getElementById("new_note").style.display = 'block';
-    blur_background.style.visibility = 'hidden';
-    lock_password_menu.style.visibility = 'hidden';
     SelectionMode = false;
 }
 
 const blur_background = document.getElementById("blur-background");
 blur_background.addEventListener('touchstart', blur_backgroundHandler);
+
+const decision_hider = document.getElementById("decision_hider");
 
 const move_btn = document.getElementById("move");
 const move_menu = document.getElementById("move_menu");
@@ -270,12 +270,14 @@ function blur_backgroundHandler() {
     download_menu.style.visibility = 'hidden';
 
     blur_background.style.visibility = 'hidden';
+    decision_hider.style.visibility = 'hidden';
 }
 
 function move() {
-        document.body.style.overflow = 'hidden';
-        move_menu.style.visibility = 'visible';
-        blur_background.style.visibility = 'visible';
+    document.body.style.overflow = 'hidden';
+    move_menu.style.visibility = 'visible';
+    blur_background.style.visibility = 'visible';
+    decision_hider.style.visibility = 'visible';
 }
 
 function create_folder() {
@@ -769,6 +771,7 @@ async function opened_folder(folderId) {
 function lock() {
     lock_menu.style.visibility = 'visible';
     blur_background.style.visibility = 'visible';
+    decision_hider.style.visibility = 'visible';
 }
 
 function not_lock() {
@@ -896,6 +899,7 @@ async function continue_lock() {
 
 function showUnlockPrompt(noteId) {
     blur_background.style.visibility = 'visible';
+    decision_hider.style.visibility = 'visible';
     unlock_menu.style.visibility = 'visible';
 
     unlock_menu.dataset.noteId = noteId;
@@ -1008,6 +1012,7 @@ function download_note() {
     console.log("Downloading note...");
     download_menu.style.visibility = 'visible';
     blur_background.style.visibility = 'visible';
+    decision_hider.style.visibility = 'visible';
 }
 
 async function send_to_trash() {
@@ -1037,6 +1042,7 @@ async function send_to_trash() {
             throw new Error(result.message || "Failed to delete notes.");
         }
 
+        blur_backgroundHandler();
         hideDecision();
         loadNotes();
     } catch (error) {

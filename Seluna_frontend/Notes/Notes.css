@@ -379,6 +379,17 @@ input::selection {
     z-index: 2;
 }
 
+#decision_hider {
+    visibility: hidden;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 80px;
+    width: 100%;
+    backdrop-filter: blur(1px);
+    background: #1d17374a;
+}
+
 #folder_blur {
     visibility: hidden;
     position: fixed;
@@ -392,20 +403,18 @@ input::selection {
 }
 
 #move, #lock, #delete, #mark_important, #download {
-    width: 20%;
+    width: 80px;
     height: 80px;
-    position: fixed;
     background-color: #1a1433;
     border: none;
-    transform: translateX(-50%);
 }
 
 #move:active, #lock:active, #delete:active, #mark_important:active, #download:active {background-color: #251e45;}
-#move {left: 10%;}
+/* #move {left: 10%;}
 #lock {left: 30%;}
 #mark_important { left: 50%;}
 #download { left: 70%;}
-#delete {left: 90%;}
+#delete {left: 90%;} */
 
 #move:disabled, #lock:disabled, #mark_important:disabled { pointer-events: none; opacity: .5;}
 
