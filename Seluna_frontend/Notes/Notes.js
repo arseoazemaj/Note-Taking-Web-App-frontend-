@@ -217,27 +217,50 @@ blur_background.addEventListener('touchstart', blur_backgroundHandler);
 const decision_hider = document.getElementById("decision_hider");
 
 const move_btn = document.getElementById("move");
+move_btn.addEventListener('touchstart', move);
 const move_menu = document.getElementById("move_menu");
+const create_folder_btn = document.getElementById("create_folder-btn");
 const create_folder_menu = document.getElementById("create_folder");
+create_folder_btn.addEventListener('touchstart', create_folder);
 const folder_namer = document.getElementById("folder_namer");
 const colorBox = document.querySelectorAll(".colors");
 const color_check = document.getElementsByClassName("check_color");
+const cancel_folder_btn = document.getElementById("cancel_folder");
+cancel_folder_btn.addEventListener('touchstart', cancel_folder);
+const add_folder_btn = document.getElementById("add_folder");
+add_folder_btn.addEventListener('touchstart', add_folder);
 
 const lock_btn = document.getElementById("lock");
+lock_btn.addEventListener('touchstart', lock);
 const lock_menu = document.getElementById("lock_menu_ask");
+const not_lock_btn = document.getElementById("not_lock");
+not_lock_btn.addEventListener('touchstart', not_lock);
+const do_lock_btn = document.getElementById("do_lock");
+do_lock_btn.addEventListener('touchstart', do_lock);
 const lock_password_menu = document.getElementById("lock_password_menu");
 const lock_password = document.getElementById("lock_password");
 const lock_password_confirm = document.getElementById("confirm_lock_password");
+const cancel_lock_btn = document.getElementById("cancel_lock");
+cancel_lock_btn.addEventListener('touchstart', cancel_lock);
+const continue_lock_btn = document.getElementById("continue_lock");
+continue_lock_btn.addEventListener('touchstart', continue_lock);
 const continueLockBtn = document.getElementById("continue_lock");
-const lockPasswordInput = document.getElementById("lock_password");
-const confirmLockPasswordInput = document.getElementById("confirm_lock_password");
 const unlock_menu = document.getElementById("unlock_notes");
 const unlock_password = document.getElementById("unlock_password");
+const cancel_unlock_btn = document.getElementById("cancel_unlock");
+cancel_unlock_btn.addEventListener('touchstart', cancel_unlock);
 const continueUnlockBtn = document.getElementById("continue_unlock");
+continueUnlockBtn.addEventListener('touchstart', continue_unlock);
 
 const important_btn = document.getElementById("mark_important");
+important_btn.addEventListener('touchstart', mark_important);
 
+const download_btn = document.getElementById("download");
+download_btn.addEventListener('touchstart', download_note);
 const download_menu = document.getElementById("download_menu");
+
+const delete_btn = document.getElementById("delete");
+delete_btn.addEventListener('touchstart', send_to_trash);
 
 let selectedColor = null;
 
@@ -777,6 +800,7 @@ function lock() {
 function not_lock() {
     lock_menu.style.visibility = 'hidden';
     blur_background.style.visibility = 'hidden';
+    decision_hider.style.visibility = 'hidden';
 }
 
 function do_lock() {
@@ -899,7 +923,6 @@ async function continue_lock() {
 
 function showUnlockPrompt(noteId) {
     blur_background.style.visibility = 'visible';
-    decision_hider.style.visibility = 'visible';
     unlock_menu.style.visibility = 'visible';
 
     unlock_menu.dataset.noteId = noteId;

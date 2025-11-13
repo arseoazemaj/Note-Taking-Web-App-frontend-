@@ -45,14 +45,14 @@
     <div id="decide">
         <div id="decision_hider"></div>
         <div id="move_container">
-            <button id="move" ontouchstart="move()">
+            <button id="move">
                 <i data-lucide="folder-input" id="folder_icon"></i>Move
             </button>
             <div id="move_menu">
                 <h3 id="folder_header_text_1">Select a folder</h3>
                 <div id="folders">
                     <div id="folder_list"></div>
-                    <button id="create_folder-btn" ontouchstart="create_folder()">Create a new folder
+                    <button id="create_folder-btn">Create a new folder
                         <i data-lucide="plus" id="plus"></i>
                     </button>
                 </div>
@@ -100,14 +100,14 @@
                         </div>
                     </div>
                     <div id="chose">
-                        <button id="cancel_folder" ontouchstart="cancel_folder()">Cancel</button>
-                        <button id="add_folder" ontouchstart="add_folder()">Add</button>
+                        <button id="cancel_folder">Cancel</button>
+                        <button id="add_folder">Add</button>
                     </div>
                 </div>
             </div>
         </div>
         <div id="lock_container">
-            <button id="lock" ontouchstart="lock()">
+            <button id="lock">
                 <i data-lucide="lock-keyhole" id="lock_icon"></i>Lock
             </button>
             <div id="lock_menu_ask">
@@ -115,25 +115,25 @@
                 <p>Once locked, it will stay hidden and protected. Only your password can bring it back to view.</p>
                 <h3>Do you want to continue?</h3>
                 <div class="lock_decide">
-                    <button class="lock_menu_answere" ontouchstart="not_lock()">No</button>
-                    <button class="lock_menu_answere" ontouchstart="do_lock()">Yes</button>
+                    <button class="lock_menu_answere" id="not_lock">No</button>
+                    <button class="lock_menu_answere" id="do_lock">Yes</button>
                 </div>
                 <div id="lock_password_menu">
                     <h3 id="lock_password_menu_text">Create a strong password and keep it safe this note will only open for you.</h3>
                     <input type="text" id="lock_password" placeholder="Enter a password"> <!--Change to type="password"-->
                     <input type="text" id="confirm_lock_password" placeholder="Confirm your password"> <!--Change to type="password"-->
                     <div class="lock_decide">
-                        <button id="cancel_lock" ontouchstart="cancel_lock()">Cancel</button>
-                        <button id="continue_lock" ontouchstart="continue_lock()">Lock</button>
+                        <button id="cancel_lock">Cancel</button>
+                        <button id="continue_lock">Lock</button>
                     </div>
                 </div>
             </div>
         </div>
-        <button id="mark_important" ontouchstart="mark_important()">
+        <button id="mark_important">
             <i data-lucide="star" id="important_icon"></i>Mark important
         </button>
         <div id="download_container">
-            <button id="download" ontouchstart="download_note()">
+            <button id="download">
                 <i data-lucide="download" id="download_icon"></i>Download
             </button>
             <div id="download_menu">
@@ -141,7 +141,7 @@
                 <button class="download_format" id="download_pdf">Download as .pdf</button>
             </div>
         </div>
-        <button id="delete" ontouchstart="send_to_trash()">
+        <button id="delete">
             <i data-lucide="trash-2" id="bin_icon"></i>Delete
         </button>
     </div>
@@ -149,8 +149,8 @@
         <h3 id="unlock_text">You are opening a locked note, you need to enter the password of the note in order to view or edit its content.</h3>
         <input type="text" id="unlock_password" placeholder="Enter your password"> <!--Change to type="password"-->
         <div id="unlock_btn">
-            <button id="cancel_unlock" ontouchstart="cancel_unlock()">Cancel</button>
-            <button id="continue_unlock" ontouchstart="continue_unlock()">Continue</button>
+            <button id="cancel_unlock">Cancel</button>
+            <button id="continue_unlock">Continue</button>
         </div>
     </div>
 

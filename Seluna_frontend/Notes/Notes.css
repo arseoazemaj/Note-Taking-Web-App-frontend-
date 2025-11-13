@@ -410,11 +410,6 @@ input::selection {
 }
 
 #move:active, #lock:active, #delete:active, #mark_important:active, #download:active {background-color: #251e45;}
-/* #move {left: 10%;}
-#lock {left: 30%;}
-#mark_important { left: 50%;}
-#download { left: 70%;}
-#delete {left: 90%;} */
 
 #move:disabled, #lock:disabled, #mark_important:disabled { pointer-events: none; opacity: .5;}
 
