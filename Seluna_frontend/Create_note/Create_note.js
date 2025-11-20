@@ -1,34 +1,21 @@
-const blur_background = document.getElementById("blur_background");
-blur_background.addEventListener('touchstart', blur_backgroundHandler);
-const container = document.getElementById("container");
-
 const menu = document.getElementById("sub-menu_icon");
-menu.addEventListener('touchstart', SubMenu);
+menu.addEventListener('touchstart', openMenu);
+const container = document.getElementById("container");
+const blur_background = document.getElementById("blur_background");
+blur_background.addEventListener('touchstart', closeMenu);
 
-function SubMenu() {
+function openMenu() {
     container.style.visibility = "visible";
     blur_background.style.visibility = "visible";
+
+    console.log("Opened menu");
 }
 
-function blur_backgroundHandler() {
-    blur_background.style.visibility = "hidden";
+function closeMenu() {
     container.style.visibility = "hidden";
-    console.log("blur background touched");
-}
+    blur_background.style.visibility = "hidden";
 
-let filled = false;
-
-function fill() {
-    const icon = document.getElementById("important-icon");
-
-    if (filled) {
-        icon.style.fill = "none";
-    }
-    else {
-        icon.style.fill = "#dda9ff";
-    }
-
-    filled = !filled;
+    console.log("Closed menu");
 }
 
 async function save() { //* Save the note
@@ -77,6 +64,24 @@ async function save() { //* Save the note
         alert("There was an error saving your note. Please try again.");
     }
 }
+
+let filled = false;
+
+function fill() {
+    const icon = document.getElementById("important-icon");
+
+    if (filled) {
+        icon.style.fill = "none";
+    }
+    else {
+        icon.style.fill = "#dda9ff";
+    }
+
+    filled = !filled;
+}
+
+
+
 
 async function deleteNote() { //*Moves the note to trash
     const token = localStorage.getItem("token");

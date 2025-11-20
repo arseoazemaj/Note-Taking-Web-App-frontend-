@@ -160,6 +160,7 @@ input::selection {
     position: absolute;
     left: 10px;
     height: 20px;
+    color: #ad7ecc;
 }
 
 #container {
@@ -301,8 +302,8 @@ input::selection {
     transform: translate(-50%, -50%);
     height: 100px;
     width: 100px;
-    color: #b17fd1;
-    filter: drop-shadow(0 0 3px #b17fd1);
+    color: #ad7ecc;
+    filter: drop-shadow(0 0 3px #ad7ecc);
 }
 
 .title {
@@ -340,8 +341,8 @@ input::selection {
 .important-icon {
     position: relative;
     top: -15px;
-    color: #b07ecf;
-    fill: #b07ecf;
+    color: #ad7ecc;
+    fill: #ad7ecc;
     transform: rotate(45deg);
     pointer-events: none;
     z-index: 2;
@@ -367,7 +368,7 @@ input::selection {
     z-index: 2;
 }
 
-#blur-background {
+#blur_background {
     visibility: hidden;
     position: fixed;
     top: 0;

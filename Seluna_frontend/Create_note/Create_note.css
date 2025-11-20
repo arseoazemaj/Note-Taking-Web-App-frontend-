@@ -53,13 +53,66 @@ a, div {
 
 #title:focus {outline: none;}
 
-#note {
-    position: fixed;
-    top: 90px;
-    height: 85%;
-    width: 95%;
-    left: 5px;
+#sub-menu_icon {
+    position: absolute;
+    top: 32px;
+    right: 4%;
+    color: #b17fd1;
 }
+
+#blur_background {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(1px);
+    background: #1d17374a;
+}
+
+#container {
+    visibility: hidden;
+    top: -5px;
+    right: -5px;
+    position: absolute;
+    height: 270px;
+    width: 200px;
+    border-radius: 15px;
+    background-color: #08002f;
+}
+
+#save, #important, #lock, #download, #trash {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #dda9ff;
+    font-size: large;
+    height: 36px;
+    width: 85%;
+    border-radius: 10px;
+    border: none;
+    padding-left: 50px;
+    background-color: #35007e59;
+    display: flex;
+    align-items: center;
+}
+
+#save {top: 15px;}
+#important {top: 65px;}
+#lock {top: 115px;}
+#download {top: 165px;}
+#trash {top: 215px;}
+
+#save-icon, #important-icon, #lock-icon, #download-icon, #trash-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 80%;
+    color: #dda9ff;
+}
+
+#save:active, #important:active, #lock:active, #download:active #trash:active {background-color: #23005359;}
 
 #note_input {
     width: 85%;
@@ -80,62 +133,3 @@ a, div {
 }
 
 #note_input::placeholder {color: #c7c5ff;}
-
-#sub-menu_icon {
-    position: absolute;
-    top: 32px;
-    right: 4%;
-    color: #b17fd1;
-}
-
-#blur_background {
-    visibility: hidden;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-#container {
-    background-color: #30007d;
-    visibility: hidden;
-    top: 35px;
-    right: 3%;
-    position: absolute;
-    height: 290px;
-    width: 200px;
-    border-radius: 15px;
-}
-
-#save, #important, #lock, #download, #trash {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #dda9ff;
-    font-size: large;
-    height: 36px;
-    width: 85%;
-    border-radius: 10px;
-    border: none;
-    padding-left: 50px;
-    background-color: #1c004a;
-    display: flex;
-    align-items: center;
-}
-
-#save {top: 15px;}
-#important {top: 65px;}
-#lock {top: 115px;}
-#download {top: 165px;}
-#trash {top: 215px;}
-
-#save-icon, #important-icon, #lock-icon, #download-icon, #trash-icon {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 80%;
-    color: #dda9ff;
-}
-
-#save:active, #important:active, #lock:active, #download:active #trash:active {background-color: #30007d;}
