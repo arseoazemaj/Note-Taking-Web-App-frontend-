@@ -211,7 +211,7 @@ function hideDecision() {
     SelectionMode = false;
 }
 
-const blur_background = document.getElementById("blur-background");
+const blur_background = document.getElementById("blur_background");
 const decision_hider = document.getElementById("decision_hider");
 
 blur_background.addEventListener('touchstart', blur_backgroundHandler);
@@ -585,13 +585,9 @@ async function LoadFolderName () {
             folderName.className = 'folder_name';
             folderName.textContent = folder.name;
             folderName.style.color = folder.color;
-            
-            note_counter = document.createElement('p');
-            note_counter.className = 'note_counter';
 
             folder_element.appendChild(folderIcon);
             folder_element.appendChild(folderName);
-            folder_element.appendChild(note_counter);
             folderList.appendChild(folder_element);
 
             folder_element.addEventListener('touchstart', () => {

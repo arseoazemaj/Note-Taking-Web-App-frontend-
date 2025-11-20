@@ -1,41 +1,33 @@
-function SubMenu() {
-    const container = document.getElementById("container");
-    const isVisible = container.style.display === "block";
+const blur_background = document.getElementById("blur_background");
+blur_background.addEventListener('touchstart', blur_backgroundHandler);
+const container = document.getElementById("container");
 
-    if(isVisible) {
-        container.style.display = "none";
-    }
-    else {
-        container.style.display = "block";
-    }
+const menu = document.getElementById("sub-menu_icon");
+menu.addEventListener('touchstart', SubMenu);
+
+function SubMenu() {
+    container.style.visibility = "visible";
+    blur_background.style.visibility = "visible";
 }
 
-document.addEventListener("click", function (event) {
-    const subMenu = document.getElementById("sub-menu_icon");
-    const container = document.getElementById("container");
-
-    if (!subMenu.contains(event.target) && !container.contains(event.target)) {
-        container.style.display = "none";
-    }
-});
-
-document.getElementById("sub-menu_icon").addEventListener("click", function (event) {
-    event.stopPropagation();
-    SubMenu();
-});
+function blur_backgroundHandler() {
+    blur_background.style.visibility = "hidden";
+    container.style.visibility = "hidden";
+    console.log("blur background touched");
+}
 
 let filled = false;
 
 function fill() {
     const icon = document.getElementById("important-icon");
-    
+
     if (filled) {
         icon.style.fill = "none";
     }
     else {
         icon.style.fill = "#dda9ff";
     }
-    
+
     filled = !filled;
 }
 
