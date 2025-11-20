@@ -12,8 +12,10 @@ function openMenu() {
 }
 
 function closeMenu() {
-    container.style.visibility = "hidden";
-    blur_background.style.visibility = "hidden";
+    setTimeout(() => {
+        container.style.visibility = "hidden";
+        blur_background.style.visibility = "hidden";
+    }, 100);
 
     console.log("Closed menu");
 }

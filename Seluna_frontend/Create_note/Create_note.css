@@ -69,17 +69,18 @@ a, div {
     height: 100%;
     backdrop-filter: blur(1px);
     background: #1d17374a;
+    z-index: 1;
 }
 
 #container {
     visibility: hidden;
-    top: -5px;
     right: -5px;
     position: absolute;
     height: 270px;
     width: 200px;
     border-radius: 15px;
     background-color: #08002f;
+    z-index: 2;
 }
 
 #save, #important, #lock, #download, #trash {
