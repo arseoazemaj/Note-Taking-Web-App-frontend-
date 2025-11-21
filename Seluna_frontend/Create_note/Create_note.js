@@ -7,8 +7,6 @@ blur_background.addEventListener('touchstart', closeMenu);
 function openMenu() {
     container.style.visibility = "visible";
     blur_background.style.visibility = "visible";
-
-    console.log("Opened menu");
 }
 
 function closeMenu() {
@@ -16,8 +14,6 @@ function closeMenu() {
         container.style.visibility = "hidden";
         blur_background.style.visibility = "hidden";
     }, 100);
-
-    console.log("Closed menu");
 }
 
 async function save() { //* Save the note
