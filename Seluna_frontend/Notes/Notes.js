@@ -306,6 +306,8 @@ function blur_backgroundHandler() {
 
 function move() {
     setTimeout(() => {
+        move_menu.style.visibility = 'visible';
+        create_folder_menu.style.visibility = 'visible';
         move_menu.classList.add('slide-in');
         move_menu.classList.remove('slide-out');
         blur_background.style.visibility = 'visible';
@@ -655,9 +657,9 @@ async function sendNoteToFolder(noteId, folderId) {
 
         await loadNotes();
         hideDecision();
-        
-        move_menu.classList.remove('slide-in');
-        move_menu.classList.add('slide-out');
+
+        move_menu.style.visibility = 'hidden';
+        create_folder_menu.style.visibility = 'hidden';
     } catch (error) {
         console.error('Error moving note:', error);
     }
