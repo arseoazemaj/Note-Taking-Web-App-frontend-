@@ -318,6 +318,7 @@ function blur_backgroundHandler() {
         unlock_menu.classList.add("slide-out");
         unlock_menu.classList.remove("slide-in");
     }
+
     unlock_password.value = "";
 
     if (download_menu.classList.contains("slide-in")) {
