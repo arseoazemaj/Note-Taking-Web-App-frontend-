@@ -717,7 +717,7 @@ input::selection {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 0;
+    bottom: -320px;
     padding: 20px;
     z-index: 1;
 }
@@ -838,7 +838,6 @@ input::selection {
 }
 
 #download_menu {
-    visibility: hidden;
     height: 260px;
     width: 80%;
     border-radius: 25px;
@@ -846,9 +845,22 @@ input::selection {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 10px;
+    bottom: -300px;
     padding: 20px;
     z-index: 1;
+}
+
+#download_menu.slide-in {animation: slide_in_download_menu .3s forwards;}
+#download_menu.slide-out {animation: slide_out_download_menu .3s forwards;}
+
+@keyframes slide_in_download_menu {
+    from { bottom: -300px; }
+    to { bottom: 10px; }
+}
+
+@keyframes slide_out_download_menu {
+    from { bottom: 10px; }
+    to { bottom: -300px; }
 }
 
 .download_format {
