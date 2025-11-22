@@ -429,7 +429,6 @@ input::selection {
     z-index: 1;
 }
 
-
 #move_menu.slide-in {animation: slide_in .3s forwards;}
 #move_menu.slide-out {animation: slide_out .3s forwards;}
 
@@ -663,7 +662,6 @@ input::selection {
 }
 
 #lock_menu_ask {
-    visibility: hidden;
     height: 260px;
     width: 85%;
     border-radius: 25px;
@@ -671,9 +669,22 @@ input::selection {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 10px;
+    bottom: -400%;
     padding: 20px;
     z-index: 1;
+}
+
+#lock_menu_ask.slide-in {animation: slide_in_lock .3s forwards;}
+#lock_menu_ask.slide-out {animation: slide_out_lock .3s forwards;}
+
+@keyframes slide_in_lock {
+    from { bottom: -400%; }
+    to { bottom: 10px; }
+}
+
+@keyframes slide_out_lock {
+    from { bottom: 10px; }
+    to { bottom: -400%; }
 }
 
 .lock_decide {
@@ -699,7 +710,6 @@ input::selection {
 .lock_menu_answere:active {background-color: #1d1737;}
 
 #lock_password_menu {
-    visibility: hidden;
     height: 90%;
     width: 90%;
     border-radius: 25px;
@@ -707,9 +717,22 @@ input::selection {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 0px;
+    bottom: 0;
     padding: 20px;
     z-index: 1;
+}
+
+#lock_password_menu.slide-in {animation: slide_in_lock_menu .3s forwards;}
+#lock_password_menu.slide-out {animation: slide_out_lock_menu .3s forwards;}
+
+@keyframes slide_in_lock_menu {
+    from { bottom: -320px; }
+    to { bottom: 330px; }
+}
+
+@keyframes slide_out_lock_menu {
+    from { bottom: 0; }
+    to { bottom: -320px; }
 }
 
 #lock_password_menu_text {
