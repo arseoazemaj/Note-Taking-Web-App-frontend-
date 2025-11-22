@@ -285,8 +285,10 @@ colorBox.forEach(box => {
 });
 
 function blur_backgroundHandler() {
-    move_menu.style.visibility = 'hidden';
-    create_folder_menu.style.visibility = 'hidden';
+    move_menu.classList.remove('slide-in');
+    move_menu.classList.add('slide-out');
+    create_folder_menu.classList.remove('slide-in');
+    create_folder_menu.classList.add('slide-out');
     folder_namer.value = "";
     for (let i = 0; i < color_check.length; i++) {
         color_check[i].style.visibility = 'hidden';
@@ -303,7 +305,8 @@ function blur_backgroundHandler() {
 
 function move() {
     setTimeout(() => {
-        move_menu.style.visibility = 'visible';
+        move_menu.classList.add('slide-in');
+        move_menu.classList.remove('slide-out');
         blur_background.style.visibility = 'visible';
         decision_hider.style.visibility = 'visible';
     }, 100);
@@ -311,15 +314,19 @@ function move() {
 
 function create_folder() {
     setTimeout(() => {
-        create_folder_menu.style.visibility = 'visible';
-        move_menu.style.visibility = 'hidden';
+        create_folder_menu.classList.add('slide-in');
+        create_folder_menu.classList.remove('slide-out');
+        move_menu.classList.remove('slide-in');
+        move_menu.classList.add('slide-out');
     }, 100);
 }
 
 function cancel_folder() {
     setTimeout(() => {
-        create_folder_menu.style.visibility = 'hidden';
-        move_menu.style.visibility = 'visible';
+        create_folder_menu.classList.remove('slide-in');
+        create_folder_menu.classList.add('slide-out');
+        move_menu.classList.add('slide-in');
+        move_menu.classList.remove('slide-out');
         folder_namer.value = "";
         for (let i = 0; i < color_check.length; i++) {
             color_check[i].style.visibility = 'hidden';

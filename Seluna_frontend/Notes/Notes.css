@@ -420,7 +420,6 @@ input::selection {
 }
 
 #move_menu {
-    visibility: hidden;
     height: 300px;
     width: 85%;
     border-radius: 25px;
@@ -428,9 +427,23 @@ input::selection {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 10px;
+    bottom: -410%;
     padding: 15px;
     z-index: 1;
+}
+
+
+#move_menu.slide-in {animation: slide_in .5s forwards;}
+#move_menu.slide-out {animation: slide_out .5s forwards;}
+
+@keyframes slide_in {
+    from { bottom: -410%; }
+    to { bottom: 10px; }
+}
+
+@keyframes slide_out {
+    from { bottom: 10px; }
+    to { bottom: -410%; }
 }
 
 #folder_header_text_1 {
@@ -519,16 +532,29 @@ input::selection {
 }
 
 #create_folder {
-    visibility: hidden;
     height: 100%;
     width: 100%;
     left: 50%;
     transform: translateX(-50%);
     background: #251e45;
     position: relative;
-    bottom: 82px;
+    bottom: -410%;
     border-radius: 25px;
     padding: 15px;
+    visibility: visible;
+}
+
+#create_folder.slide-in {animation: slide_in_folder .5s forwards;}
+#create_folder.slide-out {animation: slide_out_folder .5s forwards;}
+
+@keyframes slide_in_folder {
+    from { bottom: -410%; }
+    to { bottom: 418px; }
+}
+
+@keyframes slide_out_folder {
+    from { bottom: 418px; }
+    to { bottom: -410%; }
 }
 
 #folder_namer {
