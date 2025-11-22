@@ -731,7 +731,7 @@ input::selection {
 }
 
 @keyframes slide_out_lock_menu {
-    from { bottom: 0; }
+    from { bottom: 330px; }
     to { bottom: -320px; }
 }
 
