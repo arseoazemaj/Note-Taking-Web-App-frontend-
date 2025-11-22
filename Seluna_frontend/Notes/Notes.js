@@ -208,6 +208,7 @@ function showDecision() {
 function hideDecision() {
     document.getElementById("decide").style.display = 'none';
     document.getElementById("new_note").style.display = 'block';
+    blur_backgroundHandler();
     SelectionMode = false;
 }
 
@@ -336,6 +337,8 @@ function cancel_folder() {
 
 async function add_folder() {
     setTimeout(async () => {
+        create_folder_menu.classList.remove('slide-in');
+        create_folder_menu.classList.add('slide-out');
         const folderName = document.getElementById("folder_namer").value.trim();
         const folderColor = selectedColor;
 
@@ -652,15 +655,12 @@ async function sendNoteToFolder(noteId, folderId) {
 
         await loadNotes();
         hideDecision();
-        hideFolder();
+        
+        move_menu.classList.remove('slide-in');
+        move_menu.classList.add('slide-out');
     } catch (error) {
         console.error('Error moving note:', error);
     }
-}
-
-function hideFolder() {
-    blur_background.style.visibility = 'hidden';
-    move_menu.style.visibility = 'hidden';
 }
 
 async function opened_folder(folderId) {
