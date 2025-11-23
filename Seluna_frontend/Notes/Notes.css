@@ -364,7 +364,9 @@ input::selection {
     width: 100%;
     background-color: #1a1433;
     bottom: 0;
-    display: none;
+    display: flex;
+    visibility: hidden;
+    justify-content: center;
     z-index: 2;
 }
 
@@ -375,8 +377,6 @@ input::selection {
     left: 0;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(1px);
-    background: #1d17374a;
     z-index: 2;
 }
 
