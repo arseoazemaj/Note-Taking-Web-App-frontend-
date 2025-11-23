@@ -35,75 +35,6 @@ function closeMenu() {
     }, 100);
 }
 
-function lock() {
-    const lock_menu = document.getElementById("lock_menu");
-    lock_menu.classList.add("show_lock_menu");
-    lock_menu.classList.remove("hide_lock_menu");
-    lock_menu_lock_password.classList.add("hide_lock_menu");
-    lock_menu_lock_password.classList.remove("show_lock_menu");
-    lock_bg.style.visibility = "visible";
-}
-
-function closelockMenuBG() {
-    lock_menu.classList.add("hide_lock_menu");
-    lock_menu.classList.remove("show_lock_menu");
-    lock_menu_lock_password.classList.add("hide_lock_menu");
-    lock_menu_lock_password.classList.remove("show_lock_menu");
-    passwordInput.value = "";
-    passwordConfirmInput.value = "";
-    closeMenu();
-}
-
-function closelockMenu() {
-    lock_menu.classList.add("hide_lock_menu");
-    lock_menu.classList.remove("show_lock_menu");
-    lock_menu_lock_password.classList.add("hide_lock_menu");
-    lock_menu_lock_password.classList.remove("show_lock_menu");
-    lock_bg.style.visibility = "hidden";
-}
-
-function continueLock() {
-    lock_menu_lock_password.classList.add("show_lock_menu");
-    lock_menu_lock_password.classList.remove("hide_lock_menu");
-    lock_menu.style.visibility = "hidden";
-}
-
-function cancelLockPassword() {
-    passwordInput.value = "";
-    passwordConfirmInput.value = "";
-    lock_menu_lock_password.classList.add("hide_lock_menu");
-    lock_menu_lock_password.classList.remove("show_lock_menu");
-}
-
-const passwordInput = document.getElementById("lock_password");
-const passwordConfirmInput = document.getElementById("confirm_lock_password");
-const continueLockBtnn = document.getElementById("continue_lock");
-continueLockBtnn.disabled = true;
-
-function validatePasswordInput() {
-    const password = passwordInput.value;
-    const confirmPassword = passwordConfirmInput.value;
-
-    const noSpaces = !password.includes(" ") && !confirmPassword.includes(" ");
-    const lock_password_Filled = password.length > 0 && confirmPassword.length > 0;
-    const longEnough_lock_passwords = password.length >= 8 && confirmPassword.length >= 8;
-    const lock_match = password === confirmPassword;
-
-    if (lock_password_Filled && longEnough_lock_passwords && lock_match && noSpaces) {
-        continueLockBtnn.disabled = false;
-    } else {
-        continueLockBtnn.disabled = true;
-    }
-}
-
-passwordInput.addEventListener("input", validatePasswordInput);
-passwordConfirmInput.addEventListener("input", validatePasswordInput);
-
-
-
-
-
-
 async function save() { //* Save the note
     const Title = document.getElementById("title").value.trim();
     const Content = document.getElementById("note_input").value.trim();
@@ -165,6 +96,80 @@ function fill() {
 
     filled = !filled;
 }
+
+function lock() {
+    const lock_menu = document.getElementById("lock_menu");
+    lock_menu.classList.add("show_lock_menu");
+    lock_menu.classList.remove("hide_lock_menu");
+    lock_menu_lock_password.classList.add("hide_lock_menu");
+    lock_menu_lock_password.classList.remove("show_lock_menu");
+    lock_bg.style.visibility = "visible";
+}
+
+function closelockMenuBG() {
+    lock_menu.classList.add("hide_lock_menu");
+    lock_menu.classList.remove("show_lock_menu");
+    lock_menu_lock_password.classList.add("hide_lock_menu");
+    lock_menu_lock_password.classList.remove("show_lock_menu");
+    passwordInput.value = "";
+    passwordConfirmInput.value = "";
+    closeMenu();
+}
+
+function closelockMenu() {
+    lock_menu.classList.add("hide_lock_menu");
+    lock_menu.classList.remove("show_lock_menu");
+    lock_menu_lock_password.classList.add("hide_lock_menu");
+    lock_menu_lock_password.classList.remove("show_lock_menu");
+    lock_bg.style.visibility = "hidden";
+}
+
+function continueLock() {
+    lock_menu_lock_password.classList.add("show_lock_menu");
+    lock_menu_lock_password.classList.remove("hide_lock_menu");
+    lock_menu.style.visibility = "hidden";
+}
+
+function cancelLockPassword() {
+    passwordInput.value = "";
+    passwordConfirmInput.value = "";
+    lock_menu_lock_password.classList.add("hide_lock_menu");
+    lock_menu_lock_password.classList.remove("show_lock_menu");
+}
+
+const passwordInput = document.getElementById("lock_password");
+const passwordConfirmInput = document.getElementById("confirm_lock_password");
+const continueLockBtn = document.getElementById("continue_lock");
+continueLockBtn.disabled = true;
+continueLockBtn.addEventListener("touchstart", confirmLock);
+
+function validatePasswordInput() {
+    const password = passwordInput.value;
+    const confirmPassword = passwordConfirmInput.value;
+
+    const noSpaces = !password.includes(" ") && !confirmPassword.includes(" ");
+    const lock_password_Filled = password.length > 0 && confirmPassword.length > 0;
+    const longEnough_lock_passwords = password.length >= 8 && confirmPassword.length >= 8;
+    const lock_match = password === confirmPassword;
+
+    if (lock_password_Filled && longEnough_lock_passwords && lock_match && noSpaces) {
+        continueLockBtn.disabled = false;
+    } else {
+        continueLockBtn.disabled = true;
+    }
+}
+
+passwordInput.addEventListener("input", validatePasswordInput);
+passwordConfirmInput.addEventListener("input", validatePasswordInput);
+
+function confirmLock() {
+    
+}
+
+
+
+
+
 
 async function deleteNote() { //*Moves the note to trash
     const token = localStorage.getItem("token");
