@@ -95,16 +95,77 @@ function lock() {
     const lock_menu = document.getElementById("lock_menu");
     lock_menu.classList.add("show_lock_menu");
     lock_menu.classList.remove("hide_lock_menu");
+    lock_menu_lock_password.classList.add("hide_lock_menu");
+    lock_menu_lock_password.classList.remove("show_lock_menu");
     lock_bg.style.visibility = "visible";
 }
 
-lock_bg.addEventListener('touchstart', closelockMenu);
+const passwordInput = document.getElementById("lock_password");
+const passwordConfirmInput = document.getElementById("confirm_lock_password");
+
+lock_bg.addEventListener('touchstart', closelockMenuBG);
+
+function closelockMenuBG() {
+    lock_menu.classList.add("hide_lock_menu");
+    lock_menu.classList.remove("show_lock_menu");
+    lock_menu_lock_password.classList.add("hide_lock_menu");
+    lock_menu_lock_password.classList.remove("show_lock_menu");
+    passwordInput.value = "";
+    passwordConfirmInput.value = "";
+    closeMenu();
+}
+
+const close_lock_menu = document.getElementById("not_lock");
+close_lock_menu.addEventListener('touchstart', closelockMenu);
 
 function closelockMenu() {
     lock_menu.classList.add("hide_lock_menu");
     lock_menu.classList.remove("show_lock_menu");
-    closeMenu();
+    lock_menu_lock_password.classList.add("hide_lock_menu");
+    lock_menu_lock_password.classList.remove("show_lock_menu");
+    lock_bg.style.visibility = "hidden";
 }
+
+const continue_lock = document.getElementById("do_lock");
+continue_lock.addEventListener('touchstart', continueLock);
+
+const lock_menu_lock_password = document.getElementById("lock_password_menu");
+
+function continueLock() {
+    lock_menu_lock_password.classList.add("show_lock_menu");
+    lock_menu_lock_password.classList.remove("hide_lock_menu");
+    lock_menu.style.visibility = "hidden";
+}
+
+const cancel_lock_password = document.getElementById("cancel_lock");
+cancel_lock_password.addEventListener('touchstart', cancelLockPassword);
+
+function cancelLockPassword() {
+    passwordInput.value = "";
+    passwordConfirmInput.value = "";
+    lock_menu_lock_password.classList.add("hide_lock_menu");
+    lock_menu_lock_password.classList.remove("show_lock_menu");
+}
+
+const confirm_lock_password = document.getElementById("continue_lock");
+confirm_lock_password.disabled = true;
+
+function validatePasswordInput() {
+    const passwordInput = document.getElementById("lock_password").value;
+    const passwordConfirmInput = document.getElementById("confirm_lock_password").value;
+
+    const noSpaces = !passwordInput.includes(" ") && !passwordConfirmInput.includes(" ");
+    const lock_password_Filled = passwordInput.length > 0 && passwordConfirmInput.length > 0;
+    const longEnough_lock_passwords = passwordInput.length >= 8 && passwordConfirmInput.length >= 8;
+    const lock_match = passwordInput === passwordConfirmInput;
+
+    if (lock_password_Filled && longEnough_lock_passwords && lock_match && noSpaces) {
+        confirm_lock_password.disabled = false;
+    } else {
+        confirm_lock_password.disabled = true;
+    }
+}
+
 
 async function deleteNote() { //*Moves the note to trash
     const token = localStorage.getItem("token");

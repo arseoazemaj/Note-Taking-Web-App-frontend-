@@ -150,4 +150,4 @@ a, div {
     color: #dda9ff;
 }
 
-#save:active, #important:active, #lock:active, #download:active #trash:active {background-color: #370085;}
+#save:active, #important:active, #lock:active, #download:active #trash:active {opacity: .5;}

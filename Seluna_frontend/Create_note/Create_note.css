@@ -134,7 +134,7 @@ input {
     color: #dda9ff;
 }
 
-#save:active, #important:active, #lock:active, #download:active #trash:active {background-color: #23005359;}
+#save:active, #important:active, #lock:active, #download:active #trash:active {opacity: .5;}
 
 #note_input {
     width: 85%;
@@ -155,7 +155,6 @@ input {
 }
 
 #note_input::placeholder {color: #c7c5ff;}
-
 
 #lock_bg {
     visibility: hidden;
@@ -231,17 +230,17 @@ input {
     filter: drop-shadow(0 0 15px #302758);
 }
 
-#lock_password_menu.slide-in {animation: slide_in_lock_menu .3s forwards;}
-#lock_password_menu.slide-out {animation: slide_out_lock_menu .3s forwards;}
+#lock_password_menu.show_lock_menu {animation: show_lock_password .3s forwards;}
+#lock_password_menu.hide_lock_menu {animation: hide_lock_password .3s forwards;}
 
-@keyframes slide_in_lock_menu {
-    from { bottom: -320px; }
-    to { bottom: 330px; }
+@keyframes show_lock_password {
+    from { opacity: 0; visibility: hidden;}
+    to { opacity: 1; visibility: visible;}
 }
 
-@keyframes slide_out_lock_menu {
-    from { bottom: 330px; }
-    to { bottom: -320px; }
+@keyframes hide_lock_password {
+    from { opacity: 1; visibility: visible;}
+    to { opacity: 0; visibility: hidden;}
 }
 
 #lock_password_menu_text {
