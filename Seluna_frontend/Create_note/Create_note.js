@@ -10,12 +10,23 @@ function openMenu() {
     blur_background.style.visibility = "visible";
 }
 
+const lock_bg = document.getElementById("lock_bg");
+
 function closeMenu() {
     setTimeout(() => {
         container.classList.remove("show_menu");
         container.classList.add("hide_menu");
+        lock_bg.style.visibility = "hidden";
         blur_background.style.visibility = "hidden";
     }, 100);
+}
+
+blur_background.addEventListener('touchstart', closeMenus);
+
+function closeMenus() {
+    closeMenu();
+    lock_menu.classList.add("hide_lock_menu");
+    lock_menu.classList.remove("show_lock_menu");
 }
 
 async function save() { //* Save the note
@@ -80,8 +91,20 @@ function fill() {
     filled = !filled;
 }
 
+function lock() {
+    const lock_menu = document.getElementById("lock_menu");
+    lock_menu.classList.add("show_lock_menu");
+    lock_menu.classList.remove("hide_lock_menu");
+    lock_bg.style.visibility = "visible";
+}
 
+lock_bg.addEventListener('touchstart', closelockMenu);
 
+function closelockMenu() {
+    lock_menu.classList.add("hide_lock_menu");
+    lock_menu.classList.remove("show_lock_menu");
+    closeMenu();
+}
 
 async function deleteNote() { //*Moves the note to trash
     const token = localStorage.getItem("token");
@@ -122,7 +145,6 @@ async function deleteNote() { //*Moves the note to trash
         }
     }
 }
-
 
 //*Used to save the notes in local storage for testing purposes (will be deleted in the end)*//
 document.getElementById('save').addEventListener('click', function() {

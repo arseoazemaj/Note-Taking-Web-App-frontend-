@@ -25,11 +25,22 @@ body {
     scale: 1.5;
 }
 
-a, div {
+h1, h3, p, a, button, input, input::placeholder {
+    color: #ad7ecc;
+    font-weight: bold;
+}
+
+a, p, h1, h3, button {
     -webkit-user-select: none;
     user-select: none;
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color: transparent;
+}
+
+a {text-decoration: none;}
+
+input {
+    font-size: 20px;
 }
 
 #title {
@@ -144,3 +155,145 @@ a, div {
 }
 
 #note_input::placeholder {color: #c7c5ff;}
+
+
+#lock_bg {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+#lock_menu {
+    visibility: hidden;
+    position: fixed;
+    background: #251e45;
+    height: 300px;
+    width: 70%;
+    padding: 40px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+    filter: drop-shadow(0 0 15px #302758);
+    z-index: 2;
+}
+
+#lock_menu.show_lock_menu {animation: show_lock .3s forwards;}
+#lock_menu.hide_lock_menu {animation: hide_lock .3s forwards;}
+
+@keyframes show_lock {
+    from { opacity: 0; visibility: hidden;}
+    to { opacity: 1; visibility: visible;}
+}
+
+@keyframes hide_lock {
+    from { opacity: 1; visibility: visible;}
+    to { opacity: 0; visibility: hidden;}
+}
+
+.lock_decide {
+    position: fixed;
+    left: 0px;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    column-gap: 30px;
+}
+
+.lock_menu_answere {
+    height: 37px;
+    width: 40%;
+    background-color: transparent;
+    border-radius: 15px;
+    align-items: center;
+    border: none;
+    font-size: 17px;
+}
+
+.lock_menu_answere:active {background-color: #1d1737;}
+
+#lock_password_menu {
+    visibility: hidden;
+    position: fixed;
+    background: #251e45;
+    height: 330px;
+    width: 78%;
+    padding: 40px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+    filter: drop-shadow(0 0 15px #302758);
+}
+
+#lock_password_menu.slide-in {animation: slide_in_lock_menu .3s forwards;}
+#lock_password_menu.slide-out {animation: slide_out_lock_menu .3s forwards;}
+
+@keyframes slide_in_lock_menu {
+    from { bottom: -320px; }
+    to { bottom: 330px; }
+}
+
+@keyframes slide_out_lock_menu {
+    from { bottom: 330px; }
+    to { bottom: -320px; }
+}
+
+#lock_password_menu_text {
+    position: relative;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#lock_password, #confirm_lock_password {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 35px;
+    width: 70%;
+    background-color: #1d1737;
+    border: none;
+    border-radius: 5px;
+    padding-top: 2px;
+    padding-left: 20px;
+    outline: none;
+}
+
+#lock_password {
+    top: 40%;
+}
+
+#confirm_lock_password {
+    top: 55%;
+}
+
+.lock_decide {
+    position: fixed;
+    left: 0px;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    column-gap: 30px;
+}
+
+#cancel_lock, #continue_lock {
+    height: 40px;
+    width: 140px;
+    border-radius: 70% / 300%;
+    background: transparent;
+    border: none;
+    color: #ae7fce;
+    font-size: 17px;
+}
+
+#continue_lock:disabled {
+    opacity: .5;
+    pointer-events: none;
+}
