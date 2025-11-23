@@ -1,22 +1,13 @@
 const menu = document.getElementById("sub-menu_icon");
-menu.addEventListener("touchend", openMenu);
 const container = document.getElementById("container");
 const blur_background = document.getElementById("blur_background");
-blur_background.addEventListener("touchend", closeMenu);
 
 const lock_bg = document.getElementById("lock_bg");
-lock_bg.addEventListener("touchend", closelockMenuBG);
 
 const close_lock_menu = document.getElementById("not_lock");
-close_lock_menu.addEventListener("touchend", closelockMenu);
 const continue_lockBtn = document.getElementById("do_lock");
-continue_lockBtn.addEventListener("touchend", continueLock);
-
 const lock_menu_lock_password = document.getElementById("lock_password_menu");
-
 const cancel_lock_password = document.getElementById("cancel_lock");
-cancel_lock_password.addEventListener("touchend", cancelLockPassword);
-
 const confirm_lock_password = document.getElementById("continue_lock");
 confirm_lock_password.disabled = true;
 
@@ -150,7 +141,6 @@ const passwordInput = document.getElementById("lock_password");
 const passwordConfirmInput = document.getElementById("confirm_lock_password");
 const continueLockBtn = document.getElementById("continue_lock");
 continueLockBtn.disabled = true;
-continueLockBtn.addEventListener("touchstart", confirmLock);
 
 function validatePasswordInput() {
     const password = passwordInput.value;
@@ -172,7 +162,7 @@ passwordInput.addEventListener("input", validatePasswordInput);
 passwordConfirmInput.addEventListener("input", validatePasswordInput);
 
 function confirmLock() {
-
+    console.log("Locking the nore...");
 }
 
 

@@ -12,8 +12,8 @@
             <i data-lucide="chevron-left"></i>
         </a>
         <input type="text" name="Title" id="title" placeholder="Title">
-        <div id="blur_background"></div>
-        <a id="sub-menu_icon" draggable="false">
+        <div id="blur_background" ontouchend="closeMenu()"></div>
+        <a id="sub-menu_icon" draggable="false" ontouchend="openMenu()">
             <i data-lucide="ellipsis-vertical" id="ellipsis-icon"></i>
             <div id="container">
                 <button id="save" draggable="false" ontouchend="save()">
@@ -28,22 +28,22 @@
                     <button id="lock" ontouchend="lock()">
                         <i data-lucide="lock-keyhole" id="lock-icon"></i>Lock
                     </button>
-                    <div id="lock_bg"></div>
+                    <div id="lock_bg" ontoouchend="closelockMenuBG()"></div>
                     <div id="lock_menu">
                         <h3>Are you sure you want to lock this note?</h3>
                         <p>Once locked, it will stay hidden and protected. Only your password can bring it back to view.</p>
                         <h3>Do you want to continue?</h3>
                         <div class="lock_decide">
-                            <button class="lock_menu_answere" id="not_lock">No</button>
-                            <button class="lock_menu_answere" id="do_lock">Yes</button>
+                            <button class="lock_menu_answere" id="not_lock" ontouchend="closelockMenu()">No</button>
+                            <button class="lock_menu_answere" id="do_lock" ontouchend="continueLock()">Yes</button>
                         </div>
                         <div id="lock_password_menu">
                             <h3 id="lock_password_menu_text">Create a strong password and keep it safe this note will only open for you.</h3>
                             <input type="text" id="lock_password" placeholder="Enter a password"> <!--Change to type="password"-->
                             <input type="text" id="confirm_lock_password" placeholder="Confirm your password"> <!--Change to type="password"-->
                             <div class="lock_decide">
-                                <button id="cancel_lock">Cancel</button>
-                                <button id="continue_lock" disabled>Lock</button>
+                                <button id="cancel_lock" ontouchend="cancelLockPassword()">Cancel</button>
+                                <button id="continue_lock" ontouchend="confirmLock()" disabled>Lock</button>
                             </div>
                         </div>
                     </div>
