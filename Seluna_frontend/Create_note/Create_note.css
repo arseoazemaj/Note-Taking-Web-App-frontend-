@@ -170,7 +170,7 @@ input {
     visibility: hidden;
     position: fixed;
     background: #251e45;
-    height: 300px;
+    height: 280px;
     width: 70%;
     padding: 40px;
     left: 50%;
@@ -214,11 +214,13 @@ input {
     font-size: 17px;
 }
 
+.lock_menu_answere:active { background-color: #1d1737; }
+
 #lock_password_menu {
     visibility: hidden;
     position: fixed;
     background: #251e45;
-    height: 330px;
+    height: 300px;
     width: 78%;
     padding: 40px;
     left: 50%;
@@ -289,6 +291,8 @@ input {
     color: #ae7fce;
     font-size: 17px;
 }
+
+#cancel_lock:active, #continue_lock:active { background-color: #1d1737; }
 
 #continue_lock:disabled {
     opacity: .5;

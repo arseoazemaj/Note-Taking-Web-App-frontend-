@@ -1,21 +1,21 @@
 const menu = document.getElementById("sub-menu_icon");
-menu.addEventListener('touchstart', openMenu);
+menu.addEventListener("touchend", openMenu);
 const container = document.getElementById("container");
 const blur_background = document.getElementById("blur_background");
-blur_background.addEventListener('touchstart', closeMenu);
+blur_background.addEventListener("touchend", closeMenu);
 
 const lock_bg = document.getElementById("lock_bg");
-lock_bg.addEventListener('touchstart', closelockMenuBG);
+lock_bg.addEventListener("touchend", closelockMenuBG);
 
 const close_lock_menu = document.getElementById("not_lock");
-close_lock_menu.addEventListener('touchstart', closelockMenu);
+close_lock_menu.addEventListener("touchend", closelockMenu);
 const continue_lockBtn = document.getElementById("do_lock");
-continue_lockBtn.addEventListener('touchstart', continueLock);
+continue_lockBtn.addEventListener("touchend", continueLock);
 
 const lock_menu_lock_password = document.getElementById("lock_password_menu");
 
 const cancel_lock_password = document.getElementById("cancel_lock");
-cancel_lock_password.addEventListener('touchstart', cancelLockPassword);
+cancel_lock_password.addEventListener("touchend", cancelLockPassword);
 
 const confirm_lock_password = document.getElementById("continue_lock");
 confirm_lock_password.disabled = true;
@@ -32,7 +32,7 @@ function closeMenu() {
         container.classList.add("hide_menu");
         lock_bg.style.visibility = "hidden";
         blur_background.style.visibility = "hidden";
-    }, 100);
+    }, 10);
 }
 
 async function save() { //* Save the note
@@ -81,7 +81,7 @@ async function save() { //* Save the note
             console.error("Error saving note:", error);
             alert("There was an error saving your note. Please try again.");
         }
-    }, 150);
+    }, 200);
 }
 
 let filled = false;
@@ -107,7 +107,7 @@ function lock() {
         lock_menu_lock_password.classList.add("hide_lock_menu");
         lock_menu_lock_password.classList.remove("show_lock_menu");
         lock_bg.style.visibility = "visible";
-    }, 150);
+    }, 200);
 }
 
 function closelockMenuBG() {
@@ -127,14 +127,14 @@ function closelockMenu() {
         lock_menu_lock_password.classList.add("hide_lock_menu");
         lock_menu_lock_password.classList.remove("show_lock_menu");
         lock_bg.style.visibility = "hidden";
-    }, 150);
+    }, 200);
 }
 
 function continueLock() {
     setTimeout(() => {
         lock_menu_lock_password.classList.add("show_lock_menu");
         lock_menu_lock_password.classList.remove("hide_lock_menu");
-    }, 150);
+    }, 200);
 }
 
 function cancelLockPassword() {
