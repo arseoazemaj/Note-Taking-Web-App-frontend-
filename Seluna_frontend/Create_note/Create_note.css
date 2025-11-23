@@ -74,7 +74,7 @@ a, div {
     left: 40px;
     position: absolute;
     height: 270px;
-    width: 200px;
+    width: 210px;
     border-radius: 15px;
     background-color: #08002f;
     z-index: 2;
@@ -85,11 +85,11 @@ a, div {
 
 @keyframes show_menu {
     from { left: 40px; }
-    to { left: -170px; }
+    to { left: -180px; }
 }
 
 @keyframes hide_menu {
-    from { left: -170px; }
+    from { left: -180px; }
     to { left: 40px; }
 }
 
