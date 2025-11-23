@@ -80,7 +80,7 @@ async function loadNotes() {
         container.innerHTML = "";
 
         function setupNoteEvents(noteBox, note) {
-            noteBox.addEventListener('touchstart', function(e) {
+            noteBox.addEventListener("touchstart", function(e) {
                 longPressFired = false;
                 wasCanceled = false;
 
@@ -99,7 +99,7 @@ async function loadNotes() {
                 }, LONG_PRESS_MS);
             });
 
-            noteBox.addEventListener('touchmove', function(e) {
+            noteBox.addEventListener("touchmove", function(e) {
                 const touch = e.touches[0];
                 const dx = touch.clientX - startX;
                 const dy = touch.clientY - startY;
@@ -111,12 +111,12 @@ async function loadNotes() {
                 }
             });
 
-            noteBox.addEventListener('touchcancel', function() {
+            noteBox.addEventListener("touchcancel", function() {
                 clearTimeout(longPressTimer);
                 wasCanceled = true;
             });
 
-            noteBox.addEventListener('touchend', function() {
+            noteBox.addEventListener("touchend", function() {
                 clearTimeout(longPressTimer);
 
                 if (wasCanceled) {
@@ -215,7 +215,7 @@ function hideDecision() {
 const blur_background = document.getElementById("blur_background");
 const decision_hider = document.getElementById("decision_hider");
 
-blur_background.addEventListener('touchstart', blur_backgroundHandler);
+blur_background.addEventListener("touchstart", blur_backgroundHandler);
 
 const move_btn = document.getElementById("move");
 const move_menu = document.getElementById("move_menu");
@@ -227,10 +227,10 @@ const color_check = document.getElementsByClassName("check_color");
 const cancel_folder_btn = document.getElementById("cancel_folder");
 const add_folder_btn = document.getElementById("add_folder");
 
-move_btn.addEventListener('touchend', move);
-create_folder_btn.addEventListener('touchend', create_folder);
-cancel_folder_btn.addEventListener('touchend', cancel_folder);
-add_folder_btn.addEventListener('touchend', add_folder);
+move_btn.addEventListener("touchend", move);
+create_folder_btn.addEventListener("touchend", create_folder);
+cancel_folder_btn.addEventListener("touchend", cancel_folder);
+add_folder_btn.addEventListener("touchend", add_folder);
 
 const lock_btn = document.getElementById("lock");
 const lock_menu = document.getElementById("lock_menu_ask");
@@ -247,31 +247,28 @@ const unlock_password = document.getElementById("unlock_password");
 const cancel_unlock_btn = document.getElementById("cancel_unlock");
 const continueUnlockBtn = document.getElementById("continue_unlock");
 
-lock_btn.addEventListener('touchend', lock);
-not_lock_btn.addEventListener('touchend', not_lock);
-do_lock_btn.addEventListener('touchend', do_lock);
-cancel_lock_btn.addEventListener('touchend', cancel_lock);
-continue_lock_btn.addEventListener('touchend', continue_lock);
-cancel_unlock_btn.addEventListener('touchend', cancel_unlock);
-continueUnlockBtn.addEventListener('touchend', continue_unlock);
+lock_btn.addEventListener("touchend", lock);
+not_lock_btn.addEventListener("touchend", not_lock);
+do_lock_btn.addEventListener("touchend", do_lock);
+cancel_lock_btn.addEventListener("touchend", cancel_lock);
+continue_lock_btn.addEventListener("touchend", continue_lock);
+cancel_unlock_btn.addEventListener("touchend", cancel_unlock);
+continueUnlockBtn.addEventListener("touchend", continue_unlock);
 
 const important_btn = document.getElementById("mark_important");
-
-important_btn.addEventListener('touchend', mark_important);
+important_btn.addEventListener("touchend", mark_important);
 
 const download_btn = document.getElementById("download");
 const download_menu = document.getElementById("download_menu");
-
-download_btn.addEventListener('touchend', download_note);
+download_btn.addEventListener("touchend", download_note);
 
 const delete_btn = document.getElementById("delete");
-
-delete_btn.addEventListener('touchend', send_to_trash);
+delete_btn.addEventListener("touchend", send_to_trash);
 
 let selectedColor = null;
 
 colorBox.forEach(box => {
-    box.addEventListener('touchstart', () => {
+    box.addEventListener("touchstart", () => {
         document.querySelectorAll('.check_color').forEach(icon => {
             icon.style.visibility = 'hidden';
         });
@@ -361,6 +358,7 @@ function cancel_folder() {
     }, 100);
 }
 
+//*comment
 async function add_folder() {
     setTimeout(async () => {
         create_folder_menu.classList.add("slide-out");
@@ -368,16 +366,14 @@ async function add_folder() {
         const folderName = document.getElementById("folder_namer").value.trim();
         const folderColor = selectedColor;
 
-        if (!folderName && !folderColor) {
-            alert("Folder name and color cannot be empty.");
-            return;
-        }
-        if (!folderName) {
-            alert("Folder name cannot be empty.");
-            return;
-        }
-        if (!folderColor) {
-            alert("Please select a color.");
+        if (!folderName || !folderColor) {
+            let msg = "";
+            create_folder_menu.classList.add("slide-in");
+            create_folder_menu.classList.remove("slide-out");
+            if (!folderName) msg += "Folder name is required.\n";
+            if (!folderColor) msg += "Please select a folder color.";
+
+            alert(msg);
             return;
         }
 
@@ -435,7 +431,7 @@ async function LoadFolders() {
         folders_menu.innerHTML = "";
 
         function setupFolderEvents(folderBox, folder) {
-            folderBox.addEventListener('touchstart', (e) => {
+            folderBox.addEventListener("touchstart", (e) => {
                 longPressFired = false;
                 wasCanceled = false;
 
@@ -455,7 +451,7 @@ async function LoadFolders() {
                 }, LONG_PRESS_MS);
             });
 
-            folderBox.addEventListener('touchmove', (e) => {
+            folderBox.addEventListener("touchmove", (e) => {
                 const touch = e.touches[0];
                 const dx = touch.clientX - startX;
                 const dy = touch.clientY - startY;
@@ -467,12 +463,12 @@ async function LoadFolders() {
                 }
             });
 
-            folderBox.addEventListener('touchcancel', () => {
+            folderBox.addEventListener("touchcancel", () => {
                 clearTimeout(longPressTimer);
                 wasCanceled = true;
             });
 
-            folderBox.addEventListener('touchend', () => {
+            folderBox.addEventListener("touchend", () => {
                 clearTimeout(longPressTimer);
 
                 if (wasCanceled) return;
@@ -570,7 +566,7 @@ function open_folder(folderId) {
     folder_blur.style.visibility = 'visible';
 }
 
-folder_blur.addEventListener('touchstart', () => {
+folder_blur.addEventListener("touchstart", () => {
     folderPage.style.display = 'none';
     folder_blur.style.visibility = 'hidden';
     document.querySelectorAll('.note-box.selected, .folder-box.selected').forEach(el => {
@@ -632,15 +628,15 @@ async function LoadFolderName () {
             folder_element.appendChild(folderName);
             folderList.appendChild(folder_element);
 
-            folder_element.addEventListener('touchstart', () => {
+            folder_element.addEventListener("touchstart", () => {
                 touchmoved = false;
             });
 
-            folder_element.addEventListener('touchmove', () => {
+            folder_element.addEventListener("touchmove", () => {
                 touchmoved = true;
             });
 
-            folder_element.addEventListener('touchend', () => {
+            folder_element.addEventListener("touchend", () => {
                     if (!touchmoved) {
                     const folderId = folder.id;
                     const selectedNotes = document.querySelectorAll('.note-box.selected');
@@ -709,7 +705,7 @@ async function opened_folder(folderId) {
         const notes = await response.json();
 
         function NoteEvents(noteBox, note) {
-            noteBox.addEventListener('touchstart', function(e) {
+            noteBox.addEventListener("touchstart", function(e) {
                 longPressFired = false;
                 wasCanceled = false;
 
@@ -728,7 +724,7 @@ async function opened_folder(folderId) {
                     }, LONG_PRESS_MS);
             });
 
-            noteBox.addEventListener('touchmove', function(e) {
+            noteBox.addEventListener("touchmove", function(e) {
                 const touch = e.touches[0];
                 const dx = touch.clientX - startX;
                 const dy = touch.clientY - startY;
@@ -740,12 +736,12 @@ async function opened_folder(folderId) {
                 }
             });
 
-            noteBox.addEventListener('touchcancel', function() {
+            noteBox.addEventListener("touchcancel", function() {
                 clearTimeout(longPressTimer);
                 wasCanceled = true;
             });
 
-            noteBox.addEventListener('touchend', function() {
+            noteBox.addEventListener("touchend", function() {
                 clearTimeout(longPressTimer);
 
                 if (wasCanceled) {
@@ -1151,7 +1147,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let notes = JSON.parse(localStorage.getItem('notes')) || [];
 
     function setupNoteEvents(noteBox, note) {
-        noteBox.addEventListener('touchstart', function(e) {
+        noteBox.addEventListener("touchstart", function(e) {
             longPressFired = false;
             wasCanceled = false;
 
@@ -1170,7 +1166,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }, LONG_PRESS_MS);
         });
 
-        noteBox.addEventListener('touchmove', function(e) {
+        noteBox.addEventListener("touchmove", function(e) {
             const touch = e.touches[0];
             const dx = touch.clientX - startX;
             const dy = touch.clientY - startY;
@@ -1182,12 +1178,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        noteBox.addEventListener('touchcancel', function() {
+        noteBox.addEventListener("touchcancel", function() {
             clearTimeout(longPressTimer);
             wasCanceled = true;
         });
 
-        noteBox.addEventListener('touchend', function() {
+        noteBox.addEventListener("touchend", function() {
             clearTimeout(longPressTimer);
 
             if (wasCanceled) {

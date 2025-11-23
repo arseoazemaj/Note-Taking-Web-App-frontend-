@@ -120,6 +120,8 @@ input {
     align-items: center;
 }
 
+#save:active, #important:active, #lock:active, #download:active, #trash:active { background-color: #251e45;}
+
 #save {top: 15px;}
 #important {top: 65px;}
 #lock {top: 115px;}
@@ -133,8 +135,6 @@ input {
     right: 80%;
     color: #dda9ff;
 }
-
-#save:active, #important:active, #lock:active, #download:active #trash:active {opacity: .5;}
 
 #note_input {
     width: 85%;
@@ -177,7 +177,7 @@ input {
     top: 50%;
     transform: translate(-50%, -50%);
     border-radius: 30px;
-    filter: drop-shadow(0 0 15px #302758);
+    filter: drop-shadow(0 0 15px #251e45);
     z-index: 2;
 }
 
@@ -213,8 +213,6 @@ input {
     border: none;
     font-size: 17px;
 }
-
-.lock_menu_answere:active {background-color: #1d1737;}
 
 #lock_password_menu {
     visibility: hidden;

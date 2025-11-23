@@ -36,50 +36,52 @@ function closeMenu() {
 }
 
 async function save() { //* Save the note
-    const Title = document.getElementById("title").value.trim();
-    const Content = document.getElementById("note_input").value.trim();
-    const user_id = getUserIdFromToken();
-    const isImportant = filled;
+    setTimeout(async () => {
+        const Title = document.getElementById("title").value.trim();
+        const Content = document.getElementById("note_input").value.trim();
+        const user_id = getUserIdFromToken();
+        const isImportant = filled;
 
-    if (Content === "") {
-        alert("Please enter some content before saving the note.");
-        return;
-    }
-
-    if (!navigator.onLine) {
-        alert("Your device is currently offline. Please connect to the internet to save your notes.");
-        return;
-    }
-
-    const note = {
-        title: Title,
-        content: Content,
-        user_id: user_id,
-        isImportant: isImportant,
-        created_at: new Date().toISOString()
-    };
-
-    try {
-        const response = await fetch("http://localhost:5216/api/Notes/create_note", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${localStorage.getItem('token')}`
-            },
-            body: JSON.stringify(note)
-        });
-
-        if (!response.ok) {
-            const errorData = await response.text();
-            throw new Error(`Server error: ${response.status} - ${errorData}`);
+        if (Content === "") {
+            alert("Please enter some content before saving the note.");
+            return;
         }
 
-        window.location.href = "../Notes/Notes.html";
+        if (!navigator.onLine) {
+            alert("Your device is currently offline. Please connect to the internet to save your notes.");
+            return;
+        }
 
-    } catch (error) {
-        console.error("Error saving note:", error);
-        alert("There was an error saving your note. Please try again.");
-    }
+        const note = {
+            title: Title,
+            content: Content,
+            user_id: user_id,
+            isImportant: isImportant,
+            created_at: new Date().toISOString()
+        };
+
+        try {
+            const response = await fetch("http://localhost:5216/api/Notes/create_note", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem('token')}`
+                },
+                body: JSON.stringify(note)
+            });
+
+            if (!response.ok) {
+                const errorData = await response.text();
+                throw new Error(`Server error: ${response.status} - ${errorData}`);
+            }
+
+            window.location.href = "../Notes/Notes.html";
+
+        } catch (error) {
+            console.error("Error saving note:", error);
+            alert("There was an error saving your note. Please try again.");
+        }
+    }, 150);
 }
 
 let filled = false;
@@ -98,12 +100,14 @@ function fill() {
 }
 
 function lock() {
-    const lock_menu = document.getElementById("lock_menu");
-    lock_menu.classList.add("show_lock_menu");
-    lock_menu.classList.remove("hide_lock_menu");
-    lock_menu_lock_password.classList.add("hide_lock_menu");
-    lock_menu_lock_password.classList.remove("show_lock_menu");
-    lock_bg.style.visibility = "visible";
+    setTimeout(() => {
+        const lock_menu = document.getElementById("lock_menu");
+        lock_menu.classList.add("show_lock_menu");
+        lock_menu.classList.remove("hide_lock_menu");
+        lock_menu_lock_password.classList.add("hide_lock_menu");
+        lock_menu_lock_password.classList.remove("show_lock_menu");
+        lock_bg.style.visibility = "visible";
+    }, 150);
 }
 
 function closelockMenuBG() {
@@ -117,17 +121,20 @@ function closelockMenuBG() {
 }
 
 function closelockMenu() {
-    lock_menu.classList.add("hide_lock_menu");
-    lock_menu.classList.remove("show_lock_menu");
-    lock_menu_lock_password.classList.add("hide_lock_menu");
-    lock_menu_lock_password.classList.remove("show_lock_menu");
-    lock_bg.style.visibility = "hidden";
+    setTimeout(() => {
+        lock_menu.classList.add("hide_lock_menu");
+        lock_menu.classList.remove("show_lock_menu");
+        lock_menu_lock_password.classList.add("hide_lock_menu");
+        lock_menu_lock_password.classList.remove("show_lock_menu");
+        lock_bg.style.visibility = "hidden";
+    }, 150);
 }
 
 function continueLock() {
-    lock_menu_lock_password.classList.add("show_lock_menu");
-    lock_menu_lock_password.classList.remove("hide_lock_menu");
-    lock_menu.style.visibility = "hidden";
+    setTimeout(() => {
+        lock_menu_lock_password.classList.add("show_lock_menu");
+        lock_menu_lock_password.classList.remove("hide_lock_menu");
+    }, 150);
 }
 
 function cancelLockPassword() {
@@ -163,7 +170,7 @@ passwordInput.addEventListener("input", validatePasswordInput);
 passwordConfirmInput.addEventListener("input", validatePasswordInput);
 
 function confirmLock() {
-    
+
 }
 
 
@@ -217,7 +224,6 @@ document.getElementById('save').addEventListener('click', function() {
     const content = document.getElementById('note_input').value.trim();
 
     if (content === "") {
-        alert("Please enter some content before saving.");
         return;
     }
 

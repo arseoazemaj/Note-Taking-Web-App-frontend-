@@ -482,9 +482,7 @@ input::selection {
     align-items: center;
 }
 
-.folders:active {
-    background-color: #251e45;
-}
+.folders:active {background-color: #251e45;}
 
 .folders_icon {
     position: relative;
@@ -657,9 +655,7 @@ input::selection {
     font-size: 17px;
 }
 
-#cancel_folder:active, #add_folder:active {
-    background-color: #1d1737;
-}
+#cancel_folder:active, #add_folder:active {background-color: #1d1737;}
 
 #lock_menu_ask {
     height: 260px;
@@ -773,9 +769,7 @@ input::selection {
     font-size: 17px;
 }
 
-#cancel_lock:active, #continue_lock:active {
-    background-color: #1d1737;
-}
+#cancel_lock:active, #continue_lock:active {background-color: #1d1737;}
 
 #continue_lock:disabled {
     opacity: .5;
@@ -840,9 +834,7 @@ input::selection {
     font-size: 17px;
 }
 
-#cancel_unlock:active, #continue_unlock:active {
-    background-color: #1d1737;
-}
+#cancel_unlock:active, #continue_unlock:active {background-color: #1d1737;}
 
 #continue_unlock:disabled {
     opacity: .5;
