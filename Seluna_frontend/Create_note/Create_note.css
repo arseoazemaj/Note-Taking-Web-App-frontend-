@@ -36,7 +36,7 @@ a, div {
     margin: auto;
     display: block;
     height: 35px;
-    width: 73%;
+    width: 65%;
     border: 0px;
     font-size: 25px;
     position: absolute;
@@ -80,8 +80,8 @@ a, div {
     z-index: 2;
 }
 
-#container.show_menu {animation: show_menu 1s forwards;}
-#container.hide_menu {animation: hide_menu 1s forwards;}
+#container.show_menu {animation: show_menu .5s forwards;}
+#container.hide_menu {animation: hide_menu .5s forwards;}
 
 @keyframes show_menu {
     from { left: 40px; }
