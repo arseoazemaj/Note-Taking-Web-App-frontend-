@@ -1,31 +1,24 @@
 const urlParams = new URLSearchParams(window.location.search);
 const noteId = urlParams.get('id');
+const menu = document.getElementById("sub-menu_icon");
+menu.addEventListener('touchstart', openMenu);
+const container = document.getElementById("container");
+const blur_background = document.getElementById("blur_background");
+blur_background.addEventListener('touchstart', closeMenu);
 
-function SubMenu() {
-    const container = document.getElementById("container");
-    const isVisible = container.style.display === "block";
-
-    if(isVisible) {
-        container.style.display = "none";
-    }
-    else {
-        container.style.display = "block";
-    }
+function openMenu() {
+    container.classList.remove("hide_menu");
+    container.classList.add("show_menu");
+    blur_background.style.visibility = "visible";
 }
 
-document.addEventListener("click", function (event) {
-    const subMenu = document.getElementById("sub-menu_icon");
-    const container = document.getElementById("container");
-
-    if (!subMenu.contains(event.target) && !container.contains(event.target)) {
-        container.style.display = "none";
-    }
-});
-
-document.getElementById("sub-menu_icon").addEventListener("click", function (event) {
-    event.stopPropagation();
-    SubMenu();
-});
+function closeMenu() {
+    setTimeout(() => {
+        container.classList.remove("show_menu");
+        container.classList.add("hide_menu");
+        blur_background.style.visibility = "hidden";
+    }, 100);
+}
 
 let filled = false;
 

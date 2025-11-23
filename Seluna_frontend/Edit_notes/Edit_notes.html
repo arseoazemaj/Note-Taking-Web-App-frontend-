@@ -12,29 +12,30 @@
             <i data-lucide="chevron-left"></i>
         </a>
         <input type="text" name="Title" id="title" placeholder="Title"> <!-- For the Trash page this will be disabled-->
+        <div id="blur_background"></div>
         <a id="sub-menu_icon" draggable="false">
             <i data-lucide="ellipsis-vertical" id="ellipsis-icon"></i>
+            <div id="container">
+                <button id="save" draggable="false" ontouchend="update(noteId)">
+                    <i data-lucide="save" id="save-icon"></i>
+                    Save
+                </button>
+                <button id="important" draggable="false" ontouchend="fill()">
+                    <i data-lucide="star" id="important-icon"></i>
+                    Important
+                </button>
+                <button id="lock" ontouchstart="lock()">
+                    <i data-lucide="lock-keyhole" id="lock-icon"></i>Lock
+                </button>
+                <button id="download" draggable="false">
+                    <i data-lucide="download" id="download-icon"></i> <!--TODO: Will work in it later-->
+                    Download
+                </button>
+                <button id="trash" draggable="false" ontouchend="deleteNote()">
+                    <i data-lucide="trash-2" id="trash-icon"></i>Delete
+                </button>
+            </div>
         </a>
-        <div id="container">
-            <button id="save" draggable="false" ontouchend="update(noteId)">
-                <i data-lucide="save" id="save-icon"></i>
-                Save
-            </button>
-            <button id="important" draggable="false" ontouchend="fill()">
-                <i data-lucide="star" id="important-icon"></i>
-                Important
-            </button>
-            <button id="lock" ontouchstart="lock()">
-                <i data-lucide="lock-keyhole" id="lock-icon"></i>Lock
-            </button>
-            <button id="download" draggable="false">
-                <i data-lucide="download" id="download-icon"></i> <!--TODO: Will work in it later-->
-                Download
-            </button>
-            <button id="trash" draggable="false" ontouchend="deleteNote()">
-                <i data-lucide="trash-2" id="trash-icon"></i>Delete
-            </button>
-        </div>
     </div>
     <textarea id="note_input" placeholder="Write your thoughts here..."></textarea> <!-- For the Trash page this will be disabled-->
 
