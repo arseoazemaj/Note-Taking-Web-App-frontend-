@@ -545,11 +545,11 @@ input::selection {
 
 @keyframes slide_in_folder {
     from { bottom: -328px; }
-    to { bottom: 418px; }
+    to { bottom: 427px; }
 }
 
 @keyframes slide_out_folder {
-    from { bottom: 418px; }
+    from { bottom: 427px; }
     to { bottom: -328px; }
 }
 
@@ -796,6 +796,19 @@ input::selection {
     filter: drop-shadow(0 0 15px #302758);
     opacity: .98;
     z-index: 2;
+}
+
+#unlock_notes.show {animation: show_unlock .3s forwards;}
+#unlock_notes.hide {animation: hide_unlock .3s forwards;}
+
+@keyframes show_unlock {
+    from { opacity: 0; visibility: hidden;}
+    to { opacity: 1; visibility: visible;}
+}
+
+@keyframes hide_unlock {
+    from { opacity: 1; visibility: visible;}
+    to { opacity: 0; visibility: hidden;}
 }
 
 #unlock_password {

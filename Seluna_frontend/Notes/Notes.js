@@ -7,8 +7,8 @@ let menuOpen = false;
 menuOpener.addEventListener("touchstart", () => {
     if (menuOpen) return;
 
-    menuPage.classList.add("slide-in");
     menuPage.classList.remove("slide-out");
+    menuPage.classList.add("slide-in");
     menu_bg.style.visibility = "visible";
     menuOpen = true;
 });
@@ -16,8 +16,8 @@ menuOpener.addEventListener("touchstart", () => {
 menu_bg.addEventListener("touchstart", () => {
     if (!menuOpen) return;
 
-    menuPage.classList.add("slide-out");
     menuPage.classList.remove("slide-in");
+    menuPage.classList.add("slide-out");
     menu_bg.style.visibility = "hidden";
     menuOpen = false;
 });
@@ -27,8 +27,8 @@ if (noteButton) {
     noteButton.addEventListener("touchstart", () => {
         if (!menuOpen) return;
         
-        menuPage.classList.add("slide-out");
         menuPage.classList.remove("slide-in");
+        menuPage.classList.add("slide-out");
         menu_bg.style.visibility = "hidden";
         menuOpen = false;
     });
@@ -289,13 +289,13 @@ colorBox.forEach(box => {
 
 function blur_backgroundHandler() {
     if (move_menu.classList.contains("slide-in")) {
-        move_menu.classList.add("slide-out");
         move_menu.classList.remove("slide-in");
+        move_menu.classList.add("slide-out");
     }
 
     if (create_folder_menu.classList.contains("slide-in")) {
-        create_folder_menu.classList.add("slide-out");
         create_folder_menu.classList.remove("slide-in");
+        create_folder_menu.classList.add("slide-out");
     }
 
     folder_namer.value = "";
@@ -305,25 +305,25 @@ function blur_backgroundHandler() {
     }
 
     if (lock_menu.classList.contains("slide-in")) {
-        lock_menu.classList.add("slide-out");
         lock_menu.classList.remove("slide-in");
+        lock_menu.classList.add("slide-out");
     }
 
     if (lock_password_menu.classList.contains("slide-in")) {
-        lock_password_menu.classList.add("slide-out");
         lock_password_menu.classList.remove("slide-in");
+        lock_password_menu.classList.add("slide-out");
     }
 
-    if (unlock_menu.classList.contains("slide-in")) {
-        unlock_menu.classList.add("slide-out");
-        unlock_menu.classList.remove("slide-in");
+    if (unlock_menu.classList.contains("show")) {
+        unlock_menu.classList.remove("show");
+        unlock_menu.classList.add("hide");
     }
 
     unlock_password.value = "";
 
     if (download_menu.classList.contains("slide-in")) {
-        download_menu.classList.add("slide-out");
         download_menu.classList.remove("slide-in");
+        download_menu.classList.add("slide-out");
     }
 
     blur_background.style.visibility = 'hidden';
@@ -332,10 +332,8 @@ function blur_backgroundHandler() {
 
 function move() {
     setTimeout(() => {
-        move_menu.style.visibility = 'visible';
-        create_folder_menu.style.visibility = 'visible';
-        move_menu.classList.add("slide-in");
         move_menu.classList.remove("slide-out");
+        move_menu.classList.add("slide-in");
         blur_background.style.visibility = 'visible';
         decision_hider.style.visibility = 'visible';
     }, 100);
@@ -343,19 +341,19 @@ function move() {
 
 function create_folder() {
     setTimeout(() => {
-        create_folder_menu.classList.add("slide-in");
         create_folder_menu.classList.remove("slide-out");
-        move_menu.classList.add("slide-out");
+        create_folder_menu.classList.add("slide-in");
         move_menu.classList.remove("slide-in");
+        move_menu.classList.add("slide-out");
     }, 100);
 }
 
 function cancel_folder() {
     setTimeout(() => {
-        create_folder_menu.classList.add("slide-out");
         create_folder_menu.classList.remove("slide-in");
-        move_menu.classList.add("slide-in");
+        create_folder_menu.classList.add("slide-out");
         move_menu.classList.remove("slide-out");
+        move_menu.classList.add("slide-in");
         folder_namer.value = "";
         for (let i = 0; i < color_check.length; i++) {
             color_check[i].style.visibility = 'hidden';
@@ -365,8 +363,8 @@ function cancel_folder() {
 
 async function add_folder() {
     setTimeout(async () => {
-        create_folder_menu.classList.add("slide-out");
         create_folder_menu.classList.remove("slide-in");
+        create_folder_menu.classList.add("slide-out");
         const folderName = document.getElementById("folder_namer").value.trim();
         const folderColor = selectedColor;
 
@@ -835,8 +833,8 @@ async function opened_folder(folderId) {
 
 function lock() {
     setTimeout(() => {
-        lock_menu.classList.add("slide-in");
         lock_menu.classList.remove("slide-out");
+        lock_menu.classList.add("slide-in");
         blur_background.style.visibility = 'visible';
         decision_hider.style.visibility = 'visible';
     }, 100);
@@ -844,8 +842,8 @@ function lock() {
 
 function not_lock() {
     setTimeout(() => {
-        lock_menu.classList.add("slide-out");
         lock_menu.classList.remove("slide-in");
+        lock_menu.classList.add("slide-out");
         blur_background.style.visibility = 'hidden';
         decision_hider.style.visibility = 'hidden';
     }, 100);
@@ -853,10 +851,10 @@ function not_lock() {
 
 function do_lock() {
     setTimeout(() => {
-        lock_menu.classList.add("slide-out");
         lock_menu.classList.remove("slide-in");
-        lock_password_menu.classList.add("slide-in");
+        lock_menu.classList.add("slide-out");
         lock_password_menu.classList.remove("slide-out");
+        lock_password_menu.classList.add("slide-in");
         lock_password.value = "";
         lock_password_confirm.value = "";
     }, 100);
@@ -864,10 +862,10 @@ function do_lock() {
 
 function cancel_lock() {
     setTimeout(() => {
-        lock_menu.classList.add("slide-in");
         lock_menu.classList.remove("slide-out");
-        lock_password_menu.classList.add("slide-out");
+        lock_menu.classList.add("slide-in");
         lock_password_menu.classList.remove("slide-in");
+        lock_password_menu.classList.add("slide-out");
     }, 100);
 }
 
@@ -981,7 +979,8 @@ async function continue_lock() {
 
 function showUnlockPrompt(noteId) {
     blur_background.style.visibility = 'visible';
-    unlock_menu.style.visibility = 'visible';
+    unlock_menu.classList.remove("hide");
+    unlock_menu.classList.add("show");
 
     unlock_menu.dataset.noteId = noteId;
 }
@@ -1096,8 +1095,8 @@ async function mark_important() {
 function download_note() {
     console.log("Downloading note...");
 
-    download_menu.classList.add("slide-in");
     download_menu.classList.remove("slide-out");
+    download_menu.classList.add("slide-in");
     blur_background.style.visibility = 'visible';
     decision_hider.style.visibility = 'visible';
 }
