@@ -81,7 +81,7 @@ async function save() { //* Save the note
             console.error("Error saving note:", error);
             alert("There was an error saving your note. Please try again.");
         }
-    }, 200);
+    }, 150);
 }
 
 let filled = false;
@@ -107,7 +107,7 @@ function lock() {
         lock_menu_lock_password.classList.add("hide_lock_menu");
         lock_menu_lock_password.classList.remove("show_lock_menu");
         lock_bg.style.visibility = "visible";
-    }, 200);
+    }, 150);
 }
 
 function closelockMenuBG() {
@@ -127,21 +127,23 @@ function closelockMenu() {
         lock_menu_lock_password.classList.add("hide_lock_menu");
         lock_menu_lock_password.classList.remove("show_lock_menu");
         lock_bg.style.visibility = "hidden";
-    }, 200);
+    }, 150);
 }
 
 function continueLock() {
     setTimeout(() => {
         lock_menu_lock_password.classList.add("show_lock_menu");
         lock_menu_lock_password.classList.remove("hide_lock_menu");
-    }, 200);
+    }, 150);
 }
 
 function cancelLockPassword() {
-    passwordInput.value = "";
-    passwordConfirmInput.value = "";
-    lock_menu_lock_password.classList.add("hide_lock_menu");
-    lock_menu_lock_password.classList.remove("show_lock_menu");
+    setTimeout(() => {
+        passwordInput.value = "";
+        passwordConfirmInput.value = "";
+        lock_menu_lock_password.classList.add("hide_lock_menu");
+        lock_menu_lock_password.classList.remove("show_lock_menu");
+    }, 150);
 }
 
 const passwordInput = document.getElementById("lock_password");
