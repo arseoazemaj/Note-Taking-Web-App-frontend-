@@ -71,14 +71,26 @@ a, div {
 }
 
 #container {
-    visibility: hidden;
-    right: -5px;
+    left: 40px;
     position: absolute;
     height: 270px;
     width: 200px;
     border-radius: 15px;
     background-color: #08002f;
     z-index: 2;
+}
+
+#container.show_menu {animation: show_menu 1s forwards;}
+#container.hide_menu {animation: hide_menu 1s forwards;}
+
+@keyframes show_menu {
+    from { left: 40px; }
+    to { left: -170px; }
+}
+
+@keyframes hide_menu {
+    from { left: -170px; }
+    to { left: 40px; }
 }
 
 #save, #important, #lock, #download, #trash {
@@ -91,7 +103,7 @@ a, div {
     width: 85%;
     border-radius: 10px;
     border: none;
-    padding-left: 50px;
+    padding-left: 45px;
     background-color: #35007e59;
     display: flex;
     align-items: center;

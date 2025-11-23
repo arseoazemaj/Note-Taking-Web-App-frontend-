@@ -5,13 +5,15 @@ const blur_background = document.getElementById("blur_background");
 blur_background.addEventListener('touchstart', closeMenu);
 
 function openMenu() {
-    container.style.visibility = "visible";
+    container.classList.remove("hide_menu");
+    container.classList.add("show_menu");
     blur_background.style.visibility = "visible";
 }
 
 function closeMenu() {
     setTimeout(() => {
-        container.style.visibility = "hidden";
+        container.classList.remove("show_menu");
+        container.classList.add("hide_menu");
         blur_background.style.visibility = "hidden";
     }, 100);
 }
