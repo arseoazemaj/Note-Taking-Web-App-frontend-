@@ -1,6 +1,6 @@
 body {
     background-color: #120f20;
-    animation: fade .5s;
+    animation: fade 3s;
 }
 
 input {font-size: 20px;}
@@ -25,7 +25,7 @@ input::selection {
 }
 
 @keyframes fade {
-    0% {opacity: .3;}
+    0% {opacity: 0;}
     100% {opacity: 1;}
 }
 
@@ -69,8 +69,8 @@ input::selection {
     z-index: 3;
 }
 
-#menu-page.slide-in {animation: in 0.3s forwards;}
-#menu-page.slide-out {animation: out 1s forwards;}
+#menu-page.slide-in {animation: in .5s forwards;}
+#menu-page.slide-out {animation: out .5s forwards;}
 
 @keyframes in {
     from { left: -100%; }
@@ -225,6 +225,7 @@ input::selection {
 }
 
 #folder_page {
+    visibility: hidden;
     position: fixed;
     background: #121137;
     height: 400px;
@@ -237,12 +238,25 @@ input::selection {
     top: 50%;
     transform: translate(-50%, -50%);
     border-radius: 30px;
-    display: none;
+    display: grid;
     filter: drop-shadow(0 0 15px #302758);
     opacity: .97;
     padding: 35px 25px;
     overflow-y: auto;
     scrollbar-width: none;
+}
+
+#folder_page.show {animation: show_folder_page .5s forwards;}
+#folder_page.hide {animation: hide_folder_page .5s forwards;}
+
+@keyframes show_folder_page {
+    from { opacity: 0; visibility: hidden;}
+    to { opacity: 1; visibility: visible;}
+}
+
+@keyframes hide_folder_page {
+    from { opacity: 1; visibility: visible;}
+    to { opacity: 0; visibility: hidden;}
 }
 
 .note-box {
@@ -429,8 +443,8 @@ input::selection {
     z-index: 1;
 }
 
-#move_menu.slide-in {animation: slide_in .3s forwards;}
-#move_menu.slide-out {animation: slide_out .3s forwards;}
+#move_menu.slide-in {animation: slide_in .5s forwards;}
+#move_menu.slide-out {animation: slide_out .5s forwards;}
 
 @keyframes slide_in {
     from { bottom: -420%; }
@@ -538,8 +552,8 @@ input::selection {
     visibility: visible;
 }
 
-#create_folder.slide-in {animation: slide_in_folder .3s forwards;}
-#create_folder.slide-out {animation: slide_out_folder .3s forwards;}
+#create_folder.slide-in {animation: slide_in_folder .5s forwards;}
+#create_folder.slide-out {animation: slide_out_folder .5s forwards;}
 
 @keyframes slide_in_folder {
     from { bottom: -328px; }
@@ -670,8 +684,8 @@ input::selection {
     z-index: 1;
 }
 
-#lock_menu_ask.slide-in {animation: slide_in_lock .3s forwards;}
-#lock_menu_ask.slide-out {animation: slide_out_lock .3s forwards;}
+#lock_menu_ask.slide-in {animation: slide_in_lock .5s forwards;}
+#lock_menu_ask.slide-out {animation: slide_out_lock .5s forwards;}
 
 @keyframes slide_in_lock {
     from { bottom: -400%; }
@@ -718,8 +732,8 @@ input::selection {
     z-index: 1;
 }
 
-#lock_password_menu.slide-in {animation: slide_in_lock_menu .3s forwards;}
-#lock_password_menu.slide-out {animation: slide_out_lock_menu .3s forwards;}
+#lock_password_menu.slide-in {animation: slide_in_lock_menu .5s forwards;}
+#lock_password_menu.slide-out {animation: slide_out_lock_menu .5s forwards;}
 
 @keyframes slide_in_lock_menu {
     from { bottom: -320px; }
@@ -791,8 +805,8 @@ input::selection {
     z-index: 2;
 }
 
-#unlock_notes.show {animation: show_unlock .3s forwards;}
-#unlock_notes.hide {animation: hide_unlock .3s forwards;}
+#unlock_notes.show {animation: show_unlock .5s forwards;}
+#unlock_notes.hide {animation: hide_unlock .5s forwards;}
 
 @keyframes show_unlock {
     from { opacity: 0; visibility: hidden;}
@@ -854,8 +868,8 @@ input::selection {
     z-index: 1;
 }
 
-#download_menu.slide-in {animation: slide_in_download_menu .3s forwards;}
-#download_menu.slide-out {animation: slide_out_download_menu .3s forwards;}
+#download_menu.slide-in {animation: slide_in_download_menu .5s forwards;}
+#download_menu.slide-out {animation: slide_out_download_menu .5s forwards;}
 
 @keyframes slide_in_download_menu {
     from { bottom: -300px; }

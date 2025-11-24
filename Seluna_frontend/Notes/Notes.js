@@ -543,23 +543,27 @@ function open_folder(folderId) {
         openedFolder.classList.add('opened');
     }
     opened_folder(folderId);
-    folderPage.style.display = 'grid';
+    folderPage.classList.add("show");
+    folderPage.classList.remove("hide");
     folder_blur.style.visibility = 'visible';
 }
 
 folder_blur.addEventListener("touchstart", () => {
-    folderPage.style.display = 'none';
-    folder_blur.style.visibility = 'hidden';
-    document.querySelectorAll('.note-box.selected, .folder-box.selected').forEach(el => {
-        el.classList.remove('selected');
-        el.style.transform = "scale(1)";
-        const checkIcon = el.querySelector('.note-check-icon, .folder-check-icon');
-        if (checkIcon) {
-            checkIcon.style.display = 'none';
-        }
-    });
+    setTimeout(() => {
+        folderPage.classList.add("hide");
+        folderPage.classList.remove("show");
+        folder_blur.style.visibility = 'hidden';
+        document.querySelectorAll('.note-box.selected, .folder-box.selected').forEach(el => {
+            el.classList.remove('selected');
+            el.style.transform = "scale(1)";
+            const checkIcon = el.querySelector('.note-check-icon, .folder-check-icon');
+            if (checkIcon) {
+                checkIcon.style.display = 'none';
+            }
+        });
 
     hideDecision();
+    }, 100);
 });
 
 function withAlpha(hexColor, alphaHex) {
@@ -1064,6 +1068,7 @@ async function mark_important() {
 
         hideDecision();
         loadNotes();
+        open_folder(folderId);
     } catch (error) {
         console.error("Error updating notes:", error);
         alert("Error updating notes.");
