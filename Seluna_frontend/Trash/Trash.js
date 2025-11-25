@@ -33,9 +33,9 @@ if (trashButton) {
 
 document.addEventListener('DOMContentLoaded', async function () {
     //*Shows notes younger than 30 days
+    const container = document.getElementById("container");
     try {
-
-        const response = await fetch('http://localhost:5216/api/Notes/get_deleted_notes', {
+        const response = await fetch("http://localhost:5216/api/Notes/get_deleted_notes", {
             headers: {
                 'Authorization': 'Bearer ' + token,
                 'Content-Type': 'application/json'
@@ -43,30 +43,97 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
 
         if (!response.ok) {
-            containers.textContent = "Failed to load notes: " + response.status;
+            container.textContent = "Failed to load notes: " + response.status;
             return;
         }
 
         const notes = await response.json();
+
+        container.innerHTML = "";
+
+        function setupNoteEvents(noteBox, note) {
+            noteBox.addEventListener("touchstart", function(e) {
+                longPressFired = false;
+                wasCanceled = false;
+
+                const touch = e.touches[0];
+                startX = touch.clientX;
+                startY = touch.clientY;
+
+                longPressTimer = setTimeout(() => {
+                    longPressFired = true;
+                    SelectedNotes = true;
+                    const checkIcon = noteBox.querySelector('.note-check-icon');
+                    checkIcon.style.display = 'block';
+                    noteBox.classList.add('selected');
+                    noteBox.style.transform = "scale(.9)";
+                    showDecision();
+                }, LONG_PRESS_MS);
+            });
+
+            noteBox.addEventListener("touchmove", function(e) {
+                const touch = e.touches[0];
+                const dx = touch.clientX - startX;
+                const dy = touch.clientY - startY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance > MOVE_THRESHOLD) {
+                    clearTimeout(longPressTimer);
+                    wasCanceled = true;
+                }
+            });
+
+            noteBox.addEventListener("touchcancel", function() {
+                clearTimeout(longPressTimer);
+                wasCanceled = true;
+            });
+
+            noteBox.addEventListener("touchend", function() {
+                clearTimeout(longPressTimer);
+
+                if (wasCanceled) {
+                    return;
+                }
+
+                if (SelectionMode) {
+                    if (!longPressFired) {
+                        const checkIcon = noteBox.querySelector('.note-check-icon');
+                        const isSelected = noteBox.classList.toggle('selected');
+                        if (isSelected) {
+                            checkIcon.style.display = 'block';
+                            noteBox.style.transform = "scale(.9)";
+                        } else {
+                            checkIcon.style.display = 'none';
+                            noteBox.style.transform = "scale(1)";
+                        }
+                        updateSelectionModeFromDOM();
+                    }
+                } else if (!longPressFired && !wasCanceled) {
+                    if (note.isLocked) {
+                        showUnlockPrompt(note.id);
+                    } else {
+                    window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
+                    }
+                }
+                longPressFired = false;
+            });
+        }
 
         notes.forEach(note => {
             const noteBox = document.createElement('div');
             noteBox.className = 'note-box';
             noteBox.setAttribute('id', note.id);
 
-            const noteContent = document.createElement('p');
-            noteContent.className = 'note-content';
-            noteContent.textContent = note.content;
-
-            const noteTitle = document.createElement('h3');
-            noteTitle.textContent = note.title.length > 11 ? note.title.substring(0, 11) + "..." : note.title;
-            noteTitle.className = 'title';
+            const checkIcon = document.createElement('i');
+            checkIcon.setAttribute('data-lucide', 'circle-check');
+            checkIcon.classList.add('note-check-icon');
+            checkIcon.style.display = 'none';
+            noteBox.appendChild(checkIcon);
 
             if (note.isImportant) {
-                noteBox.classList.add('important-note');
                 const isImportantIcon = document.createElement('i');
+                noteBox.classList.add('important-note');
                 isImportantIcon.setAttribute('data-lucide', 'star');
-                isImportantIcon.id = 'star';
                 isImportantIcon.classList.add('important-icon');
                 noteBox.appendChild(isImportantIcon);
             }
@@ -82,13 +149,23 @@ document.addEventListener('DOMContentLoaded', async function () {
                 noteBox.appendChild(lockBackground);
             }
 
+            const noteContent = document.createElement('p');
+            noteContent.className = 'note-content';
+            noteContent.textContent = note.content;
+
+            const noteTitle = document.createElement('h3');
+            noteTitle.textContent = note.title;
+            noteTitle.className = 'title';
+
             noteBox.appendChild(noteContent);
             noteBox.appendChild(noteTitle);
+            container.appendChild(noteBox);
 
-            containers.appendChild(noteBox);
+            setupNoteEvents(noteBox, note);
         });
 
         lucide.createIcons();
+        LoadFolders();
     } catch (error) {
         console.error("Fetch error:", error);
     }

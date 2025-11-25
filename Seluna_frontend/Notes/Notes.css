@@ -163,28 +163,15 @@ input::selection {
     color: #ad7ecc;
 }
 
-#container {
-    position: absolute;
-    top: 260px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
-    gap: 45px 25px;
-    width: 90%;
-    box-sizing: border-box;
-    padding-bottom: 130px;
-}
-
 #folders_menu {
     display: flex;
     flex-direction: row;
     gap: 50px;
     overflow-x: overlay;
-    padding: 35px 10px;
+    padding: 25px 10px;
     width: 90%;
     position: absolute;
-    top: 160px;
+    top: 170px;
     left: 50%;
     transform: translateX(-50%);
     scrollbar-width: none;
@@ -257,6 +244,19 @@ input::selection {
 @keyframes hide_folder_page {
     from { opacity: 1; visibility: visible;}
     to { opacity: 0; visibility: hidden;}
+}
+
+#container {
+    position: absolute;
+    top: 260px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
+    gap: 45px 25px;
+    width: 90%;
+    box-sizing: border-box;
+    padding-bottom: 130px;
 }
 
 .note-box {

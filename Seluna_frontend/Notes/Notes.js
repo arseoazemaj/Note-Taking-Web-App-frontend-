@@ -63,7 +63,7 @@ function updateSelectionModeFromDOM() {
 async function loadNotes() {
     const container = document.getElementById("container");
     try {
-        const response = await fetch('http://localhost:5216/api/Notes/get_notes', {
+        const response = await fetch("http://localhost:5216/api/Notes/get_notes", {
             headers: {
                 'Authorization': 'Bearer ' + token,
                 'Content-Type': 'application/json'
@@ -364,7 +364,7 @@ async function add_folder() {
         }
 
         try {
-            const response = await fetch('http://localhost:5216/api/Folders/create_folder', {
+            const response = await fetch("http://localhost:5216/api/Folders/create_folder", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -396,7 +396,7 @@ const folders_menu = document.getElementById("folders_menu");
 
 async function LoadFolders() {
     try {
-        const response = await fetch('http://localhost:5216/api/Folders/get_folder', {
+        const response = await fetch("http://localhost:5216/api/Folders/get_folder", {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
@@ -577,7 +577,7 @@ let touchmoved = false;
 
 async function LoadFolderName () {
     try {
-        const response = await fetch('http://localhost:5216/api/Folders/get_folderName', {
+        const response = await fetch("http://localhost:5216/api/Folders/get_folderName", {
             headers: {
                 Authorization: 'Bearer ' + token,
                 'Content-Type': 'application/json'
@@ -643,7 +643,7 @@ async function LoadFolderName () {
 
 async function sendNoteToFolder(noteId, folderId) {
     try {
-        const response = await fetch('http://localhost:5216/api/Folders/SendNoteToFolder', {
+        const response = await fetch("http://localhost:5216/api/Folders/SendNoteToFolder", {
             method: 'PUT',
             headers: {
                 Authorization: 'Bearer ' + token,
@@ -915,7 +915,7 @@ async function continue_lock() {
         }
 
         try {
-            const response = await fetch('http://localhost:5216/api/Notes/lock_note', {
+            const response = await fetch("http://localhost:5216/api/Notes/lock_note", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

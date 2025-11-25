@@ -125,7 +125,21 @@ a, div {
     text-decoration: none;
 }
 
-#containers {
+#folders_menu {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    overflow-x: overlay;
+    padding: 25px 10px;
+    width: 90%;
+    position: absolute;
+    top: 170px;
+    left: 50%;
+    transform: translateX(-50%);
+    scrollbar-width: none;
+}
+
+#container {
     position: absolute;
     top: 150px;
     left: 50%;
