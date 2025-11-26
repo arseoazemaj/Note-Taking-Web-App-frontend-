@@ -235,3 +235,7 @@ document.getElementById('save').addEventListener('click', function() {
 
     window.location.href = "../Notes/Notes.html";
 });
+
+async function lock() {
+    console.log("Locking the note...");
+}
