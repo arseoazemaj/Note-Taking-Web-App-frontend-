@@ -104,7 +104,7 @@ input::selection {
     transform: translateX(-50%);
     width: 90%;
     height: 40px;
-    border-radius: 5px;
+    border-radius: 15px;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -377,11 +377,23 @@ input::selection {
     height: 80px;
     width: 100%;
     background-color: #1a1433;
-    bottom: 0;
+    bottom: -10%;
     display: flex;
-    visibility: hidden;
     justify-content: center;
     z-index: 2;
+}
+
+#decide.slide-in {animation: slide_in_decide .5s forwards;}
+#decide.slide-out {animation: slide_out_decide .5s forwards;}
+
+@keyframes slide_in_decide {
+    from { bottom: -10%; }
+    to { bottom: 0; }
+}
+
+@keyframes slide_out_decide {
+    from { bottom: 0; }
+    to { bottom: -10%; }
 }
 
 #blur_background {
@@ -663,7 +675,7 @@ input::selection {
 #add_folder {
     height: 40px;
     width: 140px;
-    border-radius: 70% / 300%;
+    border-radius: 15px;
     background: transparent;
     border: none;
     font-size: 17px;

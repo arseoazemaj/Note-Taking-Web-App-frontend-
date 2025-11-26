@@ -31,11 +31,23 @@ if (trashButton) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', async function () {
-    //*Shows notes younger than 30 days
+let selectionMode = false;
+let SelectedNotes = false;
+let SelectedFolders = false;
+let longPressTimer = null;
+let longPressFired = false;
+let wasCanceled = false;
+const LONG_PRESS_MS = 500;
+const MOVE_THRESHOLD = 5;
+let startX = 0;
+let startY = 0;
+
+document.addEventListener('DOMContentLoaded', load_deleted_Notes );
+
+async function load_deleted_Notes() {
     const container = document.getElementById("container");
     try {
-        const response = await fetch("http://localhost:5216/api/Notes/get_deleted_notes", {
+        const response = await fetch("http://localhost:5216/api/Notes/get_notes", {
             headers: {
                 'Authorization': 'Bearer ' + token,
                 'Content-Type': 'application/json'
@@ -61,13 +73,14 @@ document.addEventListener('DOMContentLoaded', async function () {
                 startY = touch.clientY;
 
                 longPressTimer = setTimeout(() => {
-                    longPressFired = true;
+                    selectionMode = true;
                     SelectedNotes = true;
+                    longPressFired = true;
                     const checkIcon = noteBox.querySelector('.note-check-icon');
                     checkIcon.style.display = 'block';
                     noteBox.classList.add('selected');
                     noteBox.style.transform = "scale(.9)";
-                    showDecision();
+                    showDecisionBar();
                 }, LONG_PRESS_MS);
             });
 
@@ -95,24 +108,24 @@ document.addEventListener('DOMContentLoaded', async function () {
                     return;
                 }
 
-                if (SelectionMode) {
+                if (selectionMode) {
                     if (!longPressFired) {
                         const checkIcon = noteBox.querySelector('.note-check-icon');
                         const isSelected = noteBox.classList.toggle('selected');
                         if (isSelected) {
                             checkIcon.style.display = 'block';
                             noteBox.style.transform = "scale(.9)";
+                            showDecisionBar();
                         } else {
                             checkIcon.style.display = 'none';
                             noteBox.style.transform = "scale(1)";
+                            hideDecisionBar();
                         }
-                        updateSelectionModeFromDOM();
                     }
                 } else if (!longPressFired && !wasCanceled) {
                     if (note.isLocked) {
                         showUnlockPrompt(note.id);
                     } else {
-                    window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
                     }
                 }
                 longPressFired = false;
@@ -165,8 +178,21 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
 
         lucide.createIcons();
-        LoadFolders();
     } catch (error) {
         console.error("Fetch error:", error);
     }
-});
+}
+
+const decide = document.getElementById("decide");
+
+function showDecisionBar() {
+    decide.classList.add("slide-in");
+    decide.classList.remove("slide-out");
+    selectionMode = true
+}
+
+function hideDecisionBar() {
+    decide.classList.add("slide-out");
+    decide.classList.remove("slide-in");
+    selectionMode = false;
+}

@@ -166,6 +166,14 @@ a, div {
     background: linear-gradient(45deg, #251e45 0, #3a3069 50%, #5e4b91 100%);
 }
 
+.note-check-icon {
+    color: #ffffff;
+    position: absolute;
+    left: 10px;
+    display: none;
+    z-index: 2;
+}
+
 .note-content, .title {
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -174,7 +182,7 @@ a, div {
 }
 
 .note-content {
-    top: -15px;
+    top: -5px;
     height: 150px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -182,6 +190,26 @@ a, div {
     line-clamp: 8;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    top: 155px;
+    height: 25px;
+    pointer-events: none;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+}
+
+.note-content, .title {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    position: absolute;
+    width: 87%;
 }
 
 .lock-background {
@@ -205,18 +233,6 @@ a, div {
     width: 100px;
     color: #b17fd1;
     filter: drop-shadow(0 0 3px #b17fd1);
-}
-
-.title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-top: -20px;
-    height: 25px;
-    pointer-events: none;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-    line-clamp: 1;
 }
 
 @media (max-width: 360px) {
@@ -256,23 +272,40 @@ a, div {
 }
 
 #decide {
-    /* visibility: hidden; */
     position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 80px;
     width: 100%;
-    height: 60px;
-    background-color: red;
-    bottom: 0px;
+    background-color: #1a1433;
+    bottom: -10%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    column-gap: 30px;
+    column-gap: 20px;
+}
+
+#decide.slide-in {animation: slide_in_decide .5s forwards;}
+#decide.slide-out {animation: slide_out_decide .5s forwards;}
+
+@keyframes slide_in_decide {
+    from { bottom: -10%; }
+    to { bottom: 0; }
+}
+
+@keyframes slide_out_decide {
+    from { bottom: 0; }
+    to { bottom: -10%; }
 }
 
 #restore, #delete {
-    height: 37px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
     width: 40%;
+    height: 40px;
     background-color: #2b0066;
+    border: none;
     border-radius: 15px;
+    font-size: 17px;
     align-items: center;
-    color: #ffd6d6;
 }

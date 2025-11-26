@@ -199,14 +199,19 @@ async function loadNotes() {
     }
 }
 
+const decide = document.getElementById("decide");
+
 function showDecision() {
-    document.getElementById("decide").style.visibility = 'visible';
+    decide.classList.add("slide-in");
+    decide.classList.remove("slide-out");
+
     document.getElementById("new_note").style.visibility = 'hidden';
     SelectionMode = true
 }
 
 function hideDecision() {
-    document.getElementById("decide").style.visibility = 'hidden';
+    decide.classList.add("slide-out");
+    decide.classList.remove("slide-in");
     document.getElementById("new_note").style.visibility = 'visible';
     blur_backgroundHandler();
     SelectionMode = false;
@@ -1130,7 +1135,6 @@ async function send_to_trash() {
 
 //TODO: Use only when wanting to see in your phone (when using comment code from line 50)
 document.addEventListener('DOMContentLoaded', function() {
-    let SelectionMode = false;
     const container = document.getElementById('container');
     let notes = JSON.parse(localStorage.getItem('notes')) || [];
 
