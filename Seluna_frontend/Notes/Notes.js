@@ -1073,7 +1073,7 @@ async function mark_important() {
 
         hideDecision();
         loadNotes();
-        open_folder(folderId);
+        open_folder(folderId); //*This causes the error because the folderId is not defined, needs fixing*//
     } catch (error) {
         console.error("Error updating notes:", error);
         alert("Error updating notes.");

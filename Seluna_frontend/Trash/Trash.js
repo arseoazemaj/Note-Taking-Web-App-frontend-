@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', load_deleted_Notes );
 async function load_deleted_Notes() {
     const container = document.getElementById("container");
     try {
-        const response = await fetch("http://localhost:5216/api/Notes/get_notes", {
+        const response = await fetch("http://localhost:5216/api/Notes/get_deleted_notes", {
             headers: {
                 'Authorization': 'Bearer ' + token,
                 'Content-Type': 'application/json'

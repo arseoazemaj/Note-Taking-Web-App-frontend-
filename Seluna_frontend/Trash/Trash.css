@@ -255,11 +255,10 @@ a, div {
 }
 
 .important-icon {
-    position: absolute;
-    top: -8px;
-    left: 135px;
-    color: #b07ecf;
-    fill: #b07ecf;
+    position: relative;
+    top: -15px;
+    color: #ad7ecc;
+    fill: #ad7ecc;
     transform: rotate(45deg);
     pointer-events: none;
     z-index: 2;
