@@ -168,7 +168,7 @@ input::selection {
     flex-direction: row;
     gap: 50px;
     overflow-x: overlay;
-    padding: 25px 10px;
+    padding: 30px 10px;
     width: 90%;
     position: absolute;
     top: 170px;

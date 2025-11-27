@@ -44,6 +44,19 @@ let startY = 0;
 
 document.addEventListener('DOMContentLoaded', load_deleted_Notes );
 
+function anySelected() {
+    return document.querySelectorAll('.note-box.selected').length > 0;
+}
+
+function updateselectionModeFromDOM() {
+    const any = anySelected();
+    if (any && !selectionMode) {
+        showDecisionBar();
+    } else if (!any && selectionMode) {
+        hideDecisionBar();
+    }
+}
+
 async function load_deleted_Notes() {
     const container = document.getElementById("container");
     try {
@@ -115,17 +128,11 @@ async function load_deleted_Notes() {
                         if (isSelected) {
                             checkIcon.style.display = 'block';
                             noteBox.style.transform = "scale(.9)";
-                            showDecisionBar();
                         } else {
                             checkIcon.style.display = 'none';
                             noteBox.style.transform = "scale(1)";
-                            hideDecisionBar();
                         }
-                    }
-                } else if (!longPressFired && !wasCanceled) {
-                    if (note.isLocked) {
-                        showUnlockPrompt(note.id);
-                    } else {
+                        updateselectionModeFromDOM();
                     }
                 }
                 longPressFired = false;
