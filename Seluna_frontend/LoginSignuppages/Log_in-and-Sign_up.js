@@ -114,10 +114,14 @@ document.addEventListener("DOMContentLoaded", function () {
 async function signup(event) {
     event.preventDefault();
 
-    const username = document.getElementById("username").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("Password").value;
-    const confirmPassword = document.getElementById("confirmPassword").value.trim();
+    const username_input = document.getElementById("username").value.trim();
+    const email_input = document.getElementById("email").value.trim();
+    const password_input = document.getElementById("Password").value;
+    const confirmPassword_input = document.getElementById("confirmPassword").value;
+    const username = sanitize(username_input);
+    const email = sanitize(email_input);
+    const password = sanitize(password_input);
+    const confirmPassword = sanitize(confirmPassword_input);
 
     const data = {
         username: username,
@@ -172,8 +176,8 @@ async function login(event) {
     event.preventDefault();
 
     const username = document.getElementById("login_username").value.trim();
-    const password = document.getElementById("login_password").value;
-
+    const password_input = document.getElementById("login_password").value;
+    const password = sanitize(password_input);
     const data = {
         username: username,
         password: password

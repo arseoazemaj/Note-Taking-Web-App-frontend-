@@ -862,11 +862,10 @@ function lock_password_validation() {
     const confirm = lock_password_confirm.value;
 
     const noSpaces = !password.includes(" ") && !confirm.includes(" ");
-    const lock_password_Filled = password.length > 0 && confirm.length > 0;
     const longEnough_lock_passwords = password.length >= 8 && confirm.length >= 8;
     const lock_match = password === confirm;
 
-    if (lock_password_Filled && longEnough_lock_passwords && lock_match && noSpaces) {
+    if (noSpaces && longEnough_lock_passwords && lock_match) {
         continue_lock_btn.disabled = false;
     } else {
         continue_lock_btn.disabled = true;
@@ -877,7 +876,7 @@ lock_password.addEventListener("input", lock_password_validation);
 lock_password_confirm.addEventListener("input", lock_password_validation);
 
 async function continue_lock() {
-        setTimeout(async () => {
+    setTimeout(async () => {
         const selectedNotes = document.querySelectorAll('.note-box.selected');
 
         if (selectedNotes.length === 0) {
@@ -885,8 +884,8 @@ async function continue_lock() {
             return;
         }
 
-        const password = lock_password.value.trim();
-        const confirmPassword = lock_password_confirm.value.trim();
+        const password = sanitize(lock_password.value);
+        const confirmPassword = sanitize(lock_password_confirm.value);
 
         if (!password || !confirmPassword) {
             alert("Please fill both password fields.");
@@ -981,26 +980,27 @@ function cancel_unlock() {
 }
 
 continueUnlockBtn.disabled = true;
+unlock_password.addEventListener("input", unlock_password_validation);
 
 function unlock_password_validation() {
     const password = unlock_password.value;
-    const noSpaces = !password.includes(" ");
     const longEnough = password.length >= 8;
+    const noSpaces = !password.includes(" ");
+    
 
-    if (noSpaces && longEnough) {
+    if (longEnough && noSpaces) {
         continueUnlockBtn.disabled = false;
     } else {
         continueUnlockBtn.disabled = true;
     }
 }
 
-unlock_password.addEventListener("input", unlock_password_validation);
-
 async function continue_unlock() {
         setTimeout(async () => {
         try {
             const noteId = parseInt(unlock_menu.dataset.noteId);
-            const unlockPassword = unlock_password.value.replace(/\s+/g, '');
+            const unlockPassword = sanitize(unlock_password.value);
+
 
             if (!unlockPassword || unlockPassword.length < 8) {
                 alert("Password must be at least 8 characters long.");
@@ -1013,7 +1013,7 @@ async function continue_unlock() {
                 return;
             }
 
-            const response = await fetch("http://localhost:5216/api/notes/open_locked_note", {
+            const response = await fetch("http://localhost:5216/api/notes/open_locked_notessss", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

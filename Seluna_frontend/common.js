@@ -39,3 +39,5 @@ function getUserIdFromToken() {
         return null;
     }
 }
+
+const sanitize = str => str.replace(/[\s\u200B-\u200D\u2060\uFEFF]/g, "");
