@@ -130,7 +130,7 @@ a, div {
     flex-direction: row;
     gap: 50px;
     overflow-x: overlay;
-    padding: 25px 10px;
+    padding: 30px 10px;
     width: 90%;
     position: absolute;
     top: 170px;
@@ -158,6 +158,19 @@ a, div {
 .folder-icon {
     transform: scale(2.8, 2.5);
     stroke-width: 1px;
+}
+
+.folder-name {
+    position: absolute;
+    margin-top: 75px;
+    margin-left: -13px;
+    width: 55px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    text-overflow: ellipsis;
 }
 
 #container {

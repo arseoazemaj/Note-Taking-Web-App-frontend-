@@ -225,8 +225,7 @@ async function load_deleted_Folders() {
                     checkIcon.style.display = 'block';
                     folderBox.classList.add('selected');
                     folderBox.style.transform = "scale(.9)";
-                    showDecision();
-                    chosingMoveDecisions();
+                    showDecisionBar();
                 }, LONG_PRESS_MS);
             });
 
@@ -260,11 +259,9 @@ async function load_deleted_Folders() {
                         if (isSelected) {
                             checkIcon.style.display = 'block';
                             folderBox.style.transform = "scale(.9)";
-                            chosingMoveDecisions();
                         } else {
                             checkIcon.style.display = 'none';
                             folderBox.style.transform = "scale(1)";
-                            chosingMoveDecisions();
                         }
                         updateSelectionModeFromDOM();
                     }
