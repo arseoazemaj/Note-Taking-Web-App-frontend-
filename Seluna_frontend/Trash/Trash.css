@@ -139,9 +139,30 @@ a, div {
     scrollbar-width: none;
 }
 
+.folder-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    left: 15px;
+}
+
+.folder-check-icon {
+    color: #ffffff;
+    position: absolute;
+    left: 10px;
+    z-index: 1;
+}
+
+.folder-icon {
+    transform: scale(2.8, 2.5);
+    stroke-width: 1px;
+}
+
 #container {
     position: absolute;
-    top: 150px;
+    top: 270px;
     left: 50%;
     transform: translateX(-50%);
     display: grid;

@@ -43,6 +43,7 @@ let startX = 0;
 let startY = 0;
 
 document.addEventListener('DOMContentLoaded', load_deleted_Notes );
+document.addEventListener('DOMContentLoaded', load_deleted_Folders );
 
 function anySelected() {
     return document.querySelectorAll('.note-box.selected').length > 0;
@@ -190,8 +191,137 @@ async function load_deleted_Notes() {
     }
 }
 
-const decide = document.getElementById("decide");
 
+async function load_deleted_Folders() {
+    try {
+        const response = await fetch("http://localhost:5216/api/Folders/get_deleted_folders", {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        });
+
+        if (!response.ok) {
+            folders_menu.textContent = "Failed to load folders: " + response.status;
+            return;
+        }
+
+        const folders = await response.json();
+        folders_menu.innerHTML = "";
+
+        function setupFolderEvents(folderBox, folder) {
+            folderBox.addEventListener("touchstart", (e) => {
+                longPressFired = false;
+                wasCanceled = false;
+
+                const touch = e.touches[0];
+                startX = touch.clientX;
+                startY = touch.clientY;
+
+                longPressTimer = setTimeout(() => {
+                    longPressFired = true;
+                    SelectedFolders = true;
+                    const checkIcon = folderBox.querySelector('.folder-check-icon');
+                    checkIcon.style.display = 'block';
+                    folderBox.classList.add('selected');
+                    folderBox.style.transform = "scale(.9)";
+                    showDecision();
+                    chosingMoveDecisions();
+                }, LONG_PRESS_MS);
+            });
+
+            folderBox.addEventListener("touchmove", (e) => {
+                const touch = e.touches[0];
+                const dx = touch.clientX - startX;
+                const dy = touch.clientY - startY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance > MOVE_THRESHOLD) {
+                    clearTimeout(longPressTimer);
+                    wasCanceled = true;
+                }
+            });
+
+            folderBox.addEventListener("touchcancel", () => {
+                clearTimeout(longPressTimer);
+                wasCanceled = true;
+            });
+
+            folderBox.addEventListener("touchend", () => {
+                clearTimeout(longPressTimer);
+
+                if (wasCanceled) return;
+
+                if (SelectionMode) {
+                    if (!longPressFired) {
+                        const checkIcon = folderBox.querySelector('.folder-check-icon');
+                        const isSelected = folderBox.classList.toggle('selected');
+
+                        if (isSelected) {
+                            checkIcon.style.display = 'block';
+                            folderBox.style.transform = "scale(.9)";
+                            chosingMoveDecisions();
+                        } else {
+                            checkIcon.style.display = 'none';
+                            folderBox.style.transform = "scale(1)";
+                            chosingMoveDecisions();
+                        }
+                        updateSelectionModeFromDOM();
+                    }
+                } else if (!longPressFired && !wasCanceled) {
+                    open_folder(folder.id);
+                }
+
+                longPressFired = false;
+            });
+        }
+
+        folders.forEach(folder => {
+            const folderBox = document.createElement('div');
+            folderBox.className = 'folder-box';
+            folderBox.setAttribute('id', folder.id);
+
+            const checkIcon = document.createElement('i');
+            checkIcon.setAttribute('data-lucide', 'circle-check');
+            checkIcon.classList.add('folder-check-icon');
+            checkIcon.style.display = 'none';
+
+            const folderIcon = document.createElement('i');
+            folderIcon.setAttribute('data-lucide', 'folder-closed');
+            folderIcon.classList.add('folder-icon');
+
+            const Color = folder.color;
+            const fillColor = withAlpha(folder.color, "73");
+            folderIcon.style.color = Color;
+            folderIcon.style.fill = fillColor;
+
+            const folderName = document.createElement('p');
+            folderName.className = 'folder-name';
+            folderName.style.color = Color;
+            folderName.textContent = folder.name;
+
+            folderBox.appendChild(checkIcon);
+            folderBox.appendChild(folderIcon);
+            folderBox.appendChild(folderName);
+            folders_menu.appendChild(folderBox);
+
+            setupFolderEvents(folderBox, folder);
+        });
+
+        lucide.createIcons();
+
+    } catch (err) {
+        console.error("Error loading folders:", err);
+    }
+}
+
+function withAlpha(hexColor, alphaHex) {
+    let base = hexColor.replace("#", "");
+    if (base.length === 8) base = base.substring(0, 6);
+    return `#${base}${alphaHex}`;
+}
+
+const decide = document.getElementById("decide");
 function showDecisionBar() {
     decide.classList.add("slide-in");
     decide.classList.remove("slide-out");
