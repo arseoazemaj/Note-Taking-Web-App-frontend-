@@ -251,7 +251,7 @@ async function load_deleted_Folders() {
 
                 if (wasCanceled) return;
 
-                if (SelectionMode) {
+                if (selectionMode) {
                     if (!longPressFired) {
                         const checkIcon = folderBox.querySelector('.folder-check-icon');
                         const isSelected = folderBox.classList.toggle('selected');

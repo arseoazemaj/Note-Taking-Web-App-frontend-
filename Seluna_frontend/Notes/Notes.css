@@ -104,7 +104,7 @@ input::selection {
     transform: translateX(-50%);
     width: 90%;
     height: 40px;
-    border-radius: 15px;
+    border-radius: 5px;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -187,7 +187,7 @@ input::selection {
 }
 
 .folder-check-icon {
-    color: #ffffff; /*b07ecf*/
+    color: #ffffff;
     position: absolute;
     left: 10px;
     z-index: 1;
@@ -283,12 +283,11 @@ input::selection {
     overflow-wrap: break-word;
     white-space: normal;
     position: absolute;
-    width: 87%;
+    width: 90%;
 }
 
 .note-content {
     top: -5px;
-    height: 150px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 8;
@@ -323,8 +322,7 @@ input::selection {
 .title {
     overflow: hidden;
     text-overflow: ellipsis;
-    top: 155px;
-    height: 25px;
+    top: 160px;
     pointer-events: none;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -835,7 +833,7 @@ input::selection {
     border: none;
     outline: none;
     padding-left: 20px;
-    border-radius: 20px;
+    border-radius: 5px;
     height: 34px;
     padding-top: 2px;
 }
