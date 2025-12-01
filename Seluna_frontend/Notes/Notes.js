@@ -45,10 +45,10 @@ const MOVE_THRESHOLD = 5;
 let startX = 0;
 let startY = 0;
 
-document.addEventListener('DOMContentLoaded', loadNotes );
+document.addEventListener("DOMContentLoaded", loadNotes );
 
 function anySelected() {
-    return document.querySelectorAll('.note-box.selected, .folder-box.selected').length > 0;
+    return document.querySelectorAll(".note-box.selected, .folder-box.selected").length > 0;
 }
 
 function updateSelectionModeFromDOM() {
@@ -65,8 +65,8 @@ async function loadNotes() {
     try {
         const response = await fetch("http://localhost:5216/api/Notes/get_notes", {
             headers: {
-                'Authorization': 'Bearer ' + token,
-                'Content-Type': 'application/json'
+                "Authorization": "Bearer " + token,
+                "Content-Type": "application/json"
             }
         });
 
@@ -91,9 +91,9 @@ async function loadNotes() {
                 longPressTimer = setTimeout(() => {
                     longPressFired = true;
                     SelectedNotes = true;
-                    const checkIcon = noteBox.querySelector('.note-check-icon');
-                    checkIcon.style.display = 'block';
-                    noteBox.classList.add('selected');
+                    const checkIcon = noteBox.querySelector(".note-check-icon");
+                    checkIcon.style.display = "block";
+                    noteBox.classList.add("selected");
                     noteBox.style.transform = "scale(.9)";
                     showDecision();
                 }, LONG_PRESS_MS);
@@ -125,13 +125,13 @@ async function loadNotes() {
 
                 if (SelectionMode) {
                     if (!longPressFired) {
-                        const checkIcon = noteBox.querySelector('.note-check-icon');
-                        const isSelected = noteBox.classList.toggle('selected');
+                        const checkIcon = noteBox.querySelector(".note-check-icon");
+                        const isSelected = noteBox.classList.toggle("selected");
                         if (isSelected) {
-                            checkIcon.style.display = 'block';
+                            checkIcon.style.display = "block";
                             noteBox.style.transform = "scale(.9)";
                         } else {
-                            checkIcon.style.display = 'none';
+                            checkIcon.style.display = "none";
                             noteBox.style.transform = "scale(1)";
                         }
                         updateSelectionModeFromDOM();
@@ -148,42 +148,42 @@ async function loadNotes() {
         }
 
         notes.forEach(note => {
-            const noteBox = document.createElement('div');
-            noteBox.className = 'note-box';
-            noteBox.setAttribute('id', note.id);
+            const noteBox = document.createElement("div");
+            noteBox.className = "note-box";
+            noteBox.setAttribute("id", note.id);
 
-            const checkIcon = document.createElement('i');
-            checkIcon.setAttribute('data-lucide', 'circle-check');
-            checkIcon.classList.add('note-check-icon');
-            checkIcon.style.display = 'none';
+            const checkIcon = document.createElement("i");
+            checkIcon.setAttribute("data-lucide", "circle-check");
+            checkIcon.classList.add("note-check-icon");
+            checkIcon.style.display = "none";
             noteBox.appendChild(checkIcon);
 
             if (note.isImportant) {
-                const isImportantIcon = document.createElement('i');
-                noteBox.classList.add('important-note');
-                isImportantIcon.setAttribute('data-lucide', 'star');
-                isImportantIcon.classList.add('important-icon');
+                const isImportantIcon = document.createElement("i");
+                noteBox.classList.add("important-note");
+                isImportantIcon.setAttribute("data-lucide", "star");
+                isImportantIcon.classList.add("important-icon");
                 noteBox.appendChild(isImportantIcon);
             }
 
             if (note.isLocked) {
-                const lockIcon = document.createElement('i');
-                lockIcon.setAttribute('data-lucide', 'lock-keyhole');
-                lockIcon.classList.add('lock-icon');
-                const lockBackground = document.createElement('div');
-                lockBackground.classList.add('lock-background');
+                const lockIcon = document.createElement("i");
+                lockIcon.setAttribute("data-lucide", "lock-keyhole");
+                lockIcon.classList.add("lock-icon");
+                const lockBackground = document.createElement("div");
+                lockBackground.classList.add("lock-background");
                 lockBackground.appendChild(lockIcon);
-                noteBox.classList.add('locked-note');
+                noteBox.classList.add("locked-note");
                 noteBox.appendChild(lockBackground);
             }
 
-            const noteContent = document.createElement('p');
-            noteContent.className = 'note-content';
+            const noteContent = document.createElement("p");
+            noteContent.className = "note-content";
             noteContent.textContent = note.content;
 
-            const noteTitle = document.createElement('h3');
+            const noteTitle = document.createElement("h3");
             noteTitle.textContent = note.title;
-            noteTitle.className = 'title';
+            noteTitle.className = "title";
 
             noteBox.appendChild(noteContent);
             noteBox.appendChild(noteTitle);
@@ -205,14 +205,14 @@ function showDecision() {
     decide.classList.add("slide-in");
     decide.classList.remove("slide-out");
 
-    document.getElementById("new_note").style.visibility = 'hidden';
+    document.getElementById("new_note").style.visibility = "hidden";
     SelectionMode = true
 }
 
 function hideDecision() {
     decide.classList.add("slide-out");
     decide.classList.remove("slide-in");
-    document.getElementById("new_note").style.visibility = 'visible';
+    document.getElementById("new_note").style.visibility = "visible";
     blur_backgroundHandler();
     SelectionMode = false;
 }
@@ -255,13 +255,13 @@ let selectedColor = null;
 
 colorBox.forEach(box => {
     box.addEventListener("touchstart", () => {
-        document.querySelectorAll('.check_color').forEach(icon => {
-            icon.style.visibility = 'hidden';
+        document.querySelectorAll(".check_color").forEach(icon => {
+            icon.style.visibility = "hidden";
         });
 
-        const checkIcon = box.querySelector('.check_color');
+        const checkIcon = box.querySelector(".check_color");
         if (checkIcon) {
-            checkIcon.style.visibility = 'visible';
+            checkIcon.style.visibility = "visible";
         }
 
         selectedColor = box.getAttribute("data-color");
@@ -284,7 +284,7 @@ function blur_backgroundHandler() {
     folder_namer.value = "";
 
     for (let i = 0; i < color_check.length; i++) {
-        color_check[i].style.visibility = 'hidden';
+        color_check[i].style.visibility = "hidden";
     }
 
     if (lock_menu.classList.contains("slide-in")) {
@@ -309,16 +309,16 @@ function blur_backgroundHandler() {
         download_menu.classList.remove("slide-in");
     }
 
-    blur_background.style.visibility = 'hidden';
-    decision_hider.style.visibility = 'hidden';
+    blur_background.style.visibility = "hidden";
+    decision_hider.style.visibility = "hidden";
 }
 
 function move() {
     setTimeout(() => {
         move_menu.classList.add("slide-in");
         move_menu.classList.remove("slide-out");
-        blur_background.style.visibility = 'visible';
-        decision_hider.style.visibility = 'visible';
+        blur_background.style.visibility = "visible";
+        decision_hider.style.visibility = "visible";
     }, 100);
 }
 
@@ -339,7 +339,7 @@ function cancel_folder() {
         move_menu.classList.remove("slide-out");
         folder_namer.value = "";
         for (let i = 0; i < color_check.length; i++) {
-            color_check[i].style.visibility = 'hidden';
+            color_check[i].style.visibility = "hidden";
         }
     }, 100);
 }
@@ -387,8 +387,8 @@ async function add_folder() {
         
         document.getElementById("folder_namer").value = "";
         selectedColor = null;
-        document.querySelectorAll('.check_color').forEach(icon => {
-            icon.style.visibility = 'hidden';
+        document.querySelectorAll(".check_color").forEach(icon => {
+            icon.style.visibility = "hidden";
         });
 
         cancel_folder();
@@ -428,9 +428,9 @@ async function LoadFolders() {
                 longPressTimer = setTimeout(() => {
                     longPressFired = true;
                     SelectedFolders = true;
-                    const checkIcon = folderBox.querySelector('.folder-check-icon');
-                    checkIcon.style.display = 'block';
-                    folderBox.classList.add('selected');
+                    const checkIcon = folderBox.querySelector(".folder-check-icon");
+                    checkIcon.style.display = "block";
+                    folderBox.classList.add("selected");
                     folderBox.style.transform = "scale(.9)";
                     showDecision();
                     chosingMoveDecisions();
@@ -461,15 +461,15 @@ async function LoadFolders() {
 
                 if (SelectionMode) {
                     if (!longPressFired) {
-                        const checkIcon = folderBox.querySelector('.folder-check-icon');
-                        const isSelected = folderBox.classList.toggle('selected');
+                        const checkIcon = folderBox.querySelector(".folder-check-icon");
+                        const isSelected = folderBox.classList.toggle("selected");
 
                         if (isSelected) {
-                            checkIcon.style.display = 'block';
+                            checkIcon.style.display = "block";
                             folderBox.style.transform = "scale(.9)";
                             chosingMoveDecisions();
                         } else {
-                            checkIcon.style.display = 'none';
+                            checkIcon.style.display = "none";
                             folderBox.style.transform = "scale(1)";
                             chosingMoveDecisions();
                         }
@@ -484,26 +484,26 @@ async function LoadFolders() {
         }
 
         folders.forEach(folder => {
-            const folderBox = document.createElement('div');
-            folderBox.className = 'folder-box';
-            folderBox.setAttribute('id', folder.id);
+            const folderBox = document.createElement("div");
+            folderBox.className = "folder-box";
+            folderBox.setAttribute("id", folder.id);
 
-            const checkIcon = document.createElement('i');
-            checkIcon.setAttribute('data-lucide', 'circle-check');
-            checkIcon.classList.add('folder-check-icon');
-            checkIcon.style.display = 'none';
+            const checkIcon = document.createElement("i");
+            checkIcon.setAttribute("data-lucide", "circle-check");
+            checkIcon.classList.add("folder-check-icon");
+            checkIcon.style.display = "none";
 
-            const folderIcon = document.createElement('i');
-            folderIcon.setAttribute('data-lucide', 'folder-closed');
-            folderIcon.classList.add('folder-icon');
+            const folderIcon = document.createElement("i");
+            folderIcon.setAttribute("data-lucide", "folder-closed");
+            folderIcon.classList.add("folder-icon");
 
             const Color = folder.color;
             const fillColor = withAlpha(folder.color, "73");
             folderIcon.style.color = Color;
             folderIcon.style.fill = fillColor;
 
-            const folderName = document.createElement('p');
-            folderName.className = 'folder-name';
+            const folderName = document.createElement("p");
+            folderName.className = "folder-name";
             folderName.style.color = Color;
             folderName.textContent = folder.name;
 
@@ -523,7 +523,7 @@ async function LoadFolders() {
 }
 
 function chosingMoveDecisions() {
-    const anySelectedFolder = document.querySelector('.folder-box.selected');
+    const anySelectedFolder = document.querySelector(".folder-box.selected");
 
     if (anySelectedFolder) {
         SelectedFolders = true;
@@ -542,28 +542,28 @@ const folderPage = document.getElementById("folder_page");
 const folder_blur = document.getElementById("folder_blur");
 
 function open_folder(folderId) {
-    document.querySelectorAll('.folder-box').forEach(f => f.classList.remove('opened'));
+    document.querySelectorAll(".folder-box").forEach(f => f.classList.remove("opened"));
     const openedFolder = document.getElementById(folderId);
     if (openedFolder) {
-        openedFolder.classList.add('opened');
+        openedFolder.classList.add("opened");
     }
     opened_folder(folderId);
     folderPage.classList.add("show");
     folderPage.classList.remove("hide");
-    folder_blur.style.visibility = 'visible';
+    folder_blur.style.visibility = "visible";
 }
 
 folder_blur.addEventListener("touchstart", () => {
     setTimeout(() => {
         folderPage.classList.add("hide");
         folderPage.classList.remove("show");
-        folder_blur.style.visibility = 'hidden';
-        document.querySelectorAll('.note-box.selected, .folder-box.selected').forEach(el => {
-            el.classList.remove('selected');
+        folder_blur.style.visibility = "hidden";
+        document.querySelectorAll(".note-box.selected, .folder-box.selected").forEach(el => {
+            el.classList.remove("selected");
             el.style.transform = "scale(1)";
-            const checkIcon = el.querySelector('.note-check-icon, .folder-check-icon');
+            const checkIcon = el.querySelector(".note-check-icon, .folder-check-icon");
             if (checkIcon) {
-                checkIcon.style.display = 'none';
+                checkIcon.style.display = "none";
             }
         });
 
@@ -577,15 +577,15 @@ function withAlpha(hexColor, alphaHex) {
     return `#${base}${alphaHex}`;
 }
 
-document.addEventListener('DOMContentLoaded', LoadFolderName );
+document.addEventListener("DOMContentLoaded", LoadFolderName );
 let touchmoved = false;
 
 async function LoadFolderName () {
     try {
         const response = await fetch("http://localhost:5216/api/Folders/get_folderName", {
             headers: {
-                Authorization: 'Bearer ' + token,
-                'Content-Type': 'application/json'
+                Authorization: "Bearer " + token,
+                "Content-Type": "application/json"
             }
         });
 
@@ -600,17 +600,17 @@ async function LoadFolderName () {
         folderList.innerHTML = "";
 
         folderNames.forEach(folder => {
-            const folder_element = document.createElement('div');
-            folder_element.className = 'folders';
-            folder_element.setAttribute('id', folder.id);
+            const folder_element = document.createElement("div");
+            folder_element.className = "folders";
+            folder_element.setAttribute("id", folder.id);
 
-            const folderIcon = document.createElement('i');
-            folderIcon.setAttribute('data-lucide', 'folder');
-            folderIcon.classList.add('folders_icon');
+            const folderIcon = document.createElement("i");
+            folderIcon.setAttribute("data-lucide", "folder");
+            folderIcon.classList.add("folders_icon");
             folderIcon.style.color = folder.color;
 
-            const folderName = document.createElement('p');
-            folderName.className = 'folder_name';
+            const folderName = document.createElement("p");
+            folderName.className = "folder_name";
             folderName.textContent = folder.name;
             folderName.style.color = folder.color;
 
@@ -629,7 +629,7 @@ async function LoadFolderName () {
             folder_element.addEventListener("touchend", () => {
                     if (!touchmoved) {
                     const folderId = folder.id;
-                    const selectedNotes = document.querySelectorAll('.note-box.selected');
+                    const selectedNotes = document.querySelectorAll(".note-box.selected");
                     const selectedNoteIds = Array.from(selectedNotes).map(n => n.id);
 
                     selectedNoteIds.forEach(noteId => {
@@ -649,10 +649,10 @@ async function LoadFolderName () {
 async function sendNoteToFolder(noteId, folderId) {
     try {
         const response = await fetch("http://localhost:5216/api/Folders/SendNoteToFolder", {
-            method: 'PUT',
+            method: "PUT",
             headers: {
-                Authorization: 'Bearer ' + token,
-                'Content-Type': 'application/json'
+                Authorization: "Bearer " + token,
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({
                 Id: noteId,
@@ -668,22 +668,22 @@ async function sendNoteToFolder(noteId, folderId) {
         await loadNotes();
         hideDecision();
 
-        move_menu.style.visibility = 'hidden';
-        create_folder_menu.style.visibility = 'hidden';
+        move_menu.style.visibility = "hidden";
+        create_folder_menu.style.visibility = "hidden";
     } catch (error) {
-        console.error('Error moving note:', error);
+        console.error("Error moving note:", error);
     }
 }
 
 async function opened_folder(folderId) {
     const folder_page = document.getElementById("folder_page");
-    folder_page.innerHTML = '';
+    folder_page.innerHTML = "";
     try {
         const response = await fetch(`http://localhost:5216/api/Notes/folder/${folderId}`, {
-            method: 'GET', //* By default it's GET so now it was just me wanting to add it but for other methods you need to specify it *//
+            method: "GET", //* By default it"s GET so now it was just me wanting to add it but for other methods you need to specify it *//
             headers: {
-                Authorization: 'Bearer ' + token,
-                'Content-Type': 'application/json'
+                Authorization: "Bearer " + token,
+                "Content-Type": "application/json"
             },
         });
 
@@ -706,9 +706,9 @@ async function opened_folder(folderId) {
                     longPressTimer = setTimeout(() => {
                         longPressFired = true;
                         SelectedNotes = true;
-                        const checkIcon = noteBox.querySelector('.note-check-icon');
-                        checkIcon.style.display = 'block';
-                        noteBox.classList.add('selected');
+                        const checkIcon = noteBox.querySelector(".note-check-icon");
+                        checkIcon.style.display = "block";
+                        noteBox.classList.add("selected");
                         noteBox.style.transform = "scale(.9)";
                         showDecision();
                     }, LONG_PRESS_MS);
@@ -740,17 +740,17 @@ async function opened_folder(folderId) {
 
                 if (SelectionMode) {
                     if (!longPressFired) {
-                        const checkIcon = noteBox.querySelector('.note-check-icon');
-                        const isSelected = noteBox.classList.toggle('selected');
+                        const checkIcon = noteBox.querySelector(".note-check-icon");
+                        const isSelected = noteBox.classList.toggle("selected");
                         if (isSelected) {
-                            checkIcon.style.display = 'block';
+                            checkIcon.style.display = "block";
                             noteBox.style.transform = "scale(.9)";
                         } else {
-                            checkIcon.style.display = 'none';
+                            checkIcon.style.display = "none";
                             noteBox.style.transform = "scale(1)";
                         }
 
-                        const anySelected = document.querySelector('.note-box.selected');
+                        const anySelected = document.querySelector(".note-box.selected");
                         if (anySelected) {
                         } else {
                             hideDecision();
@@ -768,42 +768,42 @@ async function opened_folder(folderId) {
         }
 
         notes.forEach(note => {
-            const noteBox = document.createElement('div');
-            noteBox.className = 'note-box';
-            noteBox.setAttribute('id', note.id);
+            const noteBox = document.createElement("div");
+            noteBox.className = "note-box";
+            noteBox.setAttribute("id", note.id);
 
-            const checkIcon = document.createElement('i');
-            checkIcon.setAttribute('data-lucide', 'circle-check');
-            checkIcon.classList.add('note-check-icon');
-            checkIcon.style.display = 'none';
+            const checkIcon = document.createElement("i");
+            checkIcon.setAttribute("data-lucide", "circle-check");
+            checkIcon.classList.add("note-check-icon");
+            checkIcon.style.display = "none";
             noteBox.appendChild(checkIcon);
 
             if (note.isImportant) {
-                const isImportantIcon = document.createElement('i');
-                noteBox.classList.add('important-note');
-                isImportantIcon.setAttribute('data-lucide', 'star');
-                isImportantIcon.classList.add('important-icon');
+                const isImportantIcon = document.createElement("i");
+                noteBox.classList.add("important-note");
+                isImportantIcon.setAttribute("data-lucide", "star");
+                isImportantIcon.classList.add("important-icon");
                 noteBox.appendChild(isImportantIcon);
             }
 
             if (note.isLocked) {
-                const lockIcon = document.createElement('i');
-                lockIcon.setAttribute('data-lucide', 'lock-keyhole');
-                lockIcon.classList.add('lock-icon');
-                const lockBackground = document.createElement('div');
-                lockBackground.classList.add('lock-background');
+                const lockIcon = document.createElement("i");
+                lockIcon.setAttribute("data-lucide", "lock-keyhole");
+                lockIcon.classList.add("lock-icon");
+                const lockBackground = document.createElement("div");
+                lockBackground.classList.add("lock-background");
                 lockBackground.appendChild(lockIcon);
-                noteBox.classList.add('locked-note');
+                noteBox.classList.add("locked-note");
                 noteBox.appendChild(lockBackground);
             }
 
-            const noteContent = document.createElement('p');
-            noteContent.className = 'note-content';
+            const noteContent = document.createElement("p");
+            noteContent.className = "note-content";
             noteContent.textContent = note.content;
 
-            const noteTitle = document.createElement('h3');
+            const noteTitle = document.createElement("h3");
             noteTitle.textContent = note.title;
-            noteTitle.className = 'title';
+            noteTitle.className = "title";
 
             noteBox.appendChild(noteContent);
             noteBox.appendChild(noteTitle);
@@ -821,8 +821,8 @@ function lock() {
     setTimeout(() => {
         lock_menu.classList.add("slide-in");
         lock_menu.classList.remove("slide-out");
-        blur_background.style.visibility = 'visible';
-        decision_hider.style.visibility = 'visible';
+        blur_background.style.visibility = "visible";
+        decision_hider.style.visibility = "visible";
     }, 100);
 }
 
@@ -830,8 +830,8 @@ function not_lock() {
     setTimeout(() => {
         lock_menu.classList.add("slide-out");
         lock_menu.classList.remove("slide-in");
-        blur_background.style.visibility = 'hidden';
-        decision_hider.style.visibility = 'hidden';
+        blur_background.style.visibility = "hidden";
+        decision_hider.style.visibility = "hidden";
     }, 100);
 }
 
@@ -877,7 +877,7 @@ lock_password_confirm.addEventListener("input", lock_password_validation);
 
 async function continue_lock() {
     setTimeout(async () => {
-        const selectedNotes = document.querySelectorAll('.note-box.selected');
+        const selectedNotes = document.querySelectorAll(".note-box.selected");
 
         if (selectedNotes.length === 0) {
             alert("No note selected.");
@@ -920,10 +920,10 @@ async function continue_lock() {
 
         try {
             const response = await fetch("http://localhost:5216/api/Notes/lock_note", {
-                method: 'POST',
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify(payload)
             });
@@ -938,15 +938,15 @@ async function continue_lock() {
             hideDecision();
 
             selectedNotes.forEach(note => {
-                const checkIcon = note.querySelector('.note-check-icon');
-                if (checkIcon) checkIcon.style.display = 'none';
+                const checkIcon = note.querySelector(".note-check-icon");
+                if (checkIcon) checkIcon.style.display = "none";
             });
 
             const folderPage = document.getElementById("folder_page");
-            const isInsideFolder = folderPage && folderPage.style.display === 'grid';
+            const isInsideFolder = folderPage && folderPage.style.display === "grid";
 
             if (isInsideFolder) {
-                const openedFolder = document.querySelector('.folder-box.opened');
+                const openedFolder = document.querySelector(".folder-box.opened");
                 if (openedFolder) {
                     const folderId = openedFolder.id;
                     await opened_folder(folderId);
@@ -963,7 +963,7 @@ async function continue_lock() {
 }
 
 function showUnlockPrompt(noteId) {
-    blur_background.style.visibility = 'visible';
+    blur_background.style.visibility = "visible";
     unlock_menu.classList.add("show");
     unlock_menu.classList.remove("hide");
 
@@ -974,7 +974,7 @@ function cancel_unlock() {
     setTimeout(() => {
         unlock_menu.classList.add("hide");
         unlock_menu.classList.remove("show");
-        blur_background.style.visibility = 'hidden';
+        blur_background.style.visibility = "hidden";
         unlock_password.value = "";
     }, 100);
 }
@@ -1086,8 +1086,8 @@ function download_note() {
 
         download_menu.classList.add("slide-in");
         download_menu.classList.remove("slide-out");
-        blur_background.style.visibility = 'visible';
-        decision_hider.style.visibility = 'visible';
+        blur_background.style.visibility = "visible";
+        decision_hider.style.visibility = "visible";
     }, 100);
 }
 
@@ -1155,13 +1155,13 @@ async function send_to_trash() {
 
 //*Will be used to clear the local storage for testing purposes*//
 
-// localStorage.removeItem('notes');
+// localStorage.removeItem("notes");
 
 
 //TODO: Use only when wanting to see in your phone (when using comment code from line 50)
-document.addEventListener('DOMContentLoaded', function() {
-    const container = document.getElementById('container');
-    let notes = JSON.parse(localStorage.getItem('notes')) || [];
+document.addEventListener("DOMContentLoaded", function() {
+    const container = document.getElementById("container");
+    let notes = JSON.parse(localStorage.getItem("notes")) || [];
 
     function setupNoteEvents(noteBox, note) {
         noteBox.addEventListener("touchstart", function(e) {
@@ -1175,9 +1175,9 @@ document.addEventListener('DOMContentLoaded', function() {
             longPressTimer = setTimeout(() => {
                 longPressFired = true;
                 SelectionMode = true;
-                const checkIcon = noteBox.querySelector('.note-check-icon');
-                checkIcon.style.display = 'block';
-                noteBox.classList.add('selected');
+                const checkIcon = noteBox.querySelector(".note-check-icon");
+                checkIcon.style.display = "block";
+                noteBox.classList.add("selected");
                 noteBox.style.transform = "scale(.9)";
                 showDecision();
             }, LONG_PRESS_MS);
@@ -1209,18 +1209,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (SelectionMode) {
                 if (!longPressFired) {
-                    const checkIcon = noteBox.querySelector('.note-check-icon');
-                    const isSelected = noteBox.classList.toggle('selected');
+                    const checkIcon = noteBox.querySelector(".note-check-icon");
+                    const isSelected = noteBox.classList.toggle("selected");
 
                     if (isSelected) {
-                        checkIcon.style.display = 'block';
+                        checkIcon.style.display = "block";
                         noteBox.style.transform = "scale(.9)";
                     } else {
-                        checkIcon.style.display = 'none';
+                        checkIcon.style.display = "none";
                         noteBox.style.transform = "scale(1)";
                     }
 
-                    const anySelected = document.querySelector('.note-box.selected');
+                    const anySelected = document.querySelector(".note-box.selected");
                     if (anySelected) {
                         showDecision();
                     } else {
@@ -1238,42 +1238,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (!token) {
             notes.forEach(note => {
-            const noteBox = document.createElement('div');
-            noteBox.className = 'note-box';
-            noteBox.setAttribute('id', note.id);
+            const noteBox = document.createElement("div");
+            noteBox.className = "note-box";
+            noteBox.setAttribute("id", note.id);
 
-            const checkIcon = document.createElement('i');
-            checkIcon.setAttribute('data-lucide', 'circle-check');
-            checkIcon.classList.add('note-check-icon');
-            checkIcon.style.display = 'none';
+            const checkIcon = document.createElement("i");
+            checkIcon.setAttribute("data-lucide", "circle-check");
+            checkIcon.classList.add("note-check-icon");
+            checkIcon.style.display = "none";
             noteBox.appendChild(checkIcon);
 
             if (note.isImportant) {
-                const isImportantIcon = document.createElement('i');
-                noteBox.classList.add('important-note');
-                isImportantIcon.setAttribute('data-lucide', 'star');
-                isImportantIcon.classList.add('important-icon');
+                const isImportantIcon = document.createElement("i");
+                noteBox.classList.add("important-note");
+                isImportantIcon.setAttribute("data-lucide", "star");
+                isImportantIcon.classList.add("important-icon");
                 noteBox.appendChild(isImportantIcon);
             }
 
             if (note.isLocked) {
-                const lockIcon = document.createElement('i');
-                lockIcon.setAttribute('data-lucide', 'lock-keyhole');
-                lockIcon.classList.add('lock-icon');
-                const lockBackground = document.createElement('div');
-                lockBackground.classList.add('lock-background');
+                const lockIcon = document.createElement("i");
+                lockIcon.setAttribute("data-lucide", "lock-keyhole");
+                lockIcon.classList.add("lock-icon");
+                const lockBackground = document.createElement("div");
+                lockBackground.classList.add("lock-background");
                 lockBackground.appendChild(lockIcon);
-                noteBox.classList.add('locked-note');
+                noteBox.classList.add("locked-note");
                 noteBox.appendChild(lockBackground);
             }
 
-            const noteContent = document.createElement('p');
-            noteContent.className = 'note-content';
+            const noteContent = document.createElement("p");
+            noteContent.className = "note-content";
             noteContent.textContent = note.content;
 
-            const noteTitle = document.createElement('h3');
+            const noteTitle = document.createElement("h3");
             noteTitle.textContent = note.title;
-            noteTitle.className = 'title';
+            noteTitle.className = "title";
 
             noteBox.appendChild(noteContent);
             noteBox.appendChild(noteTitle);

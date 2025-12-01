@@ -42,11 +42,11 @@ const MOVE_THRESHOLD = 5;
 let startX = 0;
 let startY = 0;
 
-document.addEventListener('DOMContentLoaded', load_deleted_Notes );
-document.addEventListener('DOMContentLoaded', load_deleted_Folders );
+document.addEventListener("DOMContentLoaded", load_deleted_Notes );
+document.addEventListener("DOMContentLoaded", load_deleted_Folders );
 
 function anySelected() {
-    return document.querySelectorAll('.note-box.selected, .folder-box.selected').length > 0;
+    return document.querySelectorAll(".note-box.selected, .folder-box.selected").length > 0;
 }
 
 function updateselectionModeFromDOM() {
@@ -63,8 +63,8 @@ async function load_deleted_Notes() {
     try {
         const response = await fetch("http://localhost:5216/api/Notes/get_deleted_notes", {
             headers: {
-                'Authorization': 'Bearer ' + token,
-                'Content-Type': 'application/json'
+                "Authorization": "Bearer " + token,
+                "Content-Type": "application/json"
             }
         });
 
@@ -90,9 +90,9 @@ async function load_deleted_Notes() {
                     selectionMode = true;
                     SelectedNotes = true;
                     longPressFired = true;
-                    const checkIcon = noteBox.querySelector('.note-check-icon');
-                    checkIcon.style.display = 'block';
-                    noteBox.classList.add('selected');
+                    const checkIcon = noteBox.querySelector(".note-check-icon");
+                    checkIcon.style.display = "block";
+                    noteBox.classList.add("selected");
                     noteBox.style.transform = "scale(.9)";
                     showDecisionBar();
                 }, LONG_PRESS_MS);
@@ -124,13 +124,13 @@ async function load_deleted_Notes() {
 
                 if (selectionMode) {
                     if (!longPressFired) {
-                        const checkIcon = noteBox.querySelector('.note-check-icon');
-                        const isSelected = noteBox.classList.toggle('selected');
+                        const checkIcon = noteBox.querySelector(".note-check-icon");
+                        const isSelected = noteBox.classList.toggle("selected");
                         if (isSelected) {
-                            checkIcon.style.display = 'block';
+                            checkIcon.style.display = "block";
                             noteBox.style.transform = "scale(.9)";
                         } else {
-                            checkIcon.style.display = 'none';
+                            checkIcon.style.display = "none";
                             noteBox.style.transform = "scale(1)";
                         }
                         updateselectionModeFromDOM();
@@ -141,42 +141,42 @@ async function load_deleted_Notes() {
         }
 
         notes.forEach(note => {
-            const noteBox = document.createElement('div');
-            noteBox.className = 'note-box';
-            noteBox.setAttribute('id', note.id);
+            const noteBox = document.createElement("div");
+            noteBox.className = "note-box";
+            noteBox.setAttribute("id", note.id);
 
-            const checkIcon = document.createElement('i');
-            checkIcon.setAttribute('data-lucide', 'circle-check');
-            checkIcon.classList.add('note-check-icon');
-            checkIcon.style.display = 'none';
+            const checkIcon = document.createElement("i");
+            checkIcon.setAttribute("data-lucide", "circle-check");
+            checkIcon.classList.add("note-check-icon");
+            checkIcon.style.display = "none";
             noteBox.appendChild(checkIcon);
 
             if (note.isImportant) {
-                const isImportantIcon = document.createElement('i');
-                noteBox.classList.add('important-note');
-                isImportantIcon.setAttribute('data-lucide', 'star');
-                isImportantIcon.classList.add('important-icon');
+                const isImportantIcon = document.createElement("i");
+                noteBox.classList.add("important-note");
+                isImportantIcon.setAttribute("data-lucide", "star");
+                isImportantIcon.classList.add("important-icon");
                 noteBox.appendChild(isImportantIcon);
             }
 
             if (note.isLocked) {
-                const lockIcon = document.createElement('i');
-                lockIcon.setAttribute('data-lucide', 'lock-keyhole');
-                lockIcon.classList.add('lock-icon');
-                const lockBackground = document.createElement('div');
-                lockBackground.classList.add('lock-background');
+                const lockIcon = document.createElement("i");
+                lockIcon.setAttribute("data-lucide", "lock-keyhole");
+                lockIcon.classList.add("lock-icon");
+                const lockBackground = document.createElement("div");
+                lockBackground.classList.add("lock-background");
                 lockBackground.appendChild(lockIcon);
-                noteBox.classList.add('locked-note');
+                noteBox.classList.add("locked-note");
                 noteBox.appendChild(lockBackground);
             }
 
-            const noteContent = document.createElement('p');
-            noteContent.className = 'note-content';
+            const noteContent = document.createElement("p");
+            noteContent.className = "note-content";
             noteContent.textContent = note.content;
 
-            const noteTitle = document.createElement('h3');
+            const noteTitle = document.createElement("h3");
             noteTitle.textContent = note.title;
-            noteTitle.className = 'title';
+            noteTitle.className = "title";
 
             noteBox.appendChild(noteContent);
             noteBox.appendChild(noteTitle);
@@ -221,9 +221,9 @@ async function load_deleted_Folders() {
                 longPressTimer = setTimeout(() => {
                     longPressFired = true;
                     SelectedFolders = true;
-                    const checkIcon = folderBox.querySelector('.folder-check-icon');
-                    checkIcon.style.display = 'block';
-                    folderBox.classList.add('selected');
+                    const checkIcon = folderBox.querySelector(".folder-check-icon");
+                    checkIcon.style.display = "block";
+                    folderBox.classList.add("selected");
                     folderBox.style.transform = "scale(.9)";
                     showDecisionBar();
                 }, LONG_PRESS_MS);
@@ -253,14 +253,14 @@ async function load_deleted_Folders() {
 
                 if (selectionMode) {
                     if (!longPressFired) {
-                        const checkIcon = folderBox.querySelector('.folder-check-icon');
-                        const isSelected = folderBox.classList.toggle('selected');
+                        const checkIcon = folderBox.querySelector(".folder-check-icon");
+                        const isSelected = folderBox.classList.toggle("selected");
 
                         if (isSelected) {
-                            checkIcon.style.display = 'block';
+                            checkIcon.style.display = "block";
                             folderBox.style.transform = "scale(.9)";
                         } else {
-                            checkIcon.style.display = 'none';
+                            checkIcon.style.display = "none";
                             folderBox.style.transform = "scale(1)";
                         }
                         updateselectionModeFromDOM();
@@ -272,26 +272,26 @@ async function load_deleted_Folders() {
         }
 
         folders.forEach(folder => {
-            const folderBox = document.createElement('div');
-            folderBox.className = 'folder-box';
-            folderBox.setAttribute('id', folder.id);
+            const folderBox = document.createElement("div");
+            folderBox.className = "folder-box";
+            folderBox.setAttribute("id", folder.id);
 
-            const checkIcon = document.createElement('i');
-            checkIcon.setAttribute('data-lucide', 'circle-check');
-            checkIcon.classList.add('folder-check-icon');
-            checkIcon.style.display = 'none';
+            const checkIcon = document.createElement("i");
+            checkIcon.setAttribute("data-lucide", "circle-check");
+            checkIcon.classList.add("folder-check-icon");
+            checkIcon.style.display = "none";
 
-            const folderIcon = document.createElement('i');
-            folderIcon.setAttribute('data-lucide', 'folder-closed');
-            folderIcon.classList.add('folder-icon');
+            const folderIcon = document.createElement("i");
+            folderIcon.setAttribute("data-lucide", "folder-closed");
+            folderIcon.classList.add("folder-icon");
 
             const Color = folder.color;
             const fillColor = withAlpha(folder.color, "73");
             folderIcon.style.color = Color;
             folderIcon.style.fill = fillColor;
 
-            const folderName = document.createElement('p');
-            folderName.className = 'folder-name';
+            const folderName = document.createElement("p");
+            folderName.className = "folder-name";
             folderName.style.color = Color;
             folderName.textContent = folder.name;
 

@@ -1,10 +1,10 @@
 const urlParams = new URLSearchParams(window.location.search);
-const noteId = urlParams.get('id');
+const noteId = urlParams.get("id");
 const menu = document.getElementById("sub-menu_icon");
-menu.addEventListener('touchstart', openMenu);
+menu.addEventListener("touchstart", openMenu);
 const container = document.getElementById("container");
 const blur_background = document.getElementById("blur_background");
-blur_background.addEventListener('touchstart', closeMenu);
+blur_background.addEventListener("touchstart", closeMenu);
 
 function openMenu() {
     container.classList.remove("hide_menu");
@@ -35,9 +35,9 @@ function fill() {
     filled = !filled;
 }
 
-document.addEventListener('DOMContentLoaded', async function () { //*Loads the note *//
+document.addEventListener("DOMContentLoaded", async function () { //*Loads the note *//
     const urlParams = new URLSearchParams(window.location.search);
-    const noteId = urlParams.get('id');
+    const noteId = urlParams.get("id");
 
     if (!noteId) {
         console.error("No note ID found in URL");
@@ -47,8 +47,8 @@ document.addEventListener('DOMContentLoaded', async function () { //*Loads the n
     try {
         const response = await fetch(`http://localhost:5216/api/Notes/get_note/${noteId}`, {
             headers: {
-                'Authorization': 'Bearer ' + token,
-                'Content-Type': 'application/json'
+                "Authorization": "Bearer " + token,
+                "Content-Type": "application/json"
             }
         });
 
@@ -59,11 +59,11 @@ document.addEventListener('DOMContentLoaded', async function () { //*Loads the n
 
         const note = await response.json();
 
-        document.getElementById('title').value = note.title;
-        document.getElementById('note_input').value = note.content;
+        document.getElementById("title").value = note.title;
+        document.getElementById("note_input").value = note.content;
 
         if (note.isImportant) {
-            document.getElementById('important-icon').style.fill = "#dda9ff";
+            document.getElementById("important-icon").style.fill = "#dda9ff";
             filled = true;
         }
 
@@ -100,7 +100,7 @@ async function update(noteId) { //*Update the note
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${localStorage.getItem('token')}`
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
             },
             body: JSON.stringify(note)
         });

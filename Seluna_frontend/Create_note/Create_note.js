@@ -56,7 +56,7 @@ async function save() { //* Save the note
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${localStorage.getItem('token')}`
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
                 },
                 body: JSON.stringify(note)
             });
@@ -163,6 +163,15 @@ passwordConfirmInput.addEventListener("input", validatePasswordInput);
 
 function confirmLock() {
     console.log("Locking the nore...");
+
+    setTimeout(async () => {
+        const password = sanitize(passwordInput.value);
+        const confirmPassword = sanitize(passwordConfirmInput.value);
+
+        console.log(password);
+        console.log(confirmPassword);
+
+    }, 100);
 }
 
 
@@ -211,9 +220,9 @@ async function deleteNote() { //*Moves the note to trash
 }
 
 //*Used to save the notes in local storage for testing purposes (will be deleted in the end)*//
-document.getElementById('save').addEventListener('click', function() {
-    const title = document.getElementById('title').value.trim();
-    const content = document.getElementById('note_input').value.trim();
+document.getElementById("save").addEventListener("click", function() {
+    const title = document.getElementById("title").value.trim();
+    const content = document.getElementById("note_input").value.trim();
 
     if (content === "") {
         return;
@@ -227,15 +236,11 @@ document.getElementById('save').addEventListener('click', function() {
         isImportant: isImportant
     };
 
-    let notes = JSON.parse(localStorage.getItem('notes')) || [];
+    let notes = JSON.parse(localStorage.getItem("notes")) || [];
 
     notes.push(note);
 
-    localStorage.setItem('notes', JSON.stringify(notes));
+    localStorage.setItem("notes", JSON.stringify(notes));
 
     window.location.href = "../Notes/Notes.html";
 });
-
-async function lock() {
-    console.log("Locking the note...");
-}
