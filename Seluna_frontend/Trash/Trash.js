@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', load_deleted_Notes );
 document.addEventListener('DOMContentLoaded', load_deleted_Folders );
 
 function anySelected() {
-    return document.querySelectorAll('.note-box.selected').length > 0;
+    return document.querySelectorAll('.note-box.selected, .folder-box.selected').length > 0;
 }
 
 function updateselectionModeFromDOM() {
@@ -263,10 +263,8 @@ async function load_deleted_Folders() {
                             checkIcon.style.display = 'none';
                             folderBox.style.transform = "scale(1)";
                         }
-                        updateSelectionModeFromDOM();
+                        updateselectionModeFromDOM();
                     }
-                } else if (!longPressFired && !wasCanceled) {
-                    open_folder(folder.id);
                 }
 
                 longPressFired = false;

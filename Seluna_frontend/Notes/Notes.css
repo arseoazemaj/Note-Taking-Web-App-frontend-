@@ -287,7 +287,7 @@ input::selection {
 }
 
 .note-content {
-    top: -5px;
+    top: 0;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 8;
