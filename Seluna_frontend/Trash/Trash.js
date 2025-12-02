@@ -328,3 +328,38 @@ function hideDecisionBar() {
     decide.classList.remove("slide-in");
     selectionMode = false;
 }
+
+async function restore() {
+    const token = localStorage.getItem("token");
+    if (!token) {
+        alert("You must be logged in to delete notes.");
+        return;
+    }
+
+    const noteIds = Array.from(document.querySelectorAll(".note-box.selected"))
+        .map(note => parseInt(note.id))
+        .filter(id => !isNaN(id));
+
+    try {
+        const response = await fetch("http://localhost:5216/api/Notes/restore_notes", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({ noteIds })
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(result.message || "Failed to delete notes.");
+        }
+
+        load_deleted_Notes();
+
+    } catch (error) {
+        console.error("Error restoring notes:", error);
+        alert("Error restoring notes.");
+    }
+}

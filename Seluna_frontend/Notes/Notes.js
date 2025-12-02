@@ -1113,7 +1113,7 @@ async function send_to_trash() {
 
     try {
         if (noteIds.length > 0) {
-            const notesResponse = await fetch("http://localhost:5216/api/Notes/delete_multiple_notes", {
+            const notesResponse = await fetch("http://localhost:5216/api/Notes/delete_notes", {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
