@@ -332,7 +332,7 @@ function hideDecisionBar() {
 async function restore() {
     const token = localStorage.getItem("token");
     if (!token) {
-        alert("You must be logged in to delete notes.");
+        alert("You must be logged in to delete notes or folders.");
         return;
     }
 
@@ -340,26 +340,51 @@ async function restore() {
         .map(note => parseInt(note.id))
         .filter(id => !isNaN(id));
 
+    const folderIds = Array.from(document.querySelectorAll(".folder-box.selected"))
+        .map(folder => parseInt(folder.id))
+        .filter(id => !isNaN(id));
+
+    if (noteIds.length === 0 && folderIds.length === 0) {
+        alert("No notes or folders selected.");
+        return;
+    }
+
     try {
-        const response = await fetch("http://localhost:5216/api/Notes/restore_notes", {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify({ noteIds })
-        });
+        if (noteIds.length > 0) {
+            const notesResponse = await fetch("http://localhost:5216/api/Notes/restore_notes", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({ noteIds })
+            });
 
-        const result = await response.json();
-
-        if (!response.ok) {
-            throw new Error(result.message || "Failed to delete notes.");
+            const notesResult = await notesResponse.json();
+            if (!notesResponse.ok) throw new Error(notesResult.message || "Failed to delete notes.");
         }
 
-        load_deleted_Notes();
+        if (folderIds.length > 0) {
+            const foldersResponse = await fetch("http://localhost:5216/api/Folders/restore_folders", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({ folderIds })
+            });
+
+            const foldersResult = await foldersResponse.json();
+            if (!foldersResponse.ok) throw new Error(foldersResult.message || "Failed to delete folders.");
+        }
+
+        hideDecisionBar();
+
+        if (noteIds.length > 0) load_deleted_Notes();
+        if (folderIds.length > 0) load_deleted_Folders();
 
     } catch (error) {
-        console.error("Error restoring notes:", error);
-        alert("Error restoring notes.");
+        console.error("Error restoring notes or folders:", error);
+        alert("Error restoring notes or folders.");
     }
 }

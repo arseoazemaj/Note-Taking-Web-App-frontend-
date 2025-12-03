@@ -133,7 +133,7 @@ a, div {
     padding: 30px 10px;
     width: 90%;
     position: absolute;
-    top: 170px;
+    top: 120px;
     left: 50%;
     transform: translateX(-50%);
     scrollbar-width: none;
@@ -175,7 +175,7 @@ a, div {
 
 #container {
     position: absolute;
-    top: 270px;
+    top: 220px;
     left: 50%;
     transform: translateX(-50%);
     display: grid;
@@ -183,6 +183,7 @@ a, div {
     gap: 45px 30px;
     width: 90%;
     box-sizing: border-box;
+    padding-bottom: 100px;
 }
 
 .note-box {
