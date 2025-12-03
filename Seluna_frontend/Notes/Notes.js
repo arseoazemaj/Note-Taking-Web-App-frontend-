@@ -346,55 +346,53 @@ function cancel_folder() {
 
 //*comment
 async function add_folder() {
-    setTimeout(async () => {
-        create_folder_menu.classList.add("slide-out");
-        create_folder_menu.classList.remove("slide-in");
-        const folderName = document.getElementById("folder_namer").value.trim();
-        const folderColor = selectedColor;
+    create_folder_menu.classList.add("slide-out");
+    create_folder_menu.classList.remove("slide-in");
+    const folderName = document.getElementById("folder_namer").value.trim();
+    const folderColor = selectedColor;
 
-        if (!folderName || !folderColor) {
-            let msg = "";
-            create_folder_menu.classList.add("slide-in");
-            create_folder_menu.classList.remove("slide-out");
-            if (!folderName) msg += "Folder name is required.\n";
-            if (!folderColor) msg += "Please select a folder color.";
+    if (!folderName || !folderColor) {
+        let msg = "";
+        create_folder_menu.classList.add("slide-in");
+        create_folder_menu.classList.remove("slide-out");
+        if (!folderName) msg += "Folder name is required.\n";
+        if (!folderColor) msg += "Please select a folder color.";
 
-            alert(msg);
-            return;
-        }
+        alert(msg);
+        return;
+    }
 
-        const folder  = {
-            Name: folderName,
-            Color: folderColor
-        }
+    const folder  = {
+        Name: folderName,
+        Color: folderColor
+    }
 
-        try {
-            const response = await fetch("http://localhost:5216/api/Folders/create_folder", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                },
-                body: JSON.stringify(folder)
-            });
-        
-            if (!response.ok) {
-                console.error("Failed to create folder");
-            }
-        }catch (err) {
-            console.error("Error while creating a folder:", err);
-        }
-        
-        document.getElementById("folder_namer").value = "";
-        selectedColor = null;
-        document.querySelectorAll(".check_color").forEach(icon => {
-            icon.style.visibility = "hidden";
+    try {
+        const response = await fetch("http://localhost:5216/api/Folders/create_folder", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(folder)
         });
+    
+        if (!response.ok) {
+            console.error("Failed to create folder");
+        }
+    }catch (err) {
+        console.error("Error while creating a folder:", err);
+    }
+    
+    document.getElementById("folder_namer").value = "";
+    selectedColor = null;
+    document.querySelectorAll(".check_color").forEach(icon => {
+        icon.style.visibility = "hidden";
+    });
 
-        cancel_folder();
-        LoadFolders();
-        LoadFolderName();
-    }, 100);
+    cancel_folder();
+    LoadFolders();
+    LoadFolderName();
 }
 
 const folders_menu = document.getElementById("folders_menu");
@@ -876,7 +874,6 @@ lock_password.addEventListener("input", lock_password_validation);
 lock_password_confirm.addEventListener("input", lock_password_validation);
 
 async function continue_lock() {
-    setTimeout(async () => {
         const selectedNotes = document.querySelectorAll(".note-box.selected");
 
         if (selectedNotes.length === 0) {
@@ -959,7 +956,6 @@ async function continue_lock() {
             console.error("Error locking notes:", error);
             alert("Error locking notes.");
         }
-    }, 100);
 }
 
 function showUnlockPrompt(noteId) {
@@ -996,49 +992,47 @@ function unlock_password_validation() {
 }
 
 async function continue_unlock() {
-        setTimeout(async () => {
-        try {
-            const noteId = parseInt(unlock_menu.dataset.noteId);
-            const unlockPassword = sanitize(unlock_password.value);
+    try {
+        const noteId = parseInt(unlock_menu.dataset.noteId);
+        const unlockPassword = sanitize(unlock_password.value);
 
 
-            if (!unlockPassword || unlockPassword.length < 8) {
-                alert("Password must be at least 8 characters long.");
-                return;
-            }
-
-            const token = localStorage.getItem("token");
-            if (!token) {
-                alert("You must be logged in to unlock notes.");
-                return;
-            }
-
-            const response = await fetch("http://localhost:5216/api/notes/open_locked_notessss", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                },
-                body: JSON.stringify({
-                    Id: noteId,
-                    Lock_Password: unlockPassword
-                })
-            });
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                alert(data.message || "Failed to unlock note.");
-                return;
-            }
-
-            window.location.href = `../Edit_notes/Edit_notes.html?id=${noteId}`;
-
-        } catch (error) {
-            console.error("Error unlocking note:", error);
-            alert("An unexpected error occurred while unlocking the note.");
+        if (!unlockPassword || unlockPassword.length < 8) {
+            alert("Password must be at least 8 characters long.");
+            return;
         }
-    }, 100);
+
+        const token = localStorage.getItem("token");
+        if (!token) {
+            alert("You must be logged in to unlock notes.");
+            return;
+        }
+
+        const response = await fetch("http://localhost:5216/api/notes/open_locked_notessss", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                Id: noteId,
+                Lock_Password: unlockPassword
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            alert(data.message || "Failed to unlock note.");
+            return;
+        }
+
+        window.location.href = `../Edit_notes/Edit_notes.html?id=${noteId}`;
+
+    } catch (error) {
+        console.error("Error unlocking note:", error);
+        alert("An unexpected error occurred while unlocking the note.");
+    }
 }
 
 async function mark_important() {
