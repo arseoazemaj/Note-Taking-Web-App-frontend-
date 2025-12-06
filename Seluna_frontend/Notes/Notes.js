@@ -271,46 +271,48 @@ colorBox.forEach(box => {
 //*blur backgroung handler
 
 function blur_backgroundHandler() {
-    if (move_menu.classList.contains("slide-in")) {
-        move_menu.classList.add("slide-out");
-        move_menu.classList.remove("slide-in");
-    }
+    setTimeout(() => {
+        if (move_menu.classList.contains("slide-in")) {
+            move_menu.classList.add("slide-out");
+            move_menu.classList.remove("slide-in");
+        }
 
-    if (create_folder_menu.classList.contains("slide-in")) {
-        create_folder_menu.classList.add("slide-out");
-        create_folder_menu.classList.remove("slide-in");
-    }
+        if (create_folder_menu.classList.contains("slide-in")) {
+            create_folder_menu.classList.add("slide-out");
+            create_folder_menu.classList.remove("slide-in");
+        }
 
-    folder_namer.value = "";
+        folder_namer.value = "";
 
-    for (let i = 0; i < color_check.length; i++) {
-        color_check[i].style.visibility = "hidden";
-    }
+        for (let i = 0; i < color_check.length; i++) {
+            color_check[i].style.visibility = "hidden";
+        }
 
-    if (lock_menu.classList.contains("slide-in")) {
-        lock_menu.classList.add("slide-out");
-        lock_menu.classList.remove("slide-in");
-    }
+        if (lock_menu.classList.contains("slide-in")) {
+            lock_menu.classList.add("slide-out");
+            lock_menu.classList.remove("slide-in");
+        }
 
-    if (lock_password_menu.classList.contains("slide-in")) {
-        lock_password_menu.classList.add("slide-out");
-        lock_password_menu.classList.remove("slide-in");
-    }
+        if (lock_password_menu.classList.contains("slide-in")) {
+            lock_password_menu.classList.add("slide-out");
+            lock_password_menu.classList.remove("slide-in");
+        }
 
-    if (unlock_menu.classList.contains("show")) {
-        unlock_menu.classList.add("hide");
-        unlock_menu.classList.remove("show");
-    }
+        if (unlock_menu.classList.contains("show")) {
+            unlock_menu.classList.add("hide");
+            unlock_menu.classList.remove("show");
+        }
 
-    unlock_password.value = "";
+        unlock_password.value = "";
 
-    if (download_menu.classList.contains("slide-in")) {
-        download_menu.classList.add("slide-out");
-        download_menu.classList.remove("slide-in");
-    }
+        if (download_menu.classList.contains("slide-in")) {
+            download_menu.classList.add("slide-out");
+            download_menu.classList.remove("slide-in");
+        }
 
-    blur_background.style.visibility = "hidden";
-    decision_hider.style.visibility = "hidden";
+        blur_background.style.visibility = "hidden";
+        decision_hider.style.visibility = "hidden";
+    }, 100);
 }
 
 function move() {
