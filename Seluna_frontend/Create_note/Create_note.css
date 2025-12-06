@@ -217,7 +217,6 @@ input {
 .lock_menu_answere:active { background-color: #1d1737; }
 
 #lock_password_menu {
-    visibility: visible;    /*Change to hidden when finishing testing*/
     position: fixed;
     background: #251e45;
     height: 300px;
