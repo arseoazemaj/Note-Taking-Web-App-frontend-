@@ -388,3 +388,8 @@ async function restore() {
         alert("Error restoring notes or folders.");
     }
 }
+
+
+async function permanently_Delete() {
+    console.log("Permanently deleting notes and/or folders...");
+}
