@@ -1,40 +1,3 @@
-const urlParams = new URLSearchParams(window.location.search);
-const noteId = urlParams.get("id");
-const menu = document.getElementById("sub-menu_icon");
-menu.addEventListener("touchstart", openMenu);
-const container = document.getElementById("container");
-const blur_background = document.getElementById("blur_background");
-blur_background.addEventListener("touchstart", closeMenu);
-
-function openMenu() {
-    container.classList.remove("hide_menu");
-    container.classList.add("show_menu");
-    blur_background.style.visibility = "visible";
-}
-
-function closeMenu() {
-    setTimeout(() => {
-        container.classList.remove("show_menu");
-        container.classList.add("hide_menu");
-        blur_background.style.visibility = "hidden";
-    }, 100);
-}
-
-let filled = false;
-
-function fill() {
-    const icon = document.getElementById("important-icon");
-    
-    if (filled) {
-        icon.style.fill = "none";
-    }
-    else {
-        icon.style.fill = "#dda9ff";
-    }
-    
-    filled = !filled;
-}
-
 document.addEventListener("DOMContentLoaded", async function () { //*Loads the note *//
     const urlParams = new URLSearchParams(window.location.search);
     const noteId = urlParams.get("id");
@@ -72,6 +35,38 @@ document.addEventListener("DOMContentLoaded", async function () { //*Loads the n
     }
 });
 
+const urlParams = new URLSearchParams(window.location.search);
+const noteId = urlParams.get("id");
+const menu = document.getElementById("sub-menu_icon");
+menu.addEventListener("touchstart", openMenu);
+const container = document.getElementById("container");
+const blur_background = document.getElementById("blur_background");
+blur_background.addEventListener("touchstart", closeMenu);
+
+const lock_bg = document.getElementById("lock_bg");
+
+const close_lock_menu = document.getElementById("not_lock");
+const continue_lockBtn = document.getElementById("do_lock");
+const lock_menu_lock_password = document.getElementById("lock_password_menu");
+const cancel_lock_password = document.getElementById("cancel_lock");
+const confirm_lock_password = document.getElementById("continue_lock");
+confirm_lock_password.disabled = true;
+
+function openMenu() {
+    container.classList.remove("hide_menu");
+    container.classList.add("show_menu");
+    blur_background.style.visibility = "visible";
+}
+
+function closeMenu() {
+    setTimeout(() => {
+        container.classList.remove("show_menu");
+        container.classList.add("hide_menu");
+        lock_bg.style.visibility = "hidden";
+        blur_background.style.visibility = "hidden";
+    }, 10);
+}
+
 async function update(noteId) { //*Update the note
     const Title = document.getElementById("title").value.trim();
     const Content = document.getElementById("note_input").value.trim();
@@ -92,7 +87,9 @@ async function update(noteId) { //*Update the note
         title: Title,
         content: Content,
         isImportant: isImportant,
-        updated_at: new Date().toISOString()
+        updated_at: new Date().toISOString(),
+        isLocked: isLocked,
+        lock_password: lock_password
     };
 
     try {
@@ -116,6 +113,101 @@ async function update(noteId) { //*Update the note
         console.error("Error updating note:", error);
         alert("There was an error updating your note. Please try again.");
     }
+}
+
+let filled = false;
+
+function fill() {
+    const icon = document.getElementById("important-icon");
+    
+    if (filled) {
+        icon.style.fill = "none";
+    }
+    else {
+        icon.style.fill = "#dda9ff";
+    }
+    
+    filled = !filled;
+}
+
+function lock() {
+    setTimeout(() => {
+        const lock_menu = document.getElementById("lock_menu");
+        lock_menu.classList.add("show_lock_menu");
+        lock_menu.classList.remove("hide_lock_menu");
+        lock_menu_lock_password.classList.add("hide_lock_menu");
+        lock_menu_lock_password.classList.remove("show_lock_menu");
+        lock_bg.style.visibility = "visible";
+    }, 150);
+}
+
+function closelockMenuBG() {
+    lock_menu.classList.add("hide_lock_menu");
+    lock_menu.classList.remove("show_lock_menu");
+    lock_menu_lock_password.classList.add("hide_lock_menu");
+    lock_menu_lock_password.classList.remove("show_lock_menu");
+    passwordInput.value = "";
+    passwordConfirmInput.value = "";
+    closeMenu();
+}
+
+function closelockMenu() {
+    setTimeout(() => {
+        lock_menu.classList.add("hide_lock_menu");
+        lock_menu.classList.remove("show_lock_menu");
+        lock_menu_lock_password.classList.add("hide_lock_menu");
+        lock_menu_lock_password.classList.remove("show_lock_menu");
+        lock_bg.style.visibility = "hidden";
+    }, 150);
+}
+
+function continueLock() {
+    setTimeout(() => {
+        lock_menu_lock_password.classList.add("show_lock_menu");
+        lock_menu_lock_password.classList.remove("hide_lock_menu");
+    }, 150);
+}
+
+function cancelLockPassword() {
+    setTimeout(() => {
+        passwordInput.value = "";
+        passwordConfirmInput.value = "";
+        lock_menu_lock_password.classList.add("hide_lock_menu");
+        lock_menu_lock_password.classList.remove("show_lock_menu");
+    }, 150);
+}
+
+const passwordInput = document.getElementById("lock_password");
+const passwordConfirmInput = document.getElementById("confirm_lock_password");
+const continueLockBtn = document.getElementById("continue_lock");
+continueLockBtn.disabled = true;
+
+function validatePasswordInput() {
+    const password = passwordInput.value;
+    const confirmPassword = passwordConfirmInput.value;
+
+    const noSpaces = !password.includes(" ") && !confirmPassword.includes(" ");
+    const lock_password_Filled = password.length > 0 && confirmPassword.length > 0;
+    const longEnough_lock_passwords = password.length >= 8 && confirmPassword.length >= 8;
+    const lock_match = password === confirmPassword;
+
+    if (lock_password_Filled && longEnough_lock_passwords && lock_match && noSpaces) {
+        continueLockBtn.disabled = false;
+    } else {
+        continueLockBtn.disabled = true;
+    }
+}
+
+passwordInput.addEventListener("input", validatePasswordInput);
+passwordConfirmInput.addEventListener("input", validatePasswordInput);
+
+let lock_password = "";
+let isLocked = false;
+
+function confirmLock() {
+    lock_password = sanitize(passwordInput.value);
+    isLocked = true;
+    closelockMenuBG();
 }
 
 async function deleteNote() { //*Moves the note to trash

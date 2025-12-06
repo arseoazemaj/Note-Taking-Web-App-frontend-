@@ -27,11 +27,10 @@ function closeMenu() {
 }
 
 async function save() { //* Save the note
+    const user_id = getUserIdFromToken();
     const Title = document.getElementById("title").value.trim();
     const Content = document.getElementById("note_input").value.trim();
-    const user_id = getUserIdFromToken();
     const isImportant = filled;
-    const lock_password_value = lock_password;
 
     if (Content === "") {
         alert("Please enter some content before saving the note.");
@@ -169,6 +168,7 @@ let isLocked = false;
 function confirmLock() {
     lock_password = sanitize(passwordInput.value);
     isLocked = true;
+    closelockMenuBG();
 }
 
 

@@ -24,9 +24,30 @@
                     <i data-lucide="star" id="important-icon"></i>
                     Important
                 </button>
-                <button id="lock" ontouchstart="lock()">
-                    <i data-lucide="lock-keyhole" id="lock-icon"></i>Lock
-                </button>
+                <div id="lock_container">
+                    <button id="lock" ontouchend="lock()">
+                        <i data-lucide="lock-keyhole" id="lock-icon"></i>Lock
+                    </button>
+                    <div id="lock_bg" ontouchend="closelockMenuBG()"></div>
+                    <div id="lock_menu">
+                        <h3>Are you sure you want to lock this note?</h3>
+                        <p>Once locked, it will stay hidden and protected. Only your password can bring it back to view.</p>
+                        <h3>Do you want to continue?</h3>
+                        <div class="lock_decide">
+                            <button class="lock_menu_answere" id="not_lock" ontouchend="closelockMenu()">No</button>
+                            <button class="lock_menu_answere" id="do_lock" ontouchend="continueLock()">Yes</button>
+                        </div>
+                        <div id="lock_password_menu">
+                            <h3 id="lock_password_menu_text">Create a strong password and keep it safe this note will only open for you.</h3>
+                            <input type="text" id="lock_password" placeholder="Enter a password"> <!--Change to type="password"-->
+                            <input type="text" id="confirm_lock_password" placeholder="Confirm your password"> <!--Change to type="password"-->
+                            <div class="lock_decide">
+                                <button id="cancel_lock" ontouchend="cancelLockPassword()">Cancel</button>
+                                <button id="continue_lock" ontouchend="confirmLock()" disabled>Lock</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <button id="download" draggable="false">
                     <i data-lucide="download" id="download-icon"></i> <!--TODO: Will work in it later-->
                     Download
