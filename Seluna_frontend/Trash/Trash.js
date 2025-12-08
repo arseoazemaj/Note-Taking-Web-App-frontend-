@@ -191,7 +191,6 @@ async function load_deleted_Notes() {
     }
 }
 
-
 async function load_deleted_Folders() {
     try {
         const response = await fetch("http://localhost:5216/api/Folders/get_deleted_folders", {
@@ -391,5 +390,42 @@ async function restore() {
 
 
 async function permanently_Delete() {
-    console.log("Permanently deleting notes and/or folders...");
+    const token = localStorage.getItem("token");
+    if (!token) {
+        alert("You must be logged in to delete notes or folders.");
+        return;
+    }
+
+    const selectedNoteIds = Array.from(document.querySelectorAll(".note-box.selected"))
+    .map(note => parseInt(note.id))
+    .filter(id => !isNaN(id));
+
+    if (!selectedNoteIds || selectedNoteIds.length === 0) {
+        console.error("No notes selected for deletion.");
+        return;
+    }
+
+    try {
+        const response = await fetch("http://localhost:5216/api/Notes/delete_Notes_on_command", {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(selectedNoteIds)
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error("Error deleting notes:", errorText);
+            return;
+        }
+
+        load_deleted_Notes();
+        hideDecisionBar();
+
+    } 
+    catch (error) {
+        console.error("Request failed:", error);
+    }
 }
