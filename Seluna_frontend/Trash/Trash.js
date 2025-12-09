@@ -397,35 +397,58 @@ async function permanently_Delete() {
     }
 
     const selectedNoteIds = Array.from(document.querySelectorAll(".note-box.selected"))
-    .map(note => parseInt(note.id))
-    .filter(id => !isNaN(id));
+        .map(note => parseInt(note.id))
+        .filter(id => !isNaN(id));
 
-    if (!selectedNoteIds || selectedNoteIds.length === 0) {
-        console.error("No notes selected for deletion.");
+    const selectedFolderIds = Array.from(document.querySelectorAll(".folder-box.selected"))
+        .map(folder => parseInt(folder.id))
+        .filter(id => !isNaN(id));
+
+    if (selectedNoteIds.length === 0 && selectedFolderIds.length === 0) {
+        console.error("No notes or folders selected for deletion.");
         return;
     }
 
     try {
-        const response = await fetch("http://localhost:5216/api/Notes/delete_Notes_on_command", {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify(selectedNoteIds)
-        });
+        if (selectedNoteIds.length > 0) {
+            const noteResponse = await fetch("http://localhost:5216/api/Notes/delete_Notes_on_command", {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    noteIds: selectedNoteIds
+                })
+            });
 
-        if (!response.ok) {
-            const errorText = await response.text();
-            console.error("Error deleting notes:", errorText);
-            return;
+            if (!noteResponse.ok) {
+                console.error("Error deleting notes:", await noteResponse.text());
+            }
+        }
+
+        if (selectedFolderIds.length > 0) {
+            const folderResponse = await fetch("http://localhost:5216/api/Folders/delete_Folders_on_command", {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    folderIds: selectedFolderIds
+                })
+            });
+
+            if (!folderResponse.ok) {
+                console.error("Error deleting folders:", await folderResponse.text());
+            }
         }
 
         load_deleted_Notes();
+        load_deleted_Folders();
         hideDecisionBar();
 
-    } 
-    catch (error) {
+    } catch (error) {
         console.error("Request failed:", error);
     }
 }
