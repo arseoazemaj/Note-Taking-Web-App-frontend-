@@ -60,6 +60,12 @@ function updateSelectionModeFromDOM() {
     }
 }
 
+function DecisionBtnHandler() {
+    move_btn.disabled = false;
+    lock_btn.disabled = false;
+    important_btn.disabled = false;
+}
+
 async function loadNotes() {
     const container = document.getElementById("container");
     try {
@@ -210,11 +216,14 @@ function showDecision() {
 }
 
 function hideDecision() {
+    document.getElementById("new_note").style.visibility = "visible";
     decide.classList.add("slide-out");
     decide.classList.remove("slide-in");
-    document.getElementById("new_note").style.visibility = "visible";
-    blur_backgroundHandler();
     SelectionMode = false;
+    SelectedNotes = false;
+    SelectedFolders = false;
+    blur_backgroundHandler();
+    DecisionBtnHandler();
 }
 
 const blur_background = document.getElementById("blur_background");
