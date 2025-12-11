@@ -1,6 +1,6 @@
 body {
     background-color: #120f20;
-    animation: fade .5s;
+    animation: fade 1s;
 }
 
 h1, h3, p, a, button, input, input::placeholder {
@@ -17,7 +17,7 @@ a, p, h1, h3, button {
 }
 
 @keyframes fade {
-    0% {opacity: .3;}
+    0% {opacity: 0;}
     100% {opacity: 1;}
 }
 
