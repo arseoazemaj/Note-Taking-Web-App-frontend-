@@ -549,8 +549,10 @@ function chosingMoveDecisions() {
 
 const folderPage = document.getElementById("folder_page");
 const folder_blur = document.getElementById("folder_blur");
+let currentOpenedFolderId = null;
 
 function open_folder(folderId) {
+    currentOpenedFolderId = folderId;
     document.querySelectorAll(".folder-box").forEach(f => f.classList.remove("opened"));
     const openedFolder = document.getElementById(folderId);
     if (openedFolder) {
@@ -944,24 +946,15 @@ async function continue_lock() {
             }
 
             hideDecision();
+            loadNotes();
+            if (currentOpenedFolderId) {
+                open_folder(currentOpenedFolderId);
+            }
 
             selectedNotes.forEach(note => {
                 const checkIcon = note.querySelector(".note-check-icon");
                 if (checkIcon) checkIcon.style.display = "none";
             });
-
-            const folderPage = document.getElementById("folder_page");
-            const isInsideFolder = folderPage && folderPage.style.display === "grid";
-
-            if (isInsideFolder) {
-                const openedFolder = document.querySelector(".folder-box.opened");
-                if (openedFolder) {
-                    const folderId = openedFolder.id;
-                    await opened_folder(folderId);
-                }
-            } else {
-                await loadNotes();
-            }
 
         } catch (error) {
             console.error("Error locking notes:", error);
@@ -1078,7 +1071,10 @@ async function mark_important() {
 
         hideDecision();
         loadNotes();
-        open_folder(folderId); //*This causes the error because the folderId is not defined, needs fixing*//
+
+        if (currentOpenedFolderId) {
+            open_folder(currentOpenedFolderId);
+        }
     } catch (error) {
         console.error("Error updating notes:", error);
         alert("Error updating notes.");
@@ -1147,6 +1143,10 @@ async function send_to_trash() {
 
         blur_backgroundHandler();
         hideDecision();
+
+        if (currentOpenedFolderId) {
+            open_folder(currentOpenedFolderId);
+        }
 
         if (noteIds.length > 0) loadNotes();
         if (folderIds.length > 0) LoadFolders();
