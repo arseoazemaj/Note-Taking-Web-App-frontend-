@@ -26,7 +26,7 @@ const noteButton = document.getElementById("note");
 if (noteButton) {
     noteButton.addEventListener("touchstart", () => {
         if (!menuOpen) return;
-        
+
         menuPage.classList.add("slide-out");
         menuPage.classList.remove("slide-in");
         menu_bg.style.visibility = "hidden";
@@ -387,7 +387,7 @@ async function add_folder() {
             },
             body: JSON.stringify(folder)
         });
-    
+
         if (!response.ok) {
             console.error("Failed to create folder");
         }
@@ -525,7 +525,6 @@ async function LoadFolders() {
         });
 
         lucide.createIcons();
-
     } catch (err) {
         console.error("Error loading folders:", err);
     }
@@ -929,38 +928,38 @@ async function continue_lock() {
             };
         }
 
-        try {
-            const response = await fetch("http://localhost:5216/api/Notes/lock_note", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                },
-                body: JSON.stringify(payload)
-            });
+    try {
+        const response = await fetch("http://localhost:5216/api/Notes/lock_note", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(payload)
+        });
 
-            const result = await response.json();
+        const result = await response.json();
 
-            if (!response.ok) {
-                alert(result.message || "Failed to lock notes.");
-                return;
-            }
-
-            hideDecision();
-            loadNotes();
-            if (currentOpenedFolderId) {
-                open_folder(currentOpenedFolderId);
-            }
-
-            selectedNotes.forEach(note => {
-                const checkIcon = note.querySelector(".note-check-icon");
-                if (checkIcon) checkIcon.style.display = "none";
-            });
-
-        } catch (error) {
-            console.error("Error locking notes:", error);
-            alert("Error locking notes.");
+        if (!response.ok) {
+            alert(result.message || "Failed to lock notes.");
+            return;
         }
+
+        hideDecision();
+        loadNotes();
+        if (currentOpenedFolderId) {
+            open_folder(currentOpenedFolderId);
+        }
+
+        selectedNotes.forEach(note => {
+            const checkIcon = note.querySelector(".note-check-icon");
+            if (checkIcon) checkIcon.style.display = "none";
+        });
+
+    } catch (error) {
+        console.error("Error locking notes:", error);
+        alert("Error locking notes.");
+    }
 }
 
 function showUnlockPrompt(noteId) {
@@ -987,7 +986,6 @@ function unlock_password_validation() {
     const password = unlock_password.value;
     const longEnough = password.length >= 8;
     const noSpaces = !password.includes(" ");
-    
 
     if (longEnough && noSpaces) {
         continueUnlockBtn.disabled = false;
@@ -1000,7 +998,6 @@ async function continue_unlock() {
     try {
         const noteId = parseInt(unlock_menu.dataset.noteId);
         const unlockPassword = sanitize(unlock_password.value);
-
 
         if (!unlockPassword || unlockPassword.length < 8) {
             alert("Password must be at least 8 characters long.");

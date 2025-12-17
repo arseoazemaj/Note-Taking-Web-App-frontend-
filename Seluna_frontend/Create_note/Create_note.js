@@ -171,8 +171,7 @@ function confirmLock() {
     closelockMenuBG();
 }
 
-
-
+//*Download
 
 //*Moves the note to trash | What is hell is this function even deleting the note is not created yet so what the hell is even being deleted?
 async function deleteNote() {

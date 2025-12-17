@@ -210,6 +210,8 @@ function confirmLock() {
     closelockMenuBG();
 }
 
+//*Download
+
 async function deleteNote() { //*Moves the note to trash
     const token = localStorage.getItem("token");
     const Title = document.getElementById("title").value.trim();
