@@ -130,6 +130,8 @@ function fill() {
     filled = !filled;
 }
 
+//*Fix lock for locked notes (you can't lock a note that is already locked)
+
 function lock() {
     setTimeout(() => {
         const lock_menu = document.getElementById("lock_menu");

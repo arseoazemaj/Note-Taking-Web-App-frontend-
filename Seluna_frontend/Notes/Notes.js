@@ -1010,7 +1010,7 @@ async function continue_unlock() {
             return;
         }
 
-        const response = await fetch("http://localhost:5216/api/notes/open_locked_notessss", {
+        const response = await fetch("http://localhost:5216/api/notes/open_locked_note", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
