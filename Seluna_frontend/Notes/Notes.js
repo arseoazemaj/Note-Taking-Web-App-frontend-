@@ -679,8 +679,9 @@ async function sendNoteToFolder(noteId, folderId) {
         await loadNotes();
         hideDecision();
 
-        move_menu.style.visibility = "hidden";
-        create_folder_menu.style.visibility = "hidden";
+        if (currentOpenedFolderId) {
+            open_folder(currentOpenedFolderId);
+        }
     } catch (error) {
         console.error("Error moving note:", error);
     }
