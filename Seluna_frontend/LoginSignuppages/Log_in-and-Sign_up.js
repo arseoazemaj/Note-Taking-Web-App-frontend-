@@ -111,6 +111,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+const sanitize_2 = str => str.replace(/[\s\u200B-\u200D\u2060\uFEFF]/g, "");
+
 async function signup(event) {
     event.preventDefault();
 
@@ -118,10 +120,10 @@ async function signup(event) {
     const email_input = document.getElementById("email").value.trim();
     const password_input = document.getElementById("Password").value;
     const confirmPassword_input = document.getElementById("confirmPassword").value;
-    const username = sanitize(username_input);
-    const email = sanitize(email_input);
-    const password = sanitize(password_input);
-    const confirmPassword = sanitize(confirmPassword_input);
+    const username = sanitize_2(username_input);
+    const email = sanitize_2(email_input);
+    const password = sanitize_2(password_input);
+    const confirmPassword = sanitize_2(confirmPassword_input);
 
     const data = {
         username: username,
@@ -177,7 +179,7 @@ async function login(event) {
 
     const username = document.getElementById("login_username").value.trim();
     const password_input = document.getElementById("login_password").value;
-    const password = sanitize(password_input);
+    const password = sanitize_2(password_input);
     const data = {
         username: username,
         password: password
