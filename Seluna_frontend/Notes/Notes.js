@@ -1091,70 +1091,152 @@ function download_note() {
 }
 
 async function send_to_trash() {
-    const token = localStorage.getItem("token");
-    if (!token) {
-        alert("You must be logged in to delete notes or folders.");
-        return;
-    }
 
-    const noteIds = Array.from(document.querySelectorAll(".note-box.selected"))
-        .map(note => parseInt(note.id))
-        .filter(id => !isNaN(id));
-
-    const folderIds = Array.from(document.querySelectorAll(".folder-box.selected"))
-        .map(folder => parseInt(folder.id))
-        .filter(id => !isNaN(id));
-
-    if (noteIds.length === 0 && folderIds.length === 0) {
-        alert("No notes or folders selected.");
-        return;
-    }
-
-    try {
-        if (noteIds.length > 0) {
-            const notesResponse = await fetch("http://localhost:5216/api/Notes/delete_notes", {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                },
-                body: JSON.stringify({ noteIds })
-            });
-
-            const notesResult = await notesResponse.json();
-            if (!notesResponse.ok) throw new Error(notesResult.message || "Failed to delete notes.");
-        }
-
-        if (folderIds.length > 0) {
-            const foldersResponse = await fetch("http://localhost:5216/api/Folders/delete_folders", {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                },
-                body: JSON.stringify({ folderIds })
-            });
-
-            const foldersResult = await foldersResponse.json();
-            if (!foldersResponse.ok) throw new Error(foldersResult.message || "Failed to delete folders.");
-        }
-
-        blur_backgroundHandler();
-        hideDecision();
-
-        if (currentOpenedFolderId) {
-            open_folder(currentOpenedFolderId);
-        }
-
-        if (noteIds.length > 0) loadNotes();
-        if (folderIds.length > 0) LoadFolders();
-
-    } catch (error) {
-        console.error("Error deleting notes or folders:", error);
-        alert("Error deleting notes or folders.");
-    }
 }
 
+
+
+
+
+(() => {
+    const MOVE_THRESHOLD = 5;
+    let startX = 0;
+    let startY = 0;
+    let moved = false;
+    let activeEl = null;
+
+    document.addEventListener('pointerdown', (e) => {
+            const el = e.target.closest('[data-tap]');
+            if (!el) return;
+
+            activeEl = el;
+            moved = false;
+            startX = e.clientX;
+            startY = e.clientY;
+        },
+        { passive: true }
+    );
+
+    document.addEventListener('pointermove', (e) => {
+            if (!activeEl) return;
+
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance > MOVE_THRESHOLD) {
+                moved = true;
+            }
+        },
+        { passive: true }
+    );
+
+    document.addEventListener('pointerup', (e) => {
+        if (!activeEl || moved) {
+            activeEl = null;
+            return;
+        }
+
+        const fnName = activeEl.dataset.tap;
+        const fn = window[fnName];
+
+        if (typeof fn === 'function') {
+            fn.call(activeEl, e);
+        } else {
+            console.warn(`data-tap function "${fnName}" not found`);
+        }
+
+        activeEl = null;
+    });
+})();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const token = localStorage.getItem("token");
+// if (!token) {
+//     alert("You must be logged in to delete notes or folders.");
+//     return;
+// }
+
+// const noteIds = Array.from(document.querySelectorAll(".note-box.selected"))
+//     .map(note => parseInt(note.id))
+//     .filter(id => !isNaN(id));
+
+// const folderIds = Array.from(document.querySelectorAll(".folder-box.selected"))
+//     .map(folder => parseInt(folder.id))
+//     .filter(id => !isNaN(id));
+
+// if (noteIds.length === 0 && folderIds.length === 0) {
+//     alert("No notes or folders selected.");
+//     return;
+// }
+
+// try {
+//     if (noteIds.length > 0) {
+//         const notesResponse = await fetch("http://localhost:5216/api/Notes/delete_notes", {
+//             method: "PUT",
+//             headers: {
+//                 "Content-Type": "application/json",
+//                 "Authorization": `Bearer ${token}`
+//             },
+//             body: JSON.stringify({ noteIds })
+//         });
+
+//         const notesResult = await notesResponse.json();
+//         if (!notesResponse.ok) throw new Error(notesResult.message || "Failed to delete notes.");
+//     }
+
+//     if (folderIds.length > 0) {
+//         const foldersResponse = await fetch("http://localhost:5216/api/Folders/delete_folders", {
+//             method: "PUT",
+//             headers: {
+//                 "Content-Type": "application/json",
+//                 "Authorization": `Bearer ${token}`
+//             },
+//             body: JSON.stringify({ folderIds })
+//         });
+
+//         const foldersResult = await foldersResponse.json();
+//         if (!foldersResponse.ok) throw new Error(foldersResult.message || "Failed to delete folders.");
+//     }
+
+//     blur_backgroundHandler();
+//     hideDecision();
+
+//     if (currentOpenedFolderId) {
+//         open_folder(currentOpenedFolderId);
+//     }
+
+//     if (noteIds.length > 0 && folderIds.length > 0) {
+//         loadNotes();
+//         LoadFolders();
+//         alert("Selected notes and folders have been moved to trash.");
+//     } else if (noteIds.length > 0) {
+//         loadNotes();
+//         alert("Selected notes have been moved to trash.");
+//     } else if (folderIds.length > 0) {
+//         LoadFolders();
+//         alert("Selected folders have been moved to trash.");
+//     }
+
+// } catch (error) {
+//     console.error("Error deleting notes or folders:", error);
+//     alert("Error deleting notes or folders.");
+// }
 
 //*Will be used to clear the local storage for testing purposes*//
 

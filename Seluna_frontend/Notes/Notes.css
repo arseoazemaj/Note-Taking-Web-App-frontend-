@@ -661,16 +661,7 @@ input::selection {
     transform: translateX(-50%);
 }
 
-#cancel_folder {
-    height: 40px;
-    width: 140px;
-    border-radius: 70% / 300%;
-    background: transparent;
-    border: none;
-    font-size: 17px;
-}
-
-#add_folder {
+#cancel_folder, #add_folder {
     height: 40px;
     width: 140px;
     border-radius: 15px;
@@ -899,4 +890,21 @@ input::selection {
     border: none;
     border-radius: 10% / 50%;
     font-size: 17px;
+}
+
+#delete_menu {
+    height: 260px;
+    width: 85%;
+    border-radius: 25px;
+    background: #251e45;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 12%;
+    padding: 20px;
+    z-index: -1;
+}
+
+button {
+    touch-action: manipulation;
 }
