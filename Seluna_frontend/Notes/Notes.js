@@ -11,7 +11,27 @@ menuOpener.addEventListener("touchstart", () => {
     menuPage.classList.remove("slide-out");
     menu_bg.style.visibility = "visible";
     menuOpen = true;
+    hideDecision();
+    Select_off();
 });
+
+function Select_off() {
+    const noteBox = document.querySelector(".note-box.selected");
+    if (noteBox) {
+        noteBox.classList.remove("selected");
+        noteBox.style.transform = "scale(1)";
+        const checkIcon = noteBox.querySelector(".note-check-icon");
+        if (checkIcon) checkIcon.style.display = "none";
+    }
+
+    const folderBox = document.querySelector(".folder-box.selected");
+    if (folderBox) {
+        folderBox.classList.remove("selected");
+        folderBox.style.transform = "scale(1)";
+        const checkIcon = folderBox.querySelector(".folder-check-icon");
+        if (checkIcon) checkIcon.style.display = "none";
+    }
+}
 
 menu_bg.addEventListener("touchstart", () => {
     if (!menuOpen) return;
@@ -212,7 +232,7 @@ function showDecision() {
     decide.classList.remove("slide-out");
 
     document.getElementById("new_note").style.visibility = "hidden";
-    SelectionMode = true
+    SelectionMode = true;
 }
 
 function hideDecision() {

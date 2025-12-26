@@ -9,8 +9,28 @@ menuOpener.addEventListener("touchstart", (e) => {
         menuPage.classList.remove("slide-out");
         menuPage.classList.add("slide-in");
         menuOpen = true;
+        hideDecisionBar();
+        Select_off();
     }
 });
+
+function Select_off() {
+    const noteBox = document.querySelector(".note-box.selected");
+    if (noteBox) {
+        noteBox.classList.remove("selected");
+        noteBox.style.transform = "scale(1)";
+        const checkIcon = noteBox.querySelector(".note-check-icon");
+        if (checkIcon) checkIcon.style.display = "none";
+    }
+
+    const folderBox = document.querySelector(".folder-box.selected");
+    if (folderBox) {
+        folderBox.classList.remove("selected");
+        folderBox.style.transform = "scale(1)";
+        const checkIcon = folderBox.querySelector(".folder-check-icon");
+        if (checkIcon) checkIcon.style.display = "none";
+    }
+}
 
 document.addEventListener("touchstart", (e) => {
     if (menuOpen && !menuPage.contains(e.target)) {
