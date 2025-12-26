@@ -9,8 +9,11 @@ menuOpener.addEventListener("touchstart", (e) => {
         menuPage.classList.remove("slide-out");
         menuPage.classList.add("slide-in");
         menuOpen = true;
-        hideDecisionBar();
-        Select_off();
+
+        if (selectionMode) {
+            hideDecisionBar();
+            Select_off();
+        }
     }
 });
 
@@ -20,7 +23,9 @@ function Select_off() {
         noteBox.classList.remove("selected");
         noteBox.style.transform = "scale(1)";
         const checkIcon = noteBox.querySelector(".note-check-icon");
-        if (checkIcon) checkIcon.style.display = "none";
+        if (checkIcon) {
+            checkIcon.style.display = "none";
+        }
     }
 
     const folderBox = document.querySelector(".folder-box.selected");
@@ -28,7 +33,9 @@ function Select_off() {
         folderBox.classList.remove("selected");
         folderBox.style.transform = "scale(1)";
         const checkIcon = folderBox.querySelector(".folder-check-icon");
-        if (checkIcon) checkIcon.style.display = "none";
+        if (checkIcon) {
+            checkIcon.style.display = "none";
+        }
     }
 }
 

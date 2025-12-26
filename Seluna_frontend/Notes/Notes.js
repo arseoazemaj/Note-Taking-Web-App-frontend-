@@ -11,8 +11,11 @@ menuOpener.addEventListener("touchstart", () => {
     menuPage.classList.remove("slide-out");
     menu_bg.style.visibility = "visible";
     menuOpen = true;
-    hideDecision();
-    Select_off();
+
+    if (SelectionMode) {
+        hideDecision();
+        Select_off();
+    }
 });
 
 function Select_off() {
@@ -21,7 +24,10 @@ function Select_off() {
         noteBox.classList.remove("selected");
         noteBox.style.transform = "scale(1)";
         const checkIcon = noteBox.querySelector(".note-check-icon");
-        if (checkIcon) checkIcon.style.display = "none";
+
+        if (checkIcon) {
+            checkIcon.style.display = "none";
+        }
     }
 
     const folderBox = document.querySelector(".folder-box.selected");
@@ -29,7 +35,10 @@ function Select_off() {
         folderBox.classList.remove("selected");
         folderBox.style.transform = "scale(1)";
         const checkIcon = folderBox.querySelector(".folder-check-icon");
-        if (checkIcon) checkIcon.style.display = "none";
+
+        if (checkIcon) {
+            checkIcon.style.display = "none";
+        }
     }
 }
 
@@ -363,9 +372,8 @@ function blur_backgroundHandler() {
         if (create_folder_menu.classList.contains("slide-in")) {
             create_folder_menu.classList.add("slide-out");
             create_folder_menu.classList.remove("slide-in");
+            folder_namer.value = "";
         }
-
-        folder_namer.value = "";
 
         for (let i = 0; i < color_check.length; i++) {
             color_check[i].style.visibility = "hidden";
