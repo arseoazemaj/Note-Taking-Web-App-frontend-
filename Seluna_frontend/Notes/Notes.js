@@ -259,6 +259,7 @@ const download_btn = document.getElementById("download");
 const download_menu = document.getElementById("download_menu");
 
 const delete_btn = document.getElementById("delete");
+const delete_menu = document.getElementById("delete_menu");
 
 let selectedColor = null;
 
@@ -278,6 +279,58 @@ colorBox.forEach(box => {
 });
 
 //*blur backgroung handler
+
+(() => {
+    const MOVE_THRESHOLD = 5;
+    let startX = 0;
+    let startY = 0;
+    let moved = false;
+    let activeEl = null;
+
+    document.addEventListener('pointerdown', (e) => {
+            const el = e.target.closest('[data-tap]');
+            if (!el) return;
+
+            activeEl = el;
+            moved = false;
+            startX = e.clientX;
+            startY = e.clientY;
+        },
+        { passive: true }
+    );
+
+    document.addEventListener('pointermove', (e) => {
+            if (!activeEl) return;
+
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance > MOVE_THRESHOLD) {
+                moved = true;
+            }
+        },
+        { passive: true }
+    );
+
+    document.addEventListener('pointerup', (e) => {
+        if (!activeEl || moved) {
+            activeEl = null;
+            return;
+        }
+
+        const fnName = activeEl.dataset.tap;
+        const fn = window[fnName];
+
+        if (typeof fn === 'function') {
+            fn.call(activeEl, e);
+        } else {
+            console.warn(`data-tap function "${fnName}" not found`);
+        }
+
+        activeEl = null;
+    });
+})();
 
 function blur_backgroundHandler() {
     setTimeout(() => {
@@ -310,13 +363,18 @@ function blur_backgroundHandler() {
         if (unlock_menu.classList.contains("show")) {
             unlock_menu.classList.add("hide");
             unlock_menu.classList.remove("show");
+            continueUnlockBtn.disabled = true;
+            unlock_password.value = "";
         }
-
-        unlock_password.value = "";
 
         if (download_menu.classList.contains("slide-in")) {
             download_menu.classList.add("slide-out");
             download_menu.classList.remove("slide-in");
+        }
+
+        if (delete_menu.classList.contains("slide-in")) {
+            delete_menu.classList.add("slide-out");
+            delete_menu.classList.remove("slide-in");
         }
 
         blur_background.style.visibility = "hidden";
@@ -1090,81 +1148,93 @@ function download_note() {
     }, 100);
 }
 
-async function send_to_trash() {
-
+function open_trash_menu() {
+    delete_menu.classList.add("slide-in");
+    delete_menu.classList.remove("slide-out");
+    blur_background.style.visibility = "visible";
+    decision_hider.style.visibility = "visible";
 }
 
+function cancel_delete() {
+    delete_menu.classList.add("slide-out");
+    delete_menu.classList.remove("slide-in");
+    blur_background.style.visibility = "hidden";
+    decision_hider.style.visibility = "hidden";
+}
 
+async function send_to_trash() {
+    const token = localStorage.getItem("token");
+    if (!token) {
+        alert("You must be logged in to delete notes or folders.");
+        return;
+    }
 
+    const noteIds = Array.from(document.querySelectorAll(".note-box.selected"))
+        .map(note => parseInt(note.id))
+        .filter(id => !isNaN(id));
 
+    const folderIds = Array.from(document.querySelectorAll(".folder-box.selected"))
+        .map(folder => parseInt(folder.id))
+        .filter(id => !isNaN(id));
 
-(() => {
-    const MOVE_THRESHOLD = 5;
-    let startX = 0;
-    let startY = 0;
-    let moved = false;
-    let activeEl = null;
+    if (noteIds.length === 0 && folderIds.length === 0) {
+        alert("No notes or folders selected.");
+        return;
+    }
 
-    document.addEventListener('pointerdown', (e) => {
-            const el = e.target.closest('[data-tap]');
-            if (!el) return;
+    try {
+        if (noteIds.length > 0) {
+            const notesResponse = await fetch("http://localhost:5216/api/Notes/delete_notes", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({ noteIds })
+            });
 
-            activeEl = el;
-            moved = false;
-            startX = e.clientX;
-            startY = e.clientY;
-        },
-        { passive: true }
-    );
-
-    document.addEventListener('pointermove', (e) => {
-            if (!activeEl) return;
-
-            const dx = e.clientX - startX;
-            const dy = e.clientY - startY;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-
-            if (distance > MOVE_THRESHOLD) {
-                moved = true;
-            }
-        },
-        { passive: true }
-    );
-
-    document.addEventListener('pointerup', (e) => {
-        if (!activeEl || moved) {
-            activeEl = null;
-            return;
+            const notesResult = await notesResponse.json();
+            if (!notesResponse.ok) throw new Error(notesResult.message || "Failed to delete notes.");
         }
 
-        const fnName = activeEl.dataset.tap;
-        const fn = window[fnName];
+        if (folderIds.length > 0) {
+            const foldersResponse = await fetch("http://localhost:5216/api/Folders/delete_folders", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({ folderIds })
+            });
 
-        if (typeof fn === 'function') {
-            fn.call(activeEl, e);
-        } else {
-            console.warn(`data-tap function "${fnName}" not found`);
+            const foldersResult = await foldersResponse.json();
+            if (!foldersResponse.ok) throw new Error(foldersResult.message || "Failed to delete folders.");
         }
 
-        activeEl = null;
-    });
-})();
+        blur_backgroundHandler();
+        hideDecision();
 
+        if (currentOpenedFolderId) {
+            open_folder(currentOpenedFolderId);
+        }
 
+        if (noteIds.length > 0 && folderIds.length > 0) {
+            loadNotes();
+            LoadFolders();
+            alert("Selected notes and folders have been moved to trash.");
+        } else if (noteIds.length > 0) {
+            loadNotes();
+            alert("Selected notes have been moved to trash.");
+        } else if (folderIds.length > 0) {
+            LoadFolders();
+            alert("Selected folders have been moved to trash.");
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    } catch (error) {
+        console.error("Error deleting notes or folders:", error);
+        alert("Error deleting notes or folders.");
+    }
+}
 
 // const token = localStorage.getItem("token");
 // if (!token) {

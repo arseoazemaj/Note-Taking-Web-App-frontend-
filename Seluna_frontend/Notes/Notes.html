@@ -146,10 +146,11 @@
                 <i data-lucide="trash-2" id="bin_icon"></i>Delete
             </button>
             <div id="delete_menu">
-                <h3>Hiiiii</h3>
-                <div id="chose">
-                    <button data-tap="cancel_delete">Cancel</button>
-                    <button data-tap="send_to_trash">Move to Trash</button>
+                <h3 id="delete_msg">Move note to trash?</h3> <!--* Will make it show if it's deleting notes or folders and -->
+                                                            <!--* the number of notes/folders being deleted -->
+                <div id="chose_delete">
+                    <button id="cancel_delete" data-tap="cancel_delete">Cancel</button>
+                    <button id="continue_delete" data-tap="send_to_trash">Move to Trash</button>
                 </div>
             </div>
         </div>

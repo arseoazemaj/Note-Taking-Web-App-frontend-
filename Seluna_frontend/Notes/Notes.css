@@ -698,7 +698,7 @@ input::selection {
     to { bottom: -400%; }
 }
 
-.lock_decide {
+#lock_decide {
     position: fixed;
     left: 0px;
     bottom: 20px;
@@ -780,7 +780,6 @@ input::selection {
     border-radius: 70% / 300%;
     background: transparent;
     border: none;
-    color: #ae7fce;
     font-size: 17px;
 }
 
@@ -893,18 +892,54 @@ input::selection {
 }
 
 #delete_menu {
-    height: 260px;
-    width: 85%;
+    height: 95px;
+    width: 82%;
     border-radius: 25px;
     background: #251e45;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 12%;
+    bottom: -188%; /*12%*/
     padding: 20px;
-    z-index: -1;
+    z-index: 1;
 }
 
-button {
-    touch-action: manipulation;
+#delete_menu.slide-in {animation: slide_in_delete_menu .5s forwards;}
+#delete_menu.slide-out {animation: slide_out_delete_menu .5s forwards;}
+
+@keyframes slide_in_delete_menu {
+    from { bottom: -188%; }
+    to { bottom: 12%; }
 }
+
+@keyframes slide_out_delete_menu {
+    from { bottom: 12%; }
+    to { bottom: -188%; }
+}
+
+#delete_msg {
+    position: relative;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#chose_delete {
+    position: fixed;
+    bottom: 15px;
+    column-gap: 20px;
+    display: flex;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#cancel_delete, #continue_delete {
+    width: 150px;
+    height: 40px;
+    border-radius: 15px;
+    background: transparent;
+    border: none;
+    font-size: 17px;
+}
+
+#cancel_delete:active, #continue_delete:active {background-color: #1d1737;}

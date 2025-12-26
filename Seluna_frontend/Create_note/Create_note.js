@@ -42,7 +42,6 @@ async function save() { //* Save the note
         return;
     }
 
-
     const note = {
         title: Title,
         content: Content,
