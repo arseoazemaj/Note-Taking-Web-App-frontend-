@@ -260,6 +260,7 @@ const download_menu = document.getElementById("download_menu");
 
 const delete_btn = document.getElementById("delete");
 const delete_menu = document.getElementById("delete_menu");
+const deletemsg = document.getElementById("delete_msg");
 
 let selectedColor = null;
 
@@ -375,6 +376,7 @@ function blur_backgroundHandler() {
         if (delete_menu.classList.contains("slide-in")) {
             delete_menu.classList.add("slide-out");
             delete_menu.classList.remove("slide-in");
+            deletemsg.textContent = "";
         }
 
         blur_background.style.visibility = "hidden";
@@ -1149,17 +1151,37 @@ function download_note() {
 }
 
 function open_trash_menu() {
-    delete_menu.classList.add("slide-in");
-    delete_menu.classList.remove("slide-out");
-    blur_background.style.visibility = "visible";
-    decision_hider.style.visibility = "visible";
+    setTimeout(() => {
+        delete_menu.classList.add("slide-in");
+        delete_menu.classList.remove("slide-out");
+        blur_background.style.visibility = "visible";
+        decision_hider.style.visibility = "visible";
+
+        const noteIds = Array.from(document.querySelectorAll(".note-box.selected"))
+            .map(note => parseInt(note.id))
+            .filter(id => !isNaN(id));
+
+        const folderIds = Array.from(document.querySelectorAll(".folder-box.selected"))
+            .map(folder => parseInt(folder.id))
+            .filter(id => !isNaN(id));
+
+        if (noteIds.length > 0 && folderIds.length === 0) {
+            deletemsg.textContent = "Are you sure you want to delete the selected notes?";
+        } else if (folderIds.length > 0 && noteIds.length === 0) {
+            deletemsg.textContent = "Are you sure you want to delete the selected folders?";
+        } else if (noteIds.length > 0 && folderIds.length > 0) {
+            deletemsg.textContent = "Are you sure you want to delete the selected notes and folders?";
+        }
+    }, 100);
 }
 
 function cancel_delete() {
-    delete_menu.classList.add("slide-out");
-    delete_menu.classList.remove("slide-in");
-    blur_background.style.visibility = "hidden";
-    decision_hider.style.visibility = "hidden";
+    setTimeout(() => {
+        delete_menu.classList.add("slide-out");
+        delete_menu.classList.remove("slide-in");
+        blur_background.style.visibility = "hidden";
+        decision_hider.style.visibility = "hidden";
+    }, 100);
 }
 
 async function send_to_trash() {
@@ -1235,78 +1257,6 @@ async function send_to_trash() {
         alert("Error deleting notes or folders.");
     }
 }
-
-// const token = localStorage.getItem("token");
-// if (!token) {
-//     alert("You must be logged in to delete notes or folders.");
-//     return;
-// }
-
-// const noteIds = Array.from(document.querySelectorAll(".note-box.selected"))
-//     .map(note => parseInt(note.id))
-//     .filter(id => !isNaN(id));
-
-// const folderIds = Array.from(document.querySelectorAll(".folder-box.selected"))
-//     .map(folder => parseInt(folder.id))
-//     .filter(id => !isNaN(id));
-
-// if (noteIds.length === 0 && folderIds.length === 0) {
-//     alert("No notes or folders selected.");
-//     return;
-// }
-
-// try {
-//     if (noteIds.length > 0) {
-//         const notesResponse = await fetch("http://localhost:5216/api/Notes/delete_notes", {
-//             method: "PUT",
-//             headers: {
-//                 "Content-Type": "application/json",
-//                 "Authorization": `Bearer ${token}`
-//             },
-//             body: JSON.stringify({ noteIds })
-//         });
-
-//         const notesResult = await notesResponse.json();
-//         if (!notesResponse.ok) throw new Error(notesResult.message || "Failed to delete notes.");
-//     }
-
-//     if (folderIds.length > 0) {
-//         const foldersResponse = await fetch("http://localhost:5216/api/Folders/delete_folders", {
-//             method: "PUT",
-//             headers: {
-//                 "Content-Type": "application/json",
-//                 "Authorization": `Bearer ${token}`
-//             },
-//             body: JSON.stringify({ folderIds })
-//         });
-
-//         const foldersResult = await foldersResponse.json();
-//         if (!foldersResponse.ok) throw new Error(foldersResult.message || "Failed to delete folders.");
-//     }
-
-//     blur_backgroundHandler();
-//     hideDecision();
-
-//     if (currentOpenedFolderId) {
-//         open_folder(currentOpenedFolderId);
-//     }
-
-//     if (noteIds.length > 0 && folderIds.length > 0) {
-//         loadNotes();
-//         LoadFolders();
-//         alert("Selected notes and folders have been moved to trash.");
-//     } else if (noteIds.length > 0) {
-//         loadNotes();
-//         alert("Selected notes have been moved to trash.");
-//     } else if (folderIds.length > 0) {
-//         LoadFolders();
-//         alert("Selected folders have been moved to trash.");
-//     }
-
-// } catch (error) {
-//     console.error("Error deleting notes or folders:", error);
-//     alert("Error deleting notes or folders.");
-// }
 
 //*Will be used to clear the local storage for testing purposes*//
 
