@@ -215,27 +215,31 @@ async function deleteNote() {
 }
 
 //*Used to save the notes in local storage for testing purposes (will be deleted in the end)*//
-document.getElementById("save").addEventListener("click", function() {
-    const title = document.getElementById("title").value.trim();
-    const content = document.getElementById("note_input").value.trim();
+import { Capacitor } from '@capacitor/core';
 
-    if (content === "") {
-        return;
-    }
+if (Capacitor.getPlatform() === 'android' || Capacitor.getPlatform() === 'ios') {
+    document.getElementById("save").addEventListener("click", function() {
+        const title = document.getElementById("title").value.trim();
+        const content = document.getElementById("note_input").value.trim();
 
-    const isImportant = filled;
+        if (content === "") {
+            return;
+        }
 
-    const note = {
-        title: title,
-        content: content,
-        isImportant: isImportant
-    };
+        const isImportant = filled;
 
-    let notes = JSON.parse(localStorage.getItem("notes")) || [];
+        const note = {
+            title: title,
+            content: content,
+            isImportant: isImportant
+        };
 
-    notes.push(note);
+        let notes = JSON.parse(localStorage.getItem("notes")) || [];
 
-    localStorage.setItem("notes", JSON.stringify(notes));
+        notes.push(note);
 
-    window.location.href = "../Notes/Notes.html";
-});
+        localStorage.setItem("notes", JSON.stringify(notes));
+
+        window.location.href = "../Notes/Notes.html";
+    });
+}
