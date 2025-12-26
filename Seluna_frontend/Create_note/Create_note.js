@@ -168,6 +168,7 @@ function confirmLock() {
     lock_password = sanitize(passwordInput.value);
     isLocked = true;
     closelockMenuBG();
+    save();
 }
 
 //*Download
@@ -214,7 +215,6 @@ async function deleteNote() {
 }
 
 //*Used to save the notes in local storage for testing purposes (will be deleted in the end)*//
-import { Capacitor } from '@capacitor/core';
 
 if (Capacitor.getPlatform() === 'android' || Capacitor.getPlatform() === 'ios') {
     document.getElementById("save").addEventListener("click", function() {

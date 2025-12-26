@@ -210,6 +210,7 @@ function confirmLock() {
     lock_password = sanitize(passwordInput.value);
     isLocked = true;
     closelockMenuBG();
+    update(noteId);
 }
 
 //*Download
