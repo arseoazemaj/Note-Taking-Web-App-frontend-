@@ -106,7 +106,7 @@ async function loadNotes() {
         });
 
         if (!response.ok) {
-            container.textContent = "Failed to load notes: " + response.status;
+            // container.textContent = "Failed to load notes: " + response.status; Maybee uncomment it maybee not.
             return;
         }
 
@@ -608,7 +608,7 @@ async function LoadFolders() {
             folderName.style.color = Color;
             folderName.textContent = folder.name;
 
-            // if (folder.isImportant) {
+            //* if (folder.isImportant) {
                 const isImportantIcon = document.createElement("i");
                 folderBox.classList.add("important-folder");
                 isImportantIcon.setAttribute("data-lucide", "star");
@@ -616,11 +616,11 @@ async function LoadFolders() {
                 folderBox.appendChild(isImportantIcon);
                 isImportantIcon.style.color = Color;
                 isImportantIcon.style.fill = fillColor;
-            // }
+            //* }
 
-            // if (folder.isLocked) {
+            //* if (folder.isLocked) {
                 folderIcon.setAttribute("data-lucide", "folder-lock");
-            // }
+            //* }
 
             folderBox.appendChild(checkIcon);
             folderBox.appendChild(folderIcon);
@@ -642,8 +642,8 @@ function chosingMoveDecisions() {
     if (anySelectedFolder) {
         SelectedFolders = true;
         move_btn.disabled = true;
-        lock_btn.disabled = true;
-        important_btn.disabled = true;
+        // lock_btn.disabled = true;
+        // important_btn.disabled = true;
     } else {
         SelectedFolders = false;
         move_btn.disabled = false;
@@ -868,8 +868,7 @@ async function opened_folder(folderId) {
                         }
 
                         const anySelected = document.querySelector(".note-box.selected");
-                        if (anySelected) {
-                        } else {
+                        if (!anySelected) {
                             hideDecision();
                         }
                     }
