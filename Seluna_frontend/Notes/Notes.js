@@ -201,20 +201,25 @@ async function loadNotes() {
                 noteBox.appendChild(isImportantIcon);
             }
 
+            const noteContent = document.createElement("p");
+            noteContent.className = "note-content";
+
             if (note.isLocked) {
                 const lockIcon = document.createElement("i");
                 lockIcon.setAttribute("data-lucide", "lock-keyhole");
                 lockIcon.classList.add("lock-icon");
+
                 const lockBackground = document.createElement("div");
                 lockBackground.classList.add("lock-background");
                 lockBackground.appendChild(lockIcon);
+
                 noteBox.classList.add("locked-note");
                 noteBox.appendChild(lockBackground);
-            }
 
-            const noteContent = document.createElement("p");
-            noteContent.className = "note-content";
-            noteContent.textContent = note.content;
+                noteContent.textContent = "This note is locked. You need to unlock it to see its content.";
+            } else {
+                noteContent.textContent = note.content;
+            }
 
             const noteTitle = document.createElement("h3");
             noteTitle.textContent = note.title;
@@ -226,7 +231,6 @@ async function loadNotes() {
 
             setupNoteEvents(noteBox, note);
         });
-
         lucide.createIcons();
         LoadFolders();
     } catch (error) {
@@ -899,20 +903,25 @@ async function opened_folder(folderId) {
                 noteBox.appendChild(isImportantIcon);
             }
 
+            const noteContent = document.createElement("p");
+            noteContent.className = "note-content";
+
             if (note.isLocked) {
                 const lockIcon = document.createElement("i");
                 lockIcon.setAttribute("data-lucide", "lock-keyhole");
                 lockIcon.classList.add("lock-icon");
+
                 const lockBackground = document.createElement("div");
                 lockBackground.classList.add("lock-background");
                 lockBackground.appendChild(lockIcon);
+
                 noteBox.classList.add("locked-note");
                 noteBox.appendChild(lockBackground);
-            }
 
-            const noteContent = document.createElement("p");
-            noteContent.className = "note-content";
-            noteContent.textContent = note.content;
+                noteContent.textContent = "This note is locked. You need to unlock it to see its content.";
+            } else {
+                noteContent.textContent = note.content;
+            }
 
             const noteTitle = document.createElement("h3");
             noteTitle.textContent = note.title;
@@ -922,8 +931,7 @@ async function opened_folder(folderId) {
             noteBox.appendChild(noteTitle);
             folder_page.appendChild(noteBox);
             NoteEvents(noteBox, note);
-            });
-
+        });
         lucide.createIcons();
     } catch (err) {
         console.error("Error loading notes from folder:", err);
@@ -1403,20 +1411,25 @@ document.addEventListener("DOMContentLoaded", function() {
                 noteBox.appendChild(isImportantIcon);
             }
 
+            const noteContent = document.createElement("p");
+            noteContent.className = "note-content";
+
             if (note.isLocked) {
                 const lockIcon = document.createElement("i");
                 lockIcon.setAttribute("data-lucide", "lock-keyhole");
                 lockIcon.classList.add("lock-icon");
+
                 const lockBackground = document.createElement("div");
                 lockBackground.classList.add("lock-background");
                 lockBackground.appendChild(lockIcon);
+
                 noteBox.classList.add("locked-note");
                 noteBox.appendChild(lockBackground);
-            }
 
-            const noteContent = document.createElement("p");
-            noteContent.className = "note-content";
-            noteContent.textContent = note.content;
+                noteContent.textContent = "This note is locked. You need to unlock it to see its content.";
+            } else {
+                noteContent.textContent = note.content;
+            }
 
             const noteTitle = document.createElement("h3");
             noteTitle.textContent = note.title;
@@ -1428,7 +1441,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
             setupNoteEvents(noteBox, note);
         });
-
         lucide.createIcons();
     }
 });
