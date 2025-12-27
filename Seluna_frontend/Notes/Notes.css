@@ -184,13 +184,15 @@ input::selection {
     justify-content: center;
     position: relative;
     left: 15px;
+    top: -20px;
 }
 
 .folder-check-icon {
     color: #ffffff;
     position: absolute;
-    left: 10px;
+    left: -16px;
     z-index: 1;
+    scale: .85;
 }
 
 .folder-icon {
@@ -200,7 +202,7 @@ input::selection {
 
 .folder-name {
     position: absolute;
-    margin-top: 75px;
+    margin-top: 60px;
     margin-left: -13px;
     width: 55px;
     overflow: hidden;
@@ -344,21 +346,27 @@ input::selection {
     .important-icon {
         left: 95%;
     }
+    .important-iconF {
+        left: 95%;
+    }
 }
 
 @media (min-width: 361px) {
     .important-icon {left: 95%;}
+    .important-iconF {left: 95%;}
 }
 
-.important-icon {
+.important-icon, .important-iconF {
     position: relative;
-    top: -15px;
     color: #ad7ecc;
     fill: #ad7ecc;
     transform: rotate(45deg);
     pointer-events: none;
     z-index: 2;
 }
+
+.important-icon {    top: -15px;}
+.important-iconF {    top: 5px;}
 
 .note-check-icon {
     color: #ffffff; /*b07ecf*/

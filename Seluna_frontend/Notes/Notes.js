@@ -308,8 +308,6 @@ colorBox.forEach(box => {
     });
 });
 
-//*blur backgroung handler
-
 (() => {
     const MOVE_THRESHOLD = 5;
     let startX = 0;
@@ -361,6 +359,8 @@ colorBox.forEach(box => {
         activeEl = null;
     });
 })();
+
+//*blur backgroung handler
 
 function blur_backgroundHandler() {
     setTimeout(() => {
@@ -603,6 +603,20 @@ async function LoadFolders() {
             folderName.className = "folder-name";
             folderName.style.color = Color;
             folderName.textContent = folder.name;
+
+            // if (folder.isImportant) {
+                const isImportantIcon = document.createElement("i");
+                folderBox.classList.add("important-folder");
+                isImportantIcon.setAttribute("data-lucide", "star");
+                isImportantIcon.classList.add("important-iconF");
+                folderBox.appendChild(isImportantIcon);
+                isImportantIcon.style.color = Color;
+                isImportantIcon.style.fill = fillColor;
+            // }
+
+            // if (folder.isLocked) {
+                folderIcon.setAttribute("data-lucide", "folder-lock");
+            // }
 
             folderBox.appendChild(checkIcon);
             folderBox.appendChild(folderIcon);
