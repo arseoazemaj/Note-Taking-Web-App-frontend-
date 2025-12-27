@@ -106,7 +106,7 @@ async function loadNotes() {
         });
 
         if (!response.ok) {
-            // container.textContent = "Failed to load notes: " + response.status; Maybee uncomment it maybee not.
+            // container.textContent = "Failed to load notes: " + response.status; Maybe uncomment it maybe not.
             return;
         }
 
@@ -453,6 +453,7 @@ async function add_folder() {
     create_folder_menu.classList.remove("slide-in");
     const folderName = document.getElementById("folder_namer").value.trim();
     const folderColor = selectedColor;
+    const isLocked = isLocked;
 
     if (!folderName || !folderColor) {
         let msg = "";
@@ -467,7 +468,8 @@ async function add_folder() {
 
     const folder  = {
         Name: folderName,
-        Color: folderColor
+        Color: folderColor,
+        isLocked: isLocked //*For testing now
     }
 
     try {
@@ -577,9 +579,13 @@ async function LoadFolders() {
                         updateSelectionModeFromDOM();
                     }
                 } else if (!longPressFired && !wasCanceled) {
-                    open_folder(folder.id);
+                    if (folder.isLocked) {
+                        console.log("This folder is locked. Unlocking folders is not supported yet.");
+                        console.log("Attempted to open locked folder with ID:", folder.id);
+                    } else {
+                        open_folder(folder.id);
+                    }
                 }
-
                 longPressFired = false;
             });
         }
@@ -618,9 +624,10 @@ async function LoadFolders() {
                 isImportantIcon.style.fill = fillColor;
             //* }
 
-            //* if (folder.isLocked) {
+            if (folder.isLocked) {
                 folderIcon.setAttribute("data-lucide", "folder-lock");
-            //* }
+                folderBox.classList.add("locked-folder");
+            }
 
             folderBox.appendChild(checkIcon);
             folderBox.appendChild(folderIcon);
@@ -634,6 +641,14 @@ async function LoadFolders() {
     } catch (err) {
         console.error("Error loading folders:", err);
     }
+}
+
+function showUnlockFolderPrompt(folderId) {
+    blur_background.style.visibility = "visible";
+    unlock_folder_menu.classList.add("show");
+    unlock_folder_menu.classList.remove("hide");
+
+    unlock_folder_menu.dataset.folderId = folderId;
 }
 
 function chosingMoveDecisions() {
@@ -683,7 +698,9 @@ folder_blur.addEventListener("touchstart", () => {
             }
         });
 
-    hideDecision();
+        if (decide.classList.contains("slide-in")) {
+            hideDecision();
+        }
     }, 100);
 });
 
