@@ -453,7 +453,6 @@ async function add_folder() {
     create_folder_menu.classList.remove("slide-in");
     const folderName = document.getElementById("folder_namer").value.trim();
     const folderColor = selectedColor;
-    const isLocked = isLocked;
 
     if (!folderName || !folderColor) {
         let msg = "";
@@ -469,7 +468,6 @@ async function add_folder() {
     const folder  = {
         Name: folderName,
         Color: folderColor,
-        isLocked: isLocked //*For testing now
     }
 
     try {
@@ -1013,78 +1011,100 @@ lock_password.addEventListener("input", lock_password_validation);
 lock_password_confirm.addEventListener("input", lock_password_validation);
 
 async function continue_lock() {
-        const selectedNotes = document.querySelectorAll(".note-box.selected");
+    const token = localStorage.getItem("token");
+    if (!token) {
+        alert("You must be logged in.");
+        return;
+    }
 
-        if (selectedNotes.length === 0) {
-            alert("No note selected.");
-            return;
-        }
+    const selectedNotes = document.querySelectorAll(".note-box.selected");
+    const selectedFolders = document.querySelectorAll(".folder-box.selected");
 
-        const password = sanitize(lock_password.value);
-        const confirmPassword = sanitize(lock_password_confirm.value);
+    if (selectedNotes.length === 0 && selectedFolders.length === 0) {
+        alert("No notes or folders selected.");
+        return;
+    }
 
-        if (!password || !confirmPassword) {
-            alert("Please fill both password fields.");
-            return;
-        }
+    const password = sanitize(lock_password.value);
+    const confirmPassword = sanitize(lock_password_confirm.value);
 
-        if (password !== confirmPassword) {
-            alert("Passwords do not match.");
-            return;
-        }
+    if (!password || !confirmPassword) {
+        alert("Please fill both password fields.");
+        return;
+    }
 
-        if (password.length < 8) {
-            alert("Password must be at least 8 characters long.");
-            return;
-        }
+    if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return;
+    }
 
-        const noteIds = Array.from(selectedNotes).map(note => parseInt(note.id));
+    if (password.length < 8) {
+        alert("Password must be at least 8 characters long.");
+        return;
+    }
 
-        let payload;
+    const noteIds = Array.from(selectedNotes)
+        .map(n => parseInt(n.id))
+        .filter(id => !isNaN(id));
 
-        if (noteIds.length === 1) {
-            payload = {
-                Id: noteIds[0],
-                Lock_Password: password
-            };
-        } else {
-            payload = {
-                NoteIds: noteIds,
-                Lock_Password: password
-            };
-        }
+    const folderIds = Array.from(selectedFolders)
+        .map(f => parseInt(f.id))
+        .filter(id => !isNaN(id));
 
     try {
-        const response = await fetch("http://localhost:5216/api/Notes/lock_note", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify(payload)
-        });
+        if (noteIds.length > 0) {
+            const noteResponse = await fetch(
+                "http://localhost:5216/api/Notes/lock_note",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        NoteIds: noteIds,
+                        Lock_Password: password
+                    })
+                }
+            );
 
-        const result = await response.json();
-
-        if (!response.ok) {
-            alert(result.message || "Failed to lock notes.");
-            return;
+            if (!noteResponse.ok) {
+                const err = await noteResponse.json();
+                throw new Error(err.message || "Failed to lock notes.");
+            }
         }
+
+        if (folderIds.length > 0) {
+            const folderResponse = await fetch(
+                "http://localhost:5216/api/Folders/lock_folder",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        FolderIds: folderIds,
+                        Lock_Password: password
+                    })
+                }
+            );
+
+            if (!folderResponse.ok) {
+                const err = await folderResponse.json();
+                throw new Error(err.message || "Failed to lock folders.");
+            }
+        }
+
+        lock_password.value = "";
+        lock_password_confirm.value = "";
 
         hideDecision();
         loadNotes();
-        if (currentOpenedFolderId) {
-            open_folder(currentOpenedFolderId);
-        }
-
-        selectedNotes.forEach(note => {
-            const checkIcon = note.querySelector(".note-check-icon");
-            if (checkIcon) checkIcon.style.display = "none";
-        });
-
+        LoadFolders();
     } catch (error) {
-        console.error("Error locking notes:", error);
-        alert("Error locking notes.");
+        console.error("Lock error:", error);
+        alert(error.message || "Error locking items.");
     }
 }
 
