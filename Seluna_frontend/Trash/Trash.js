@@ -325,6 +325,21 @@ async function load_deleted_Folders() {
             folderName.style.color = Color;
             folderName.textContent = folder.name;
 
+            //* if (folder.isImportant) { //*Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur odio laudantium harum!
+                const isImportantIcon = document.createElement("i");
+                folderBox.classList.add("important-folder");
+                isImportantIcon.setAttribute("data-lucide", "star");
+                isImportantIcon.classList.add("important-iconF");
+                folderBox.appendChild(isImportantIcon);
+                isImportantIcon.style.color = Color;
+                isImportantIcon.style.fill = fillColor;
+            //* }
+
+            if (folder.isLocked) {
+                folderIcon.setAttribute("data-lucide", "folder-lock");
+                folderBox.classList.add("locked-folder");
+            }
+
             folderBox.appendChild(checkIcon);
             folderBox.appendChild(folderIcon);
             folderBox.appendChild(folderName);

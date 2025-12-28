@@ -281,7 +281,7 @@ const lock_password = document.getElementById("lock_password");
 const lock_password_confirm = document.getElementById("confirm_lock_password");
 const cancel_lock_btn = document.getElementById("cancel_lock");
 const continue_lock_btn = document.getElementById("continue_lock");
-const unlock_menu = document.getElementById("unlock_notes");
+const unlock_menu = document.getElementById("unlock_menu");
 const unlock_password = document.getElementById("unlock_password");
 const cancel_unlock_btn = document.getElementById("cancel_unlock");
 const continueUnlockBtn = document.getElementById("continue_unlock");
@@ -580,6 +580,7 @@ async function LoadFolders() {
                     if (folder.isLocked) {
                         console.log("This folder is locked. Unlocking folders is not supported yet.");
                         console.log("Attempted to open locked folder with ID:", folder.id);
+                        showUnlockPrompt(folder.id);
                     } else {
                         open_folder(folder.id);
                     }

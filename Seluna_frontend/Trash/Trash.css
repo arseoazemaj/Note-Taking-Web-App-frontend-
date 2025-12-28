@@ -162,7 +162,7 @@ a, div {
 
 .folder-name {
     position: absolute;
-    margin-top: 75px;
+    margin-top: 60px;
     margin-left: -13px;
     width: 55px;
     overflow: hidden;
@@ -283,21 +283,30 @@ a, div {
     .important-icon {
         left: 97%;
     }
+    .important-iconF {
+        left: 95%;
+    }
 }
 
 @media (min-width: 361px) {
     .important-icon {left: 97%;}
+    .important-iconF {left: 95%;}
 }
 
-.important-icon {
+.important-icon, .important-iconF {
     position: relative;
-    top: -15px;
-    color: #ad7ecc;
-    fill: #ad7ecc;
     transform: rotate(45deg);
     pointer-events: none;
     z-index: 2;
 }
+
+.important-icon {
+    color: #ad7ecc;
+    fill: #ad7ecc;
+    top: -15px;
+}
+
+.important-iconF {top: 5px;}
 
 #note_icon, #paint_icon, #trash_icon {
     position: absolute;

@@ -358,15 +358,18 @@ input::selection {
 
 .important-icon, .important-iconF {
     position: relative;
-    color: #ad7ecc;
-    fill: #ad7ecc;
     transform: rotate(45deg);
     pointer-events: none;
     z-index: 2;
 }
 
-.important-icon {    top: -15px;}
-.important-iconF {    top: 5px;}
+.important-icon {    
+    color: #ad7ecc;
+    fill: #ad7ecc;
+    top: -15px;
+}
+
+.important-iconF {top: 5px;}
 
 .note-check-icon {
     color: #ffffff; /*b07ecf*/
@@ -798,7 +801,7 @@ input::selection {
     pointer-events: none;
 }
 
-#unlock_notes {
+#unlock_menu {
     visibility: hidden;
     position: fixed;
     background: #251e45;
@@ -813,8 +816,8 @@ input::selection {
     z-index: 2;
 }
 
-#unlock_notes.show {animation: show_unlock .5s forwards;}
-#unlock_notes.hide {animation: hide_unlock .5s forwards;}
+#unlock_menu.show {animation: show_unlock .5s forwards;}
+#unlock_menu.hide {animation: hide_unlock .5s forwards;}
 
 @keyframes show_unlock {
     from { opacity: 0; visibility: hidden;}
