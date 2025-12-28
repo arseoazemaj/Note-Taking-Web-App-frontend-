@@ -95,6 +95,8 @@ function DecisionBtnHandler() {
     important_btn.disabled = false;
 }
 
+let LockedNotes = false;
+
 async function loadNotes() {
     const container = document.getElementById("container");
     try {
@@ -173,9 +175,12 @@ async function loadNotes() {
                     }
                 } else if (!longPressFired && !wasCanceled) {
                     if (note.isLocked) {
-                        showUnlockPrompt(note.id);
+                        LockedFolder = false;
+                        LockedNotes = true;
+                        showUnlockPrompt(note.id, null);
                     } else {
-                    window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
+                        LockedNotes = false;
+                        window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
                     }
                 }
                 longPressFired = false;
@@ -499,6 +504,7 @@ async function add_folder() {
 }
 
 const folders_menu = document.getElementById("folders_menu");
+let LockedFolder = false;
 
 async function LoadFolders() {
     try {
@@ -580,7 +586,9 @@ async function LoadFolders() {
                     if (folder.isLocked) {
                         console.log("This folder is locked. Unlocking folders is not supported yet.");
                         console.log("Attempted to open locked folder with ID:", folder.id);
-                        showUnlockPrompt(folder.id);
+                        LockedFolder = true;
+                        LockedNotes = false;
+                        showUnlockPrompt(null, folder.id);
                     } else {
                         open_folder(folder.id);
                     }
@@ -890,7 +898,9 @@ async function opened_folder(folderId) {
                     }
                 } else if (!longPressFired && !wasCanceled) {
                     if (note.isLocked) {
-                        showUnlockPrompt(note.id);
+                        LockedFolder = false;
+                        LockedNotes = true;
+                        showUnlockPrompt(note.id, null);
                     } else {
                     window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
                     }
@@ -1100,6 +1110,10 @@ async function continue_lock() {
         lock_password.value = "";
         lock_password_confirm.value = "";
 
+        if (currentOpenedFolderId) {
+            open_folder(currentOpenedFolderId);
+        }
+
         hideDecision();
         loadNotes();
         LoadFolders();
@@ -1109,12 +1123,21 @@ async function continue_lock() {
     }
 }
 
-function showUnlockPrompt(noteId) {
+function showUnlockPrompt(noteId = null, folderId = null) {
     blur_background.style.visibility = "visible";
     unlock_menu.classList.add("show");
     unlock_menu.classList.remove("hide");
 
-    unlock_menu.dataset.noteId = noteId;
+    unlock_menu.dataset.noteId = "";
+    unlock_menu.dataset.folderId = "";
+
+    if (noteId !== null) {
+        unlock_menu.dataset.noteId = noteId;
+    }
+
+    if (folderId !== null) {
+        unlock_menu.dataset.folderId = folderId;
+    }
 }
 
 function cancel_unlock() {
@@ -1142,45 +1165,80 @@ function unlock_password_validation() {
 }
 
 async function continue_unlock() {
+    const token = localStorage.getItem("token");
+    if (!token) {
+        alert("You must be logged in.");
+        return;
+    }
+
+    const password = sanitize(unlock_password.value);
+    if (!password || password.length < 8) {
+        alert("Password must be at least 8 characters long.");
+        return;
+    }
+
     try {
-        const noteId = parseInt(unlock_menu.dataset.noteId);
-        const unlockPassword = sanitize(unlock_password.value);
+        if (LockedNotes) {
+            const noteId = parseInt(unlock_menu.dataset.noteId);
 
-        if (!unlockPassword || unlockPassword.length < 8) {
-            alert("Password must be at least 8 characters long.");
+            const res = await fetch(
+                "http://localhost:5216/api/Notes/open_locked_note",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        Id: noteId,
+                        Lock_Password: password
+                    })
+                }
+            );
+
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.message);
+
+            LockedNotes = false;
+            window.location.href =
+                `../Edit_notes/Edit_notes.html?id=${noteId}`;
             return;
         }
 
-        const token = localStorage.getItem("token");
-        if (!token) {
-            alert("You must be logged in to unlock notes.");
-            return;
+        if (LockedFolder) {
+            const folderId = parseInt(unlock_menu.dataset.folderId);
+        
+            const res = await fetch(
+                "http://localhost:5216/api/Folders/open_locked_folder",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        Id: folderId,
+                        Lock_Password: password
+                    })
+                }
+            );
+        
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.message);
+        
+            LockedFolder = false;
+            unlock_password.value = "";
+        
+            unlock_menu.classList.add("hide");
+            unlock_menu.classList.remove("show");
+            blur_background.style.visibility = "hidden";
+        
+            open_folder(folderId);
         }
 
-        const response = await fetch("http://localhost:5216/api/notes/open_locked_note", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify({
-                Id: noteId,
-                Lock_Password: unlockPassword
-            })
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            alert(data.message || "Failed to unlock note.");
-            return;
-        }
-
-        window.location.href = `../Edit_notes/Edit_notes.html?id=${noteId}`;
-
-    } catch (error) {
-        console.error("Error unlocking note:", error);
-        alert("An unexpected error occurred while unlocking the note.");
+    } catch (err) {
+        console.error(err);
+        alert(err.message || "Unlock failed.");
     }
 }
 
