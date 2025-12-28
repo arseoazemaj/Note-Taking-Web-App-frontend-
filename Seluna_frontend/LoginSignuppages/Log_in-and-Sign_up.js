@@ -197,7 +197,6 @@ async function login(event) {
         const result = await response.json();
 
         if (response.ok && result.token) {
-            console.log("Login successful:", result.message);
             localStorage.setItem("token", result.token);
             window.location.href = "../Notes/Notes.html";
         } else {

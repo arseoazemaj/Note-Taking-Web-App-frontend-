@@ -102,6 +102,10 @@ async function update(noteId) { //*Update the note
             body: JSON.stringify(note)
         });
 
+        if (response.status === 507 || message.includes("storage") || message.includes("space")) {
+            alert("Your note couldn't be updated because Seluna's database is currently full and cannot store new notes. We're working on expanding it — please try again later.");
+        }
+
         if (!response.ok) {
             const errorData = await response.text();
             throw new Error(`Server error: ${response.status} - ${errorData}`);

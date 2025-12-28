@@ -485,6 +485,10 @@ async function add_folder() {
             body: JSON.stringify(folder)
         });
 
+        if (response.status === 507 || message.includes("storage") || message.includes("space")) {
+            alert("Your folder couldn't be created because Seluna's database is currently full and cannot store new folders. We're working on expanding it — please try again later.");
+        }
+
         if (!response.ok) {
             console.error("Failed to create folder");
         }
@@ -584,8 +588,6 @@ async function LoadFolders() {
                     }
                 } else if (!longPressFired && !wasCanceled) {
                     if (folder.isLocked) {
-                        console.log("This folder is locked. Unlocking folders is not supported yet.");
-                        console.log("Attempted to open locked folder with ID:", folder.id);
                         LockedFolder = true;
                         LockedNotes = false;
                         showUnlockPrompt(null, folder.id);
@@ -664,13 +666,9 @@ function chosingMoveDecisions() {
     if (anySelectedFolder) {
         SelectedFolders = true;
         move_btn.disabled = true;
-        // lock_btn.disabled = true;
-        // important_btn.disabled = true;
     } else {
         SelectedFolders = false;
         move_btn.disabled = false;
-        lock_btn.disabled = false;
-        important_btn.disabled = false;
     }
 }
 

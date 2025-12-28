@@ -62,6 +62,10 @@ async function save() { //* Save the note
             body: JSON.stringify(note)
         });
 
+        if (response.status === 507 || message.includes("storage") || message.includes("space")) {
+            alert("Your note couldn't be saved because Seluna's database is currently full and cannot store new notes. We're working on expanding it — please try again later.");
+        }
+
         if (!response.ok) {
             const errorData = await response.text();
             throw new Error(`Server error: ${response.status} - ${errorData}`);
@@ -216,29 +220,29 @@ async function deleteNote() {
 
 //*Used to save the notes in local storage for testing purposes (will be deleted in the end)*//
 
-if (Capacitor.getPlatform() === 'android' || Capacitor.getPlatform() === 'ios') {
-    document.getElementById("save").addEventListener("click", function() {
-        const title = document.getElementById("title").value.trim();
-        const content = document.getElementById("note_input").value.trim();
+// if (Capacitor.getPlatform() === 'android' || Capacitor.getPlatform() === 'ios') {
+//     document.getElementById("save").addEventListener("click", function() {
+//         const title = document.getElementById("title").value.trim();
+//         const content = document.getElementById("note_input").value.trim();
 
-        if (content === "") {
-            return;
-        }
+//         if (content === "") {
+//             return;
+//         }
 
-        const isImportant = filled;
+//         const isImportant = filled;
 
-        const note = {
-            title: title,
-            content: content,
-            isImportant: isImportant
-        };
+//         const note = {
+//             title: title,
+//             content: content,
+//             isImportant: isImportant
+//         };
 
-        let notes = JSON.parse(localStorage.getItem("notes")) || [];
+//         let notes = JSON.parse(localStorage.getItem("notes")) || [];
 
-        notes.push(note);
+//         notes.push(note);
 
-        localStorage.setItem("notes", JSON.stringify(notes));
+//         localStorage.setItem("notes", JSON.stringify(notes));
 
-        window.location.href = "../Notes/Notes.html";
-    });
-}
+//         window.location.href = "../Notes/Notes.html";
+//     });
+// }

@@ -218,7 +218,7 @@ a, div {
 
 .note-content {
     top: -5px;
-    height: 150px;
+    height: 145px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 8;
