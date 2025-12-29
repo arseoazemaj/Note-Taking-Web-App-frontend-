@@ -623,7 +623,7 @@ async function LoadFolders() {
             folderName.style.color = Color;
             folderName.textContent = folder.name;
 
-            //* if (folder.isImportant) {
+            if (folder.isImportant) {
                 const isImportantIcon = document.createElement("i");
                 folderBox.classList.add("important-folder");
                 isImportantIcon.setAttribute("data-lucide", "star");
@@ -631,7 +631,7 @@ async function LoadFolders() {
                 folderBox.appendChild(isImportantIcon);
                 isImportantIcon.style.color = Color;
                 isImportantIcon.style.fill = fillColor;
-            //* }
+            }
 
             if (folder.isLocked) {
                 folderIcon.setAttribute("data-lucide", "folder-lock");
@@ -1243,7 +1243,7 @@ async function continue_unlock() {
 async function mark_important() {
     const token = localStorage.getItem("token");
     if (!token) {
-        alert("You must be logged in to mark notes as important.");
+        alert("You must be logged in to mark items as important.");
         return;
     }
 
@@ -1251,34 +1251,97 @@ async function mark_important() {
         .map(note => parseInt(note.id))
         .filter(id => !isNaN(id));
 
-    try {
-        const response = await fetch("http://localhost:5216/api/Notes/mark_important", {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify({
-                NoteIds: noteIds,
-                isImportant: true
-            })
-        });
+    const folderIds = Array.from(document.querySelectorAll(".folder-box.selected"))
+        .map(folder => parseInt(folder.dataset.id || folder.id))
+        .filter(id => !isNaN(id));
 
-        if (!response.ok) {
-            const errorText = await response.text();
-            console.error("Error from backend:", errorText);
-            throw new Error("Failed to update importance.");
+    if (noteIds.length === 0 && folderIds.length === 0) {
+        alert("No notes or folders selected.");
+        return;
+    }
+
+    try {
+        if (noteIds.length > 0) {
+            const important_note = document.querySelectorAll(".note-box.selected.important-note");
+            const unimportant_note = document.querySelectorAll(".note-box.selected:not(.important-note)");
+            let Important_status = false;
+
+            if (important_note.length > unimportant_note.length) {
+                Important_status = false;
+            } else if (important_note.length < unimportant_note.length) {
+                Important_status = true;
+            } else if (important_note.length === unimportant_note.length) {
+                Important_status = true;
+            }
+
+            const notesResponse = await fetch(
+                "http://localhost:5216/api/Notes/mark_important_Notes",
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        NoteIds: noteIds,
+                        isImportant: Important_status
+                    })
+                }
+            );
+
+            if (!notesResponse.ok) {
+                const errorText = await notesResponse.text();
+                console.error("Notes error:", errorText);
+                throw new Error("Failed to update notes.");
+            }
+        }
+
+        if (folderIds.length > 0) {
+            const important_folder = document.querySelectorAll(".folder-box.selected.important-folder");
+            const unimportant_folder = document.querySelectorAll(".folder-box.selected:not(.important-folder)");
+            let Important_status = false;
+
+            if (important_folder.length > unimportant_folder.length) {
+                Important_status = false;
+            } else if (important_folder.length < unimportant_folder.length) {
+                Important_status = true;
+            } else if (important_folder.length === unimportant_folder.length) {
+                Important_status = true;
+            }
+
+            const foldersResponse = await fetch(
+                "http://localhost:5216/api/Folders/mark_important_Folders",
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        FolderIds: folderIds,
+                        isImportant: Important_status
+                    })
+                }
+            );
+
+            if (!foldersResponse.ok) {
+                const errorText = await foldersResponse.text();
+                console.error("Folders error:", errorText);
+                throw new Error("Failed to update folders.");
+            }
         }
 
         hideDecision();
         loadNotes();
+        LoadFolders();
 
         if (currentOpenedFolderId) {
             open_folder(currentOpenedFolderId);
         }
+
     } catch (error) {
-        console.error("Error updating notes:", error);
-        alert("Error updating notes.");
+        console.error("Error updating importance:", error);
+        alert("Error updating importance.");
     }
 }
 
