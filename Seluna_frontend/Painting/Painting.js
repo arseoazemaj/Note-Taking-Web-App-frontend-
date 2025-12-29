@@ -20,10 +20,6 @@ document.addEventListener("touchstart", (e) => {
     }
 });
 
-window.addEventListener("DOMContentLoaded", () => {
-    lucide.createIcons();
-});
-
 const paintButton = document.getElementById("painting");
 if (paintButton) {
     paintButton.addEventListener("click", () => {

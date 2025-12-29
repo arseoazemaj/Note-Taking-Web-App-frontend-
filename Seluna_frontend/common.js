@@ -41,3 +41,5 @@ function getUserIdFromToken() {
 }
 
 const sanitize = str => str.replace(/[\s\u200B-\u200D\u2060\uFEFF]/g, "");
+
+lucide.createIcons();
