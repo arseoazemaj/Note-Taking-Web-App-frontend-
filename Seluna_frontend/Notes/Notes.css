@@ -168,10 +168,10 @@ input::selection {
     flex-direction: row;
     gap: 50px;
     overflow-x: overlay;
-    padding: 30px 10px;
+    padding: 40px 10px;
     width: 90%;
     position: absolute;
-    top: 160px;
+    top: 150px;
     left: 50%;
     transform: translateX(-50%);
     scrollbar-width: none;
@@ -203,8 +203,8 @@ input::selection {
 
 .folder-name {
     position: absolute;
-    margin-top: 40px;
-    margin-left: -13px;
+    margin-top: 80px;
+    margin-left: -16px;
     width: 55px;
     overflow: hidden;
     display: -webkit-box;
@@ -325,7 +325,7 @@ input::selection {
 .title {
     overflow: hidden;
     text-overflow: ellipsis;
-    top: 160px;
+    top: 155px;
     pointer-events: none;
     display: -webkit-box;
     -webkit-box-orient: vertical;
