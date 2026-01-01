@@ -1464,6 +1464,26 @@ async function send_to_trash() {
     }
 }
 
+let fileHandle;
+
+async function Click_me() {
+    console.log("Hello from Notes.js!");
+
+    [fileHandle] = await window.showOpenFilePicker();
+    let fileData = await fileHandle.getFile();
+    let text = await fileData.text();
+    textarea.textContent = text;
+}
+
+async function Save() {
+    let stream = await fileHandle.createWritable();
+    await stream.write(textarea.textContent);
+    await stream.close();
+    alert("File saved successfully!");
+}
+
+
+
 //*Will be used to clear the local storage for testing purposes*//
 
 // localStorage.removeItem("notes");
