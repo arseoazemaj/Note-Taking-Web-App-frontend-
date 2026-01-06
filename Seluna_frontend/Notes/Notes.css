@@ -956,15 +956,3 @@ input::selection {
 }
 
 #cancel_delete:active, #continue_delete:active {background-color: #1d1737;}
-
-
-#click_me, #save {
-    position: relative;
-    z-index: 999;
-}
-
-#textarea {
-    position: relative;
-    z-index: 999;
-    color: white;
-}
