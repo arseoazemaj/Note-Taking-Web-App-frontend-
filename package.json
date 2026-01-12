@@ -20,9 +20,9 @@
   "homepage": "https://github.com/arseo01/Note-Taking-Web-App-frontend-#readme",
   "description": "",
   "dependencies": {
-    "@capacitor/android": "^7.2.0",
+    "@capacitor/android": "^7.4.4",
     "@capacitor/app": "^7.0.1",
-    "@capacitor/cli": "^7.2.0",
+    "@capacitor/cli": "^7.4.4",
     "@capacitor/core": "^7.2.0",
     "@capacitor/filesystem": "^7.1.6",
     "@capacitor/local-notifications": "^7.0.1",

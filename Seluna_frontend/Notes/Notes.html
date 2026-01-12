@@ -137,7 +137,7 @@
                 <i data-lucide="download" id="download_icon"></i>Download
             </button>
             <div id="download_menu">
-                <button class="download_format" id="download_txt">Download as .txt</button>
+                <button class="download_format" id="download_txt" data-tap="download_txt">Download as .txt</button>`
                 <button class="download_format" id="download_pdf">Download as .pdf</button>
             </div>
         </div>
@@ -165,9 +165,13 @@
     </div>
 
 
+    <button id="test_btn1">test_btn1</button>
+    <button id="test_btn2">test_btn2</button>
+
+    <script type="module" src="./fs-test.js"></script>
 
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="../common.js"></script>
-    <script src="Notes.js"></script>
+    <script src="./Notes.js"></script>
 </body>
 </html>

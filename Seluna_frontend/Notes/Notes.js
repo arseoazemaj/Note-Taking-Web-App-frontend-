@@ -1345,6 +1345,16 @@ async function mark_important() {
     }
 }
 
+
+
+
+
+
+
+
+
+
+
 function download_note() {
     setTimeout(() => {
         console.log("Downloading note...");
@@ -1355,6 +1365,56 @@ function download_note() {
         decision_hider.style.visibility = "visible";
     }, 100);
 }
+
+async function download_txt () {
+        try {
+            if (!window.Capacitor?.isNativePlatform()) {
+                alert('Not running on native platform');
+                return;
+            }
+
+            const { Filesystem } = Capacitor.Plugins;
+
+            const textContent = "This is a fucking test from seluna.";
+
+            await Filesystem.writeFile({
+                path: 'seluna/notes_export.txt',
+                data: textContent,
+                directory: 'DOCUMENTS',
+                encoding: 'UTF8',
+            });
+
+            alert('TXT file saved in Documents/seluna/');
+        } catch (err) {
+            console.error('Filesystem error:', err);
+
+            alert(
+                'Error saving TXT file\n\n' +
+                (err?.message || JSON.stringify(err))
+            );
+        }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function open_trash_menu() {
     setTimeout(() => {
