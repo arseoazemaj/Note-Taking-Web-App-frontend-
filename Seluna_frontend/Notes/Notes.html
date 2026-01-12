@@ -99,7 +99,7 @@
                             <i data-lucide="check" class="check_color"></i>
                         </div>
                     </div>
-                    <div id="chose">
+                    <div id="chose_folder">
                         <button id="cancel_folder" data-tap="cancel_folder">Cancel</button>
                         <button id="add_folder" data-tap="add_folder">Add</button>
                     </div>
@@ -122,7 +122,7 @@
                     <h3 id="lock_password_menu_text">Create a strong password and keep it safe this note will only open for you.</h3>
                     <input type="text" id="lock_password" placeholder="Enter a password"> <!--Change to type="password"-->
                     <input type="text" id="confirm_lock_password" placeholder="Confirm your password"> <!--Change to type="password"-->
-                    <div id="chose">
+                    <div id="chose_lock">
                         <button id="cancel_lock" data-tap="cancel_lock">Cancel</button>
                         <button id="continue_lock" data-tap="continue_lock">Lock</button>
                     </div>
@@ -139,6 +139,7 @@
             <div id="download_menu">
                 <button class="download_format" id="download_txt" data-tap="download_txt">Download as .txt</button>`
                 <button class="download_format" id="download_pdf">Download as .pdf</button>
+                <button class="download_format" id="download_md">Download as .md (markdown)</button>
             </div>
         </div>
         <div id="delete_container">
@@ -165,10 +166,6 @@
     </div>
 
 
-    <button id="test_btn1">test_btn1</button>
-    <button id="test_btn2">test_btn2</button>
-
-    <script type="module" src="./fs-test.js"></script>
 
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="../common.js"></script>

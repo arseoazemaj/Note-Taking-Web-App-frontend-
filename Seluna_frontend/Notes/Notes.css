@@ -664,7 +664,7 @@ input::selection {
     visibility: hidden;
 }
 
-#chose {
+#chose_folder {
     position: fixed;
     bottom: 15px;
     column-gap: 30px;
@@ -786,6 +786,15 @@ input::selection {
     top: 55%;
 }
 
+#chose_lock {
+    position: fixed;
+    bottom: 15px;
+    column-gap: 30px;
+    display: flex;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 #cancel_lock, #continue_lock {
     height: 40px;
     width: 140px;
@@ -896,9 +905,11 @@ input::selection {
 .download_format {
     width: 100%;
     height: 60px;
-    padding-right: 150px;
+    display: grid;
+    justify-content: left;
+    align-items: center;
     background-color: #1d1737;
-    border: none;
+    border: 10px solid transparent;
     border-radius: 10% / 50%;
     font-size: 17px;
 }
