@@ -908,10 +908,15 @@ input::selection {
     display: grid;
     justify-content: left;
     align-items: center;
-    background-color: #1d1737;
+    background-color: #251e45;
     border: 10px solid transparent;
     border-radius: 10% / 50%;
     font-size: 17px;
+    margin: 15px 0;
+}
+
+.download_format:active {
+    background-color: #1d1737;
 }
 
 #delete_menu {

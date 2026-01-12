@@ -1347,8 +1347,6 @@ async function mark_important() {
 
 function download_note() {
     setTimeout(() => {
-        console.log("Downloading note...");
-
         download_menu.classList.add("slide-in");
         download_menu.classList.remove("slide-out");
         blur_background.style.visibility = "visible";
@@ -1359,7 +1357,7 @@ function download_note() {
 async function download_txt () {
     try {
         if (!window.Capacitor?.isNativePlatform()) {
-            alert('Not running on native platform');
+            console.log('Not running on native platform');
             return;
         }
 
@@ -1382,6 +1380,10 @@ async function download_txt () {
             (err?.message || JSON.stringify(err))
         );
     }
+}
+
+async function download_pdf() {
+    alert("This is a pdf file...");
 }
 
 function open_trash_menu() {
