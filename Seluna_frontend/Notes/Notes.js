@@ -1365,7 +1365,7 @@ async function download_txt () {
         const textContent = "File test for download";
 
         await Filesystem.writeFile({ //*And this to be able to save things on the devices storage
-            path: 'seluna/notes_export.txt',
+            path: 'seluna/TXT_note_test.txt',
             data: textContent,
             directory: 'DOCUMENTS',
             encoding: 'UTF8',
@@ -1383,7 +1383,47 @@ async function download_txt () {
 }
 
 async function download_pdf() {
-    alert("This is a pdf file...");
+    console.log("This is a pdf file...");
+
+    try {
+        if (!window.Capacitor?.isNativePlatform()) {
+            console.log("You are not on a native device.");
+            return;
+        }
+
+        const { jsPDF } = window.jspdf;
+        const { Filesystem } = Capacitor.Plugins;
+
+        const doc = new jsPDF({
+            orientation: 'portrait',
+            unit: 'mm',
+            format: 'a4'
+        });
+
+        doc.setFont('Times', 'Normal');
+        doc.setFontSize(18);
+        doc.text('Seluna — PDF Export', 20, 30);
+
+        doc.setFontSize(12);
+        doc.text(
+            "This is a PDF file from seluna.",
+            20,
+            50
+        );
+
+        const pdfBase64 = doc.output('datauristring').split(',')[1];
+
+        await Filesystem.writeFile({
+            path: 'seluna/test_export.pdf',
+            data: pdfBase64,
+            directory: 'DOCUMENTS',
+        });
+
+        alert('PDF saved in Documents/seluna/');
+    } catch (err) {
+        console.error('PDF save error:', err);
+        alert('Failed to save PDF');
+    }
 }
 
 function open_trash_menu() {
