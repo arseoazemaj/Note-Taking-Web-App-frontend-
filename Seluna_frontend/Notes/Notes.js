@@ -1414,15 +1414,41 @@ async function download_pdf() {
         const pdfBase64 = doc.output('datauristring').split(',')[1];
 
         await Filesystem.writeFile({
-            path: 'seluna/test_export.pdf',
+            path: 'seluna/PDF_note_test.pdf',
             data: pdfBase64,
             directory: 'DOCUMENTS',
         });
 
-        alert('PDF saved in Documents/seluna/');
+        alert('PDF file saved in Documents/seluna/');
     } catch (err) {
         console.error('PDF save error:', err);
         alert('Failed to save PDF');
+    }
+}
+
+async function download_md() {
+    console.log(".md file...")
+
+        try {
+        if (!window.Capacitor?.isNativePlatform()) {
+            console.log('Not running on native platform');
+            return;
+        }
+
+        const { Filesystem } = Capacitor.Plugins;
+        const markdownContent = "This is a test for .md";
+
+        await Filesystem.writeFile({
+            path: 'seluna/MD_note_test.md',
+            data: markdownContent,
+            directory: 'DOCUMENTS',
+            encoding: 'UTF8',
+        });
+
+        alert('MD file saved in Documents/seluna/');
+    } catch (err) {
+        console.error('Filesystem error:', err);
+        alert('Error saving MD file');
     }
 }
 
