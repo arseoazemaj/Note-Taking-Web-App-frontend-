@@ -1354,7 +1354,7 @@ function download_note() {
     }, 100);
 }
 
-async function download_txt () {
+async function download_txt () { //*For now have hardcoded text as content but will make it get the content the selected note
     try {
         if (!window.Capacitor?.isNativePlatform()) {
             console.log('Not running on native platform');
