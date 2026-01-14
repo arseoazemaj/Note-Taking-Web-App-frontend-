@@ -372,84 +372,76 @@ colorBox.forEach(box => {
 //*blur backgroung handler
 
 function blur_backgroundHandler() {
-    setTimeout(() => {
-        if (move_menu.classList.contains("slide-in")) {
-            move_menu.classList.add("slide-out");
-            move_menu.classList.remove("slide-in");
-        }
+    if (move_menu.classList.contains("slide-in")) {
+        move_menu.classList.add("slide-out");
+        move_menu.classList.remove("slide-in");
+    }
 
-        if (create_folder_menu.classList.contains("slide-in")) {
-            create_folder_menu.classList.add("slide-out");
-            create_folder_menu.classList.remove("slide-in");
-            folder_namer.value = "";
-        }
+    if (create_folder_menu.classList.contains("slide-in")) {
+        create_folder_menu.classList.add("slide-out");
+        create_folder_menu.classList.remove("slide-in");
+        folder_namer.value = "";
+    }
 
-        for (let i = 0; i < color_check.length; i++) {
-            color_check[i].style.visibility = "hidden";
-        }
+    for (let i = 0; i < color_check.length; i++) {
+        color_check[i].style.visibility = "hidden";
+    }
 
-        if (lock_menu.classList.contains("slide-in")) {
-            lock_menu.classList.add("slide-out");
-            lock_menu.classList.remove("slide-in");
-        }
+    if (lock_menu.classList.contains("slide-in")) {
+        lock_menu.classList.add("slide-out");
+        lock_menu.classList.remove("slide-in");
+    }
 
-        if (lock_password_menu.classList.contains("slide-in")) {
-            lock_password_menu.classList.add("slide-out");
-            lock_password_menu.classList.remove("slide-in");
-        }
+    if (lock_password_menu.classList.contains("slide-in")) {
+        lock_password_menu.classList.add("slide-out");
+        lock_password_menu.classList.remove("slide-in");
+    }
 
-        if (unlock_menu.classList.contains("show")) {
-            unlock_menu.classList.add("hide");
-            unlock_menu.classList.remove("show");
-            continueUnlockBtn.disabled = true;
-            unlock_password.value = "";
-        }
+    if (unlock_menu.classList.contains("show")) {
+        unlock_menu.classList.add("hide");
+        unlock_menu.classList.remove("show");
+        continueUnlockBtn.disabled = true;
+        unlock_password.value = "";
+    }
 
-        if (download_menu.classList.contains("slide-in")) {
-            download_menu.classList.add("slide-out");
-            download_menu.classList.remove("slide-in");
-        }
+    if (download_menu.classList.contains("slide-in")) {
+        download_menu.classList.add("slide-out");
+        download_menu.classList.remove("slide-in");
+    }
 
-        if (delete_menu.classList.contains("slide-in")) {
-            delete_menu.classList.add("slide-out");
-            delete_menu.classList.remove("slide-in");
-            deletemsg.textContent = "";
-        }
+    if (delete_menu.classList.contains("slide-in")) {
+        delete_menu.classList.add("slide-out");
+        delete_menu.classList.remove("slide-in");
+        deletemsg.textContent = "";
+    }
 
-        blur_background.style.visibility = "hidden";
-        decision_hider.style.visibility = "hidden";
-    }, 100);
+    blur_background.style.visibility = "hidden";
+    decision_hider.style.visibility = "hidden";
 }
 
 function move() {
-    setTimeout(() => {
-        move_menu.classList.add("slide-in");
-        move_menu.classList.remove("slide-out");
-        blur_background.style.visibility = "visible";
-        decision_hider.style.visibility = "visible";
-    }, 100);
+    move_menu.classList.add("slide-in");
+    move_menu.classList.remove("slide-out");
+    blur_background.style.visibility = "visible";
+    decision_hider.style.visibility = "visible";
 }
 
 function create_folder() {
-    setTimeout(() => {
-        create_folder_menu.classList.add("slide-in");
-        create_folder_menu.classList.remove("slide-out");
-        move_menu.classList.add("slide-out");
-        move_menu.classList.remove("slide-in");
-    }, 100);
+    create_folder_menu.classList.add("slide-in");
+    create_folder_menu.classList.remove("slide-out");
+    move_menu.classList.add("slide-out");
+    move_menu.classList.remove("slide-in");
 }
 
 function cancel_folder() {
-    setTimeout(() => {
-        create_folder_menu.classList.add("slide-out");
-        create_folder_menu.classList.remove("slide-in");
-        move_menu.classList.add("slide-in");
-        move_menu.classList.remove("slide-out");
-        folder_namer.value = "";
-        for (let i = 0; i < color_check.length; i++) {
-            color_check[i].style.visibility = "hidden";
-        }
-    }, 100);
+    create_folder_menu.classList.add("slide-out");
+    create_folder_menu.classList.remove("slide-in");
+    move_menu.classList.add("slide-in");
+    move_menu.classList.remove("slide-out");
+    folder_namer.value = "";
+    for (let i = 0; i < color_check.length; i++) {
+        color_check[i].style.visibility = "hidden";
+    }
 }
 
 //*comment
@@ -690,23 +682,21 @@ function open_folder(folderId) {
 }
 
 folder_blur.addEventListener("touchstart", () => {
-    setTimeout(() => {
-        folderPage.classList.add("hide");
-        folderPage.classList.remove("show");
-        folder_blur.style.visibility = "hidden";
-        document.querySelectorAll(".note-box.selected, .folder-box.selected").forEach(el => {
-            el.classList.remove("selected");
-            el.style.transform = "scale(1)";
-            const checkIcon = el.querySelector(".note-check-icon, .folder-check-icon");
-            if (checkIcon) {
-                checkIcon.style.display = "none";
-            }
-        });
-
-        if (decide.classList.contains("slide-in")) {
-            hideDecision();
+    folderPage.classList.add("hide");
+    folderPage.classList.remove("show");
+    folder_blur.style.visibility = "hidden";
+    document.querySelectorAll(".note-box.selected, .folder-box.selected").forEach(el => {
+        el.classList.remove("selected");
+        el.style.transform = "scale(1)";
+        const checkIcon = el.querySelector(".note-check-icon, .folder-check-icon");
+        if (checkIcon) {
+            checkIcon.style.display = "none";
         }
-    }, 100);
+    });
+
+    if (decide.classList.contains("slide-in")) {
+        hideDecision();
+    }
 });
 
 function withAlpha(hexColor, alphaHex) {
@@ -962,41 +952,33 @@ async function opened_folder(folderId) {
 }
 
 function lock() {
-    setTimeout(() => {
-        lock_menu.classList.add("slide-in");
-        lock_menu.classList.remove("slide-out");
-        blur_background.style.visibility = "visible";
-        decision_hider.style.visibility = "visible";
-    }, 100);
+    lock_menu.classList.add("slide-in");
+    lock_menu.classList.remove("slide-out");
+    blur_background.style.visibility = "visible";
+    decision_hider.style.visibility = "visible";
 }
 
 function not_lock() {
-    setTimeout(() => {
-        lock_menu.classList.add("slide-out");
-        lock_menu.classList.remove("slide-in");
-        blur_background.style.visibility = "hidden";
-        decision_hider.style.visibility = "hidden";
-    }, 100);
+    lock_menu.classList.add("slide-out");
+    lock_menu.classList.remove("slide-in");
+    blur_background.style.visibility = "hidden";
+    decision_hider.style.visibility = "hidden";
 }
 
 function do_lock() {
-    setTimeout(() => {
-        lock_menu.classList.add("slide-out");
-        lock_menu.classList.remove("slide-in");
-        lock_password_menu.classList.add("slide-in");
-        lock_password_menu.classList.remove("slide-out");
-        lock_password.value = "";
-        lock_password_confirm.value = "";
-    }, 100);
+    lock_menu.classList.add("slide-out");
+    lock_menu.classList.remove("slide-in");
+    lock_password_menu.classList.add("slide-in");
+    lock_password_menu.classList.remove("slide-out");
+    lock_password.value = "";
+    lock_password_confirm.value = "";
 }
 
 function cancel_lock() {
-    setTimeout(() => {
-        lock_menu.classList.add("slide-in");
-        lock_menu.classList.remove("slide-out");
-        lock_password_menu.classList.add("slide-out");
-        lock_password_menu.classList.remove("slide-in");
-    }, 100);
+    lock_menu.classList.add("slide-in");
+    lock_menu.classList.remove("slide-out");
+    lock_password_menu.classList.add("slide-out");
+    lock_password_menu.classList.remove("slide-in");
 }
 
 continue_lock_btn.disabled = true;
@@ -1139,12 +1121,10 @@ function showUnlockPrompt(noteId = null, folderId = null) {
 }
 
 function cancel_unlock() {
-    setTimeout(() => {
-        unlock_menu.classList.add("hide");
-        unlock_menu.classList.remove("show");
-        blur_background.style.visibility = "hidden";
-        unlock_password.value = "";
-    }, 100);
+    unlock_menu.classList.add("hide");
+    unlock_menu.classList.remove("show");
+    blur_background.style.visibility = "hidden";
+    unlock_password.value = "";
 }
 
 continueUnlockBtn.disabled = true;
@@ -1346,12 +1326,10 @@ async function mark_important() {
 }
 
 function download_note() {
-    setTimeout(() => {
-        download_menu.classList.add("slide-in");
-        download_menu.classList.remove("slide-out");
-        blur_background.style.visibility = "visible";
-        decision_hider.style.visibility = "visible";
-    }, 100);
+    download_menu.classList.add("slide-in");
+    download_menu.classList.remove("slide-out");
+    blur_background.style.visibility = "visible";
+    decision_hider.style.visibility = "visible";
 }
 
 async function download_txt () { //*For now have hardcoded text as content but will make it get the content the selected note
@@ -1453,37 +1431,33 @@ async function download_md() {
 }
 
 function open_trash_menu() {
-    setTimeout(() => {
-        delete_menu.classList.add("slide-in");
-        delete_menu.classList.remove("slide-out");
-        blur_background.style.visibility = "visible";
-        decision_hider.style.visibility = "visible";
+    delete_menu.classList.add("slide-in");
+    delete_menu.classList.remove("slide-out");
+    blur_background.style.visibility = "visible";
+    decision_hider.style.visibility = "visible";
 
-        const noteIds = Array.from(document.querySelectorAll(".note-box.selected"))
-            .map(note => parseInt(note.id))
-            .filter(id => !isNaN(id));
+    const noteIds = Array.from(document.querySelectorAll(".note-box.selected"))
+        .map(note => parseInt(note.id))
+        .filter(id => !isNaN(id));
 
-        const folderIds = Array.from(document.querySelectorAll(".folder-box.selected"))
-            .map(folder => parseInt(folder.id))
-            .filter(id => !isNaN(id));
+    const folderIds = Array.from(document.querySelectorAll(".folder-box.selected"))
+        .map(folder => parseInt(folder.id))
+        .filter(id => !isNaN(id));
 
-        if (noteIds.length > 0 && folderIds.length === 0) {
-            deletemsg.textContent = "Are you sure you want to delete the selected notes?";
-        } else if (folderIds.length > 0 && noteIds.length === 0) {
-            deletemsg.textContent = "Are you sure you want to delete the selected folders?";
-        } else if (noteIds.length > 0 && folderIds.length > 0) {
-            deletemsg.textContent = "Are you sure you want to delete the selected notes and folders?";
-        }
-    }, 100);
+    if (noteIds.length > 0 && folderIds.length === 0) {
+        deletemsg.textContent = "Are you sure you want to delete the selected notes?";
+    } else if (folderIds.length > 0 && noteIds.length === 0) {
+        deletemsg.textContent = "Are you sure you want to delete the selected folders?";
+    } else if (noteIds.length > 0 && folderIds.length > 0) {
+        deletemsg.textContent = "Are you sure you want to delete the selected notes and folders?";
+    }
 }
 
 function cancel_delete() {
-    setTimeout(() => {
-        delete_menu.classList.add("slide-out");
-        delete_menu.classList.remove("slide-in");
-        blur_background.style.visibility = "hidden";
-        decision_hider.style.visibility = "hidden";
-    }, 100);
+    delete_menu.classList.add("slide-out");
+    delete_menu.classList.remove("slide-in");
+    blur_background.style.visibility = "hidden";
+    decision_hider.style.visibility = "hidden";
 }
 
 async function send_to_trash() {

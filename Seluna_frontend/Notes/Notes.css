@@ -3,7 +3,10 @@ body {
     animation: fade 1s;
 }
 
-input {font-size: 20px;}
+input {
+    font-size: 20px;
+    background-color: #1d1737;
+}
 
 h1, h3, p, a, button, input, input::placeholder {
     color: #ad7ecc;
@@ -112,7 +115,7 @@ input::selection {
     font-size: 18px;
 }
 
-#note:active, #painting:active, #trash:active {background-color: #251e45;}
+#note:active, #painting:active, #trash:active {background-color: #1d1737;}
 
 #note {background-color: #251e45;}
 
@@ -188,7 +191,7 @@ input::selection {
 }
 
 .folder-check-icon {
-    color: #b07ecf;
+    color: #fff;
     position: absolute;
     top: -10px;
     left: -16px;
@@ -373,7 +376,7 @@ input::selection {
 .important-iconF {top: -20px;}
 
 .note-check-icon {
-    color: #b07ecf; /*b07ecf*/
+    color: #fff; /*b07ecf*/
     position: absolute;
     left: 10px;
     display: none;
@@ -518,7 +521,7 @@ input::selection {
     align-items: center;
 }
 
-.folders:active {background-color: #251e45;}
+.folders:active {background-color: #1d1737;}
 
 .folders_icon {
     position: relative;
@@ -593,7 +596,6 @@ input::selection {
     top: 60px;
     height: 35px;
     width: 77%;
-    background-color: #1d1737;
     border: none;
     border-radius: 5px;
     padding-top: 2px;
@@ -770,7 +772,6 @@ input::selection {
     left: 20px;
     height: 35px;
     width: 77%;
-    background-color: #1d1737;
     border: none;
     border-radius: 5px;
     padding-top: 2px;
