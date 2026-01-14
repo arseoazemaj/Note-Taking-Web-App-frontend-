@@ -20,13 +20,13 @@
             <a href="../Profile/Profile.html" id="profile"></a>
             <div id="pages">
                 <a id="note" draggable="false">
-                    <i data-lucide="notebook-pen" id="note_icon"></i>Notes
+                    <i id="note_icon" data-lucide="notebook-pen"></i>Notes
                 </a>
                 <a href="../Painting/Painting.html" id="painting" draggable="false">
-                    <i data-lucide="palette" id="paint_icon"></i>Painting
+                    <i id="paint_icon" data-lucide="palette"></i>Painting
                 </a>
                 <a href="../Trash/Trash.html" id="trash" draggable="false">
-                    <i data-lucide="trash-2" id="trash_icon"></i>Trash
+                    <i id="trash_icon" data-lucide="trash-2"></i>Trash
                 </a>
             </div>
         </div>
@@ -34,7 +34,7 @@
     <h1 id="greetings">Notes</h1> <!--*Will greet using the username of the user-->
     <input type="text" id="search" placeholder="Search notes">
     <a href="../Create_note/Create_note.html" draggable="false">
-        <i data-lucide="circle-plus" id="new_note"></i>
+        <i id="new_note" data-lucide="circle-plus"></i>
     </a>
     <div id="folders_menu"></div>
     <div id="folder_blur"></div>
@@ -46,14 +46,14 @@
         <div id="decision_hider"></div>
         <div id="move_container">
             <button id="move" data-tap="move">
-                <i data-lucide="folder-input" id="folder_icon"></i>Move
+                <i id="folder_icon" data-lucide="folder-input"></i>Move
             </button>
             <div id="move_menu">
                 <h3 id="folder_header_text_1">Select a folder</h3>
                 <div id="folders">
                     <div id="folder_list"></div>
                     <button id="create_folder-btn" data-tap="create_folder">Create a new folder
-                        <i data-lucide="folder-plus" id="plus"></i>
+                        <i id="plus" data-lucide="folder-plus"></i>
                     </button>
                 </div>
                 <div id="create_folder">
@@ -63,40 +63,40 @@
                     <div id="dotted_line"></div>
                     <div id="color_picker">
                         <div class="colors" id="color_1" data-color="#644CE6">
-                            <i data-lucide="check" class="check_color"></i>
+                            <i class="check_color" data-lucide="check"></i>
                         </div>
                         <div class="colors" id="color_2" data-color="#FF7BCF">
-                            <i data-lucide="check" class="check_color"></i>
+                            <i class="check_color" data-lucide="check"></i>
                         </div>
                         <div class="colors" id="color_3" data-color="#74B8FF">
-                            <i data-lucide="check" class="check_color"></i>
+                            <i class="check_color" data-lucide="check"></i>
                         </div>
                         <div class="colors" id="color_4" data-color="#5FE0C6">
-                            <i data-lucide="check" class="check_color"></i>
+                            <i class="check_color" data-lucide="check"></i>
                         </div>
                         <div class="colors" id="color_5" data-color="#AEEA7E">
-                            <i data-lucide="check" class="check_color"></i>
+                            <i class="check_color" data-lucide="check"></i>
                         </div>
                         <div class="colors" id="color_6" data-color="#FFD48A">
-                            <i data-lucide="check" class="check_color"></i>
+                            <i class="check_color" data-lucide="check"></i>
                         </div>
                         <div class="colors" id="color_7" data-color="#FF6A6A">
-                            <i data-lucide="check" class="check_color"></i>
+                            <i class="check_color" data-lucide="check"></i>
                         </div>
                         <div class="colors" id="color_8" data-color="#D3D6DA">
-                            <i data-lucide="check" class="check_color"></i>
+                            <i class="check_color" data-lucide="check"></i>
                         </div>
                         <div class="colors" id="color_9" data-color="#7A5BFF">
-                            <i data-lucide="check" class="check_color"></i>
+                            <i class="check_color" data-lucide="check"></i>
                         </div>
                         <div class="colors" id="color_10" data-color="#FFA36B">
-                            <i data-lucide="check" class="check_color"></i>
+                            <i class="check_color" data-lucide="check"></i>
                         </div>
                         <div class="colors" id="color_11" data-color="#230099">
-                            <i data-lucide="check" class="check_color"></i>
+                            <i class="check_color" data-lucide="check"></i>
                         </div>
                         <div class="colors" id="color_12" data-color="#41F0FF">
-                            <i data-lucide="check" class="check_color"></i>
+                            <i class="check_color" data-lucide="check"></i>
                         </div>
                     </div>
                     <div id="chose_folder">
@@ -108,7 +108,7 @@
         </div>
         <div id="lock_container">
             <button id="lock" data-tap="lock">
-                <i data-lucide="lock-keyhole" id="lock_icon"></i>Lock
+                <i id="lock_icon" data-lucide="lock-keyhole"></i>Lock
             </button>
             <div id="lock_menu_ask">
                 <h3>Are you sure you want to lock this note?</h3>
@@ -130,11 +130,11 @@
             </div>
         </div>
         <button id="mark_important" data-tap="mark_important">
-            <i data-lucide="star" id="important_icon"></i>Mark important
+            <i id="important_icon" data-lucide="star"></i>Mark important
         </button>
         <div id="download_container">
             <button id="download" data-tap="download_note">
-                <i data-lucide="download" id="download_icon"></i>Download
+                <i id="download_icon" data-lucide="download"></i>Download
             </button>
             <div id="download_menu">
                 <button class="download_format" id="download_txt" data-tap="download_txt">Download as .txt</button>
@@ -144,7 +144,7 @@
         </div>
         <div id="delete_container">
             <button id="delete" data-tap="open_trash_menu">
-                <i data-lucide="trash-2" id="bin_icon"></i>Delete
+                <i id="bin_icon" data-lucide="trash-2"></i>Delete
             </button>
             <div id="delete_menu">
                 <h3 id="delete_msg"></h3> <!--* Will make it show if it's deleting notes or folders and -->

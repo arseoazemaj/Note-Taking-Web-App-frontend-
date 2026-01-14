@@ -112,9 +112,9 @@ input::selection {
     font-size: 18px;
 }
 
-#note:active, #painting:active, #trash:active {background-color: #35007e59;}
+#note:active, #painting:active, #trash:active {background-color: #251e45;}
 
-#note {background-color: #35007e59;}
+#note {background-color: #251e45;}
 
 #greetings {
     text-align: center;
@@ -129,7 +129,7 @@ input::selection {
     margin: auto;
     display: block;
     border-radius: 20px;
-    height: 34px;
+    height: 35px;
     width: 65%;
     border: 0;
     padding-top: 2px;
@@ -188,7 +188,7 @@ input::selection {
 }
 
 .folder-check-icon {
-    color: #ffffff;
+    color: #b07ecf;
     position: absolute;
     top: -10px;
     left: -16px;
@@ -217,7 +217,7 @@ input::selection {
 #folder_page {
     visibility: hidden;
     position: fixed;
-    background: #121137;
+    background: #1d1737;
     height: 400px;
     width: 90%;
     grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
@@ -373,7 +373,7 @@ input::selection {
 .important-iconF {top: -20px;}
 
 .note-check-icon {
-    color: #ffffff; /*b07ecf*/
+    color: #b07ecf; /*b07ecf*/
     position: absolute;
     left: 10px;
     display: none;
