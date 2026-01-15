@@ -82,9 +82,9 @@ input {
 }
 
 #container {
-    left: 40px;
+    left: 50px;
     position: absolute;
-    height: 270px;
+    height: 260px;
     width: 210px;
     border-radius: 15px;
     background-color: #08002f;
@@ -95,13 +95,13 @@ input {
 #container.hide_menu {animation: hide_menu .5s forwards;}
 
 @keyframes show_menu {
-    from { left: 40px; }
+    from { left: 50px; }
     to { left: -180px; }
 }
 
 @keyframes hide_menu {
     from { left: -180px; }
-    to { left: 40px; }
+    to { left: 50px; }
 }
 
 #save, #important, #lock, #download, #trash {
@@ -110,12 +110,12 @@ input {
     transform: translateX(-50%);
     color: #dda9ff;
     font-size: large;
-    height: 36px;
-    width: 85%;
+    height: 15%;
+    width: 100%;
     border-radius: 10px;
     border: none;
     padding-left: 45px;
-    background-color: #35007e59;
+    background-color: transparent;
     display: flex;
     align-items: center;
 }
@@ -130,8 +130,7 @@ input {
 
 #save-icon, #important-icon, #lock-icon, #download-icon, #trash-icon {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 6px;
     right: 80%;
     color: #dda9ff;
 }

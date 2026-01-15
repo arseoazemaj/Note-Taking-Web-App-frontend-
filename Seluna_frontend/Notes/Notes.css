@@ -115,7 +115,7 @@ input::selection {
     font-size: 18px;
 }
 
-#note:active, #painting:active, #trash:active {background-color: #1d1737;}
+#note:active, #painting:active, #trash:active {background-color: #251e45;}
 
 #note {background-color: #251e45;}
 

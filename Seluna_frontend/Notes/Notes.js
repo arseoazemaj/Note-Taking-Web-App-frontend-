@@ -372,76 +372,84 @@ colorBox.forEach(box => {
 //*blur backgroung handler
 
 function blur_backgroundHandler() {
-    if (move_menu.classList.contains("slide-in")) {
-        move_menu.classList.add("slide-out");
-        move_menu.classList.remove("slide-in");
-    }
+    setTimeout(() => {
+        if (move_menu.classList.contains("slide-in")) {
+            move_menu.classList.add("slide-out");
+            move_menu.classList.remove("slide-in");
+        }
 
-    if (create_folder_menu.classList.contains("slide-in")) {
-        create_folder_menu.classList.add("slide-out");
-        create_folder_menu.classList.remove("slide-in");
-        folder_namer.value = "";
-    }
+        if (create_folder_menu.classList.contains("slide-in")) {
+            create_folder_menu.classList.add("slide-out");
+            create_folder_menu.classList.remove("slide-in");
+            folder_namer.value = "";
+        }
 
-    for (let i = 0; i < color_check.length; i++) {
-        color_check[i].style.visibility = "hidden";
-    }
+        for (let i = 0; i < color_check.length; i++) {
+            color_check[i].style.visibility = "hidden";
+        }
 
-    if (lock_menu.classList.contains("slide-in")) {
-        lock_menu.classList.add("slide-out");
-        lock_menu.classList.remove("slide-in");
-    }
+        if (lock_menu.classList.contains("slide-in")) {
+            lock_menu.classList.add("slide-out");
+            lock_menu.classList.remove("slide-in");
+        }
 
-    if (lock_password_menu.classList.contains("slide-in")) {
-        lock_password_menu.classList.add("slide-out");
-        lock_password_menu.classList.remove("slide-in");
-    }
+        if (lock_password_menu.classList.contains("slide-in")) {
+            lock_password_menu.classList.add("slide-out");
+            lock_password_menu.classList.remove("slide-in");
+        }
 
-    if (unlock_menu.classList.contains("show")) {
-        unlock_menu.classList.add("hide");
-        unlock_menu.classList.remove("show");
-        continueUnlockBtn.disabled = true;
-        unlock_password.value = "";
-    }
+        if (unlock_menu.classList.contains("show")) {
+            unlock_menu.classList.add("hide");
+            unlock_menu.classList.remove("show");
+            continueUnlockBtn.disabled = true;
+            unlock_password.value = "";
+        }
 
-    if (download_menu.classList.contains("slide-in")) {
-        download_menu.classList.add("slide-out");
-        download_menu.classList.remove("slide-in");
-    }
+        if (download_menu.classList.contains("slide-in")) {
+            download_menu.classList.add("slide-out");
+            download_menu.classList.remove("slide-in");
+        }
 
-    if (delete_menu.classList.contains("slide-in")) {
-        delete_menu.classList.add("slide-out");
-        delete_menu.classList.remove("slide-in");
-        deletemsg.textContent = "";
-    }
+        if (delete_menu.classList.contains("slide-in")) {
+            delete_menu.classList.add("slide-out");
+            delete_menu.classList.remove("slide-in");
+            deletemsg.textContent = "";
+        }
 
-    blur_background.style.visibility = "hidden";
-    decision_hider.style.visibility = "hidden";
+        blur_background.style.visibility = "hidden";
+        decision_hider.style.visibility = "hidden";
+    }, 100);
 }
 
 function move() {
-    move_menu.classList.add("slide-in");
-    move_menu.classList.remove("slide-out");
-    blur_background.style.visibility = "visible";
-    decision_hider.style.visibility = "visible";
+    setTimeout(() => {
+        move_menu.classList.add("slide-in");
+        move_menu.classList.remove("slide-out");
+        blur_background.style.visibility = "visible";
+        decision_hider.style.visibility = "visible";
+    }, 200);
 }
 
 function create_folder() {
-    create_folder_menu.classList.add("slide-in");
-    create_folder_menu.classList.remove("slide-out");
-    move_menu.classList.add("slide-out");
-    move_menu.classList.remove("slide-in");
+    setTimeout(() => {
+        create_folder_menu.classList.add("slide-in");
+        create_folder_menu.classList.remove("slide-out");
+        move_menu.classList.add("slide-out");
+        move_menu.classList.remove("slide-in");
+    }, 200);
 }
 
 function cancel_folder() {
-    create_folder_menu.classList.add("slide-out");
-    create_folder_menu.classList.remove("slide-in");
-    move_menu.classList.add("slide-in");
-    move_menu.classList.remove("slide-out");
-    folder_namer.value = "";
-    for (let i = 0; i < color_check.length; i++) {
-        color_check[i].style.visibility = "hidden";
-    }
+    setTimeout(() => {
+        create_folder_menu.classList.add("slide-out");
+        create_folder_menu.classList.remove("slide-in");
+        move_menu.classList.add("slide-in");
+        move_menu.classList.remove("slide-out");
+        folder_namer.value = "";
+        for (let i = 0; i < color_check.length; i++) {
+            color_check[i].style.visibility = "hidden";
+        }
+    }, 200);
 }
 
 //*comment
@@ -682,21 +690,23 @@ function open_folder(folderId) {
 }
 
 folder_blur.addEventListener("touchstart", () => {
-    folderPage.classList.add("hide");
-    folderPage.classList.remove("show");
-    folder_blur.style.visibility = "hidden";
-    document.querySelectorAll(".note-box.selected, .folder-box.selected").forEach(el => {
-        el.classList.remove("selected");
-        el.style.transform = "scale(1)";
-        const checkIcon = el.querySelector(".note-check-icon, .folder-check-icon");
-        if (checkIcon) {
-            checkIcon.style.display = "none";
-        }
-    });
+    setTimeout(() => {
+        folderPage.classList.add("hide");
+        folderPage.classList.remove("show");
+        folder_blur.style.visibility = "hidden";
+        document.querySelectorAll(".note-box.selected, .folder-box.selected").forEach(el => {
+            el.classList.remove("selected");
+            el.style.transform = "scale(1)";
+            const checkIcon = el.querySelector(".note-check-icon, .folder-check-icon");
+            if (checkIcon) {
+                checkIcon.style.display = "none";
+            }
+        });
 
-    if (decide.classList.contains("slide-in")) {
-        hideDecision();
-    }
+        if (decide.classList.contains("slide-in")) {
+            hideDecision();
+        }
+    }, 100);
 });
 
 function withAlpha(hexColor, alphaHex) {
@@ -952,33 +962,41 @@ async function opened_folder(folderId) {
 }
 
 function lock() {
-    lock_menu.classList.add("slide-in");
-    lock_menu.classList.remove("slide-out");
-    blur_background.style.visibility = "visible";
-    decision_hider.style.visibility = "visible";
+    setTimeout(() => {
+        lock_menu.classList.add("slide-in");
+        lock_menu.classList.remove("slide-out");
+        blur_background.style.visibility = "visible";
+        decision_hider.style.visibility = "visible";
+    }, 200);
 }
 
 function not_lock() {
-    lock_menu.classList.add("slide-out");
-    lock_menu.classList.remove("slide-in");
-    blur_background.style.visibility = "hidden";
-    decision_hider.style.visibility = "hidden";
+    setTimeout(() => {
+        lock_menu.classList.add("slide-out");
+        lock_menu.classList.remove("slide-in");
+        blur_background.style.visibility = "hidden";
+        decision_hider.style.visibility = "hidden";
+    }, 200);
 }
 
 function do_lock() {
-    lock_menu.classList.add("slide-out");
-    lock_menu.classList.remove("slide-in");
-    lock_password_menu.classList.add("slide-in");
-    lock_password_menu.classList.remove("slide-out");
-    lock_password.value = "";
-    lock_password_confirm.value = "";
+    setTimeout(() => {
+        lock_menu.classList.add("slide-out");
+        lock_menu.classList.remove("slide-in");
+        lock_password_menu.classList.add("slide-in");
+        lock_password_menu.classList.remove("slide-out");
+        lock_password.value = "";
+        lock_password_confirm.value = "";
+    }, 200);
 }
 
 function cancel_lock() {
-    lock_menu.classList.add("slide-in");
-    lock_menu.classList.remove("slide-out");
-    lock_password_menu.classList.add("slide-out");
-    lock_password_menu.classList.remove("slide-in");
+    setTimeout(() => {
+        lock_menu.classList.add("slide-in");
+        lock_menu.classList.remove("slide-out");
+        lock_password_menu.classList.add("slide-out");
+        lock_password_menu.classList.remove("slide-in");
+    }, 200);
 }
 
 continue_lock_btn.disabled = true;
@@ -1121,10 +1139,12 @@ function showUnlockPrompt(noteId = null, folderId = null) {
 }
 
 function cancel_unlock() {
-    unlock_menu.classList.add("hide");
-    unlock_menu.classList.remove("show");
-    blur_background.style.visibility = "hidden";
-    unlock_password.value = "";
+    setTimeout(() => {
+        unlock_menu.classList.add("hide");
+        unlock_menu.classList.remove("show");
+        blur_background.style.visibility = "hidden";
+        unlock_password.value = "";
+    }, 200);
 }
 
 continueUnlockBtn.disabled = true;
@@ -1221,115 +1241,119 @@ async function continue_unlock() {
 }
 
 async function mark_important() {
-    const token = localStorage.getItem("token");
-    if (!token) {
-        alert("You must be logged in to mark items as important.");
-        return;
-    }
-
-    const noteIds = Array.from(document.querySelectorAll(".note-box.selected"))
-        .map(note => parseInt(note.id))
-        .filter(id => !isNaN(id));
-
-    const folderIds = Array.from(document.querySelectorAll(".folder-box.selected"))
-        .map(folder => parseInt(folder.dataset.id || folder.id))
-        .filter(id => !isNaN(id));
-
-    if (noteIds.length === 0 && folderIds.length === 0) {
-        alert("No notes or folders selected.");
-        return;
-    }
-
-    try {
-        if (noteIds.length > 0) {
-            const important_note = document.querySelectorAll(".note-box.selected.important-note");
-            const unimportant_note = document.querySelectorAll(".note-box.selected:not(.important-note)");
-            let Important_status = false;
-
-            if (important_note.length > unimportant_note.length) {
-                Important_status = false;
-            } else if (important_note.length < unimportant_note.length) {
-                Important_status = true;
-            } else if (important_note.length === unimportant_note.length) {
-                Important_status = true;
-            }
-
-            const notesResponse = await fetch(
-                "http://localhost:5216/api/Notes/mark_important_Notes",
-                {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${token}`
-                    },
-                    body: JSON.stringify({
-                        NoteIds: noteIds,
-                        isImportant: Important_status
-                    })
+    setTimeout(async () => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            alert("You must be logged in to mark items as important.");
+            return;
+        }
+    
+        const noteIds = Array.from(document.querySelectorAll(".note-box.selected"))
+            .map(note => parseInt(note.id))
+            .filter(id => !isNaN(id));
+    
+        const folderIds = Array.from(document.querySelectorAll(".folder-box.selected"))
+            .map(folder => parseInt(folder.dataset.id || folder.id))
+            .filter(id => !isNaN(id));
+    
+        if (noteIds.length === 0 && folderIds.length === 0) {
+            alert("No notes or folders selected.");
+            return;
+        }
+    
+        try {
+            if (noteIds.length > 0) {
+                const important_note = document.querySelectorAll(".note-box.selected.important-note");
+                const unimportant_note = document.querySelectorAll(".note-box.selected:not(.important-note)");
+                let Important_status = false;
+            
+                if (important_note.length > unimportant_note.length) {
+                    Important_status = false;
+                } else if (important_note.length < unimportant_note.length) {
+                    Important_status = true;
+                } else if (important_note.length === unimportant_note.length) {
+                    Important_status = true;
                 }
-            );
-
-            if (!notesResponse.ok) {
-                const errorText = await notesResponse.text();
-                console.error("Notes error:", errorText);
-                throw new Error("Failed to update notes.");
-            }
-        }
-
-        if (folderIds.length > 0) {
-            const important_folder = document.querySelectorAll(".folder-box.selected.important-folder");
-            const unimportant_folder = document.querySelectorAll(".folder-box.selected:not(.important-folder)");
-            let Important_status = false;
-
-            if (important_folder.length > unimportant_folder.length) {
-                Important_status = false;
-            } else if (important_folder.length < unimportant_folder.length) {
-                Important_status = true;
-            } else if (important_folder.length === unimportant_folder.length) {
-                Important_status = true;
-            }
-
-            const foldersResponse = await fetch(
-                "http://localhost:5216/api/Folders/mark_important_Folders",
-                {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${token}`
-                    },
-                    body: JSON.stringify({
-                        FolderIds: folderIds,
-                        isImportant: Important_status
-                    })
+            
+                const notesResponse = await fetch(
+                    "http://localhost:5216/api/Notes/mark_important_Notes",
+                    {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${token}`
+                        },
+                        body: JSON.stringify({
+                            NoteIds: noteIds,
+                            isImportant: Important_status
+                        })
+                    }
+                );
+            
+                if (!notesResponse.ok) {
+                    const errorText = await notesResponse.text();
+                    console.error("Notes error:", errorText);
+                    throw new Error("Failed to update notes.");
                 }
-            );
-
-            if (!foldersResponse.ok) {
-                const errorText = await foldersResponse.text();
-                console.error("Folders error:", errorText);
-                throw new Error("Failed to update folders.");
             }
+        
+            if (folderIds.length > 0) {
+                const important_folder = document.querySelectorAll(".folder-box.selected.important-folder");
+                const unimportant_folder = document.querySelectorAll(".folder-box.selected:not(.important-folder)");
+                let Important_status = false;
+            
+                if (important_folder.length > unimportant_folder.length) {
+                    Important_status = false;
+                } else if (important_folder.length < unimportant_folder.length) {
+                    Important_status = true;
+                } else if (important_folder.length === unimportant_folder.length) {
+                    Important_status = true;
+                }
+            
+                const foldersResponse = await fetch(
+                    "http://localhost:5216/api/Folders/mark_important_Folders",
+                    {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${token}`
+                        },
+                        body: JSON.stringify({
+                            FolderIds: folderIds,
+                            isImportant: Important_status
+                        })
+                    }
+                );
+            
+                if (!foldersResponse.ok) {
+                    const errorText = await foldersResponse.text();
+                    console.error("Folders error:", errorText);
+                    throw new Error("Failed to update folders.");
+                }
+            }
+        
+            hideDecision();
+            loadNotes();
+            LoadFolders();
+        
+            if (currentOpenedFolderId) {
+                open_folder(currentOpenedFolderId);
+            }
+        
+        } catch (error) {
+            console.error("Error updating importance:", error);
+            alert("Error updating importance.");
         }
-
-        hideDecision();
-        loadNotes();
-        LoadFolders();
-
-        if (currentOpenedFolderId) {
-            open_folder(currentOpenedFolderId);
-        }
-
-    } catch (error) {
-        console.error("Error updating importance:", error);
-        alert("Error updating importance.");
-    }
+    }, 200);
 }
 
 function download_note() {
-    download_menu.classList.add("slide-in");
-    download_menu.classList.remove("slide-out");
-    blur_background.style.visibility = "visible";
-    decision_hider.style.visibility = "visible";
+    setTimeout(() => {
+        download_menu.classList.add("slide-in");
+        download_menu.classList.remove("slide-out");
+        blur_background.style.visibility = "visible";
+        decision_hider.style.visibility = "visible";
+    }, 200);
 }
 
 async function download_txt () { //*For now have hardcoded text as content but will make it get the content the selected note
@@ -1431,33 +1455,37 @@ async function download_md() {
 }
 
 function open_trash_menu() {
-    delete_menu.classList.add("slide-in");
-    delete_menu.classList.remove("slide-out");
-    blur_background.style.visibility = "visible";
-    decision_hider.style.visibility = "visible";
+    setTimeout(() => {
+        delete_menu.classList.add("slide-in");
+        delete_menu.classList.remove("slide-out");
+        blur_background.style.visibility = "visible";
+        decision_hider.style.visibility = "visible";
 
-    const noteIds = Array.from(document.querySelectorAll(".note-box.selected"))
-        .map(note => parseInt(note.id))
-        .filter(id => !isNaN(id));
+        const noteIds = Array.from(document.querySelectorAll(".note-box.selected"))
+            .map(note => parseInt(note.id))
+            .filter(id => !isNaN(id));
 
-    const folderIds = Array.from(document.querySelectorAll(".folder-box.selected"))
-        .map(folder => parseInt(folder.id))
-        .filter(id => !isNaN(id));
+        const folderIds = Array.from(document.querySelectorAll(".folder-box.selected"))
+            .map(folder => parseInt(folder.id))
+            .filter(id => !isNaN(id));
 
-    if (noteIds.length > 0 && folderIds.length === 0) {
-        deletemsg.textContent = "Are you sure you want to delete the selected notes?";
-    } else if (folderIds.length > 0 && noteIds.length === 0) {
-        deletemsg.textContent = "Are you sure you want to delete the selected folders?";
-    } else if (noteIds.length > 0 && folderIds.length > 0) {
-        deletemsg.textContent = "Are you sure you want to delete the selected notes and folders?";
-    }
+        if (noteIds.length > 0 && folderIds.length === 0) {
+            deletemsg.textContent = "Are you sure you want to delete the selected notes?";
+        } else if (folderIds.length > 0 && noteIds.length === 0) {
+            deletemsg.textContent = "Are you sure you want to delete the selected folders?";
+        } else if (noteIds.length > 0 && folderIds.length > 0) {
+            deletemsg.textContent = "Are you sure you want to delete the selected notes and folders?";
+        }
+    }, 200);
 }
 
 function cancel_delete() {
-    delete_menu.classList.add("slide-out");
-    delete_menu.classList.remove("slide-in");
-    blur_background.style.visibility = "hidden";
-    decision_hider.style.visibility = "hidden";
+    setTimeout(() => {
+        delete_menu.classList.add("slide-out");
+        delete_menu.classList.remove("slide-in");
+        blur_background.style.visibility = "hidden";
+        decision_hider.style.visibility = "hidden";
+    }, 200);
 }
 
 async function send_to_trash() {

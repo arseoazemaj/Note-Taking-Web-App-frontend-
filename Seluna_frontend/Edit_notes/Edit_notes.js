@@ -59,10 +59,12 @@ function openMenu() {
 }
 
 function closeMenu() {
+    setTimeout(() => {
         container.classList.remove("show_menu");
         container.classList.add("hide_menu");
         lock_bg.style.visibility = "hidden";
         blur_background.style.visibility = "hidden";
+    }, 10);
 }
 
 async function update(noteId) { //*Update the note
@@ -135,12 +137,14 @@ function fill() {
 //*Fix lock for locked notes (you can't lock a note that is already locked)
 
 function lock() {
+    setTimeout(() => {
         const lock_menu = document.getElementById("lock_menu");
         lock_menu.classList.add("show_lock_menu");
         lock_menu.classList.remove("hide_lock_menu");
         lock_menu_lock_password.classList.add("hide_lock_menu");
         lock_menu_lock_password.classList.remove("show_lock_menu");
         lock_bg.style.visibility = "visible";
+    }, 150);
 }
 
 function closelockMenuBG() {
@@ -154,23 +158,29 @@ function closelockMenuBG() {
 }
 
 function closelockMenu() {
+    setTimeout(() => {
         lock_menu.classList.add("hide_lock_menu");
         lock_menu.classList.remove("show_lock_menu");
         lock_menu_lock_password.classList.add("hide_lock_menu");
         lock_menu_lock_password.classList.remove("show_lock_menu");
         lock_bg.style.visibility = "hidden";
+    }, 150);
 }
 
 function continueLock() {
+    setTimeout(() => {
         lock_menu_lock_password.classList.add("show_lock_menu");
         lock_menu_lock_password.classList.remove("hide_lock_menu");
+    }, 150);
 }
 
 function cancelLockPassword() {
+    setTimeout(() => {
         passwordInput.value = "";
         passwordConfirmInput.value = "";
         lock_menu_lock_password.classList.add("hide_lock_menu");
         lock_menu_lock_password.classList.remove("show_lock_menu");
+    }, 150);
 }
 
 const passwordInput = document.getElementById("lock_password");

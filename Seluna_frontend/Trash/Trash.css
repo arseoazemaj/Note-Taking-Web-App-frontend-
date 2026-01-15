@@ -96,9 +96,9 @@ a, p, h1, h3, button {
     font-size: 18px;
 }
 
-#note:active, #painting:active, #trash:active {background-color: #35007e59;}
+#note:active, #painting:active, #trash:active {background-color: #251e45;}
 
-#trash {background-color: #35007e59;}
+#trash {background-color: #251e45;}
 
 #greetings {
     text-align: center;
@@ -130,10 +130,10 @@ a, div {
     flex-direction: row;
     gap: 50px;
     overflow-x: overlay;
-    padding: 30px 10px;
+    padding: 40px 10px;
     width: 90%;
     position: absolute;
-    top: 100px;
+    top: 120px;
     left: 50%;
     transform: translateX(-50%);
     scrollbar-width: none;
@@ -149,10 +149,12 @@ a, div {
 }
 
 .folder-check-icon {
-    color: #ffffff;
+    color: #fff;
     position: absolute;
-    left: 10px;
+    top: -10px;
+    left: -16px;
     z-index: 1;
+    scale: .85;
 }
 
 .folder-icon {
@@ -162,8 +164,8 @@ a, div {
 
 .folder-name {
     position: absolute;
-    margin-top: 110px;
-    margin-left: -13px;
+    margin-top: 80px;
+    margin-left: -16px;
     width: 55px;
     overflow: hidden;
     display: -webkit-box;
@@ -175,7 +177,7 @@ a, div {
 
 #container {
     position: absolute;
-    top: 220px;
+    top: 250px;
     left: 50%;
     transform: translateX(-50%);
     display: grid;
@@ -281,7 +283,7 @@ a, div {
         left: 10px;
     }
     .important-icon {
-        left: 97%;
+        left: 95%;
     }
     .important-iconF {
         left: 95%;
@@ -289,12 +291,12 @@ a, div {
 }
 
 @media (min-width: 361px) {
-    .important-icon {left: 97%;}
+    .important-icon {left: 90%;}
     .important-iconF {left: 95%;}
 }
 
 .important-icon, .important-iconF {
-    position: relative;
+    position: absolute;
     transform: rotate(45deg);
     pointer-events: none;
     z-index: 2;
@@ -303,10 +305,10 @@ a, div {
 .important-icon {
     color: #ad7ecc;
     fill: #ad7ecc;
-    top: -15px;
+    top: -5px;
 }
 
-.important-iconF {top: 5px;}
+.important-iconF {top: -20px;}
 
 #note_icon, #paint_icon, #trash_icon {
     position: absolute;
@@ -318,9 +320,9 @@ a, div {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    height: 80px;
+    height: 70px;
     width: 100%;
-    background-color: #1a1433;
+    background-color: #251e45;
     bottom: -10%;
     display: flex;
     justify-content: center;
@@ -346,9 +348,13 @@ a, div {
     transform: translateY(-50%);
     width: 40%;
     height: 40px;
-    background-color: #2b0066;
+    background-color: transparent;
     border: none;
     border-radius: 15px;
     font-size: 17px;
     align-items: center;
+}
+
+#restore:active, #delete:active {
+    background-color: #1d1737;
 }
