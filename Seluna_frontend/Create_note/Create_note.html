@@ -12,47 +12,54 @@
             <i data-lucide="chevron-left"></i>
         </a>
         <input type="text" name="Title" id="title" placeholder="Title">
-        <div id="blur_background" ontouchend="closeMenu()"></div>
-        <a id="sub-menu_icon" draggable="false" ontouchend="openMenu()">
+        <div id="blur_background" data-tap="closeMenu"></div>
+        <a id="sub-menu_icon" draggable="false" data-tap="openMenu">
             <i data-lucide="ellipsis-vertical" id="ellipsis-icon"></i>
             <div id="container">
-                <button id="save" draggable="false" ontouchend="save()">
+                <button id="save" draggable="false" data-tap="save">
                     <i data-lucide="save" id="save-icon"></i>
                     Save
                 </button>
-                <button id="important" draggable="false" ontouchend="fill()">
+                <button id="important" draggable="false" data-tap="fill">
                     <i data-lucide="star" id="important-icon"></i>
                     Important
                 </button>
                 <div id="lock_container">
-                    <button id="lock" ontouchend="lock()">
+                    <button id="lock" data-tap="lock">
                         <i data-lucide="lock-keyhole" id="lock-icon"></i>Lock
                     </button>
-                    <div id="lock_bg" ontouchend="closelockMenuBG()"></div>
+                    <div id="lock_bg" data-tap="closelockMenuBG"></div>
                     <div id="lock_menu">
                         <h3>Are you sure you want to lock this note?</h3>
                         <p>Once locked, it will stay hidden and protected. Only your password can bring it back to view.</p>
                         <h3>Do you want to continue?</h3>
                         <div class="lock_decide">
-                            <button class="lock_menu_answere" id="not_lock" ontouchend="closelockMenu()">No</button>
-                            <button class="lock_menu_answere" id="do_lock" ontouchend="continueLock()">Yes</button>
+                            <button class="lock_menu_answere" id="not_lock" data-tap="closelockMenu">No</button>
+                            <button class="lock_menu_answere" id="do_lock" data-tap="continueLock">Yes</button>
                         </div>
                         <div id="lock_password_menu">
                             <h3 id="lock_password_menu_text">Create a strong password and keep it safe this note will only open for you.</h3>
                             <input type="text" id="lock_password" placeholder="Enter a password"> <!--Change to type="password"-->
                             <input type="text" id="confirm_lock_password" placeholder="Confirm your password"> <!--Change to type="password"-->
                             <div class="lock_decide">
-                                <button id="cancel_lock" ontouchend="cancelLockPassword()">Cancel</button>
-                                <button id="continue_lock" ontouchend="confirmLock()" disabled>Lock</button>
+                                <button id="cancel_lock" data-tap="cancelLockPassword">Cancel</button>
+                                <button id="continue_lock" data-tap="confirmLock" disabled>Lock</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button id="download" draggable="false">
-                    <i data-lucide="download" id="download-icon"></i> <!--TODO: Will work in it later-->
-                    Download
-                </button>
-                <button id="trash" draggable="false" ontouchend="deleteNote()">
+                <div id="download_container">
+                    <button id="download" draggable="false" data-tap="downloadNote">
+                        <i data-lucide="download" id="download-icon"></i>
+                        Download
+                    </button>
+                    <div id="download_menu">
+                        <button class="download_format" id="download_txt" data-tap="download_txt">Download as .txt</button>
+                        <button class="download_format" id="download_pdf" data-tap="download_pdf">Download as .pdf</button>
+                        <button class="download_format" id="download_md" data-tap="download_md">Download as .md (markdown)</button>
+                    </div>
+                </div>
+                <button id="trash" draggable="false" data-tap="deleteNote">
                     <i data-lucide="trash-2" id="trash-icon"></i>Delete
                 </button>
             </div>

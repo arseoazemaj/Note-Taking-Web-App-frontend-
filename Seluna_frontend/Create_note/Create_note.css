@@ -53,13 +53,7 @@ input {
     position: absolute;
     top: 27px;
     left: 50px;
-    color: #ae7fce;
     background-color: #07031b;
-}
-
-#title::placeholder {
-    color: #ae7fce;
-    opacity: 1;
 }
 
 #title:focus {outline: none;}
@@ -82,6 +76,7 @@ input {
 }
 
 #container {
+    display: grid;
     left: 50px;
     position: absolute;
     height: 260px;
@@ -105,12 +100,11 @@ input {
 }
 
 #save, #important, #lock, #download, #trash {
-    position: absolute;
+    position: relative;
     left: 50%;
     transform: translateX(-50%);
-    color: #dda9ff;
     font-size: large;
-    height: 15%;
+    height: 100%;
     width: 100%;
     border-radius: 10px;
     border: none;
@@ -122,17 +116,10 @@ input {
 
 #save:active, #important:active, #lock:active, #download:active, #trash:active { background-color: #251e45;}
 
-#save {top: 15px;}
-#important {top: 65px;}
-#lock {top: 115px;}
-#download {top: 165px;}
-#trash {top: 215px;}
-
 #save-icon, #important-icon, #lock-icon, #download-icon, #trash-icon {
     position: absolute;
-    top: 6px;
+    top: 13px;
     right: 80%;
-    color: #dda9ff;
 }
 
 #note_input {
@@ -295,4 +282,48 @@ input {
 #continue_lock:disabled {
     opacity: .5;
     pointer-events: none;
+}
+
+#download_menu {
+    visibility: hidden;
+    position: fixed;
+    background: #251e45;
+    height: 250px;
+    width: 80%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+    filter: drop-shadow(0 0 15px #251e45);
+    z-index: 2;
+}
+
+#download_menu.show_lock_menu {animation: show_download .3s forwards;}
+#download_menu.hide_lock_menu {animation: hide_download .3s forwards;}
+
+@keyframes show_download {
+    from { opacity: 0; visibility: hidden;}
+    to { opacity: 1; visibility: visible;}
+}
+
+@keyframes hide_download {
+    from { opacity: 1; visibility: visible;}
+    to { opacity: 0; visibility: hidden;}
+}
+
+.download_format {
+    width: 90%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #251e45;
+    border: 10px solid transparent;
+    border-radius: 10% / 50%;
+    font-size: 17px;
+    margin: 20px;
+}
+
+.download_format:active {
+    background-color: #1d1737;
 }

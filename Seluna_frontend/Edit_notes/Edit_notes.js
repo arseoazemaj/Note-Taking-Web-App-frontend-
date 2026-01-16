@@ -52,6 +52,8 @@ const cancel_lock_password = document.getElementById("cancel_lock");
 const confirm_lock_password = document.getElementById("continue_lock");
 confirm_lock_password.disabled = true;
 
+const download_menu = document.getElementById("download_menu");
+
 function openMenu() {
     container.classList.remove("hide_menu");
     container.classList.add("show_menu");
@@ -63,6 +65,8 @@ function closeMenu() {
         container.classList.remove("show_menu");
         container.classList.add("hide_menu");
         lock_bg.style.visibility = "hidden";
+        download_menu.classList.remove("show_lock_menu");
+        download_menu.classList.add("hide_lock_menu");
         blur_background.style.visibility = "hidden";
     }, 10);
 }
@@ -102,13 +106,21 @@ async function update(noteId) { //*Update the note
             body: JSON.stringify(note)
         });
 
-        if (response.status === 507 || message.includes("storage") || message.includes("space")) {
-            alert("Your note couldn't be updated because Seluna's database is currently full and cannot store new notes. We're working on expanding it — please try again later.");
+        const responseText = await response.text();
+
+        if (
+            response.status === 507 ||
+            responseText.toLowerCase().includes("storage") ||
+            responseText.toLowerCase().includes("space")
+        ) {
+            alert(
+                "Your note couldn't be updated because Seluna's database is currently full and cannot store new notes. We're working on expanding it — please try again later."
+            );
+            return;
         }
 
         if (!response.ok) {
-            const errorData = await response.text();
-            throw new Error(`Server error: ${response.status} - ${errorData}`);
+            throw new Error(`Server error: ${response.status} - ${responseText}`);
         }
 
         window.location.href = "../Notes/Notes.html";
@@ -218,6 +230,109 @@ function confirmLock() {
 }
 
 //*Download
+function downloadNote() {
+    console.log("Downloading note...");
+    download_menu.classList.add("show_lock_menu");
+    download_menu.classList.remove("hide_lock_menu");
+}
+
+async function download_txt () {
+    try {
+        if (!window.Capacitor?.isNativePlatform()) {
+            console.log('Not running on native platform');
+            return;
+        }
+
+        const { Filesystem } = Capacitor.Plugins;
+        const textContent = "File test for download";
+
+        await Filesystem.writeFile({
+            path: 'seluna/TXT_note_test.txt',
+            data: textContent,
+            directory: 'DOCUMENTS',
+            encoding: 'UTF8',
+        });
+
+        alert('TXT file saved in Documents/seluna/');
+    } catch (err) {
+        console.error('Filesystem error:', err);
+
+        alert(
+            'Error saving TXT file\n\n' +
+            (err?.message || JSON.stringify(err))
+        );
+    }
+}
+
+async function download_pdf() {
+    console.log("This is a pdf file...");
+
+    try {
+        if (!window.Capacitor?.isNativePlatform()) {
+            console.log("You are not on a native device.");
+            return;
+        }
+
+        const { jsPDF } = window.jspdf;
+        const { Filesystem } = Capacitor.Plugins;
+
+        const doc = new jsPDF({
+            orientation: 'portrait',
+            unit: 'mm',
+            format: 'a4'
+        });
+
+        doc.setFont('Times', 'Normal');
+        doc.setFontSize(18);
+        doc.text('Seluna — PDF Export', 20, 30);
+
+        doc.setFontSize(12);
+        doc.text(
+            "This is a PDF file from seluna.",
+            20,
+            50
+        );
+
+        const pdfBase64 = doc.output('datauristring').split(',')[1];
+
+        await Filesystem.writeFile({
+            path: 'seluna/PDF_note_test.pdf',
+            data: pdfBase64,
+            directory: 'DOCUMENTS',
+        });
+
+        alert('PDF file saved in Documents/seluna/');
+    } catch (err) {
+        console.error('PDF save error:', err);
+        alert('Failed to save PDF');
+    }
+}
+
+async function download_md() {
+    console.log(".md file...")
+
+        try {
+        if (!window.Capacitor?.isNativePlatform()) {
+            console.log('Not running on native platform');
+            return;
+        }
+
+        const { Filesystem } = Capacitor.Plugins;
+        const markdownContent = "This is a test for .md";
+
+        await Filesystem.writeFile({
+            path: 'seluna/MD_note_test.md',
+            data: markdownContent,
+            directory: 'DOCUMENTS',
+            encoding: 'UTF8',
+        });
+
+        alert('MD file saved in Documents/seluna/');
+    } catch (err) {
+        console.error('Filesystem error:', err);
+        alert('Error saving MD file');
+    }
+}
 
 async function deleteNote() { //*Moves the note to trash
     const token = localStorage.getItem("token");
