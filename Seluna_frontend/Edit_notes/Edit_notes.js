@@ -156,7 +156,7 @@ function lock() {
         lock_menu_lock_password.classList.add("hide_lock_menu");
         lock_menu_lock_password.classList.remove("show_lock_menu");
         lock_bg.style.visibility = "visible";
-    }, 150);
+    }, 100);
 }
 
 function closelockMenuBG() {
@@ -176,14 +176,14 @@ function closelockMenu() {
         lock_menu_lock_password.classList.add("hide_lock_menu");
         lock_menu_lock_password.classList.remove("show_lock_menu");
         lock_bg.style.visibility = "hidden";
-    }, 150);
+    }, 100);
 }
 
 function continueLock() {
     setTimeout(() => {
         lock_menu_lock_password.classList.add("show_lock_menu");
         lock_menu_lock_password.classList.remove("hide_lock_menu");
-    }, 150);
+    }, 100);
 }
 
 function cancelLockPassword() {
@@ -192,7 +192,7 @@ function cancelLockPassword() {
         passwordConfirmInput.value = "";
         lock_menu_lock_password.classList.add("hide_lock_menu");
         lock_menu_lock_password.classList.remove("show_lock_menu");
-    }, 150);
+    }, 100);
 }
 
 const passwordInput = document.getElementById("lock_password");
@@ -231,9 +231,12 @@ function confirmLock() {
 
 //*Download
 function downloadNote() {
-    console.log("Downloading note...");
-    download_menu.classList.add("show_lock_menu");
-    download_menu.classList.remove("hide_lock_menu");
+    setTimeout(() => {
+        mini_menu = true;
+        console.log("Downloading note...");
+        download_menu.classList.add("show_lock_menu");
+        download_menu.classList.remove("hide_lock_menu");
+    }, 100);
 }
 
 async function download_txt () {
