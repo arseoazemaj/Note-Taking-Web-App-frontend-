@@ -320,7 +320,7 @@ a, div {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    height: 70px;
+    height: 65px;
     width: 100%;
     background-color: #251e45;
     bottom: -10%;
@@ -347,7 +347,7 @@ a, div {
     top: 50%;
     transform: translateY(-50%);
     width: 40%;
-    height: 40px;
+    height: 70%;
     background-color: transparent;
     border: none;
     border-radius: 15px;
