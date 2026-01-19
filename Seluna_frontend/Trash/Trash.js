@@ -496,7 +496,6 @@ async function permanently_Delete() {
             load_deleted_Notes();
             load_deleted_Folders();
             hideDecisionBar();
-
         } catch (error) {
             console.error("Request failed:", error);
         }

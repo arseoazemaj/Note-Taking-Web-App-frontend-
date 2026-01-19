@@ -31,7 +31,9 @@ document.addEventListener("DOMContentLoaded", async function () { //*Loads the n
         }
 
     } catch (error) {
+        alert("Your note couldn't be loaded.")
         console.error("Fetch error:", error);
+        return;
     }
 });
 
