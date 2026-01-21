@@ -102,12 +102,7 @@ a, p, h1, h3, button {
 
 #greetings {
     text-align: center;
-    padding-top: 40px;
-    -webkit-user-select: none;
-    user-select: none;
-    -webkit-touch-callout: none;
-    -webkit-tap-highlight-color: transparent;
-    color: #ae7fce;
+    padding-top: 30px;
 }
 
 #delete-message {

@@ -3,6 +3,11 @@ body {
     animation: fade 1s;
 }
 
+h1 {
+    color: #ad7ecc;
+    font-weight: bold;
+}
+
 @keyframes fade {
     0% {opacity: 0;}
     100% {opacity: 1;}
@@ -89,8 +94,7 @@ body {
 
 #greetings {
     text-align: center;
-    padding-top: 40px;
-    color: #ae7fce;
+    padding-top: 30px;
 }
 
 a, div {
