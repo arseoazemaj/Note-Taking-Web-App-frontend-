@@ -2,6 +2,13 @@ body {
     background-color: #120f20;
 }
 
+h1, button, a {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
 #sign_up-text, #log_in-text {
     position: absolute;
     top: -29%;

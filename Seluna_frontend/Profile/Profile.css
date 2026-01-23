@@ -21,9 +21,11 @@ a, h3 {
 #back {
     position: relative;
     scale: 2;
+    top: 9px;
+    left: 1px;
 }
 
-#pic {
+#icon {
     position: relative;
     height: 65px;
     width: 65px;
@@ -48,50 +50,11 @@ a, h3 {
     left: 15px;
 }
 
-#settings {
-    position: fixed;
-    top: 20px;
-    right: 30px;
-    scale: 1.2;
+#pen {
+    position: absolute;
+    scale: .7;
 }
 
-#setting_background {
-    visibility: hidden;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-#setting_page {
-    visibility: hidden;
-    height: 400px;
-    width: 90%;
-    position: relative;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #251e45;
-    box-shadow: 0 0 30px 5px #251e45;
-    border-radius: 30px;
-    z-index: 1;
-}
-
-#search_setting {
-    position: fixed;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 35px;
-    width: 60%;
-    border-radius: 20px;
-    border: none;
-    padding-left: 20px;
-}
-
-
-/* for the 1st option */
 #menu_selecter {
     position: relative;
     width: 104%;
@@ -104,6 +67,13 @@ a, h3 {
     align-items: center;
 }
 
+.menues {
+    width: 25%;
+    height: 80px;
+    background-color: #1a1433;
+    border: none;
+}
+
 #menu_choice {
     height: 500px;
     width: 90%;
@@ -114,14 +84,4 @@ a, h3 {
     background-color: #251e45;
     box-shadow: 0 0 30px 5px #251e45;
     border-radius: 10px;
-}
-
-
-
-
-
-#log-out_btn {
-    position: absolute;
-    bottom: 2%;
-    background-color: #d03737;
 }
