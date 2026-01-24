@@ -11,7 +11,7 @@ h1, h3, p, a, button, input, input::placeholder {
     font-weight: bold;
 }
 
-a, h3 {
+a, p, h1, h3, button, input {
     -webkit-user-select: none;
     user-select: none;
     -webkit-touch-callout: none;
@@ -124,9 +124,9 @@ a, h3 {
     font-size: 17px;
 }
 
-#cancel_unlock:active, #continue_unlock:active {background-color: #1d1737;}
+#cancel_edit:active, #continue_edit:active {background-color: #1d1737;}
 
-#continue_unlock:disabled {
+#continue_edit:disabled {
     opacity: .5;
     pointer-events: none;
 }
