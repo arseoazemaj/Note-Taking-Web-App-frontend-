@@ -12,7 +12,6 @@ function change_name() {
     blur_background.style.visibility = "visible";
     username_edit.classList.remove("hide");
     username_edit.classList.add("show");
-    continue_edit.disabled = true;
     console.log("changing name...");
 }
 

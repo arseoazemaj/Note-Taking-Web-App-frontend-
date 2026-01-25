@@ -3,6 +3,11 @@ body {
     animation: fade 1s;
 }
 
+@keyframes fade {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
 h1, h3, p, a, button, input, input::placeholder {
     color: #ad7ecc;
 }
@@ -14,11 +19,6 @@ a, p, h1, h3, button {
     -webkit-tap-highlight-color: transparent;
     text-decoration: none;
     font-weight: bold;
-}
-
-@keyframes fade {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
 }
 
 #menuopener {

@@ -3,6 +3,11 @@ body {
     animation: fade 1s;
 }
 
+@keyframes fade {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
 input {
     font-size: 20px;
     background-color: #1d1737;
@@ -25,11 +30,6 @@ a {text-decoration: none;}
 input::selection {
     background: #0066ff46;
     color: #ad7ecc;
-}
-
-@keyframes fade {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
 }
 
 #menuopener {

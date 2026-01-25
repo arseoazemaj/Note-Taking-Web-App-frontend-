@@ -1,5 +1,11 @@
 body {
     background-color: #120f20;
+    animation: fade 1s;
+}
+
+@keyframes fade {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
 }
 
 input {
@@ -45,14 +51,15 @@ a, p, h1, h3, button, input {
     color: #ad7ecc;
 }
 
+/* This is the problem with the page */
 #username {
-    position: relative;
+    position: absolute;
     left: 15px;
 }
 
 #pen {
     position: absolute;
-    scale: .7;
+    scale: .8;
 }
 
 #username_edit {
@@ -125,8 +132,3 @@ a, p, h1, h3, button, input {
 }
 
 #cancel_edit:active, #continue_edit:active {background-color: #1d1737;}
-
-#continue_edit:disabled {
-    opacity: .5;
-    pointer-events: none;
-}
