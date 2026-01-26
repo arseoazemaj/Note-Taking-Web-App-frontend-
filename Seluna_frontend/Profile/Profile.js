@@ -1,28 +1,15 @@
-const back_2 = document.getElementById("back_2");
 const setting_page = document.getElementById("setting_page");
+const username_text = document.getElementById("username");
 const username_edit = document.getElementById("username_edit");
 const blur_background = document.getElementById("blur_background");
 const continue_edit = document.getElementById("continue_edit");
 
-function open_settings() {
-    setting_page.style.visibility = "visible";
-}
+document.addEventListener("DOMContentLoaded", loadUsername );
 
-function change_name() {
-    blur_background.style.visibility = "visible";
-    username_edit.classList.remove("hide");
-    username_edit.classList.add("show");
-    console.log("changing name...");
-}
+function loadUsername() { //*Will get the username from the DB
+    const username_data = "user_333333";
 
-function blur_backgroundHandler() {
-    blur_background.style.visibility = "hidden";
-    username_edit.classList.add("hide");
-    username_edit.classList.remove("show");
-}
 
-function cancel_change() {
-    blur_background.style.visibility = "hidden";
-    username_edit.classList.add("hide");
-    username_edit.classList.remove("show");
+    username_text.textContent = username_data;
+    console.log("Username is:", username_data);
 }

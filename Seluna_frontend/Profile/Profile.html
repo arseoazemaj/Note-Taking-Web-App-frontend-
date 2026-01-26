@@ -11,20 +11,21 @@
         <i id="back" data-lucide="chevron-left"></i>
     </a>
 
-    <div id="icon">
-        <i id="user_icon" data-lucide="user-round"></i>
-    </div>
-    <h3 id="username">Username
-        <i id="pen" data-lucide="pen" data-tap="change_name"></i>
-    </h3>
-    <div id="blur_background" ontouchstart="blur_backgroundHandler()"></div>
-    <div id="username_edit">
-        <h3>You can change your username here every 30 days.</h3>
-        <input type="text" id="username_input" placeholder="Change your username here.">
-        <div id="decide_edit">
-            <button id="cancel_edit" data-tap="cancel_change">Cancel</button>
-            <button id="continue_edit">Confirm</button>
+    <div id="user">
+        <div id="icon">
+            <i id="user_icon" data-lucide="user-round"></i>
         </div>
+        <h3 id="username">Username</h3>
+    </div>
+    <div id="settings">
+        <div id="setting_menu">
+            <button class="menues" id="account">Account</button>
+            <button class="menues" id="notes">Notes</button>
+            <button class="menues" id="backup">Backup&Export</button>
+            <button class="menues" id="security">Security</button>
+            <button class="menues" id="help">Help</button>
+        </div>
+        <div id="setting_page"></div>
     </div>
 
 
