@@ -13,3 +13,9 @@ function loadUsername() { //*Will get the username from the DB
     username_text.textContent = username_data;
     console.log("Username is:", username_data);
 }
+
+function account() {
+    console.log("Account settings opened");
+    const account = document.getElementById("account");
+    account.style.backgroundColor = "#251e45";
+}
