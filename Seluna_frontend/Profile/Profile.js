@@ -25,10 +25,7 @@ async function loadUsername() {
         }
 
         const data = await response.json();
-
         username.textContent = data.username;
-        console.log("Username is:", data.username);
-
     } catch (error) {
         console.error("Failed to load username:", error);
     }

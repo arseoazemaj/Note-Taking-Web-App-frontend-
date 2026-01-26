@@ -107,7 +107,7 @@ input::selection {
     transform: translateX(-50%);
     width: 90%;
     height: 40px;
-    border-radius: 20px;
+    border-radius: 5px;
     text-align: center;
     display: flex;
     justify-content: center;
