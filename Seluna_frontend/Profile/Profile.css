@@ -85,10 +85,6 @@ a, p, h1, h3, button, input {
     background-color: #251e45;
 }
 
-#account:active {
-    background-color: #251e45;
-}
-
 #setting_page {
     position: fixed;
     top: 30%;
@@ -119,4 +115,8 @@ a, p, h1, h3, button, input {
 
 #username_change:active {
     background-color: #251e45;
+}
+
+#note_settings, #backup_settings, #security_settings, #help_settings {
+    visibility: hidden;
 }

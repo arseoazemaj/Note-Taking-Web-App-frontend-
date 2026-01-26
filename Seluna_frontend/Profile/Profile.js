@@ -1,5 +1,4 @@
 const username = document.getElementById("username");
-const setting_page = document.getElementById("setting_page");
 
 document.addEventListener("DOMContentLoaded", loadUsername );
 
@@ -31,12 +30,95 @@ async function loadUsername() {
     }
 }
 
+const account_settings = document.getElementById("account_settings");
+const account_btn = document.getElementById("account");
+const note_settings = document.getElementById("note_settings");
+const note_btn = document.getElementById("note");
+
+const backup_settings = document.getElementById("backup_settings");
+const backup_btn = document.getElementById("backup");
+
+const security_settings = document.getElementById("security_settings");
+const security_btn = document.getElementById("security");
+
+const help_settings = document.getElementById("help_settings");
+const help_btn = document.getElementById("help");
+
 function account() {
     console.log("Account settings opened");
-    const account = document.getElementById("account");
-    account.style.backgroundColor = "#251e45";
+    account_settings.style.visibility = "visible";
+    note_settings.style.visibility = "hidden";
+    backup_settings.style.visibility = "hidden";
+    security_settings.style.visibility = "hidden";
+    help_settings.style.visibility = "hidden";
+
+    account_btn.style.backgroundColor = "#251e45";
+    note_btn.style.backgroundColor = "transparent";
+    backup_btn.style.backgroundColor = "transparent";
+    security_btn.style.backgroundColor = "transparent";
+    help_btn.style.backgroundColor = "transparent";
 }
 
 function change_name() {
     console.log("Change name clicked");
+}
+
+function note() {
+    console.log("Note settings opened");
+    account_settings.style.visibility = "hidden";
+    note_settings.style.visibility = "visible";
+    backup_settings.style.visibility = "hidden";
+    security_settings.style.visibility = "hidden";
+    help_settings.style.visibility = "hidden";
+
+    account_btn.style.backgroundColor = "transparent";
+    note_btn.style.backgroundColor = "#251e45";
+    backup_btn.style.backgroundColor = "transparent";
+    security_btn.style.backgroundColor = "transparent";
+    help_btn.style.backgroundColor = "transparent";
+}
+
+function backup() {
+    console.log("Backup settings opened");
+    account_settings.style.visibility = "hidden";
+    note_settings.style.visibility = "hidden";
+    backup_settings.style.visibility = "visible";
+    security_settings.style.visibility = "hidden";
+    help_settings.style.visibility = "hidden";
+
+    account_btn.style.backgroundColor = "transparent";
+    note_btn.style.backgroundColor = "transparent";
+    backup_btn.style.backgroundColor = "#251e45";
+    security_btn.style.backgroundColor = "transparent";
+    help_btn.style.backgroundColor = "transparent";
+}
+
+function security() {
+    console.log("Security settings opened");
+    account_settings.style.visibility = "hidden";
+    note_settings.style.visibility = "hidden";
+    backup_settings.style.visibility = "hidden";
+    security_settings.style.visibility = "visible";
+    help_settings.style.visibility = "hidden";
+
+    account_btn.style.backgroundColor = "transparent";
+    note_btn.style.backgroundColor = "transparent";
+    backup_btn.style.backgroundColor = "transparent";
+    security_btn.style.backgroundColor = "#251e45";
+    help_btn.style.backgroundColor = "transparent";
+}
+
+function help() {
+    console.log("Help settings opened");
+    account_settings.style.visibility = "hidden";
+    note_settings.style.visibility = "hidden";
+    backup_settings.style.visibility = "hidden";
+    security_settings.style.visibility = "hidden";
+    help_settings.style.visibility = "visible";
+
+    account_btn.style.backgroundColor = "transparent";
+    note_btn.style.backgroundColor = "transparent";
+    backup_btn.style.backgroundColor = "transparent";
+    security_btn.style.backgroundColor = "transparent";
+    help_btn.style.backgroundColor = "#251e45";
 }
