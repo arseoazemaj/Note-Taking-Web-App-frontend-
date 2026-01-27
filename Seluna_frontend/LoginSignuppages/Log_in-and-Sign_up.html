@@ -8,6 +8,28 @@
     </head>
     <body>
         <div id="container">
+            <form id="sign_up">
+                <h1 id="sign_up-text">Sign up</h1>
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <div id="password-container-1">
+                    <input type="password" id="Password" placeholder="Password (+8 characteres)" required>
+                    <span id="toggle-icon-1" onclick="togglePassword('Password', 'eye-icon-1', 'hidden-eye-icon-1')">
+                        <img src="../Icons/eye.png" alt="Eye Icon" id="eye-icon-1">
+                        <img src="../Icons/hidden-eye.png" alt="Hidden Eye Icon" id="hidden-eye-icon-1" style="display: none;">
+                    </span>
+                </div>
+                <div id="password-container-2">
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                    <span id="toggle-icon-2" onclick="togglePassword('confirmPassword', 'eye-icon-2', 'hidden-eye-icon-2')">
+                        <img src="../Icons/eye.png" alt="Eye Icon" id="eye-icon-2">
+                        <img src="../Icons/hidden-eye.png" alt="Hidden Eye Icon" id="hidden-eye-icon-2" style="display: none;">
+                    </span>
+                </div>
+                <button id="sign_up_btn" onclick="signup(event)" disabled>Sign up</button> <!--* Will create a new account-->
+            </form>
+
+
             <form id="log_in">
                 <h1 id="log_in-text">Log in</h1>
                 <input type="text" id="login_username" placeholder="Username" required>
@@ -30,27 +52,6 @@
                 <button id="have_acc2" onclick="go_to_log_in()">Log in</button> <!--* Will redirect to the login page-->
                 <button id="create_acc2" onclick="go_to_sign_up()">Sign up</button> <!--* Will redirect to the sign up page-->
             </div>
-            
-            <form id="sign_up">
-                <h1 id="sign_up-text">Sign up</h1>
-                <input type="text" id="username" placeholder="Username" required>
-                <input type="email" id="email" placeholder="Email" required>
-                <div id="password-container-1">
-                    <input type="password" id="Password" placeholder="Password (+8 characteres)" required>
-                    <span id="toggle-icon-1" onclick="togglePassword('Password', 'eye-icon-1', 'hidden-eye-icon-1')">
-                        <img src="../Icons/eye.png" alt="Eye Icon" id="eye-icon-1">
-                        <img src="../Icons/hidden-eye.png" alt="Hidden Eye Icon" id="hidden-eye-icon-1" style="display: none;">
-                    </span>
-                </div>
-                <div id="password-container-2">
-                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
-                    <span id="toggle-icon-2" onclick="togglePassword('confirmPassword', 'eye-icon-2', 'hidden-eye-icon-2')">
-                        <img src="../Icons/eye.png" alt="Eye Icon" id="eye-icon-2">
-                        <img src="../Icons/hidden-eye.png" alt="Hidden Eye Icon" id="hidden-eye-icon-2" style="display: none;">
-                    </span>
-                </div>
-                <button id="sign_up_btn" onclick="signup(event)" disabled>Sign up</button> <!--* Will create a new account-->
-            </form>
         </div>
 
 

@@ -18,9 +18,15 @@ const username = document.getElementById("username");
 const email = document.getElementById("email");
 const password = document.getElementById("Password");
 const confirmPassword = document.getElementById("confirmPassword");
+const eye_1 = document.getElementById("eye-icon-1");
+const hidden_eye_1 = document.getElementById("hidden-eye-icon-1");
+const eye_2 = document.getElementById("eye-icon-2");
+const hidden_eye_2 = document.getElementById("hidden-eye-icon-2");
 
 const loginUsername = document.getElementById("login_username");
 const loginPassword = document.getElementById("login_password");
+const eye_3 = document.getElementById("eye-icon-3");
+const hidden_eye_3 = document.getElementById("hidden-eye-icon-3");
 
 function go_to_log_in() {
     document.getElementById("sign_up").style.display = "none";
@@ -31,6 +37,12 @@ function go_to_log_in() {
     email.value = "";
     password.value = "";
     confirmPassword.value = "";
+    password.type = "password";
+    confirmPassword.type = "password";
+    eye_1.style.display = "inline";
+    hidden_eye_1.style.display = "none";
+    eye_2.style.display = "inline";
+    hidden_eye_2.style.display = "none";
 }
 
 function go_to_sign_up() {
@@ -40,6 +52,10 @@ function go_to_sign_up() {
     document.getElementById("redirect_sign_up").style.display = "flex";
     loginUsername.value = "";
     loginPassword.value = "";
+    password.type = "password";
+    confirmPassword.type = "password";
+    eye_3.style.display = "inline";
+    hidden_eye_3.style.display = "none";
 }
 
 document.addEventListener("DOMContentLoaded", function () {
