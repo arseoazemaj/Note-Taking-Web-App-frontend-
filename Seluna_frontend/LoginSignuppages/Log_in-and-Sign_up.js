@@ -16,8 +16,8 @@ function togglePassword(inputId, eyeId, hiddenEyeId) {
 
 const username = document.getElementById("username");
 const email = document.getElementById("email");
-const password = document.getElementById("Password");
-const confirmPassword = document.getElementById("confirmPassword");
+const sign_up_password = document.getElementById("Password");
+const sign_up_confirmPassword = document.getElementById("confirmPassword");
 const eye_1 = document.getElementById("eye-icon-1");
 const hidden_eye_1 = document.getElementById("hidden-eye-icon-1");
 const eye_2 = document.getElementById("eye-icon-2");
@@ -33,29 +33,49 @@ function go_to_log_in() {
     document.getElementById("log_in").style.display = "flex";
     document.getElementById("redirect_sign_up").style.display = "none";
     document.getElementById("redirect_log_in").style.display = "block";
+    
     username.value = "";
     email.value = "";
-    password.value = "";
-    confirmPassword.value = "";
-    password.type = "password";
-    confirmPassword.type = "password";
+    sign_up_password.value = "";
+    sign_up_confirmPassword.value = "";
+
+    sign_up_password.type = "password";
+    sign_up_confirmPassword.type = "password";
     eye_1.style.display = "inline";
     hidden_eye_1.style.display = "none";
     eye_2.style.display = "inline";
     hidden_eye_2.style.display = "none";
+
+    loginUsername.value = "";
+    loginPassword.value = "";
+    loginPassword.type = "password";    
+    eye_3.style.display = "inline";
+    hidden_eye_3.style.display = "none";
 }
 
 function go_to_sign_up() {
-    document.getElementById("log_in").style.display = "none";
     document.getElementById("sign_up").style.display = "flex";
-    document.getElementById("redirect_log_in").style.display = "none";
+    document.getElementById("log_in").style.display = "none";
     document.getElementById("redirect_sign_up").style.display = "flex";
+    document.getElementById("redirect_log_in").style.display = "none";
+
     loginUsername.value = "";
     loginPassword.value = "";
-    password.type = "password";
-    confirmPassword.type = "password";
+    loginPassword.type = "password";    
     eye_3.style.display = "inline";
     hidden_eye_3.style.display = "none";
+
+    username.value = "";
+    email.value = "";
+    sign_up_password.value = "";
+    sign_up_confirmPassword.value = "";
+
+    sign_up_password.type = "password";
+    sign_up_confirmPassword.type = "password";
+    eye_1.style.display = "inline";
+    hidden_eye_1.style.display = "none";
+    eye_2.style.display = "inline";
+    hidden_eye_2.style.display = "none";
 }
 
 document.addEventListener("DOMContentLoaded", function () {
