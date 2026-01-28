@@ -28,6 +28,7 @@ async function loadUsername() {
     } catch (error) {
         console.error("Failed to load username:", error);
     }
+    account();
 }
 
 const account_settings = document.getElementById("account_settings");

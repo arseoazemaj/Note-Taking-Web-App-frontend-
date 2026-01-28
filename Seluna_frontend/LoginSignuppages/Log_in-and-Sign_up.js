@@ -33,7 +33,7 @@ function go_to_log_in() {
     document.getElementById("log_in").style.display = "flex";
     document.getElementById("redirect_sign_up").style.display = "none";
     document.getElementById("redirect_log_in").style.display = "block";
-    
+
     username.value = "";
     email.value = "";
     sign_up_password.value = "";

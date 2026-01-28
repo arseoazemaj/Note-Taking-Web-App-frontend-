@@ -98,6 +98,17 @@ a, p, h1, h3, button, input {
     filter: drop-shadow(0 0 15px #1a1433);
 }
 
+#account_settings, #note_settings, #backup_settings, #security_settings, #help_settings {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+
+
+
+
+
 #username_change {
     position: relative;
     left: 50%;
