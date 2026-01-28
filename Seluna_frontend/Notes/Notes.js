@@ -353,6 +353,7 @@ function blur_backgroundHandler() {
             unlock_menu.classList.remove("show");
             continueUnlockBtn.disabled = true;
             unlock_password.value = "";
+            togglePassword();
         }
 
         if (download_menu.classList.contains("slide-in")) {
@@ -1068,6 +1069,22 @@ async function continue_lock() {
     } catch (error) {
         console.error("Lock error:", error);
         alert(error.message || "Error locking items.");
+    }
+}
+
+function togglePassword() {
+    const passwordInput = document.getElementById("unlock_password");
+    const eyeIcon = document.getElementById("eye_icon");
+    const hiddenEyeIcon = document.getElementById("hidden_eye_icon");
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeIcon.style.display = "none";
+        hiddenEyeIcon.style.display = "inline";
+    } else {
+        passwordInput.type = "password";
+        eyeIcon.style.display = "inline";
+        hiddenEyeIcon.style.display = "none";
     }
 }
 

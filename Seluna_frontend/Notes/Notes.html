@@ -158,7 +158,13 @@
     </div>
     <div id="unlock_menu">
         <h3 id="unlock_text">You are opening a locked note, you need to enter the password of the note in order to view or edit its content.</h3>
-        <input type="text" id="unlock_password" placeholder="Enter your password"> <!--Change to type="password"-->
+        <div class="password-wrapper">
+            <input type="password" id="unlock_password" placeholder="Enter your password">
+            <span id="toggle-icon-1" onclick="togglePassword('unlock_password', 'eye_icon', 'hidden_eye_icon')">
+                <img src="../Icons/eye.png" alt="Eye Icon" id="eye_icon">
+                <img src="../Icons/hidden-eye.png" alt="Hidden Eye Icon" id="hidden_eye_icon" style="display: none;">
+            </span> <!--* Will use the icons from the log in page -->
+        </div>
         <div id="unlock_btn">
             <button id="cancel_unlock" data-tap="cancel_unlock">Cancel</button>
             <button id="continue_unlock" data-tap="continue_unlock">Continue</button>
