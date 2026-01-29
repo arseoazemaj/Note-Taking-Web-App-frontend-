@@ -41,6 +41,11 @@ a {text-decoration: none;}
 
 input {
     font-size: 20px;
+    background-color: #1d1737;
+    border: none;
+    border-radius: 20px;
+    padding-left: 20px;
+    outline: none;
 }
 
 #title {
@@ -48,7 +53,6 @@ input {
     display: block;
     height: 35px;
     width: 65%;
-    border: 0px;
     font-size: 25px;
     position: absolute;
     top: 27px;
@@ -241,12 +245,6 @@ input {
     transform: translateX(-50%);
     height: 35px;
     width: 70%;
-    background-color: #1d1737;
-    border: none;
-    border-radius: 5px;
-    padding-top: 2px;
-    padding-left: 20px;
-    outline: none;
 }
 
 #lock_password {

@@ -8,7 +8,7 @@ body {
     100% {opacity: 1;}
 }
 
-h1, h3, p, a, button, input, input::placeholder {
+h1, h3, p, a, button {
     color: #ad7ecc;
 }
 

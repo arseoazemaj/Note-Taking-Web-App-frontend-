@@ -46,7 +46,6 @@ const help_settings = document.getElementById("help_settings");
 const help_btn = document.getElementById("help");
 
 function account() {
-    console.log("Account settings opened");
     account_settings.style.visibility = "visible";
     note_settings.style.visibility = "hidden";
     backup_settings.style.visibility = "hidden";
@@ -65,7 +64,6 @@ function change_name() {
 }
 
 function note() {
-    console.log("Note settings opened");
     account_settings.style.visibility = "hidden";
     note_settings.style.visibility = "visible";
     backup_settings.style.visibility = "hidden";
@@ -80,7 +78,6 @@ function note() {
 }
 
 function backup() {
-    console.log("Backup settings opened");
     account_settings.style.visibility = "hidden";
     note_settings.style.visibility = "hidden";
     backup_settings.style.visibility = "visible";
@@ -95,7 +92,6 @@ function backup() {
 }
 
 function security() {
-    console.log("Security settings opened");
     account_settings.style.visibility = "hidden";
     note_settings.style.visibility = "hidden";
     backup_settings.style.visibility = "hidden";
@@ -110,7 +106,6 @@ function security() {
 }
 
 function help() {
-    console.log("Help settings opened");
     account_settings.style.visibility = "hidden";
     note_settings.style.visibility = "hidden";
     backup_settings.style.visibility = "hidden";
