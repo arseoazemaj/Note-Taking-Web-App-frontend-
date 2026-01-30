@@ -591,10 +591,6 @@ input::selection {
     top: 60px;
     height: 35px;
     width: 77%;
-    border: none;
-    border-radius: 20px;
-    padding-left: 20px;
-    outline: none;
 }
 
 #folder_namer::placeholder {
