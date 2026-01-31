@@ -123,6 +123,34 @@ async function change_name() {
     }
 }
 
+async function change_email() {
+    try {
+        const token = localStorage.getItem("token");
+        const input = document.getElementById("email_change");
+
+        if (!token) return;
+
+        const response = await fetch("http://localhost:5216/api/account/change_email", {
+            method: "PUT",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                Email: input.value
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+
+        loadEmail();
+    } catch (err) {
+        console.error("Failed to update email:", err);
+    }
+}
+
 
 
 
