@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", loadUsername );
 async function loadUsername() {
     try {
         const token = localStorage.getItem("token");
+        const username_input = document.getElementById("username_change");
         if (!token) {
             console.error("No JWT token found");
             return;
@@ -25,6 +26,7 @@ async function loadUsername() {
 
         const data = await response.json();
         username.textContent = data.username;
+        username_input.value = data.username;
     } catch (error) {
         console.error("Failed to load username:", error);
     }

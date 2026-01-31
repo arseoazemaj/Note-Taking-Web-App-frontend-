@@ -45,9 +45,9 @@ h1, button, a {
 #username, #email, #login_username,
 #Password, #confirmPassword, #login_password {
     width: 100%;
-    padding: 10px 40px 10px 10px;
+    padding: 10px 36px 10px 20px;
     border: 0;
-    border-radius: 4px;
+    border-radius: 10px;
     background-color: #343438;
     color: #c7c5ff;
     caret-color: #c7c5ff;
@@ -69,7 +69,6 @@ h1, button, a {
 
 #toggle-icon-1, #toggle-icon-2, #toggle-icon-3, #eye-icon-1, #hidden-eye-icon-1, #eye-icon-2, #hidden-eye-icon-2, #eye-icon-3, #hidden-eye-icon-3 {
     position: absolute;
-    cursor: pointer;
 }
 
 #toggle-icon-1, #toggle-icon-2, #toggle-icon-3, #eye-icon-1, #hidden-eye-icon-1, #eye-icon-2, #hidden-eye-icon-2 {
@@ -99,7 +98,6 @@ h1, button, a {
     font-weight: bold;
     border: none;
     border-radius: 10px;
-    cursor: pointer;
     transition: background-color .3s ease, transform .2s ease;
     outline: none;
 }
@@ -121,7 +119,7 @@ h1, button, a {
     border-radius: 20px;
     z-index: 1;
     transition: background-color .3s;
-    cursor: pointer;
+    
 }
 
 #create_acc1, #create_acc2 { position: absolute; top: 3px; left: 5px; }

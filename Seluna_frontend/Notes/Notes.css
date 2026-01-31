@@ -12,7 +12,7 @@ input {
     font-size: 20px;
     background-color: #1d1737;
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
     padding-left: 20px;
     outline: none;
 }
@@ -843,7 +843,6 @@ input::selection {
     top: 50%;
     transform: translateY(-50%);
     position: absolute;
-    cursor: pointer;
 }
 
 #unlock_btn {
