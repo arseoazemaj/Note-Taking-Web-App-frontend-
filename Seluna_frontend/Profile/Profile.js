@@ -187,6 +187,29 @@ function change_password() {
     blur_background.style.visibility = "visible";
 }
 
+function togglePassword(event) {
+    const toggle = event.target.closest("span");
+    if (!toggle) return;
+
+    const wrapper = toggle.closest(".password-wrapper");
+    if (!wrapper) return;
+
+    const passwordInput = wrapper.querySelector("input");
+
+    const eyeIcon = toggle.querySelector(".eye_icon");
+    const hiddenEyeIcon = toggle.querySelector(".hidden_eye_icon");
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeIcon.style.display = "none";
+        hiddenEyeIcon.style.display = "inline";
+    } else {
+        passwordInput.type = "password";
+        eyeIcon.style.display = "inline";
+        hiddenEyeIcon.style.display = "none";
+    }
+}
+
 function cancel_password() {
     password_change_menu.classList.add("hide");
     password_change_menu.classList.remove("show");
@@ -224,7 +247,7 @@ function oldPasswordValidation() {
 
 const change_password_menu = document.getElementById("change_password");
 
-function continue_password() {
+function continue_password() { //*This will check if the password that the user entere is the same with the one in the DB
     console.log("Password chencked");
 
     const oldPassword_input = document.getElementById("old_password").value.trim();
@@ -246,31 +269,12 @@ function cancel_password_change() {
     continuePasswordBtn.disabled = true;
 }
 
-
-
-
-function togglePassword(event) {
-    const toggle = event.target.closest("span");
-    if (!toggle) return;
-
-    const wrapper = toggle.closest(".password-wrapper");
-    if (!wrapper) return;
-
-    const passwordInput = wrapper.querySelector("input");
-
-    const eyeIcon = toggle.querySelector(".eye_icon");
-    const hiddenEyeIcon = toggle.querySelector(".hidden_eye_icon");
-
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        eyeIcon.style.display = "none";
-        hiddenEyeIcon.style.display = "inline";
-    } else {
-        passwordInput.type = "password";
-        eyeIcon.style.display = "inline";
-        hiddenEyeIcon.style.display = "none";
-    }
+function save_password() { //*This will save the new password in the DB
+    console.log("Password changed");
 }
+
+
+
 
 
 
