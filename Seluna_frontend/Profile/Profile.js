@@ -129,18 +129,33 @@ const password_change_menu = document.getElementById("password_change_menu");
 
 function blur_backgroundHandler() {
     setTimeout(() => {
+        username_input.style.visibility = "visible";
+        email_input.style.visibility = "visible";
+        const oldPassword_input = document.getElementById("old_password");
+        oldPassword_input.value = "";
+        oldPassword_input.type = "password";
+        const newPassword = document.getElementById("new_password");
+        const confirmNewPassword = document.getElementById("confirm_new_password");
+        newPassword.value = "";
+        confirmNewPassword.value = "";
+        newPassword.type = "password";
+        confirmNewPassword.type = "password";
+
         if (password_change_menu.classList.contains("show")) {
             password_change_menu.classList.add("hide");
             password_change_menu.classList.remove("show");
-            username_input.style.visibility = "visible";
-            email_input.style.visibility = "visible";
-            const oldPassword_input = document.getElementById("old_password");
-            oldPassword_input.value = "";
-            oldPassword_input.type = "password";
             const eyeIcon = document.getElementById("eye_2");
             const hiddenEyeIcon = document.getElementById("hidden_eye_2");
             eyeIcon.style.display = "inline";
             hiddenEyeIcon.style.display = "none";
+            continuePasswordBtn.disabled = true;
+        }
+        if (change_password_menu.classList.contains("show")) {
+            change_password_menu.classList.add("hide");
+            change_password_menu.classList.remove("show");
+            continuePasswordBtn.disabled = true;
+            const savePasswordBtn = document.getElementById("save_password");
+            savePasswordBtn.disabled = true;
         }
 
         blur_background.style.visibility = "hidden";
@@ -247,12 +262,27 @@ function oldPasswordValidation() {
 
 const change_password_menu = document.getElementById("change_password");
 
-function continue_password() { //*This will check if the password that the user entere is the same with the one in the DB
-    console.log("Password chencked");
+async function continue_password() { //*This will check if the password that the user entere is the same with the one in the DB
+    const oldPassword = document.getElementById("old_password").value.trim();
+    if (!oldPassword) return;
 
-    const oldPassword_input = document.getElementById("old_password").value.trim();
-    const old_password = sanitize(oldPassword_input);
-    console.log(old_password);
+    const token = localStorage.getItem("token");
+
+    const response = await fetch("http://localhost:5216/api/account/check_password", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({ Password: oldPassword }) // matches your DTO
+    });
+
+    const result = await response.json();
+
+    if (!result.valid) {
+        alert("Wrong password");
+        return;
+    }
 
     change_password_menu.classList.add("show");
     change_password_menu.classList.remove("hide");
@@ -269,9 +299,72 @@ function cancel_password_change() {
     continuePasswordBtn.disabled = true;
 }
 
-function save_password() { //*This will save the new password in the DB
-    console.log("Password changed");
+async function save_password() {
+    const newPassword = document.getElementById("new_password");
+    const confirmNewPassword = document.getElementById("confirm_new_password");
+
+    if (!newPassword || !confirmNewPassword) {
+        console.error("Password inputs not found");
+        return;
+    }
+
+    const password = newPassword.value;
+    const confirm = confirmNewPassword.value;
+
+    if (password.length < 8 || password.includes(" ")) {
+        alert("Password too short or contains spaces");
+        return;
+    }
+
+    if (password !== confirm) {
+        alert("Passwords do not match");
+        return;
+    }
+
+    try {
+        const token = localStorage.getItem("token");
+        const response = await fetch("http://localhost:5216/api/account/change_password", {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ Password: password })
+        });
+
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        change_password_menu.classList.add("hide");
+        change_password_menu.classList.remove("show");
+        blur_backgroundHandler();
+    } catch (err) {
+        console.error(err);
+        alert("Failed to change password");
+    }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const newPassword = document.getElementById("new_password");
+    const confirmNewPassword = document.getElementById("confirm_new_password");
+    const savePasswordBtn = document.getElementById("save_password");
+
+    savePasswordBtn.disabled = true;
+
+    if (!newPassword || !confirmNewPassword || !savePasswordBtn) return;
+
+    newPassword.addEventListener("input", validateNewPasswordForm);
+    confirmNewPassword.addEventListener("input", validateNewPasswordForm);
+
+    function validateNewPasswordForm() {
+        const password = newPassword.value;
+        const confirmPassword = confirmNewPassword.value;
+
+        const longEnough = password.length >= 8;
+        const noSpaces = !password.includes(" ");
+        const passwordsMatch = password === confirmPassword;
+
+        savePasswordBtn.disabled = !(longEnough && noSpaces && passwordsMatch);
+    }
+});
 
 
 
