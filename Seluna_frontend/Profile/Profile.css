@@ -90,6 +90,17 @@ a, p, h1, h3, button, input {
     background-color: #251e45;
 }
 
+#blur_background {
+    visibility: hidden;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 200%;
+    z-index: 1;
+}
+
 #setting_page {
     position: fixed;
     top: 30%;
@@ -101,6 +112,7 @@ a, p, h1, h3, button, input {
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     filter: drop-shadow(0 0 15px #251e45);
+    z-index: 1;
 }
 
 #account_settings, #note_settings, #backup_settings, #security_settings, #help_settings {
@@ -111,7 +123,7 @@ a, p, h1, h3, button, input {
     gap: 15px
 }
 
-#name {
+#username_input, #email_input {
     position: relative;
     width: 80%;
     left: 20px;
@@ -134,7 +146,154 @@ a, p, h1, h3, button, input {
     fill: #ad7ecc;
 }
 
-#username_change:active, #password_change:active {
+#change_password_btn {
+    width: 100%;
+    height: 60px;
+    position: relative;
+    text-align: left;
+    left: 50%;
+    padding-left: 40px;
+    transform: translateX(-50%);
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+}
+
+#password_change_menu, #change_password {
+    visibility: hidden;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    border-radius: 30px;
+    background: #1d1737;
+    filter: drop-shadow(0 0 15px #1d1737);
+    z-index: 1;
+}
+
+#password_change_menu {
+    height: 60%;
+    padding: 20px;
+}
+
+#password_change_menu.show {animation: show_password_change_menu .5s forwards;}
+#password_change_menu.hide {animation: hide_password_change_menu .5s forwards;}
+
+@keyframes show_password_change_menu {
+    from { opacity: 0; visibility: hidden;}
+    to { opacity: 1; visibility: visible;}
+}
+
+@keyframes hide_password_change_menu {
+    from { opacity: 1; visibility: visible;}
+    to { opacity: 0; visibility: hidden;}
+}
+
+#change_password{
+    gap: 20px;
+    height: 70%;
+    width: 85%;
+    padding: 15px;
+}
+
+#change_password.show {animation: show_change_password .5s forwards;}
+#change_password.hide {animation: hide_change_password .5s forwards;}
+
+@keyframes show_change_password {
+    from { opacity: 0; visibility: hidden;}
+    to { opacity: 1; visibility: visible;}
+}
+
+@keyframes hide_change_password {
+    from { opacity: 1; visibility: visible;}
+    to { opacity: 0; visibility: hidden;}
+}
+
+@keyframes hide_password_change_menu {
+    from { opacity: 1; visibility: visible;}
+    to { opacity: 0; visibility: hidden;}
+}
+
+#old_password, #new_password, #confirm_new_password {
+    width: 100%;
+    height: 34px;
+    box-sizing: border-box;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #251e45;
+}
+
+#decide, #decide_password {
+    position: fixed;
+    left: 0px;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    column-gap: 30px;
+}
+
+#cancel_password, #continue_password, #cancel_password_change, #save_password {
+    height: 37px;
+    width: 40%;
+    background-color: transparent;
+    border-radius: 15px;
+    align-items: center;
+    border: none;
+    font-size: 17px;
+}
+
+#continue_password:disabled {
+    opacity: .5;
+    pointer-events: none;
+}
+
+#cancel_password:active, #continue_password:active, #cancel_password_change:active, #save_password:active {background-color: #251e45;}
+
+#change_password {
+    visibility: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+.password-wrapper {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+}
+
+.eye_icon, .hidden_eye_icon {
+    width: 25px;
+    height: 25px;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+}
+
+
+
+
+
+
+
+
+
+
+
+#username_change:active, #email_change:active, #change_password_btn:active {
     background-color: #1a1433;
 }
 

@@ -26,15 +26,55 @@
             <button class="menues" id="help" data-tap="help">Help</button>
         </div>
 
+        <!-- <div id="blur_background" ontouchstart="blur_backgroundHandler()"></div> -->
         <div id="setting_page">
             <div id="account_settings">
-                <div id="name">
+                <div id="username_input">
                     <input id="username_change" placeholder="Username">
                     <i data-lucide="pen" id="change_username_icon" data-tap="change_name"></i>
                 </div>
-                <div id="name">
-                    <input id="email_change" placeholder="Email">
+                <div id="email_input">
+                    <input id="email_change" type="email" placeholder="Email">
                     <i data-lucide="pen" id="change_email_icon" data-tap="change_email"></i>
+                </div>
+                <div id="password_menu">
+                    <button id="change_password_btn" data-tap="change_password">Change Password</button>
+                    <div id="blur_background" ontouchstart="blur_backgroundHandler()"></div>
+                    <div id="password_change_menu">
+                        <h3>Put your old password to confirm your identity.</h3>
+                        <div class="password-wrapper">
+                            <input id="old_password" type="password" placeholder="Current Password">
+                                <span id="toggle-icon-2" data-tap="togglePassword">
+                                    <img src="../Icons/eye.png" alt="Eye Icon" class="eye_icon" id="eye_2">
+                                    <img src="../Icons/hidden-eye.png" alt="Hidden Eye Icon" class="hidden_eye_icon" id="hidden_eye_2" style="display: none;">
+                                </span>
+                        </div>
+                        <div id="decide">
+                            <button id="cancel_password" data-tap="cancel_password">Cancel</button>
+                            <button id="continue_password" data-tap="continue_password">Continue</button>
+                        </div>
+                    </div>
+                    <div id="change_password">
+                        <h3>Enter your new strong password.</h3>
+                        <div class="password-wrapper">
+                            <input id="new_password" type="password" placeholder="New Password">
+                            <span id="toggle-icon-2" data-tap="togglePassword">
+                                <img src="../Icons/eye.png" alt="Eye Icon" class="eye_icon" id="eye_2">
+                                <img src="../Icons/hidden-eye.png" alt="Hidden Eye Icon" class="hidden_eye_icon" id="hidden_eye_2" style="display: none;">
+                            </span>
+                        </div>
+                        <div class="password-wrapper">
+                            <input id="confirm_new_password" type="password" placeholder="Confirm New Password">
+                            <span id="toggle-icon-3" data-tap="togglePassword">
+                                <img src="../Icons/eye.png" alt="Eye Icon" class="eye_icon" id="eye_3">
+                                <img src="../Icons/hidden-eye.png" alt="Hidden Eye Icon" class="hidden_eye_icon" id="hidden_eye_3" style="display: none;">
+                            </span>
+                        </div>
+                        <div id="decide_password">
+                            <button id="cancel_password_change" data-tap="cancel_password_change">Cancel</button>
+                            <button id="save_password" data-tap="save_password">Save</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="note_settings">
