@@ -18,6 +18,10 @@ menuOpener.addEventListener("touchstart", () => {
     }
 });
 
+function Profile () {
+    window.location.href = "../Profile/Profile.html";
+}
+
 function Select_off() {
     const noteBox = document.querySelector(".note-box.selected");
     if (noteBox) {

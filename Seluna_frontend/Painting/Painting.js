@@ -30,3 +30,7 @@ if (paintButton) {
         }
     });
 }
+
+function Profile () {
+    window.location.href = "../Profile/Profile.html";
+}

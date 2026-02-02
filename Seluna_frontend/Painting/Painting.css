@@ -59,18 +59,27 @@ h1 {
 
 #pages {
     position: sticky;
-    top: 10%;
+    top: 15%;
 }
 
-#profile {
-    display: flex;
-    height: 50px;
-    width: 50px;
-    background-color: red;
+#icon {
+    position: absolute;
+    height: 65px;
+    width: 65px;
+    background-color: #251e45;
     border-radius: 50%;
+    box-shadow: 0 0 30px 5px #251e45;
+    top: -80%;
+    left: 20px;
+}
+
+#user_icon {
     position: relative;
-    top: 2%;
-    left: 10%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    scale: 1.1;
+    color: #ad7ecc;
 }
 
 #note, #painting, #trash {
