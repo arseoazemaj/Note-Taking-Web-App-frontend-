@@ -95,7 +95,7 @@ async function change_name() {
     }
 }
 
-async function change_email() {
+async function change_email() { //*Will have something to verify the email later*
     try {
         const token = localStorage.getItem("token");
         const input = document.getElementById("email_change");

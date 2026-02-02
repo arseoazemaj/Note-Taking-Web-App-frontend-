@@ -56,6 +56,20 @@ a, p, h1, h3, button, input {
     color: #ad7ecc;
 }
 
+#change_pic {
+    position: fixed;
+    background: #251e45;
+    height: 370px;
+    width: 80%;
+    padding: 20px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+    filter: drop-shadow(0 0 15px #302758);
+    z-index: 2;
+}
+
 #username {
     position: relative;
     top: -5px;
