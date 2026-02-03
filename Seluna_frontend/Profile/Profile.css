@@ -57,6 +57,7 @@ a, p, h1, h3, button, input {
 }
 
 #change_pic {
+    visibility: hidden;
     position: fixed;
     background: #251e45;
     height: 370px;
@@ -68,6 +69,19 @@ a, p, h1, h3, button, input {
     border-radius: 30px;
     filter: drop-shadow(0 0 15px #302758);
     z-index: 2;
+}
+
+#change_pic.show {animation: show_change_pic .5s forwards;}
+#change_pic.hide {animation: hide_change_pic .5s forwards;}
+
+@keyframes show_change_pic {
+    from { opacity: 0; visibility: hidden;}
+    to { opacity: 1; visibility: visible;}
+}
+
+@keyframes hide_change_pic {
+    from { opacity: 1; visibility: visible;}
+    to { opacity: 0; visibility: hidden;}
 }
 
 #username {

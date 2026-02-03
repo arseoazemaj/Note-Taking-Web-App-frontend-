@@ -67,17 +67,16 @@ a, p, h1, h3, button {
 
 #pages {
     position: sticky;
-    top: 15%;
+    top: 3%;
 }
 
 #icon {
-    position: absolute;
+    position: relative;
     height: 65px;
     width: 65px;
     background-color: #251e45;
     border-radius: 50%;
     box-shadow: 0 0 30px 5px #251e45;
-    top: -80%;
     left: 20px;
 }
 
@@ -88,6 +87,14 @@ a, p, h1, h3, button {
     transform: translate(-50%, -50%);
     scale: 1.1;
     color: #ad7ecc;
+}
+
+#username {
+    position: relative;
+    left: 25px;
+    width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #note, #painting, #trash {

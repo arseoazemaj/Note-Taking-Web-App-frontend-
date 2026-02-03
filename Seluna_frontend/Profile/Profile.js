@@ -3,39 +3,16 @@ const username = document.getElementById("username");
 document.addEventListener("DOMContentLoaded", first );
 
 function first() {
-    loadUsername();
     loadEmail();
     account();
 }
 
-async function loadUsername() {
-    try {
-        const token = localStorage.getItem("token");
-        const username_input = document.getElementById("username_change");
-        if (!token) {
-            console.error("No JWT token found");
-            return;
-        }
 
-        const response = await fetch("http://localhost:5216/api/account/get_username", {
-                method: "GET",
-                headers: {
-                    "Authorization": `Bearer ${token}`,
-                    "Content-Type": "application/json"
-                }
-            }
-        );
-
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-        }
-
-        const data = await response.json();
-        username.textContent = data.username;
-        username_input.value = data.username;
-    } catch (error) {
-        console.error("Failed to load username:", error);
-    }
+function profile_icon() {
+    const change_pic_menu = document.getElementById("change_pic");
+    change_pic_menu.classList.add("show");
+    change_pic_menu.classList.remove("hide");
+    blur_background.style.visibility = "visible";
 }
 
 async function loadEmail() {
@@ -140,6 +117,13 @@ function blur_backgroundHandler() {
         confirmNewPassword.value = "";
         newPassword.type = "password";
         confirmNewPassword.type = "password";
+
+        const change_pic_menu = document.getElementById("change_pic");
+
+        if (change_pic_menu.classList.contains("show")) {
+            change_pic_menu.classList.add("hide");
+            change_pic_menu.classList.remove("show");
+        }
 
         if (password_change_menu.classList.contains("show")) {
             password_change_menu.classList.add("hide");
