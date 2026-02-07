@@ -163,7 +163,7 @@ a, p, h1, h3, button, input {
     box-sizing: border-box;
 }
 
-#change_username_icon, #change_email_icon {
+#change_username_btn, #change_email_btn {
     width: 25px;
     height: 25px;
     position: absolute;
@@ -174,9 +174,10 @@ a, p, h1, h3, button, input {
     fill: #ad7ecc;
 }
 
-#change_email_icon:disabled {
+#change_email_btn.disabled {
     opacity: .5;
     pointer-events: none;
+    cursor: not-allowed;
 }
 
 #change_password_btn {

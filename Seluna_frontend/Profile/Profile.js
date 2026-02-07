@@ -72,12 +72,34 @@ async function change_name() {
     }
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    const emailInput = document.getElementById("email_change");
+    const changeEmailBtn = document.getElementById("change_email_btn");
+
+    function validateEmail() {
+        const email = emailInput.value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (emailRegex.test(email)) {
+            changeEmailBtn.classList.remove("disabled");
+        } else {
+            changeEmailBtn.classList.add("disabled");
+        }
+    }
+
+    emailInput.addEventListener("input", validateEmail);
+
+    validateEmail();
+});
+
 async function change_email() { //*Will have something to verify the email later*
     try {
         const token = localStorage.getItem("token");
         const input = document.getElementById("email_change");
+        const changeEmailBtn = document.getElementById("change_email_btn");
 
         if (!token) return;
+        if (changeEmailBtn.classList.contains("disabled")) return;
 
         const response = await fetch("http://localhost:5216/api/account/change_email", {
             method: "PUT",
