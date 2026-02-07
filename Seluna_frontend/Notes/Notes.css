@@ -96,26 +96,18 @@ input::selection {
 
 #icon {
     position: relative;
-    height: 65px;
-    width: 65px;
+    top: 10px;
+    left: 20px;
+    height: 75px;
     background-color: #251e45;
     border-radius: 50%;
     box-shadow: 0 0 30px 5px #251e45;
-    left: 20px;
-}
-
-#user_icon {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    scale: 1.1;
-    color: #ad7ecc;
 }
 
 #username {
     position: relative;
-    left: 25px;
+    top: -5px;
+    left: 30px;
     width: 120px;
     overflow: hidden;
     text-overflow: ellipsis;

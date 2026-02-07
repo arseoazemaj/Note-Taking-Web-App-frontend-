@@ -38,22 +38,12 @@ a, p, h1, h3, button, input {
 
 #icon {
     position: relative;
-    height: 65px;
-    width: 65px;
+    height: 75px;
     background-color: #251e45;
     border-radius: 50%;
     box-shadow: 0 0 30px 5px #251e45;
-    top: 10px;
-    left: 20px;
-}
-
-#user_icon {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    scale: 1.1;
-    color: #ad7ecc;
+    top: 5px;
+    left: 34px;
 }
 
 #change_pic {
@@ -86,8 +76,8 @@ a, p, h1, h3, button, input {
 
 #username {
     position: relative;
-    top: -5px;
-    left: 25px;
+    top: -10px;
+    left: 40px;
     width: 70px;
     overflow: hidden;
     text-overflow: ellipsis;
