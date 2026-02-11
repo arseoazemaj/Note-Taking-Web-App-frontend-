@@ -9,9 +9,9 @@ function first() {
 
 
 function profile_icon() {
-    const change_pic_menu = document.getElementById("change_pic");
-    change_pic_menu.classList.add("show");
-    change_pic_menu.classList.remove("hide");
+    const change_icon = document.getElementById("change_icon");
+    change_icon.classList.add("show");
+    change_icon.classList.remove("hide");
     blur_background.style.visibility = "visible";
 }
 
@@ -89,7 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     emailInput.addEventListener("input", validateEmail);
 
-    validateEmail();
 });
 
 async function change_email() { //*Will have something to verify the email later*
@@ -140,11 +139,11 @@ function blur_backgroundHandler() {
         newPassword.type = "password";
         confirmNewPassword.type = "password";
 
-        const change_pic_menu = document.getElementById("change_pic");
+        const change_icon = document.getElementById("change_icon");
 
-        if (change_pic_menu.classList.contains("show")) {
-            change_pic_menu.classList.add("hide");
-            change_pic_menu.classList.remove("show");
+        if (change_icon.classList.contains("show")) {
+            change_icon.classList.add("hide");
+            change_icon.classList.remove("show");
         }
 
         if (password_change_menu.classList.contains("show")) {

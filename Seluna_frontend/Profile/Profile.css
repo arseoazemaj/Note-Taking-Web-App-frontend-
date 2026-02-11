@@ -46,10 +46,10 @@ a, p, h1, h3, button, input {
     left: 34px;
 }
 
-#change_pic {
+#change_icon {
     visibility: hidden;
     position: fixed;
-    background: #251e45;
+    background: #120f20;
     height: 370px;
     width: 80%;
     padding: 20px;
@@ -57,21 +57,51 @@ a, p, h1, h3, button, input {
     top: 50%;
     transform: translate(-50%, -50%);
     border-radius: 30px;
-    filter: drop-shadow(0 0 15px #302758);
+    filter: drop-shadow(0 0 15px #120f20);
     z-index: 2;
 }
 
-#change_pic.show {animation: show_change_pic .5s forwards;}
-#change_pic.hide {animation: hide_change_pic .5s forwards;}
+#change_icon.show {animation: show_change_icon .5s forwards;}
+#change_icon.hide {animation: hide_change_icon .5s forwards;}
 
-@keyframes show_change_pic {
+@keyframes show_change_icon {
     from { opacity: 0; visibility: hidden;}
     to { opacity: 1; visibility: visible;}
 }
 
-@keyframes hide_change_pic {
+@keyframes hide_change_icon {
     from { opacity: 1; visibility: visible;}
     to { opacity: 0; visibility: hidden;}
+}
+
+#icon_on_page {
+    height: 100px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+}
+
+#change_icon_menu {
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(27%, 1fr));
+    row-gap: 25px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 55%;
+    overflow-y: overlay;
+}
+
+.images {
+    position: relative;
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100px;
 }
 
 #username {
