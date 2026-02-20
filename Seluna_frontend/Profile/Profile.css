@@ -49,7 +49,7 @@ a, p, h1, h3, button, input {
 #change_icon {
     visibility: hidden;
     position: fixed;
-    background: #120f20;
+    background: #1d1737;
     height: 370px;
     width: 80%;
     padding: 20px;
@@ -57,7 +57,7 @@ a, p, h1, h3, button, input {
     top: 50%;
     transform: translate(-50%, -50%);
     border-radius: 30px;
-    filter: drop-shadow(0 0 15px #120f20);
+    filter: drop-shadow(0 0 15px #1d1737);
     z-index: 2;
 }
 
