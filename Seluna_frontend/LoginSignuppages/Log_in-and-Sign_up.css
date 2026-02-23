@@ -9,6 +9,11 @@ h1, button, a {
     -webkit-tap-highlight-color: transparent;
 }
 
+input::placeholder {
+    color: #ad7ecc;
+    font-weight: bold;
+}
+
 #sign_up-text, #log_in-text {
     position: absolute;
     top: -29%;
@@ -32,11 +37,11 @@ h1, button, a {
     gap: 10px;
     padding: 20px;
     border-radius: 8px;
-    background-color: #4e2a88d6;
+    background-color: #1d1737;
     width: 250px;
     position: absolute;
     top: 150px;
-    box-shadow: 0 0 30px 10px #4e2a88d6;
+    box-shadow: 0 0 30px 10px #1d1737d6;
 }
 
 #log_in { height: 240px; display: none; }
@@ -48,9 +53,8 @@ h1, button, a {
     padding: 10px 36px 10px 20px;
     border: 0;
     border-radius: 10px;
-    background-color: #343438;
-    color: #c7c5ff;
-    caret-color: #c7c5ff;
+    color: #ad7ecc;
+    background-color: #251e45;
     font-size: 15px;
     outline: none;
     box-sizing: border-box;
@@ -92,8 +96,8 @@ h1, button, a {
 #log_in_btn, #sign_up_btn {
     width: 66%;
     margin: 0 auto;
-    background-color: #4a1b95;
-    color: #fff;
+    background-color: transparent;
+    color: #ad7ecc;
     font-size: 26px;
     font-weight: bold;
     border: none;
@@ -103,23 +107,30 @@ h1, button, a {
 }
 
 #log_in_btn { margin-top: 13px; margin-left: 34px; }
-#log_in_btn:active, #sign_up_btn:active { transform: scale(.97); }
+#log_in_btn:active, #sign_up_btn:active { 
+    transform: scale(.97);
+    background-color: #1e134f;
+}
+
 #log_in_btn:disabled, #sign_up_btn:disabled {
-    background-color: #4a1b95;
-    color: #666;
+    background-color: transparent;
+    color: #513961;
+
+
+
     cursor: not-allowed;
 }
 
 #create_acc1, #create_acc2, #have_acc1, #have_acc2 {
     border: none;
-    background-color: #4e2a88d6;
+    background-color: transparent;
+    color: #ad7ecc;
     width: 130px;
     height: 40px;
     font-size: 23px;
     border-radius: 20px;
     z-index: 1;
     transition: background-color .3s;
-    
 }
 
 #create_acc1, #create_acc2 { position: absolute; top: 3px; left: 5px; }
@@ -132,7 +143,6 @@ h1, button, a {
 #redirect_log_in, #redirect_sign_up {
     width: 290px;
     height: 45px;
-    background-color: #4e2a88d6;
     border-radius: 7px;
     position: relative;
     z-index: 1;
@@ -146,6 +156,6 @@ h1, button, a {
     position: absolute;
     top: 63%;
     left: 78px;
-    width: 163px;
     text-decoration: none;
+    color: #ad7ecc;
 }
