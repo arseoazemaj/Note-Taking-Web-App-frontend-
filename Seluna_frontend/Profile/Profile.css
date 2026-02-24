@@ -318,15 +318,6 @@ a, p, h1, h3, button, input {
     visibility: hidden;
 }
 
-
-
-
-
-
-
-
-
-
 .password-wrapper {
     position: relative;
     left: 50%;
@@ -343,15 +334,12 @@ a, p, h1, h3, button, input {
     position: absolute;
 }
 
-
-
-
-
-
-
-
-
-
+#forgot {
+    position: absolute;
+    top: 63%;
+    left: 78px;
+    text-decoration: none;
+}
 
 #username_change:active, #email_change:active, #change_password_btn:active {
     background-color: #1a1433;
