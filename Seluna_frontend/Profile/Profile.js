@@ -371,6 +371,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+function open_log_out() {
+    console.log("Logging out...");
+    
+}
+
 
 
 

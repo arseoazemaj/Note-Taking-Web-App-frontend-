@@ -59,8 +59,10 @@
                     <input id="email_change" type="email" placeholder="Email">
                     <i data-lucide="pen" id="change_email_btn" data-tap="change_email"></i>
                 </div>
-                <div id="password_menu">
-                    <button id="change_password_btn" data-tap="change_password">Change Password</button>
+                <div>
+                    <button id="change_password_btn" data-tap="change_password">Change Password
+                        <i data-lucide="chevron-right" id="right"></i>
+                    </button>
                     <div id="blur_background" ontouchstart="blur_backgroundHandler()"></div>
                     <div id="password_change_menu">
                         <h3>Put your old password to confirm your identity.</h3>
@@ -100,7 +102,15 @@
                     </div>
                 </div>
                 <div>
-                    <button id="log_out">Log out</button>
+                    <button id="log_out" data-tap="open_log_out">Log Out
+                        <i data-lucide="chevron-right" id="right"></i>
+                    </button>
+                    <div id="log_out_page"></div>
+                </div>
+                <div>
+                    <button id="delete_account" data-tap="open_delete_account">Delete Account
+                        <i data-lucide="chevron-right" id="right"></i>
+                    </button>
                 </div>
             </div>
             <div id="note_settings">

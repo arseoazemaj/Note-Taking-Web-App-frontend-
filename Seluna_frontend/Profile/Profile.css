@@ -174,7 +174,7 @@ a, p, h1, h3, button, input {
     position: absolute;
     top: 15px;
     width: 100%;
-    gap: 15px
+    gap: 25px;
 }
 
 #username_input, #email_input {
@@ -206,17 +206,22 @@ a, p, h1, h3, button, input {
     cursor: not-allowed;
 }
 
-#change_password_btn {
-    width: 100%;
-    height: 60px;
+#change_password_btn, #log_out, #delete_account {
+    width: 80%;
+    height: 40px;
     position: relative;
-    text-align: left;
-    left: 50%;
-    padding-left: 40px;
+    left: 45%;
     transform: translateX(-50%);
-    background-color: transparent;
+    text-align: left;
+    padding-left: 20px;
     border: none;
     font-size: 17px;
+    background-color: #1a1433;
+    border-radius: 5px;
+}
+
+#delete_account {
+    color: #FF2E63;
 }
 
 #password_change_menu, #change_password {
@@ -342,23 +347,32 @@ a, p, h1, h3, button, input {
     text-decoration: none;
 }
 
-#log_out {
-    width: 100%;
-    height: 60px;
-    position: relative;
-    text-align: left;
+#log_out_page {
+    visibility: hidden;
+    position: fixed;
     left: 50%;
-    padding-left: 40px;
-    transform: translateX(-50%);
-    background-color: transparent;
-    border: none;
-    font-size: 17px;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    height: 75%;
+    width: 90%;
+    border-radius: 30px;
+    background: #1d1737;
+    filter: drop-shadow(0 0 15px #1d1737);
+}
+
+#right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
 }
 
 
 /* For the pages and the buttons for there */
-#username_change:active, #email_change:active, #change_password_btn:active, #log_out:active {
-    background-color: #1a1433;
+#username_change:active, #email_change:active, #change_password_btn:active, #log_out:active, #delete_account:active {
+    background-color: #140f27;
 }
 
 #note_settings, #backup_settings, #security_settings, #help_settings {
