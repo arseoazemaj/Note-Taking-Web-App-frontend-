@@ -372,8 +372,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function open_log_out() {
-    console.log("Logging out...");
-    
+    const log_out_page = document.getElementById("log_out_page");
+    log_out_page.style.visibility = "visible";
+    // localStorage.removeItem("token");
+    // window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html"
 }
 
 

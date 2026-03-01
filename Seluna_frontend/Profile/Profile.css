@@ -217,7 +217,7 @@ a, p, h1, h3, button, input {
     border: none;
     font-size: 17px;
     background-color: #1a1433;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 #delete_account {
@@ -360,6 +360,7 @@ a, p, h1, h3, button, input {
     border-radius: 30px;
     background: #1d1737;
     filter: drop-shadow(0 0 15px #1d1737);
+    z-index: 1;
 }
 
 #right {
@@ -368,7 +369,6 @@ a, p, h1, h3, button, input {
     transform: translateY(-50%);
     right: 0;
 }
-
 
 /* For the pages and the buttons for there */
 #username_change:active, #email_change:active, #change_password_btn:active, #log_out:active, #delete_account:active {
