@@ -162,6 +162,10 @@ function blur_backgroundHandler() {
             const savePasswordBtn = document.getElementById("save_password");
             savePasswordBtn.disabled = true;
         }
+        if (log_out_page.classList.contains("show")) {
+            log_out_page.classList.add("hide");
+            log_out_page.classList.remove("show");
+        }
 
         blur_background.style.visibility = "hidden";
     }, 100);
@@ -182,17 +186,20 @@ const help_settings = document.getElementById("help_settings");
 const help_btn = document.getElementById("help");
 
 function account() {
+    account_btn.style.backgroundColor = "#251e45";
+        username_input.style.visibility = "visible";
+        email_input.style.visibility = "visible";
+
+    note_btn.style.backgroundColor = "transparent";
+    backup_btn.style.backgroundColor = "transparent";
+    security_btn.style.backgroundColor = "transparent";
+    help_btn.style.backgroundColor = "transparent";
+
     account_settings.style.visibility = "visible";
     note_settings.style.visibility = "hidden";
     backup_settings.style.visibility = "hidden";
     security_settings.style.visibility = "hidden";
     help_settings.style.visibility = "hidden";
-
-    account_btn.style.backgroundColor = "#251e45";
-    note_btn.style.backgroundColor = "transparent";
-    backup_btn.style.backgroundColor = "transparent";
-    security_btn.style.backgroundColor = "transparent";
-    help_btn.style.backgroundColor = "transparent";
 }
 
 const username_input = document.getElementById("username_input");
@@ -279,7 +286,7 @@ async function continue_password() { //*This will check if the password that the
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
         },
-        body: JSON.stringify({ Password: oldPassword }) // matches your DTO
+        body: JSON.stringify({ Password: oldPassword })
     });
 
     const result = await response.json();
@@ -373,7 +380,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function open_log_out() {
     const log_out_page = document.getElementById("log_out_page");
-    log_out_page.style.visibility = "visible";
+    log_out_page.classList.add("show");
+    log_out_page.classList.remove("hide");
+    blur_background.style.visibility = "visible";
     // localStorage.removeItem("token");
     // window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html"
 }
@@ -388,57 +397,69 @@ function open_log_out() {
 
 
 function note() {
-    account_settings.style.visibility = "hidden";
-    note_settings.style.visibility = "visible";
-    backup_settings.style.visibility = "hidden";
-    security_settings.style.visibility = "hidden";
-    help_settings.style.visibility = "hidden";
-
     account_btn.style.backgroundColor = "transparent";
     note_btn.style.backgroundColor = "#251e45";
     backup_btn.style.backgroundColor = "transparent";
     security_btn.style.backgroundColor = "transparent";
     help_btn.style.backgroundColor = "transparent";
+
+    account_settings.style.visibility = "hidden";
+        username_input.style.visibility = "hidden";
+        email_input.style.visibility = "hidden";
+
+    note_settings.style.visibility = "visible";
+    backup_settings.style.visibility = "hidden";
+    security_settings.style.visibility = "hidden";
+    help_settings.style.visibility = "hidden";
 }
 
 function backup() {
-    account_settings.style.visibility = "hidden";
-    note_settings.style.visibility = "hidden";
-    backup_settings.style.visibility = "visible";
-    security_settings.style.visibility = "hidden";
-    help_settings.style.visibility = "hidden";
-
     account_btn.style.backgroundColor = "transparent";
     note_btn.style.backgroundColor = "transparent";
     backup_btn.style.backgroundColor = "#251e45";
     security_btn.style.backgroundColor = "transparent";
     help_btn.style.backgroundColor = "transparent";
+
+    account_settings.style.visibility = "hidden";
+        username_input.style.visibility = "hidden";
+        email_input.style.visibility = "hidden";
+
+    note_settings.style.visibility = "hidden";
+    backup_settings.style.visibility = "visible";
+    security_settings.style.visibility = "hidden";
+    help_settings.style.visibility = "hidden";
 }
 
 function security() {
-    account_settings.style.visibility = "hidden";
-    note_settings.style.visibility = "hidden";
-    backup_settings.style.visibility = "hidden";
-    security_settings.style.visibility = "visible";
-    help_settings.style.visibility = "hidden";
-
     account_btn.style.backgroundColor = "transparent";
     note_btn.style.backgroundColor = "transparent";
     backup_btn.style.backgroundColor = "transparent";
     security_btn.style.backgroundColor = "#251e45";
     help_btn.style.backgroundColor = "transparent";
+
+    account_settings.style.visibility = "hidden";
+        username_input.style.visibility = "hidden";
+        email_input.style.visibility = "hidden";
+
+    note_settings.style.visibility = "hidden";
+    backup_settings.style.visibility = "hidden";
+    security_settings.style.visibility = "visible";
+    help_settings.style.visibility = "hidden";
 }
 
 function help() {
-    account_settings.style.visibility = "hidden";
-    note_settings.style.visibility = "hidden";
-    backup_settings.style.visibility = "hidden";
-    security_settings.style.visibility = "hidden";
-    help_settings.style.visibility = "visible";
-
     account_btn.style.backgroundColor = "transparent";
     note_btn.style.backgroundColor = "transparent";
     backup_btn.style.backgroundColor = "transparent";
     security_btn.style.backgroundColor = "transparent";
     help_btn.style.backgroundColor = "#251e45";
+
+    account_settings.style.visibility = "hidden";
+        username_input.style.visibility = "hidden";
+        email_input.style.visibility = "hidden";
+
+    note_settings.style.visibility = "hidden";
+    backup_settings.style.visibility = "hidden";
+    security_settings.style.visibility = "hidden";
+    help_settings.style.visibility = "visible";
 }
