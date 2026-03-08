@@ -12,7 +12,7 @@
     </a>
 
     <div id="user">
-        <img src="../Icons/User_Icons/User_Icon_1.png" id="icon" data-tap="profile_icon">1111
+        <img src="../Icons/User_Icons/User_Icon_1.png" id="icon" data-tap="profile_icon">
         <div id="change_icon">
             <img src="../Icons/User_Icons/User_Icon_1.png" id="icon_on_page" data-tap="profile_icon">
             <div id="change_icon_menu">
@@ -105,7 +105,14 @@
                     <button id="log_out" data-tap="open_log_out">Log Out
                         <i data-lucide="chevron-right" id="right"></i>
                     </button>
-                    <div id="log_out_page"></div>
+                    <div id="log_out_page">
+                        <h3 id="log_out_text">Are you sure you want to log out from this device?<br>You will remain logged in on other devices.
+                        </h3>
+                        <div id="log_out_decision">
+                            <button id="no_log_out" data-tap="do_not_log_out">No</button>
+                            <button id="yes_log_out" data-tap="do_log_out">Yes</button>
+                        </div>
+                    </div>
                 </div>
                 <div>
                     <button id="delete_account" data-tap="open_delete_account">Delete Account

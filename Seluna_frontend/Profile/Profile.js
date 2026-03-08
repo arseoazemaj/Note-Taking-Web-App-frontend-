@@ -383,8 +383,15 @@ function open_log_out() {
     log_out_page.classList.add("show");
     log_out_page.classList.remove("hide");
     blur_background.style.visibility = "visible";
-    // localStorage.removeItem("token");
-    // window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html"
+}
+
+function do_not_log_out() {
+    blur_backgroundHandler();
+}
+
+function do_log_out() {
+    localStorage.removeItem("token");
+    window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
 }
 
 
