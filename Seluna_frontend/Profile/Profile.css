@@ -342,36 +342,87 @@ a, p, h1, h3, button, input {
     text-decoration: none;
 }
 
-#log_out_page {
+#log_out_page, #delete_page, #continue_delete_page {
     visibility: hidden;
     position: fixed;
     left: 50%;
-    top: 40%;
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
-    height: 65%;
-    width: 90%;
     border-radius: 30px;
     background: #1d1737;
     filter: drop-shadow(0 0 15px #1d1737);
     z-index: 1;
 }
 
-#log_out_page.show {animation: show_log_out_page .5s forwards;}
-#log_out_page.hide {animation: hide_log_out_page .5s forwards;}
+#log_out_page {
+    height: 45%;
+    width: 90%;
+    top: 40%;
+}
 
-@keyframes show_log_out_page {
+#delete_page {
+    height: 65%;
+    width: 95%;
+    top: 40%;
+}
+
+#continue_delete_page {
+    height: 100%;
+    width: 95%;
+    top: 50%;
+}
+
+#log_out_page.show {animation: show_log_out .5s forwards;}
+#log_out_page.hide {animation: hide_log_out .5s forwards;}
+
+@keyframes show_log_out {
     from { opacity: 0; visibility: hidden;}
     to { opacity: 1; visibility: visible;}
 }
 
-@keyframes hide_log_out_page {
+@keyframes hide_log_out {
     from { opacity: 1; visibility: visible;}
     to { opacity: 0; visibility: hidden;}
 }
 
-#log_out_text {
+#delete_page.show {animation: show_delete_page .5s forwards;}
+#delete_page.hide {animation: hide_delete_page .5s forwards;}
+
+@keyframes show_delete_page {
+    from { opacity: 0; visibility: hidden;}
+    to { opacity: 1; visibility: visible;}
+}
+
+@keyframes hide_delete_page {
+    from { opacity: 1; visibility: visible;}
+    to { opacity: 0; visibility: hidden;}
+}
+
+#continue_delete_page.show {animation: show_confirm_delete_page .5s forwards;}
+#continue_delete_page.hide {animation: hide_confirm_delete_page .5s forwards;}
+
+@keyframes show_confirm_delete_page {
+    from { opacity: 0; visibility: hidden;}
+    to { opacity: 1; visibility: visible;}
+}
+
+@keyframes hide_confirm_delete_page {
+    from { opacity: 1; visibility: visible;}
+    to { opacity: 0; visibility: hidden;}
+}
+
+#confirm_delete_password {
+    background-color: #251e45;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 21%;
+    height: 35px;
+    width: 80%;
+}
+
+#log_out_message, #delete_message, #confirm_delete_message {
     width: 80%;
     position: absolute;
     top: 30px;
@@ -379,7 +430,7 @@ a, p, h1, h3, button, input {
     transform: translateX(-50%);
 }
 
-#log_out_decision {
+#log_out_decision, #delete_decision, #continue_delete_decision {
     position: fixed;
     bottom: 15px;
     column-gap: 30px;
@@ -388,7 +439,7 @@ a, p, h1, h3, button, input {
     transform: translateX(-50%);
 }
 
-#no_log_out, #yes_log_out {
+#no_log_out, #yes_log_out, #cancel_delete, #continue_delete, #do_not_delete, #do_delete {
     height: 40px;
     width: 140px;
     border-radius: 15px;
@@ -397,7 +448,7 @@ a, p, h1, h3, button, input {
     font-size: 17px;
 }
 
-#no_log_out:active, #yes_log_out:active {background-color: #251e45;}
+#no_log_out:active, #yes_log_out:active, #cancel_delete:active, #continue_delete:active, #do_not_delete:active, #do_delete:active {background-color: #251e45;}
 
 #right {
     position: absolute;
@@ -406,7 +457,12 @@ a, p, h1, h3, button, input {
     right: 0;
 }
 
-/* For the pages and the buttons for there */
+
+
+
+
+
+/** For the pages and the buttons for there */
 #username_change:active, #email_change:active, #change_password_btn:active, #log_out:active, #delete_account:active {
     background-color: #140f27;
 }

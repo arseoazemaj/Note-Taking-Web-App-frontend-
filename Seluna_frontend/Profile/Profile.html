@@ -106,7 +106,7 @@
                         <i data-lucide="chevron-right" id="right"></i>
                     </button>
                     <div id="log_out_page">
-                        <h3 id="log_out_text">Are you sure you want to log out from this device?<br>You will remain logged in on other devices.
+                        <h3 id="log_out_message">Are you sure you want to log out from this device?<br>You will remain logged in on other devices.
                         </h3>
                         <div id="log_out_decision">
                             <button id="no_log_out" data-tap="do_not_log_out">No</button>
@@ -118,6 +118,21 @@
                     <button id="delete_account" data-tap="open_delete_account">Delete Account
                         <i data-lucide="chevron-right" id="right"></i>
                     </button>
+                    <div id="delete_page">
+                        <h3 id="delete_message">Are you sure you want to delete your account?<br>Your account will be permanently deleted after 30 days. If you change your mind, you can log back in within 30 days to cancel the deletion.</h3>
+                        <div id="delete_decision">
+                            <button id="cancel_delete" data-tap="cancel_delete">Cancel</button>
+                            <button id="continue_delete" data-tap="continue_delete">Continue</button>
+                        </div>
+                        <div id="continue_delete_page">
+                            <h3 id="confirm_delete_message">For security reasons, please enter your password to confirm account deletion.<br>Your account will be permanently deleted after 30 days. You can cancel the deletion by logging back in within 30 days.</h3>
+                            <input type="password" placeholder="Confirm your Password" id="confirm_delete_password">
+                            <div id="continue_delete_decision">
+                                <button id="do_not_delete" data-tap="do_not_delete">Cancel</button>
+                                <button id="do_delete" data-tap="do_delete">Confirm</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="note_settings">

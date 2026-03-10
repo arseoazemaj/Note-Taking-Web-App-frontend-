@@ -127,8 +127,6 @@ const password_change_menu = document.getElementById("password_change_menu");
 
 function blur_backgroundHandler() {
     setTimeout(() => {
-        username_input.style.visibility = "visible";
-        email_input.style.visibility = "visible";
         const oldPassword_input = document.getElementById("old_password");
         oldPassword_input.value = "";
         oldPassword_input.type = "password";
@@ -138,6 +136,11 @@ function blur_backgroundHandler() {
         confirmNewPassword.value = "";
         newPassword.type = "password";
         confirmNewPassword.type = "password";
+
+        if (account_settings.style.visibility === "visible") {
+            username_input.style.visibility = "visible";
+            email_input.style.visibility = "visible";
+        }
 
         const change_icon = document.getElementById("change_icon");
 
@@ -165,6 +168,14 @@ function blur_backgroundHandler() {
         if (log_out_page.classList.contains("show")) {
             log_out_page.classList.add("hide");
             log_out_page.classList.remove("show");
+        }
+        if (delete_page.classList.contains("show")) {
+            delete_page.classList.add("hide");
+            delete_page.classList.remove("show");
+        }
+        if (continue_delete_page.classList.contains("show")) {
+            continue_delete_page.classList.add("hide");
+            continue_delete_page.classList.remove("show");
         }
 
         blur_background.style.visibility = "hidden";
@@ -378,8 +389,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+const log_out_page = document.getElementById("log_out_page");
 function open_log_out() {
-    const log_out_page = document.getElementById("log_out_page");
     log_out_page.classList.add("show");
     log_out_page.classList.remove("hide");
     blur_background.style.visibility = "visible";
@@ -394,6 +405,32 @@ function do_log_out() {
     window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
 }
 
+const delete_page = document.getElementById("delete_page");
+function open_delete_account() {
+    delete_page.classList.add("show");
+    delete_page.classList.remove("hide");
+    blur_background.style.visibility = "visible";
+}
+
+function cancel_delete() {
+    blur_backgroundHandler();
+}
+
+const continue_delete_page = document.getElementById("continue_delete_page");
+function continue_delete() {
+    continue_delete_page.classList.add("show");
+    continue_delete_page.classList.remove("hide");
+    setTimeout(() => {        
+        delete_page.style.visibility = "hidden";
+        delete_page.classList.remove("show");
+    }, 170);
+}
+
+function do_not_delete() {
+    open_delete_account();
+    continue_delete_page.classList.add("hide");
+    continue_delete_page.classList.remove("show");
+}
 
 
 
