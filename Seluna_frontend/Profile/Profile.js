@@ -224,9 +224,6 @@ const username_input = document.getElementById("username_input");
 const email_input = document.getElementById("email_input");
 
 function change_password() {
-    username_input.style.visibility = "hidden";
-    email_input.style.visibility = "hidden";
-
     password_change_menu.classList.add("show");
     password_change_menu.classList.remove("hide");
     blur_background.style.visibility = "visible";

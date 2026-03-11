@@ -329,8 +329,6 @@ a, p, h1, h3, button, input {
     width: 25px;
     height: 25px;
     right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
     position: absolute;
 }
 
@@ -417,26 +415,19 @@ a, p, h1, h3, button, input {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 21%;
+    bottom: 0;
     height: 35px;
     width: 80%;
 }
 
 #password-delete-wrapper {
-    position: fixed;
-    left: 50%;
-    bottom: 20%;
-    transform: translateX(-50%);
+    bottom: -67%;
     width: 100%;
 }
 
 #eye_4, #hidden_eye_4 {
     position: relative;
-    width: 25px;
-    height: 25px;
     left: 84%;
-    top: 50%;
-    transform: translateY(-50%);
 }
 
 #do_delete:disabled {
