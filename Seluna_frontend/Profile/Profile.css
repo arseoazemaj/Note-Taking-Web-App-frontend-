@@ -422,10 +422,32 @@ a, p, h1, h3, button, input {
     width: 80%;
 }
 
+#password-delete-wrapper {
+    position: fixed;
+    left: 50%;
+    bottom: 20%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
+#eye_4, #hidden_eye_4 {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    left: 84%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#do_delete:disabled {
+    opacity: .5;
+    pointer-events: none;
+}
+
 #log_out_message, #delete_message, #confirm_delete_message {
     width: 80%;
     position: absolute;
-    top: 30px;
+    top: 15px;
     left: 50%;
     transform: translateX(-50%);
 }

@@ -433,6 +433,34 @@ function do_not_delete() {
 }
 
 
+const delete_password_input = document.getElementById("confirm_delete_password");
+const delete_btn = document.getElementById("do_delete");
+
+delete_btn.disabled = true;
+
+delete_password_input.addEventListener("input", oldPasswordValidation);
+
+function oldPasswordValidation() {
+    const password = delete_password_input.value.trim();
+
+    const longEnough = password.length >= 8;
+    const noSpaces = !password.includes(" ");
+
+    if (longEnough && noSpaces) {
+        delete_btn.disabled = false;
+    } else {
+        delete_btn.disabled = true;
+    }
+}
+
+async function do_delete() {
+    const delete_password_input = document.getElementById("confirm_delete_password");
+    const password = delete_password_input.value.trim();
+
+    console.log("Current password is: " + password);
+}
+
+
 
 
 
