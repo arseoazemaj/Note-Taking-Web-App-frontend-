@@ -176,6 +176,13 @@ function blur_backgroundHandler() {
         if (continue_delete_page.classList.contains("show")) {
             continue_delete_page.classList.add("hide");
             continue_delete_page.classList.remove("show");
+            delete_password_input.value = "";
+            delete_password_input.type = "password";
+            const eyeIcon = document.getElementById("eye_4");
+            const hiddenEyeIcon = document.getElementById("hidden_eye_4");
+            eyeIcon.style.display = "inline";
+            hiddenEyeIcon.style.display = "none";
+            delete_btn.disabled = true;
         }
 
         blur_background.style.visibility = "hidden";
@@ -426,21 +433,26 @@ function continue_delete() {
     }, 170);
 }
 
+const delete_password_input = document.getElementById("confirm_delete_password");
+const delete_btn = document.getElementById("do_delete");
+
 function do_not_delete() {
     open_delete_account();
     continue_delete_page.classList.add("hide");
     continue_delete_page.classList.remove("show");
+    delete_password_input.value = "";
+    delete_password_input.type = "password";
+    const eyeIcon = document.getElementById("eye_4");
+    const hiddenEyeIcon = document.getElementById("hidden_eye_4");
+    eyeIcon.style.display = "inline";
+    hiddenEyeIcon.style.display = "none";
+    delete_btn.disabled = true;
 }
-
-
-const delete_password_input = document.getElementById("confirm_delete_password");
-const delete_btn = document.getElementById("do_delete");
-
 delete_btn.disabled = true;
 
-delete_password_input.addEventListener("input", oldPasswordValidation);
+delete_password_input.addEventListener("input", deletePasswordValidation);
 
-function oldPasswordValidation() {
+function deletePasswordValidation() {
     const password = delete_password_input.value.trim();
 
     const longEnough = password.length >= 8;
