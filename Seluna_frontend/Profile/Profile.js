@@ -205,8 +205,8 @@ const help_btn = document.getElementById("help");
 
 function account() {
     account_btn.style.backgroundColor = "#251e45";
-        username_input.style.visibility = "visible";
-        email_input.style.visibility = "visible";
+    username_input.style.visibility = "visible";
+    email_input.style.visibility = "visible";
 
     note_btn.style.backgroundColor = "transparent";
     backup_btn.style.backgroundColor = "transparent";
@@ -466,7 +466,38 @@ async function do_delete() {
     const delete_password_input = document.getElementById("confirm_delete_password");
     const password = delete_password_input.value.trim();
 
-    console.log("Current password is: " + password);
+    if (!password) {
+        alert("Please enter your password.");
+        return;
+    }
+
+    try {
+        const response = await fetch("http://localhost:5216/api/account/delete_account", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+            body: JSON.stringify({
+                password: password
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            alert(data.message || "Account deletion failed.");
+            return;
+        }
+
+        alert("Account deleted successfully.");
+
+        localStorage.removeItem("token");
+        window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
+    } catch (error) {
+        console.error("Delete account error:", error);
+        alert("Something went wrong.");
+    }
 }
 
 

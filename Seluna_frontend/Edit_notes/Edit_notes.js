@@ -73,7 +73,7 @@ function closeMenu() {
     }, 10);
 }
 
-async function update(noteId) { //*Update the note
+async function update(noteId) { //*Update the note || doesn't keep the password for the lock so will need to work for it
     const Title = document.getElementById("title").value.trim();
     const Content = document.getElementById("note_input").value.trim();
     const isImportant = filled;
