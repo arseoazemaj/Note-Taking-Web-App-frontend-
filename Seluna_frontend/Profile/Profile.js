@@ -500,14 +500,6 @@ async function do_delete() {
     }
 }
 
-
-
-
-
-//* Here will be all functions for the account settings menu
-
-
-
 function note() {
     account_btn.style.backgroundColor = "transparent";
     note_btn.style.backgroundColor = "#251e45";
@@ -524,6 +516,16 @@ function note() {
     security_settings.style.visibility = "hidden";
     help_settings.style.visibility = "hidden";
 }
+//* Here will be all functions for the account settings menu
+
+
+
+
+
+
+
+
+
 
 function backup() {
     account_btn.style.backgroundColor = "transparent";
