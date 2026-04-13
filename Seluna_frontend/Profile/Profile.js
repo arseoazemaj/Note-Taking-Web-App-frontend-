@@ -516,7 +516,6 @@ function note() {
     security_settings.style.visibility = "hidden";
     help_settings.style.visibility = "hidden";
 }
-//* Here will be all functions for the account settings menu
 
 
 

@@ -266,6 +266,7 @@ input::selection {
     width: 90%;
     box-sizing: border-box;
     padding-bottom: 130px;
+    justify-items: center;
 }
 
 .note-box {
@@ -976,10 +977,3 @@ input::selection {
 }
 
 #cancel_delete:active, #continue_delete:active {background-color: #1d1737;}
-
-
-
-#test_btn1, #test_btn2 {
-    position: relative;
-    z-index: 999;
-}

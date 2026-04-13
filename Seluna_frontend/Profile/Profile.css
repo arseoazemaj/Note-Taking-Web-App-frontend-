@@ -180,7 +180,8 @@ a, p, h1, h3, button, input {
 #username_input, #email_input {
     position: relative;
     width: 80%;
-    left: 20px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #username_change, #email_change {
@@ -210,7 +211,7 @@ a, p, h1, h3, button, input {
     width: 80%;
     height: 40px;
     position: relative;
-    left: 45%;
+    left: 50%;
     transform: translateX(-50%);
     text-align: left;
     padding-left: 20px;
@@ -469,6 +470,90 @@ a, p, h1, h3, button, input {
     transform: translateY(-50%);
     right: 0;
 }
+
+
+
+
+
+
+
+
+
+/* From Uiverse.io by njesenberger */ 
+.toggle-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  
+  
+  /* resize for demo */
+  border: none;
+  border-radius: 10px;
+  padding-left: 20px;
+  width: 80%;
+  height: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1a1433;
+  font-size: 17px;
+}
+
+.toggle-checkbox {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  /* fix em sizing */
+  opacity: 0;
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  left: 45%;
+  border-radius: 15px;
+  width: 55px;
+  height: 25px;
+  background-color: #2e194b;
+  transition: background-color .4s linear;
+  border: 4px solid #473f53;
+}
+
+.toggle-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0.1em;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  background-color: #ad7ecc;
+  box-shadow: inset 0 -.0625em .0625em .125em rgb(0 0 0 / .1), inset 0 -.125em .0625em rgb(0 0 0 / .2), inset 0 .1875em .0625em rgb(255 255 255 / .3), 0 .125em .125em rgb(0 0 0 / .5);
+  transition: left .4s;
+}
+
+.toggle-checkbox:checked + .toggle-container > .toggle-button {
+  left: 1.8em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
