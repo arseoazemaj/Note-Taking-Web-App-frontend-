@@ -142,10 +142,16 @@
                 </div>
             </div>
             <div id="note_settings">
-                <button id="auto_save_btn">Auto Save
-                    <input id="auto_save_toggle" type="checkbox">
-                    <div id="auto_save_container">
-                        <div id="save_button_decision"></div>
+                <button id="auto_save_btn" data-tap="auto_save">Auto Save
+                    <div id="auto_save_btn_toggle" class="off">
+                        <div id="auto_save_btn_circle" class="off"></div>
+                    </div>
+                </button>
+
+                <button id="default_view_btn">Default View
+                    <div id="default_view_toggle" class="off">
+                        <div id="list_view" class="off" data-tap="list_view">List</div>
+                        <div id="grid_view" class="off" data-tap="grid_view">Grid</div>
                     </div>
                 </button>
             </div>

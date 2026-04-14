@@ -517,6 +517,55 @@ function note() {
     help_settings.style.visibility = "hidden";
 }
 
+function auto_save() {
+    const autoSaveToggle = document.getElementById("auto_save_btn_toggle");
+    autoSaveToggle.classList.toggle("off");
+    autoSaveToggle.classList.toggle("on");
+
+    const autoSaveBtnCircle = document.getElementById("auto_save_btn_circle");
+    autoSaveBtnCircle.classList.toggle("off");
+    autoSaveBtnCircle.classList.toggle("on");
+}
+
+function list_view() {
+    const list_viewBtn = document.getElementById("list_view");
+    list_viewBtn.classList.add("on");
+    list_viewBtn.classList.remove("off");
+
+
+    const grid_viewBtn = document.getElementById("grid_view");
+    grid_viewBtn.classList.add("off");
+    grid_viewBtn.classList.remove("on");
+}
+
+function grid_view() {
+    const grid_viewBtn = document.getElementById("grid_view");
+    grid_viewBtn.classList.add("on");
+    grid_viewBtn.classList.remove("off");
+
+
+    const list_viewBtn = document.getElementById("list_view");
+    list_viewBtn.classList.remove("on");
+    list_viewBtn.classList.add("off");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

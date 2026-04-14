@@ -160,7 +160,7 @@ a, p, h1, h3, button, input {
     top: 30%;
     left: 50%;
     background: #251e45;
-    height: 500px;
+    height: 440px;
     width: 100%;
     transform: translateX(-50%);
     border-bottom-left-radius: 30px;
@@ -172,21 +172,21 @@ a, p, h1, h3, button, input {
 #account_settings, #note_settings, #backup_settings, #security_settings, #help_settings {
     display: grid;
     position: absolute;
-    top: 15px;
+    top: 25px;
     width: 100%;
     gap: 25px;
 }
 
 #username_input, #email_input {
     position: relative;
-    width: 80%;
+    width: 90%;
     left: 50%;
     transform: translateX(-50%);
 }
 
 #username_change, #email_change {
     width: 100%;
-    height: 40px;
+    height: 50px;
     box-sizing: border-box;
 }
 
@@ -208,8 +208,8 @@ a, p, h1, h3, button, input {
 }
 
 #change_password_btn, #log_out, #delete_account {
-    width: 80%;
-    height: 40px;
+    width: 90%;
+    height: 50px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -471,65 +471,111 @@ a, p, h1, h3, button, input {
     right: 0;
 }
 
-#auto_save_btn {
-    display: flex;
-    align-items: center;
+#auto_save_btn, #default_view_btn {
+    width: 90%;
+    height: 50px;
     position: relative;
-    border: none;
-    border-radius: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: left;
     padding-left: 20px;
-    width: 80%;
-    height: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #1a1433;
+    border: none;
     font-size: 17px;
-}
-
-#auto_save_toggle {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-}
-
-#auto_save_container {
-    display: flex;
-    align-items: center;
-    position: relative;
-    left: 50%;
-    border-radius: 15px;
-    width: 55px;
-    height: 25px;
     background-color: #1a1433;
-    transition: background-color .4s linear;
-    border: 3px solid #473f53;
+    border-radius: 10px;
 }
 
-#save_button_decision {
+#auto_save_btn_toggle {
+    height: 65%;
+    width: 20%;
+    background: #1a1433;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    border-radius: 25px;
+    border: 5px solid #212121;
+    transition: all 0.3s ease;
+}
+
+#auto_save_btn_toggle.on {
+    background: #3b2e71;
+}
+
+#auto_save_btn_circle {
+    height: 1.6rem;
+    width: 1.6rem;
+    background-image: linear-gradient(130deg, #64238f 11%, #a86bcf 66% 75%);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+#auto_save_btn_circle.off {
+    left: 2px;
+}
+
+#auto_save_btn_circle.on {
+    left: calc(100% - 1.6rem - 2px);
+}
+
+
+
+#default_view_toggle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    width: 140px;
+    gap: 10px;
+    height: 70%;
+    display: flex;
+    background: #261d49;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+#list_view, #grid_view {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    left: 0.1em;
-    border-radius: 50%;
-    width: 22px;
-    height: 22px;
-    background-color: #ad7ecc;
-    box-shadow: inset 0 -.0625em .0625em .125em rgb(0 0 0 / .1), inset 0 -.125em .0625em rgb(0 0 0 / .2), inset 0 .1875em .0625em rgb(255 255 255 / .3), 0 .125em .125em rgb(0 0 0 / .5);
-    transition: left .4s;
+    height: 100%;
+    width: 50%;
 }
 
-#auto_save_toggle:checked + #auto_save_container {
-    background-color: #3e2f7d;
+#list_view {
+    background: #3c2c71;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
-#auto_save_toggle:checked + #auto_save_container > #save_button_decision {
-    left: 1.8em;
+#list_view.on {background: #3c2c71;}
+#list_view.off {background: transparent;}
+
+#grid_view {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
+
+#grid_view.on {background: #3c2c71;}
+#grid_view.off {background: transparent;}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
