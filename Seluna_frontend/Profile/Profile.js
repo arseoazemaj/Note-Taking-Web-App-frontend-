@@ -532,7 +532,6 @@ function list_view() {
     list_viewBtn.classList.add("on");
     list_viewBtn.classList.remove("off");
 
-
     const grid_viewBtn = document.getElementById("grid_view");
     grid_viewBtn.classList.add("off");
     grid_viewBtn.classList.remove("on");
@@ -543,13 +542,15 @@ function grid_view() {
     grid_viewBtn.classList.add("on");
     grid_viewBtn.classList.remove("off");
 
-
     const list_viewBtn = document.getElementById("list_view");
     list_viewBtn.classList.remove("on");
     list_viewBtn.classList.add("off");
 }
 
-
+function sort_by() {
+    const sort_menu = document.getElementById("sort_menu");
+    sort_menu.style.visibility = "visible";
+}
 
 
 

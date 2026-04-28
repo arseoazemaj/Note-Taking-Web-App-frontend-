@@ -471,7 +471,7 @@ a, p, h1, h3, button, input {
     right: 0;
 }
 
-#auto_save_btn, #default_view_btn {
+#auto_save_btn, #default_view_btn, #sort_by_btn {
     width: 90%;
     height: 50px;
     position: relative;
@@ -563,11 +563,33 @@ a, p, h1, h3, button, input {
 #grid_view.on {background: transparent;}
 #grid_view.off {background: #3c2c71;}
 
+#sort_info {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+}
 
+#sort_txt {
+    position: absolute;
+    left: -95px;
+}
 
-
-
-
+#sort_menu {
+    visibility: hidden;
+    position: fixed;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    border-radius: 30px;
+    background: #1d1737;
+    filter: drop-shadow(0 0 15px #1d1737);
+    z-index: 1;
+}
 
 
 
