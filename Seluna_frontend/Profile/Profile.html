@@ -149,18 +149,24 @@
 
                 <button id="default_view_btn">Default View
                     <div id="default_view_toggle" class="off">
-                        <div id="list_view" data-tap="list_view">List</div>
-                        <div id="grid_view" class="off" data-tap="grid_view">Grid</div>
+                        <div id="list_view" data-tap="list_view" class="on">List</div>
+                        <div id="grid_view" data-tap="grid_view">Grid</div>
                     </div>
                 </button>
 
-                <button id="sort_by_btn" data-tap="sort_by">Sort By
-                    <div id="sort_info">
-                        <div id="sort_txt">Created At</div>
-                        <div id="sort_arrow">></div>
+                <div>
+                    <div id="blur_background_sort" data-tap="blur_sort"></div>
+                    <button id="sort_by_btn" data-tap="sort_by">Sort By
+                        <div id="sort_txt">
+                            <div id="sort_info">Created at</div>
+                            <div id="sort_arrow"> ></div>
+                        </div>
+                    </button>
+                    <div id="sort_menu">
+                        <h4 class="sort_decision_txt selected" id="created_at" data-tap="created_at">Created at</h4>
+                        <h4 class="sort_decision_txt" id="updated_at" data-tap="updated_at">Updated at</h4>
                     </div>
-                    <div id="sort_menu"></div>
-                </button>
+                </div>
             </div>
             <div id="backup_settings">
                 <button>Backup & Export</button>

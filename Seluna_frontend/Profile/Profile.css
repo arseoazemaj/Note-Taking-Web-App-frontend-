@@ -144,7 +144,7 @@ a, p, h1, h3, button, input {
     background-color: #251e45;
 }
 
-#blur_background {
+#blur_background, #blur_background_sort {
     visibility: hidden;
     position: fixed;
     top: 50%;
@@ -552,66 +552,78 @@ a, p, h1, h3, button, input {
     border-bottom-left-radius: 10px;
 }
 
-#list_view.on {background: transparent;}
-#list_view.off {background: #3c2c71;}
+#list_view.on {background: #141029;}
+#list_view.off {background: transparent;}
 
 #grid_view {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }
 
-#grid_view.on {background: transparent;}
-#grid_view.off {background: #3c2c71;}
+#grid_view.on {background: #141029;}
+#grid_view.off {background: transparent;}
 
-#sort_info {
+#sort_txt {
     display: flex;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 10px;
+    right: 20px;
 }
 
-#sort_txt {
-    position: absolute;
-    left: -95px;
+#sort_arrow {
+    position: relative;
+    right: -10px;
 }
 
 #sort_menu {
     visibility: hidden;
-    position: fixed;
-    left: 50%;
-    top: 40%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    border-radius: 30px;
-    background: #1d1737;
-    filter: drop-shadow(0 0 15px #1d1737);
+    position: absolute;
+    right: 10px;
+    height: 90px;
+    width: 120px;
+    border-radius: 15px;
+    background: #1a1433;
+    border: 5px solid #212121;
+    display: grid;
+    /* gap: 5px; */
     z-index: 1;
 }
 
+.sort_value {
+    background-color: #1a1432;
+}
 
+.sort_decision_txt {
+    margin: 0;
+    height: 100%;
+    position: relative;
+    background: transparent;
+    width: 100%;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    color: #ad7ecc;
+    font-size: large;
+}
 
+#created_at {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
 
+#updated_at {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
 
+.sort_decision_txt:active {
+    background-color: #251e45;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.sort_decision_txt.selected {
+    background-color: #251e45;
+}
 
 
 
