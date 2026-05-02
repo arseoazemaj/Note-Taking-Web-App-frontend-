@@ -193,6 +193,7 @@ const account_settings = document.getElementById("account_settings");
 const account_btn = document.getElementById("account");
 const note_settings = document.getElementById("note_settings");
 const note_btn = document.getElementById("note");
+const auto_save_btn = document.getElementById("auto_save_btn");
 
 const backup_settings = document.getElementById("backup_settings");
 const backup_btn = document.getElementById("backup");
@@ -215,6 +216,8 @@ function account() {
 
     account_settings.style.visibility = "visible";
     note_settings.style.visibility = "hidden";
+    auto_save_btn.style.display = "none";
+
     backup_settings.style.visibility = "hidden";
     security_settings.style.visibility = "hidden";
     help_settings.style.visibility = "hidden";
@@ -512,6 +515,8 @@ function note() {
         email_input.style.visibility = "hidden";
 
     note_settings.style.visibility = "visible";
+    auto_save_btn.style.display = "block";
+
     backup_settings.style.visibility = "hidden";
     security_settings.style.visibility = "hidden";
     help_settings.style.visibility = "hidden";
@@ -547,21 +552,52 @@ function grid_view() {
     list_viewBtn.classList.add("off");
 }
 
-function sort_by() {
-    const sort_menu = document.getElementById("sort_menu");
-    sort_menu.style.visibility = "visible";
+const blur_background_sort = document.getElementById("blur_background_sort");
+const sort_menu = document.getElementById("sort_menu");
+
+function blur_sort() {
+    blur_background_sort.style.visibility = "hidden";
+    sort_menu.style.visibility = "hidden";
 }
 
+function sort_by() {
+    sort_menu.style.visibility = "visible";
+    blur_background_sort.style.visibility = "visible";
+}
 
+const sort_info = document.getElementById("sort_info");
+const created_at_option = document.getElementById("created_at");
+const updated_at_option = document.getElementById("updated_at");
 
+function created_at() {
+    setTimeout(() => {
+        sort_info.textContent = "Created at";
+        sort_menu.style.visibility = "hidden";
+        blur_background_sort.style.visibility = "hidden";
+        created_at_option.classList.add("selected");
+        updated_at_option.classList.remove("selected");
+    }, 100);
+}
 
+function updated_at() {
+    setTimeout(() => {
+        sort_info.textContent = "Updated at";
+        sort_menu.style.visibility = "hidden";
+        blur_background_sort.style.visibility = "hidden";
+        updated_at_option.classList.add("selected");
+        created_at_option.classList.remove("selected");
+    }, 100);
+}
 
+function show_save() {
+    const showSaveToggle = document.getElementById("show_save_btn_toggle");
+    showSaveToggle.classList.toggle("off");
+    showSaveToggle.classList.toggle("on");
 
-
-
-
-
-
+    const showSaveBtnCircle = document.getElementById("show_save_btn_circle");
+    showSaveBtnCircle.classList.toggle("off");
+    showSaveBtnCircle.classList.toggle("on");
+}
 
 
 
@@ -588,6 +624,8 @@ function backup() {
         email_input.style.visibility = "hidden";
 
     note_settings.style.visibility = "hidden";
+    auto_save_btn.style.display = "none";
+
     backup_settings.style.visibility = "visible";
     security_settings.style.visibility = "hidden";
     help_settings.style.visibility = "hidden";
@@ -605,6 +643,8 @@ function security() {
         email_input.style.visibility = "hidden";
 
     note_settings.style.visibility = "hidden";
+    auto_save_btn.style.display = "none";
+
     backup_settings.style.visibility = "hidden";
     security_settings.style.visibility = "visible";
     help_settings.style.visibility = "hidden";
@@ -622,6 +662,8 @@ function help() {
         email_input.style.visibility = "hidden";
 
     note_settings.style.visibility = "hidden";
+    auto_save_btn.style.display = "none";
+
     backup_settings.style.visibility = "hidden";
     security_settings.style.visibility = "hidden";
     help_settings.style.visibility = "visible";
