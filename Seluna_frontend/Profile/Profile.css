@@ -598,7 +598,7 @@ a, p, h1, h3, button, input {
     margin: 0;
     height: 100%;
     position: relative;
-    background: transparent;
+    background: #251e45;
     width: 100%;
     display: grid;
     align-items: center;
@@ -622,7 +622,7 @@ a, p, h1, h3, button, input {
 }
 
 .sort_decision_txt.selected {
-    background-color: #251e45;
+    background-color: transparent;
 }
 
 

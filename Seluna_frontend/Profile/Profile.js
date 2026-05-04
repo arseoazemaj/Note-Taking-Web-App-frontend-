@@ -30,8 +30,7 @@ async function loadEmail() {
                     "Authorization": `Bearer ${token}`,
                     "Content-Type": "application/json"
                 }
-            }
-        );
+            });
 
         if (!response.ok) {
             throw new Error(`HTTP ${response.status}`);
@@ -216,6 +215,8 @@ function account() {
 
     account_settings.style.visibility = "visible";
     note_settings.style.visibility = "hidden";
+    auto_save_btn.style.display = "none";
+
     backup_settings.style.visibility = "hidden";
     security_settings.style.visibility = "hidden";
     help_settings.style.visibility = "hidden";
@@ -509,8 +510,8 @@ function note() {
     help_btn.style.backgroundColor = "transparent";
 
     account_settings.style.visibility = "hidden";
-        username_input.style.visibility = "hidden";
-        email_input.style.visibility = "hidden";
+    username_input.style.visibility = "hidden";
+    email_input.style.visibility = "hidden";
 
     note_settings.style.visibility = "visible";
     auto_save_btn.style.display = "block";
@@ -520,15 +521,95 @@ function note() {
     help_settings.style.visibility = "hidden";
 }
 
-function auto_save() {
-    const autoSaveToggle = document.getElementById("auto_save_btn_toggle");
-    autoSaveToggle.classList.toggle("off");
-    autoSaveToggle.classList.toggle("on");
+let auto_save_enabled = false; //*Will be set by the db
+const old_state = auto_save_enabled;
+const new_state = !old_state;
+async function auto_save() {
+    const toggle = document.getElementById("auto_save_btn_toggle");
+    const circle = document.getElementById("auto_save_btn_circle");
 
-    const autoSaveBtnCircle = document.getElementById("auto_save_btn_circle");
-    autoSaveBtnCircle.classList.toggle("off");
-    autoSaveBtnCircle.classList.toggle("on");
+    toggle.classList.toggle("off", !auto_save_enabled);
+    toggle.classList.toggle("on", auto_save_enabled);
+    circle.classList.toggle("off", !auto_save_enabled);
+    circle.classList.toggle("on", auto_save_enabled);
+
+
+    const token = localStorage.getItem("token");
+
+    try {
+        const response = await fetch("http://localhost:5216/api/account/auto_save", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + token
+            },
+            body: JSON.stringify({
+                auto_save_enabled: auto_save_enabled
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+            auto_save_enabled = old_state;
+        }
+
+        if (data.success) {
+            auto_save_enabled = new_state;
+        }
+
+        if (auto_save_enabled) {
+            toggle.classList.toggle("off", !auto_save_enabled);
+            toggle.classList.toggle("on", auto_save_enabled);
+            circle.classList.toggle("off", !auto_save_enabled);
+            circle.classList.toggle("on", auto_save_enabled);
+        }
+    } catch (error) {
+        console.error("Auto save error:", error);
+
+        toggle.classList.toggle("off",!old_state);
+        toggle.classList.toggle("on", old_state);
+        circle.classList.toggle("off", !old_state);
+        circle.classList.toggle("on", old_state);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function list_view() {
     const list_viewBtn = document.getElementById("list_view");
@@ -618,8 +699,8 @@ function backup() {
     help_btn.style.backgroundColor = "transparent";
 
     account_settings.style.visibility = "hidden";
-        username_input.style.visibility = "hidden";
-        email_input.style.visibility = "hidden";
+    username_input.style.visibility = "hidden";
+    email_input.style.visibility = "hidden";
 
     note_settings.style.visibility = "hidden";
     auto_save_btn.style.display = "none";
@@ -637,10 +718,12 @@ function security() {
     help_btn.style.backgroundColor = "transparent";
 
     account_settings.style.visibility = "hidden";
-        username_input.style.visibility = "hidden";
-        email_input.style.visibility = "hidden";
+    username_input.style.visibility = "hidden";
+    email_input.style.visibility = "hidden";
 
     note_settings.style.visibility = "hidden";
+    auto_save_btn.style.display = "none";
+
     backup_settings.style.visibility = "hidden";
     security_settings.style.visibility = "visible";
     help_settings.style.visibility = "hidden";
@@ -654,10 +737,12 @@ function help() {
     help_btn.style.backgroundColor = "#251e45";
 
     account_settings.style.visibility = "hidden";
-        username_input.style.visibility = "hidden";
-        email_input.style.visibility = "hidden";
+    username_input.style.visibility = "hidden";
+    email_input.style.visibility = "hidden";
 
     note_settings.style.visibility = "hidden";
+    auto_save_btn.style.display = "none";
+
     backup_settings.style.visibility = "hidden";
     security_settings.style.visibility = "hidden";
     help_settings.style.visibility = "visible";
