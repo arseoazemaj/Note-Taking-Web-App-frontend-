@@ -144,7 +144,6 @@ a, p, h1, h3, button, input {
     background-color: #251e45;
 }
 
-<<<<<<< HEAD
 #blur_background, #blur_background_sort {
     visibility: hidden;
     position: fixed;
@@ -156,8 +155,6 @@ a, p, h1, h3, button, input {
     z-index: 1;
 }
 
-=======
->>>>>>> adb68380e9b8ab45113bd26706fc4b7e58ce4521
 #setting_page {
     position: fixed;
     top: 30%;
@@ -179,7 +176,6 @@ a, p, h1, h3, button, input {
     width: 100%;
     gap: 25px;
 }
-<<<<<<< HEAD
 
 #username_input, #email_input {
     position: relative;
@@ -642,5 +638,3 @@ a, p, h1, h3, button, input {
 #note_settings, #backup_settings, #security_settings, #help_settings {
     visibility: hidden;
 }
-=======
->>>>>>> adb68380e9b8ab45113bd26706fc4b7e58ce4521
