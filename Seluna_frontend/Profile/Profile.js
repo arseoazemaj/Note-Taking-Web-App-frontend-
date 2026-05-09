@@ -3,10 +3,8 @@ const username = document.getElementById("username");
 document.addEventListener("DOMContentLoaded", first );
 
 function first() {
-    loadEmail();
     account();
 }
-
 
 function profile_icon() {
     const change_icon = document.getElementById("change_icon");
@@ -15,735 +13,190 @@ function profile_icon() {
     blur_background.style.visibility = "visible";
 }
 
-async function loadEmail() {
-    try {
-        const token = localStorage.getItem("token");
-        const email_input = document.getElementById("email_change");
-        if (!token) {
-            console.error("No JWT token found");
-            return;
-        }
-
-        const response = await fetch("http://localhost:5216/api/account/get_email", {
-                method: "GET",
-                headers: {
-                    "Authorization": `Bearer ${token}`,
-                    "Content-Type": "application/json"
-                }
-            });
-
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-        }
-
-        const data = await response.json();
-        email_input.value = data.email;
-    } catch (error) {
-        console.error("Failed to load email:", error);
-    }
-}
-
-async function change_name() {
-    try {
-        const token = localStorage.getItem("token");
-        const input = document.getElementById("username_change");
-
-        if (!token) return;
-
-        const response = await fetch("http://localhost:5216/api/account/change_username", {
-            method: "PUT",
-            headers: {
-                "Authorization": `Bearer ${token}`,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                Username: input.value
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-        }
-
-        loadUsername();
-    } catch (err) {
-        console.error("Failed to update username:", err);
-    }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    const emailInput = document.getElementById("email_change");
-    const changeEmailBtn = document.getElementById("change_email_btn");
-
-    function validateEmail() {
-        const email = emailInput.value.trim();
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (emailRegex.test(email)) {
-            changeEmailBtn.classList.remove("disabled");
-        } else {
-            changeEmailBtn.classList.add("disabled");
-        }
-    }
-
-    emailInput.addEventListener("input", validateEmail);
-
-});
-
-async function change_email() { //*Will have something to verify the email later*
-    try {
-        const token = localStorage.getItem("token");
-        const input = document.getElementById("email_change");
-        const changeEmailBtn = document.getElementById("change_email_btn");
-
-        if (!token) return;
-        if (changeEmailBtn.classList.contains("disabled")) return;
-
-        const response = await fetch("http://localhost:5216/api/account/change_email", {
-            method: "PUT",
-            headers: {
-                "Authorization": `Bearer ${token}`,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                Email: input.value
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-        }
-
-        loadEmail();
-    } catch (err) {
-        console.error("Failed to update email:", err);
-    }
-}
-
-const blur_background = document.getElementById("blur_background");
-const password_change_menu = document.getElementById("password_change_menu");
 
 
-function blur_backgroundHandler() {
-    setTimeout(() => {
-        const oldPassword_input = document.getElementById("old_password");
-        oldPassword_input.value = "";
-        oldPassword_input.type = "password";
-        const newPassword = document.getElementById("new_password");
-        const confirmNewPassword = document.getElementById("confirm_new_password");
-        newPassword.value = "";
-        confirmNewPassword.value = "";
-        newPassword.type = "password";
-        confirmNewPassword.type = "password";
 
-        if (account_settings.style.visibility === "visible") {
-            username_input.style.visibility = "visible";
-            email_input.style.visibility = "visible";
-        }
 
-        const change_icon = document.getElementById("change_icon");
-
-        if (change_icon.classList.contains("show")) {
-            change_icon.classList.add("hide");
-            change_icon.classList.remove("show");
-        }
-
-        if (password_change_menu.classList.contains("show")) {
-            password_change_menu.classList.add("hide");
-            password_change_menu.classList.remove("show");
-            const eyeIcon = document.getElementById("eye_2");
-            const hiddenEyeIcon = document.getElementById("hidden_eye_2");
-            eyeIcon.style.display = "inline";
-            hiddenEyeIcon.style.display = "none";
-            continuePasswordBtn.disabled = true;
-        }
-        if (change_password_menu.classList.contains("show")) {
-            change_password_menu.classList.add("hide");
-            change_password_menu.classList.remove("show");
-            continuePasswordBtn.disabled = true;
-            const savePasswordBtn = document.getElementById("save_password");
-            savePasswordBtn.disabled = true;
-        }
-        if (log_out_page.classList.contains("show")) {
-            log_out_page.classList.add("hide");
-            log_out_page.classList.remove("show");
-        }
-        if (delete_page.classList.contains("show")) {
-            delete_page.classList.add("hide");
-            delete_page.classList.remove("show");
-        }
-        if (continue_delete_page.classList.contains("show")) {
-            continue_delete_page.classList.add("hide");
-            continue_delete_page.classList.remove("show");
-            delete_password_input.value = "";
-            delete_password_input.type = "password";
-            const eyeIcon = document.getElementById("eye_4");
-            const hiddenEyeIcon = document.getElementById("hidden_eye_4");
-            eyeIcon.style.display = "inline";
-            hiddenEyeIcon.style.display = "none";
-            delete_btn.disabled = true;
-        }
-
-        blur_background.style.visibility = "hidden";
-    }, 100);
-}
-
-const account_settings = document.getElementById("account_settings");
 const account_btn = document.getElementById("account");
-const note_settings = document.getElementById("note_settings");
-const note_btn = document.getElementById("note");
-const auto_save_btn = document.getElementById("auto_save_btn");
-
-const backup_settings = document.getElementById("backup_settings");
-const backup_btn = document.getElementById("backup");
-
-const security_settings = document.getElementById("security_settings");
 const security_btn = document.getElementById("security");
-
-const help_settings = document.getElementById("help_settings");
+const editor_btn = document.getElementById("editor");
+const appearance_btn = document.getElementById("appearance");
+const focus_btn = document.getElementById("focus");
 const help_btn = document.getElementById("help");
 
+const account_icon = document.getElementById("account_icon");
+const security_icon = document.getElementById("security_icon");
+const editor_icon = document.getElementById("editor_icon");
+const appearance_icon = document.getElementById("appearance_icon");
+const focus_icon = document.getElementById("focus_icon");
+const help_icon = document.getElementById("help_icon");
+
+
+const account_text = document.createTextNode("Account");
+const security_text = document.createTextNode("Security");
+const editor_text = document.createTextNode("Editor");
+const appearance_text = document.createTextNode("Appearance");
+const focus_text = document.createTextNode("Focus");
+const help_text = document.createTextNode("Help");
+
 function account() {
-    account_btn.style.backgroundColor = "#251e45";
-    username_input.style.visibility = "visible";
-    email_input.style.visibility = "visible";
+    account_btn.insertBefore(account_text, account_btn.firstChild);
 
-    note_btn.style.backgroundColor = "transparent";
-    backup_btn.style.backgroundColor = "transparent";
-    security_btn.style.backgroundColor = "transparent";
-    help_btn.style.backgroundColor = "transparent";
+    account_btn.classList.add("active");
+    security_btn.classList.remove("active");
+    editor_btn.classList.remove("active");
+    appearance_btn.classList.remove("active");
+    focus_btn.classList.remove("active");
+    help_btn.classList.remove("active");
 
-    account_settings.style.visibility = "visible";
-    note_settings.style.visibility = "hidden";
-    auto_save_btn.style.display = "none";
+    if (account_btn.classList.contains("active")) {
+        account_text.textContent = "Account";
+        security_text.textContent = "";
+        editor_text.textContent = "";
+        appearance_text.textContent = "";
+        focus_text.textContent = "";
+        help_text.textContent = "";
 
-    backup_settings.style.visibility = "hidden";
-    security_settings.style.visibility = "hidden";
-    help_settings.style.visibility = "hidden";
-}
-
-const username_input = document.getElementById("username_input");
-const email_input = document.getElementById("email_input");
-
-function change_password() {
-    password_change_menu.classList.add("show");
-    password_change_menu.classList.remove("hide");
-    blur_background.style.visibility = "visible";
-}
-
-function togglePassword(event) {
-    const toggle = event.target.closest("span");
-    if (!toggle) return;
-
-    const wrapper = toggle.closest(".password-wrapper");
-    if (!wrapper) return;
-
-    const passwordInput = wrapper.querySelector("input");
-
-    const eyeIcon = toggle.querySelector(".eye_icon");
-    const hiddenEyeIcon = toggle.querySelector(".hidden_eye_icon");
-
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        eyeIcon.style.display = "none";
-        hiddenEyeIcon.style.display = "inline";
-    } else {
-        passwordInput.type = "password";
-        eyeIcon.style.display = "inline";
-        hiddenEyeIcon.style.display = "none";
+        account_settings.style.display = "grid";
+        security_settings.style.display = "none";
+        editor_settings.style.display = "none";
+        appearance_settings.style.display = "none";
+        focus_settings.style.display = "none";
+        help_settings.style.display = "none";
     }
-}
-
-function cancel_password() {
-    password_change_menu.classList.add("hide");
-    password_change_menu.classList.remove("show");
-    username_input.style.visibility = "visible";
-    email_input.style.visibility = "visible";
-    const oldPassword_input = document.getElementById("old_password");
-    oldPassword_input.value = "";
-    oldPassword_input.type = "password";
-    const eyeIcon = document.getElementById("eye_2");
-    const hiddenEyeIcon = document.getElementById("hidden_eye_2");
-    eyeIcon.style.display = "inline";
-    hiddenEyeIcon.style.display = "none";
-    blur_backgroundHandler();
-}
-
-const oldPassword = document.getElementById("old_password");
-const continuePasswordBtn = document.getElementById("continue_password");
-
-continuePasswordBtn.disabled = true;
-
-oldPassword.addEventListener("input", oldPasswordValidation);
-
-function oldPasswordValidation() {
-    const password = oldPassword.value;
-
-    const longEnough = password.length >= 8;
-    const noSpaces = !password.includes(" ");
-
-    if (longEnough && noSpaces) {
-        continuePasswordBtn.disabled = false;
-    } else {
-        continuePasswordBtn.disabled = true;
-    }
-}
-
-const change_password_menu = document.getElementById("change_password");
-
-async function continue_password() { //*This will check if the password that the user entere is the same with the one in the DB
-    const oldPassword = document.getElementById("old_password").value.trim();
-    if (!oldPassword) return;
-
-    const token = localStorage.getItem("token");
-
-    const response = await fetch("http://localhost:5216/api/account/check_password", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-        },
-        body: JSON.stringify({ Password: oldPassword })
-    });
-
-    const result = await response.json();
-
-    if (!result.valid) {
-        alert("Wrong password");
-        return;
-    }
-
-    change_password_menu.classList.add("show");
-    change_password_menu.classList.remove("hide");
-    password_change_menu.classList.add("hide");
-    password_change_menu.classList.remove("show");
-}
-
-function cancel_password_change() {
-    change_password_menu.classList.add("hide");
-    change_password_menu.classList.remove("show");
-    password_change_menu.classList.add("show");
-    password_change_menu.classList.remove("hide");
-    oldPassword.value = "";
-    continuePasswordBtn.disabled = true;
-}
-
-async function save_password() {
-    const newPassword = document.getElementById("new_password");
-    const confirmNewPassword = document.getElementById("confirm_new_password");
-
-    if (!newPassword || !confirmNewPassword) {
-        console.error("Password inputs not found");
-        return;
-    }
-
-    const password = newPassword.value;
-    const confirm = confirmNewPassword.value;
-
-    if (password.length < 8 || password.includes(" ")) {
-        alert("Password too short or contains spaces");
-        return;
-    }
-
-    if (password !== confirm) {
-        alert("Passwords do not match");
-        return;
-    }
-
-    try {
-        const token = localStorage.getItem("token");
-        const response = await fetch("http://localhost:5216/api/account/change_password", {
-            method: "POST",
-            headers: {
-                "Authorization": `Bearer ${token}`,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ Password: password })
-        });
-
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        change_password_menu.classList.add("hide");
-        change_password_menu.classList.remove("show");
-        blur_backgroundHandler();
-    } catch (err) {
-        console.error(err);
-        alert("Failed to change password");
-    }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    const newPassword = document.getElementById("new_password");
-    const confirmNewPassword = document.getElementById("confirm_new_password");
-    const savePasswordBtn = document.getElementById("save_password");
-
-    savePasswordBtn.disabled = true;
-
-    if (!newPassword || !confirmNewPassword || !savePasswordBtn) return;
-
-    newPassword.addEventListener("input", validateNewPasswordForm);
-    confirmNewPassword.addEventListener("input", validateNewPasswordForm);
-
-    function validateNewPasswordForm() {
-        const password = newPassword.value;
-        const confirmPassword = confirmNewPassword.value;
-
-        const longEnough = password.length >= 8;
-        const noSpaces = !password.includes(" ");
-        const passwordsMatch = password === confirmPassword;
-
-        savePasswordBtn.disabled = !(longEnough && noSpaces && passwordsMatch);
-    }
-});
-
-const log_out_page = document.getElementById("log_out_page");
-function open_log_out() {
-    log_out_page.classList.add("show");
-    log_out_page.classList.remove("hide");
-    blur_background.style.visibility = "visible";
-}
-
-function do_not_log_out() {
-    blur_backgroundHandler();
-}
-
-function do_log_out() {
-    localStorage.removeItem("token");
-    window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
-}
-
-const delete_page = document.getElementById("delete_page");
-function open_delete_account() {
-    delete_page.classList.add("show");
-    delete_page.classList.remove("hide");
-    blur_background.style.visibility = "visible";
-}
-
-function cancel_delete() {
-    blur_backgroundHandler();
-}
-
-const continue_delete_page = document.getElementById("continue_delete_page");
-function continue_delete() {
-    continue_delete_page.classList.add("show");
-    continue_delete_page.classList.remove("hide");
-    setTimeout(() => {        
-        delete_page.style.visibility = "hidden";
-        delete_page.classList.remove("show");
-    }, 170);
-}
-
-const delete_password_input = document.getElementById("confirm_delete_password");
-const delete_btn = document.getElementById("do_delete");
-
-function do_not_delete() {
-    open_delete_account();
-    continue_delete_page.classList.add("hide");
-    continue_delete_page.classList.remove("show");
-    delete_password_input.value = "";
-    delete_password_input.type = "password";
-    const eyeIcon = document.getElementById("eye_4");
-    const hiddenEyeIcon = document.getElementById("hidden_eye_4");
-    eyeIcon.style.display = "inline";
-    hiddenEyeIcon.style.display = "none";
-    delete_btn.disabled = true;
-}
-delete_btn.disabled = true;
-
-delete_password_input.addEventListener("input", deletePasswordValidation);
-
-function deletePasswordValidation() {
-    const password = delete_password_input.value.trim();
-
-    const longEnough = password.length >= 8;
-    const noSpaces = !password.includes(" ");
-
-    if (longEnough && noSpaces) {
-        delete_btn.disabled = false;
-    } else {
-        delete_btn.disabled = true;
-    }
-}
-
-async function do_delete() {
-    const delete_password_input = document.getElementById("confirm_delete_password");
-    const password = delete_password_input.value.trim();
-
-    if (!password) {
-        alert("Please enter your password.");
-        return;
-    }
-
-    try {
-        const response = await fetch("http://localhost:5216/api/account/delete_account", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + localStorage.getItem("token")
-            },
-            body: JSON.stringify({
-                password: password
-            })
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            alert(data.message || "Account deletion failed.");
-            return;
-        }
-
-        alert("Account deleted successfully.");
-
-        localStorage.removeItem("token");
-        window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
-    } catch (error) {
-        console.error("Delete account error:", error);
-        alert("Something went wrong.");
-    }
-}
-
-function note() {
-    account_btn.style.backgroundColor = "transparent";
-    note_btn.style.backgroundColor = "#251e45";
-    backup_btn.style.backgroundColor = "transparent";
-    security_btn.style.backgroundColor = "transparent";
-    help_btn.style.backgroundColor = "transparent";
-
-    account_settings.style.visibility = "hidden";
-    username_input.style.visibility = "hidden";
-    email_input.style.visibility = "hidden";
-
-    note_settings.style.visibility = "visible";
-    auto_save_btn.style.display = "block";
-
-    backup_settings.style.visibility = "hidden";
-    security_settings.style.visibility = "hidden";
-    help_settings.style.visibility = "hidden";
-}
-
-let auto_save_enabled = false; //*Will be set by the db
-const old_state = auto_save_enabled;
-const new_state = !old_state;
-async function auto_save() {
-    const toggle = document.getElementById("auto_save_btn_toggle");
-    const circle = document.getElementById("auto_save_btn_circle");
-
-    toggle.classList.toggle("off", !auto_save_enabled);
-    toggle.classList.toggle("on", auto_save_enabled);
-    circle.classList.toggle("off", !auto_save_enabled);
-    circle.classList.toggle("on", auto_save_enabled);
-
-
-    const token = localStorage.getItem("token");
-
-    try {
-        const response = await fetch("http://localhost:5216/api/account/auto_save", {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + token
-            },
-            body: JSON.stringify({
-                auto_save_enabled: auto_save_enabled
-            })
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-            auto_save_enabled = old_state;
-        }
-
-        if (data.success) {
-            auto_save_enabled = new_state;
-        }
-
-        if (auto_save_enabled) {
-            toggle.classList.toggle("off", !auto_save_enabled);
-            toggle.classList.toggle("on", auto_save_enabled);
-            circle.classList.toggle("off", !auto_save_enabled);
-            circle.classList.toggle("on", auto_save_enabled);
-        }
-    } catch (error) {
-        console.error("Auto save error:", error);
-
-        toggle.classList.toggle("off",!old_state);
-        toggle.classList.toggle("on", old_state);
-        circle.classList.toggle("off", !old_state);
-        circle.classList.toggle("on", old_state);
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function list_view() {
-    const list_viewBtn = document.getElementById("list_view");
-    list_viewBtn.classList.add("on");
-    list_viewBtn.classList.remove("off");
-
-    const grid_viewBtn = document.getElementById("grid_view");
-    grid_viewBtn.classList.add("off");
-    grid_viewBtn.classList.remove("on");
-}
-
-function grid_view() {
-    const grid_viewBtn = document.getElementById("grid_view");
-    grid_viewBtn.classList.add("on");
-    grid_viewBtn.classList.remove("off");
-
-    const list_viewBtn = document.getElementById("list_view");
-    list_viewBtn.classList.remove("on");
-    list_viewBtn.classList.add("off");
-}
-
-const blur_background_sort = document.getElementById("blur_background_sort");
-const sort_menu = document.getElementById("sort_menu");
-
-function blur_sort() {
-    blur_background_sort.style.visibility = "hidden";
-    sort_menu.style.visibility = "hidden";
-}
-
-function sort_by() {
-    sort_menu.style.visibility = "visible";
-    blur_background_sort.style.visibility = "visible";
-}
-
-const sort_info = document.getElementById("sort_info");
-const created_at_option = document.getElementById("created_at");
-const updated_at_option = document.getElementById("updated_at");
-
-function created_at() {
-    setTimeout(() => {
-        sort_info.textContent = "Created at";
-        sort_menu.style.visibility = "hidden";
-        blur_background_sort.style.visibility = "hidden";
-        created_at_option.classList.add("selected");
-        updated_at_option.classList.remove("selected");
-    }, 100);
-}
-
-function updated_at() {
-    setTimeout(() => {
-        sort_info.textContent = "Updated at";
-        sort_menu.style.visibility = "hidden";
-        blur_background_sort.style.visibility = "hidden";
-        updated_at_option.classList.add("selected");
-        created_at_option.classList.remove("selected");
-    }, 100);
-}
-
-function show_save() {
-    const showSaveToggle = document.getElementById("show_save_btn_toggle");
-    showSaveToggle.classList.toggle("off");
-    showSaveToggle.classList.toggle("on");
-
-    const showSaveBtnCircle = document.getElementById("show_save_btn_circle");
-    showSaveBtnCircle.classList.toggle("off");
-    showSaveBtnCircle.classList.toggle("on");
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function backup() {
-    account_btn.style.backgroundColor = "transparent";
-    note_btn.style.backgroundColor = "transparent";
-    backup_btn.style.backgroundColor = "#251e45";
-    security_btn.style.backgroundColor = "transparent";
-    help_btn.style.backgroundColor = "transparent";
-
-    account_settings.style.visibility = "hidden";
-    username_input.style.visibility = "hidden";
-    email_input.style.visibility = "hidden";
-
-    note_settings.style.visibility = "hidden";
-    auto_save_btn.style.display = "none";
-
-    backup_settings.style.visibility = "visible";
-    security_settings.style.visibility = "hidden";
-    help_settings.style.visibility = "hidden";
 }
 
 function security() {
-    account_btn.style.backgroundColor = "transparent";
-    note_btn.style.backgroundColor = "transparent";
-    backup_btn.style.backgroundColor = "transparent";
-    security_btn.style.backgroundColor = "#251e45";
-    help_btn.style.backgroundColor = "transparent";
+    security_btn.insertBefore(security_text, security_btn.firstChild);
 
-    account_settings.style.visibility = "hidden";
-    username_input.style.visibility = "hidden";
-    email_input.style.visibility = "hidden";
+    account_btn.classList.remove("active");
+    security_btn.classList.add("active");
+    editor_btn.classList.remove("active");
+    appearance_btn.classList.remove("active");
+    focus_btn.classList.remove("active");
+    help_btn.classList.remove("active");
 
-    note_settings.style.visibility = "hidden";
-    auto_save_btn.style.display = "none";
+    if (security_btn.classList.contains("active")) {
+        account_text.textContent = "";
+        security_text.textContent = "Security";
+        editor_text.textContent = "";
+        appearance_text.textContent = "";
+        focus_text.textContent = "";
+        help_text.textContent = "";
 
-    backup_settings.style.visibility = "hidden";
-    security_settings.style.visibility = "visible";
-    help_settings.style.visibility = "hidden";
+        account_settings.style.display = "none";
+        security_settings.style.display = "grid";
+        editor_settings.style.display = "none";
+        appearance_settings.style.display = "none";
+        focus_settings.style.display = "none";
+        help_settings.style.display = "none";
+    }
+}
+
+function editor() {
+    editor_btn.insertBefore(editor_text, editor_btn.firstChild);
+
+    account_btn.classList.remove("active");
+    security_btn.classList.remove("active");
+    editor_btn.classList.add("active");
+    appearance_btn.classList.remove("active");
+    focus_btn.classList.remove("active");
+    help_btn.classList.remove("active");
+
+    if (editor_btn.classList.contains("active")) {
+        account_text.textContent = "";
+        security_text.textContent = "";
+        editor_text.textContent = "Editor";
+        appearance_text.textContent = "";
+        focus_text.textContent = "";
+        help_text.textContent = "";
+
+        account_settings.style.display = "none";
+        security_settings.style.display = "none";
+        editor_settings.style.display = "grid";
+        appearance_settings.style.display = "none";
+        focus_settings.style.display = "none";
+        help_settings.style.display = "none";
+    }
+}
+
+function appearance() {
+    appearance_btn.insertBefore(appearance_text, appearance_btn.firstChild);
+
+    account_btn.classList.remove("active");
+    security_btn.classList.remove("active");
+    editor_btn.classList.remove("active");
+    appearance_btn.classList.add("active");
+    focus_btn.classList.remove("active");
+    help_btn.classList.remove("active");
+
+    if (appearance_btn.classList.contains("active")) {
+        account_text.textContent = "";
+        security_text.textContent = "";
+        editor_text.textContent = "";
+        appearance_text.textContent = "Appearance";
+        focus_text.textContent = "";
+        help_text.textContent = "";
+
+        account_settings.style.display = "none";
+        security_settings.style.display = "none";
+        editor_settings.style.display = "none";
+        appearance_settings.style.display = "grid";
+        focus_settings.style.display = "none";
+        help_settings.style.display = "none";
+    }
+}
+
+function focus() {
+    focus_btn.insertBefore(focus_text, focus_btn.firstChild);
+
+    account_btn.classList.remove("active");
+    security_btn.classList.remove("active");
+    editor_btn.classList.remove("active");
+    appearance_btn.classList.remove("active");
+    focus_btn.classList.add("active");
+    help_btn.classList.remove("active");
+
+    if (focus_btn.classList.contains("active")) {
+        account_text.textContent = "";
+        security_text.textContent = "";
+        editor_text.textContent = "";
+        appearance_text.textContent = "";
+        focus_text.textContent = "Focus";
+        help_text.textContent = "";
+
+        account_settings.style.display = "none";
+        security_settings.style.display = "none";
+        editor_settings.style.display = "none";
+        appearance_settings.style.display = "none";
+        focus_settings.style.display = "grid";
+        help_settings.style.display = "none";
+    }
 }
 
 function help() {
-    account_btn.style.backgroundColor = "transparent";
-    note_btn.style.backgroundColor = "transparent";
-    backup_btn.style.backgroundColor = "transparent";
-    security_btn.style.backgroundColor = "transparent";
-    help_btn.style.backgroundColor = "#251e45";
+    help_btn.insertBefore(help_text, help_btn.firstChild);
 
-    account_settings.style.visibility = "hidden";
-    username_input.style.visibility = "hidden";
-    email_input.style.visibility = "hidden";
+    account_btn.classList.remove("active");
+    security_btn.classList.remove("active");
+    editor_btn.classList.remove("active");
+    appearance_btn.classList.remove("active");
+    focus_btn.classList.remove("active");
+    help_btn.classList.add("active");
 
-    note_settings.style.visibility = "hidden";
-    auto_save_btn.style.display = "none";
+    if (help_btn.classList.contains("active")) {
+        account_text.textContent = "";
+        security_text.textContent = "";
+        editor_text.textContent = "";
+        appearance_text.textContent = "";
+        focus_text.textContent = "";
+        help_text.textContent = "Help";
 
-    backup_settings.style.visibility = "hidden";
-    security_settings.style.visibility = "hidden";
-    help_settings.style.visibility = "visible";
+        account_settings.style.display = "none";
+        security_settings.style.display = "none";
+        editor_settings.style.display = "none";
+        appearance_settings.style.display = "none";
+        focus_settings.style.display = "none";
+        help_settings.style.display = "grid";
+    }
 }

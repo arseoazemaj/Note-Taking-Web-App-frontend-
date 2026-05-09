@@ -1,17 +1,4 @@
 This file will be used to write our ideas for the development of seluna and write what we are working on so if we leave and forget we will remember
 when we see this file and see what we were working on and what did last and everything that had happened.
 
-Dumb shit will work for the backend now but i don't know how i think maybe make a new table and it will save just true(1) false(0) values so it saves storage
-but i will need to modify somethings like for the autosave i will need to make code to autosave or for the list grid view will ned maybe change just css or also
-js but i thing i will need js and for the sorting just order them not based on the created_at but updated_at easy but for the autosave i can't make to call the
-save() function every X units of time because that function also takes us to the notes page so not ideal will just makee a similar function to call
-and for the list grid view i make a logic that will give the container a class or grid or list
-Default value for all will be:
-Auto Save: off; (0)
-Default view: list; (0)
-Sort by: Created_at; (0)
-
-It can be:
-off(0)         on(1)
-list(0)        grid(1)
-Created_at(0)  Updated_at(1)
+WILL REMAKE ALL THE SETTINGS FROM 0

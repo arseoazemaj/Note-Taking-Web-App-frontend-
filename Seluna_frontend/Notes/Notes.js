@@ -1039,9 +1039,7 @@ async function continue_lock() {
         }
 
         if (folderIds.length > 0) {
-            const folderResponse = await fetch(
-                "http://localhost:5216/api/Folders/lock_folder",
-                {
+            const folderResponse = await fetch("http://localhost:5216/api/Folders/lock_folder", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
