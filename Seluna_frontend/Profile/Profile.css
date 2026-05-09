@@ -133,17 +133,18 @@ a, p, h1, h3, button, input {
 }
 
 .menues {
-    width: 20%;
+    width: 26%;
     padding: 10px;
     white-space: normal;
     background-color: #1a1433;
     border: none;
 }
 
-.menues:active {
+.menues.active {
     background-color: #251e45;
 }
 
+<<<<<<< HEAD
 #blur_background, #blur_background_sort {
     visibility: hidden;
     position: fixed;
@@ -155,11 +156,13 @@ a, p, h1, h3, button, input {
     z-index: 1;
 }
 
+=======
+>>>>>>> adb68380e9b8ab45113bd26706fc4b7e58ce4521
 #setting_page {
     position: fixed;
     top: 30%;
     left: 50%;
-    background: #251e45;
+    background: #251e4548;
     height: 440px;
     width: 100%;
     transform: translateX(-50%);
@@ -169,13 +172,14 @@ a, p, h1, h3, button, input {
     z-index: 1;
 }
 
-#account_settings, #note_settings, #backup_settings, #security_settings, #help_settings {
+#account_settings, #security_settings, #editor_settings, #appearance_settings, #focus_settings, #help_settings {
     display: grid;
     position: absolute;
     top: 25px;
     width: 100%;
     gap: 25px;
 }
+<<<<<<< HEAD
 
 #username_input, #email_input {
     position: relative;
@@ -638,3 +642,5 @@ a, p, h1, h3, button, input {
 #note_settings, #backup_settings, #security_settings, #help_settings {
     visibility: hidden;
 }
+=======
+>>>>>>> adb68380e9b8ab45113bd26706fc4b7e58ce4521

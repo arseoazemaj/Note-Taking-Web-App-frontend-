@@ -137,19 +137,18 @@ let filled = false;
 
 function fill() {
     const icon = document.getElementById("important-icon");
-    
+
     if (filled) {
         icon.style.fill = "none";
     }
     else {
         icon.style.fill = "#dda9ff";
     }
-    
+
     filled = !filled;
 }
 
 //*Fix lock for locked notes (you can't lock a note that is already locked)
-
 function lock() {
     setTimeout(() => {
         const lock_menu = document.getElementById("lock_menu");

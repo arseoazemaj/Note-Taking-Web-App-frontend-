@@ -42,103 +42,29 @@
     </div>
     <div id="settings">
         <div id="setting_menu">
-            <button class="menues" id="account" data-tap="account">Account</button>
-            <button class="menues" id="note" data-tap="note">Notes</button>
-            <button class="menues" id="backup" data-tap="backup">Backup& Export</button>
-            <button class="menues" id="security" data-tap="security">Security</button>
-            <button class="menues" id="help" data-tap="help">Help</button>
+            <button class="menues" id="account" data-tap="account">
+                <i data-lucide="circle-user-round"></i>
+            </button>
+            <button class="menues" id="security" data-tap="security">
+                <i id="security_icon" data-lucide="shield-check"></i>
+            </button>
+            <button class="menues" id="editor" data-tap="editor">
+                <i id="editor_icon" data-lucide="notebook-pen"></i>
+            </button>
+            <button class="menues" id="appearance" data-tap="appearance">
+                <i id="appearance_icon" data-lucide="pencil-line"></i>
+            </button>
+            <button class="menues" id="focus" data-tap="focus">
+                <i id="focus_icon" data-lucide="bell"></i>
+            </button>
+            <button class="menues" id="help" data-tap="help">
+                <i id="help_icon" data-lucide="help-circle"></i>
+            </button>
         </div>
 
         <div id="setting_page">
             <div id="account_settings">
-                <div id="username_input">
-                    <input id="username_change" type="text" placeholder="Username">
-                    <i data-lucide="pen" id="change_username_btn" data-tap="change_name"></i>
-                </div>
-                <div id="email_input">
-                    <input id="email_change" type="email" placeholder="Email">
-                    <i data-lucide="pen" id="change_email_btn" data-tap="change_email"></i>
-                </div>
-                <div>
-                    <button id="change_password_btn" data-tap="change_password">Change Password
-                        <i data-lucide="chevron-right" id="right"></i>
-                    </button>
-                    <div id="blur_background" ontouchstart="blur_backgroundHandler()"></div>
-                    <div id="password_change_menu">
-                        <h3>Put your old password to confirm your identity.</h3>
-                        <div class="password-wrapper">
-                            <input id="old_password" type="password" placeholder="Current Password">
-                            <span id="toggle-icon-2" data-tap="togglePassword">
-                                <img src="../Icons/eye.png" alt="Eye Icon" class="eye_icon" id="eye_2">
-                                <img src="../Icons/hidden-eye.png" alt="Hidden Eye Icon" class="hidden_eye_icon" id="hidden_eye_2" style="display: none;">
-                            </span>
-                        </div>
-                        <a href="forgot" id="forgot">Forgot passwords</a> <!--* Will redirect to somewhere to change your password if you have forgoten it -->
-                        <div id="decide">
-                            <button id="cancel_password" data-tap="cancel_password">Cancel</button>
-                            <button id="continue_password" data-tap="continue_password">Continue</button>
-                        </div>
-                    </div>
-                    <div id="change_password">
-                        <h3>Enter your new strong password.</h3>
-                        <div class="password-wrapper">
-                            <input id="new_password" type="password" placeholder="New Password">
-                            <span id="toggle-icon-2" data-tap="togglePassword">
-                                <img src="../Icons/eye.png" alt="Eye Icon" class="eye_icon" id="eye_2">
-                                <img src="../Icons/hidden-eye.png" alt="Hidden Eye Icon" class="hidden_eye_icon" id="hidden_eye_2" style="display: none;">
-                            </span>
-                        </div>
-                        <div class="password-wrapper">
-                            <input id="confirm_new_password" type="password" placeholder="Confirm New Password">
-                            <span id="toggle-icon-3" data-tap="togglePassword">
-                                <img src="../Icons/eye.png" alt="Eye Icon" class="eye_icon" id="eye_3">
-                                <img src="../Icons/hidden-eye.png" alt="Hidden Eye Icon" class="hidden_eye_icon" id="hidden_eye_3" style="display: none;">
-                            </span>
-                        </div>
-                        <div id="decide_password">
-                            <button id="cancel_password_change" data-tap="cancel_password_change">Cancel</button>
-                            <button id="save_password" data-tap="save_password">Save</button>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <button id="log_out" data-tap="open_log_out">Log Out
-                        <i data-lucide="chevron-right" id="right"></i>
-                    </button>
-                    <div id="log_out_page">
-                        <h3 id="log_out_message">Are you sure you want to log out from this device?<br>You will remain logged in on other devices.</h3>
-                        <div id="log_out_decision">
-                            <button id="no_log_out" data-tap="do_not_log_out">No</button>
-                            <button id="yes_log_out" data-tap="do_log_out">Yes</button>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <button id="delete_account" data-tap="open_delete_account">Delete Account
-                        <i data-lucide="chevron-right" id="right"></i>
-                    </button>
-                    <div id="delete_page">
-                        <h3 id="delete_message">Are you sure you want to delete your account?<br>Your account will be permanently deleted after 30 days. If you change your mind, you can log back in within 30 days to cancel the deletion.</h3>
-                        <div id="delete_decision">
-                            <button id="cancel_delete" data-tap="cancel_delete">Cancel</button>
-                            <button id="continue_delete" data-tap="continue_delete">Continue</button>
-                        </div>
-                        <div id="continue_delete_page">
-                            <h3 id="confirm_delete_message">For security reasons, please enter your password to confirm account deletion.<br>Your account will be permanently deleted after 30 days. You can cancel the deletion by logging back in within 30 days.</h3>
-                            <div class="password-wrapper" id="password-delete-wrapper">
-                                <input id="confirm_delete_password" type="password" placeholder="Confirm your Password">
-                                <span id="toggle-icon-3" data-tap="togglePassword">
-                                    <img src="../Icons/eye.png" alt="Eye Icon" class="eye_icon" id="eye_4">
-                                    <img src="../Icons/hidden-eye.png" alt="Hidden Eye Icon" class="hidden_eye_icon" id="hidden_eye_4" style="display: none;">
-                                </span>
-                            </div>
-                            <div id="continue_delete_decision">
-                                <button id="do_not_delete" data-tap="do_not_delete">Cancel</button>
-                                <button id="do_delete" data-tap="do_delete">Confirm</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <button>Account</button>
             </div>
             <div id="note_settings">
                 <button id="auto_save_btn" data-tap="auto_save">Auto Save
@@ -149,24 +75,18 @@
 
                 <button id="default_view_btn">Default View
                     <div id="default_view_toggle" class="off">
-                        <div id="list_view" data-tap="list_view" class="on">List</div>
-                        <div id="grid_view" data-tap="grid_view">Grid</div>
+                        <div id="list_view" data-tap="list_view">List</div>
+                        <div id="grid_view" class="off" data-tap="grid_view">Grid</div>
                     </div>
                 </button>
 
-                <div>
-                    <div id="blur_background_sort" data-tap="blur_sort"></div>
-                    <button id="sort_by_btn" data-tap="sort_by">Sort By
-                        <div id="sort_txt">
-                            <div id="sort_info">Created at</div>
-                            <div id="sort_arrow"> ></div>
-                        </div>
-                    </button>
-                    <div id="sort_menu">
-                        <h4 class="sort_decision_txt selected" id="created_at" data-tap="created_at">Created at</h4>
-                        <h4 class="sort_decision_txt" id="updated_at" data-tap="updated_at">Updated at</h4>
+                <button id="sort_by_btn" data-tap="sort_by">Sort By
+                    <div id="sort_info">
+                        <div id="sort_txt">Created At</div>
+                        <div id="sort_arrow">></div>
                     </div>
-                </div>
+                    <div id="sort_menu"></div>
+                </button>
             </div>
             <div id="backup_settings">
                 <button>Backup & Export</button>
@@ -174,6 +94,19 @@
             <div id="security_settings">
                 <button>Security</button>
             </div>
+
+            <div id="editor_settings">
+                <button>Editor</button>
+            </div>
+
+            <div id="appearance_settings">
+                <button>Appearance</button>
+            </div>
+
+            <div id="focus_settings">
+                <button>Focus</button>
+            </div>
+
             <div id="help_settings">
                 <button>Help</button>
             </div>

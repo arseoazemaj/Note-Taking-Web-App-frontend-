@@ -88,35 +88,35 @@ lucide.createIcons();
     });
 })();
 
-document.addEventListener("DOMContentLoaded", loadUsername );
+// document.addEventListener("DOMContentLoaded", loadUsername );
 
-async function loadUsername() {
-    try {
-        const username = document.getElementById("username");
-        const username_input = document.getElementById("username_change");
-        const token = localStorage.getItem("token");
-        if (!token) {
-            console.error("No JWT token found");
-            return;
-        }
+// async function loadUsername() {
+//     try {
+//         const username = document.getElementById("username");
+//         const username_input = document.getElementById("username_change");
+//         const token = localStorage.getItem("token");
+//         if (!token) {
+//             console.error("No JWT token found");
+//             return;
+//         }
 
-        const response = await fetch("http://localhost:5216/api/account/get_username", {
-                method: "GET",
-                headers: {
-                    "Authorization": `Bearer ${token}`,
-                    "Content-Type": "application/json"
-                }
-            }
-        );
+//         const response = await fetch("http://localhost:5216/api/account/get_username", {
+//                 method: "GET",
+//                 headers: {
+//                     "Authorization": `Bearer ${token}`,
+//                     "Content-Type": "application/json"
+//                 }
+//             }
+//         );
 
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-        }
+//         if (!response.ok) {
+//             throw new Error(`HTTP ${response.status}`);
+//         }
 
-        const data = await response.json();
-        username.textContent = data.username;
-        username_input.value = data.username;
-    } catch (error) {
-        console.error("Failed to load username:", error);
-    }
-}
+//         const data = await response.json();
+//         username.textContent = data.username;
+//         username_input.value = data.username;
+//     } catch (error) {
+//         console.error("Failed to load username:", error);
+//     }
+// }
