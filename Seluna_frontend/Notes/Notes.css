@@ -226,7 +226,7 @@ input::selection {
     background: #1d1737;
     height: 400px;
     width: 90%;
-    grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
     gap: 35px 20px;
     box-sizing: border-box;
     z-index: 2;
@@ -261,17 +261,18 @@ input::selection {
     left: 50%;
     transform: translateX(-50%);
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(47%, 1fr));
     gap: 45px 25px;
     width: 90%;
     box-sizing: border-box;
     padding-bottom: 130px;
+    justify-items: center;
 }
 
 .note-box {
     position: relative;
-    height: 130px;
-    width: 85%;
+    height: 120px;
+    width: 95%;
     background-color: #251e45;
     padding: 10px;
     border-radius: 15px;
@@ -359,7 +360,7 @@ input::selection {
 }
 
 @media (min-width: 361px) {
-    .important-icon {left: 90%;}
+    .important-icon {left: 95%;}
     .important-iconF {left: 95%;}
 }
 
@@ -976,10 +977,3 @@ input::selection {
 }
 
 #cancel_delete:active, #continue_delete:active {background-color: #1d1737;}
-
-
-
-#test_btn1, #test_btn2 {
-    position: relative;
-    z-index: 999;
-}

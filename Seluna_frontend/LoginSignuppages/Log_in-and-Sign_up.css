@@ -154,8 +154,9 @@ input::placeholder {
 
 #forgot {
     position: absolute;
-    top: 63%;
-    left: 78px;
+    top: 65%;
+    left: 50%;
+    transform: translateX(-50%);
     text-decoration: none;
     color: #ad7ecc;
 }
