@@ -52,7 +52,12 @@
             <div id="move_menu">
                 <h3 id="folder_header_text_1">Select a folder</h3>
                 <div id="folders">
-                    <div id="folder_list"></div>
+                    <div id="folder_list">
+                        <div id="main_folder">
+                            <i class="folders_icon" data-lucide="folder"></i>
+                            <p class="folder_name">Main page</p>
+                        </div>
+                    </div>
                     <button id="create_folder-btn" data-tap="create_folder">Create a new folder
                         <i id="plus" data-lucide="folder-plus"></i>
                     </button>
@@ -131,7 +136,7 @@
             </div>
         </div>
         <button id="mark_important" data-tap="mark_important">
-            <i id="important_icon" data-lucide="star"></i>Mark Important
+            <i id="important_icon" data-lucide="star"></i>Important
         </button>
         <div id="download_container">
             <button id="download" data-tap="download_note">

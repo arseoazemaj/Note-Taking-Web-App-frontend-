@@ -630,18 +630,24 @@ function chosingMoveDecisions() {
 const folderPage = document.getElementById("folder_page");
 const folder_blur = document.getElementById("folder_blur");
 let currentOpenedFolderId = null;
+const main_folder = document.getElementById("main_folder");
 
 function open_folder(folderId) {
-    currentOpenedFolderId = folderId;
+    currentOpenedFolderId = folderId
     document.querySelectorAll(".folder-box").forEach(f => f.classList.remove("opened"));
     const openedFolder = document.getElementById(folderId);
     if (openedFolder) {
         openedFolder.classList.add("opened");
     }
     opened_folder(folderId);
+
     folderPage.classList.add("show");
     folderPage.classList.remove("hide");
     folder_blur.style.visibility = "visible";
+
+    if (folderId) {
+        main_folder.style.display = "flex";
+    }
 }
 
 folder_blur.addEventListener("touchstart", () => {
@@ -657,6 +663,8 @@ folder_blur.addEventListener("touchstart", () => {
                 checkIcon.style.display = "none";
             }
         });
+
+        main_folder.style.display = "none";
 
         if (decide.classList.contains("slide-in")) {
             hideDecision();
@@ -689,8 +697,6 @@ async function LoadFolderName () {
 
         const folderNames = await response.json();
         const folderList = document.getElementById("folder_list");
-
-        folderList.innerHTML = "";
 
         folderNames.forEach(folder => {
             const folder_element = document.createElement("div");
@@ -760,12 +766,49 @@ async function sendNoteToFolder(noteId, folderId) {
 
         await loadNotes();
         hideDecision();
+    } catch (error) {
+        console.error("Error moving note:", error);
+    }
+}
+
+main_folder.addEventListener("click", () => {
+    const selectedNotes = document.querySelectorAll(".note-box.selected");
+
+    if (selectedNotes.length === 0) return;
+
+    selectedNotes.forEach(note => {
+        const noteId = note.id;
+        sendNoteToMain(noteId);
+    });
+});
+
+async function sendNoteToMain(noteId) {
+    try {
+        const response = await fetch("http://localhost:5216/api/Folders/SendNoteToFolder", {
+            method: "PUT",
+            headers: {
+                Authorization: "Bearer " + token,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                Id: noteId,
+                folderId: null
+            })
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(errorText);
+        }
+
+        await loadNotes();
+        hideDecision();
 
         if (currentOpenedFolderId) {
             open_folder(currentOpenedFolderId);
         }
     } catch (error) {
-        console.error("Error moving note:", error);
+        console.error("Error moving note to main page:", error);
     }
 }
 
