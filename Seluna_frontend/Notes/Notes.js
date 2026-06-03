@@ -372,6 +372,10 @@ function blur_backgroundHandler() {
             deletemsg.textContent = "";
         }
 
+        passwordInput.type = "password";
+        eyeIcon.style.display = "inline";
+        hiddenEyeIcon.style.display = "none";
+
         blur_background.style.visibility = "hidden";
         decision_hider.style.visibility = "hidden";
     }, 100);
@@ -543,7 +547,7 @@ async function LoadFolders() {
                         updateSelectionModeFromDOM();
                     }
                 } else if (!longPressFired && !wasCanceled) {
-                    if (folder.isLocked) {
+                    if (folder.is_locked) {
                         LockedFolder = true;
                         LockedNotes = false;
                         showUnlockPrompt(null, folder.id);
@@ -670,6 +674,11 @@ folder_blur.addEventListener("touchstart", () => {
 
         if (decide.classList.contains("slide-in")) {
             hideDecision();
+        }
+
+        const openedFolder = document.querySelector(".folder-box.opened");
+        if (openedFolder) {
+            openedFolder.classList.remove("opened");
         }
     }, 100);
 });
@@ -1112,18 +1121,16 @@ async function continue_lock() {
 
         hideDecision();
         loadNotes();
-        LoadFolders();
     } catch (error) {
         console.error("Lock error:", error);
         alert(error.message || "Error locking items.");
     }
 }
 
+const passwordInput = document.getElementById("unlock_password");
+const eyeIcon = document.getElementById("eye_icon");
+const hiddenEyeIcon = document.getElementById("hidden_eye_icon");
 function togglePassword() {
-    const passwordInput = document.getElementById("unlock_password");
-    const eyeIcon = document.getElementById("eye_icon");
-    const hiddenEyeIcon = document.getElementById("hidden_eye_icon");
-
     if (passwordInput.type === "password") {
         passwordInput.type = "text";
         eyeIcon.style.display = "none";
@@ -1139,16 +1146,21 @@ function showUnlockPrompt(noteId = null, folderId = null) {
     blur_background.style.visibility = "visible";
     unlock_menu.classList.add("show");
     unlock_menu.classList.remove("hide");
+    let unlock_text = document.getElementById("unlock_text");
 
     unlock_menu.dataset.noteId = "";
     unlock_menu.dataset.folderId = "";
 
     if (noteId !== null) {
         unlock_menu.dataset.noteId = noteId;
+        unlock_text.innerHTML = "";
+        unlock_text.textContent = "You are opening a locked note, you need to enter the password of the note in order to view or edit its content.";
     }
 
     if (folderId !== null) {
         unlock_menu.dataset.folderId = folderId;
+        unlock_text.innerHTML = "";
+        unlock_text.textContent = "You are opening a locked folder, you need to enter the password of the folder in order to view or edit its content.";
     }
 }
 
@@ -1261,26 +1273,26 @@ async function mark_important() {
             alert("You must be logged in to mark items as important.");
             return;
         }
-    
+
         const noteIds = Array.from(document.querySelectorAll(".note-box.selected"))
             .map(note => parseInt(note.id))
             .filter(id => !isNaN(id));
-    
+
         const folderIds = Array.from(document.querySelectorAll(".folder-box.selected"))
             .map(folder => parseInt(folder.dataset.id || folder.id))
             .filter(id => !isNaN(id));
-    
+
         if (noteIds.length === 0 && folderIds.length === 0) {
             alert("No notes or folders selected.");
             return;
         }
-    
+
         try {
             if (noteIds.length > 0) {
                 const important_note = document.querySelectorAll(".note-box.selected.important-note");
                 const unimportant_note = document.querySelectorAll(".note-box.selected:not(.important-note)");
                 let Important_status = false;
-            
+
                 if (important_note.length > unimportant_note.length) {
                     Important_status = false;
                 } else if (important_note.length < unimportant_note.length) {
@@ -1288,7 +1300,7 @@ async function mark_important() {
                 } else if (important_note.length === unimportant_note.length) {
                     Important_status = true;
                 }
-            
+
                 const notesResponse = await fetch(
                     "http://localhost:5216/api/Notes/mark_important_Notes",
                     {
@@ -1303,19 +1315,19 @@ async function mark_important() {
                         })
                     }
                 );
-            
+
                 if (!notesResponse.ok) {
                     const errorText = await notesResponse.text();
                     console.error("Notes error:", errorText);
                     throw new Error("Failed to update notes.");
                 }
             }
-        
+
             if (folderIds.length > 0) {
                 const important_folder = document.querySelectorAll(".folder-box.selected.important-folder");
                 const unimportant_folder = document.querySelectorAll(".folder-box.selected:not(.important-folder)");
                 let Important_status = false;
-            
+
                 if (important_folder.length > unimportant_folder.length) {
                     Important_status = false;
                 } else if (important_folder.length < unimportant_folder.length) {
@@ -1323,7 +1335,7 @@ async function mark_important() {
                 } else if (important_folder.length === unimportant_folder.length) {
                     Important_status = true;
                 }
-            
+
                 const foldersResponse = await fetch(
                     "http://localhost:5216/api/Folders/mark_important_Folders",
                     {
@@ -1338,22 +1350,20 @@ async function mark_important() {
                         })
                     }
                 );
-            
+
                 if (!foldersResponse.ok) {
                     const errorText = await foldersResponse.text();
                     console.error("Folders error:", errorText);
                     throw new Error("Failed to update folders.");
                 }
             }
-        
+
             hideDecision();
             loadNotes();
-            LoadFolders();
-        
+
             if (currentOpenedFolderId) {
                 open_folder(currentOpenedFolderId);
             }
-        
         } catch (error) {
             console.error("Error updating importance:", error);
             alert("Error updating importance.");
@@ -1561,13 +1571,10 @@ async function send_to_trash() {
         if (noteIds.length > 0 && folderIds.length > 0) {
             loadNotes();
             LoadFolders();
-            alert("Selected notes and folders have been moved to trash.");
         } else if (noteIds.length > 0) {
             loadNotes();
-            alert("Selected notes have been moved to trash.");
         } else if (folderIds.length > 0) {
             LoadFolders();
-            alert("Selected folders have been moved to trash.");
         }
 
     } catch (error) {
