@@ -320,7 +320,7 @@ async function load_deleted_Folders() {
             checkIcon.style.display = "none";
 
             const folderIcon = document.createElement("i");
-            folderIcon.setAttribute("data-lucide", "folder-closed");
+            folderIcon.setAttribute("data-lucide", "folder");
             folderIcon.classList.add("folder-icon");
 
             const Color = folder.color;
