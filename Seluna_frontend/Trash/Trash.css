@@ -135,8 +135,8 @@ a, div {
     overflow-x: overlay;
     padding: 40px 10px;
     width: 90%;
-    position: absolute;
-    top: 120px;
+    position: relative;
+    top: -40px;
     left: 50%;
     transform: translateX(-50%);
     scrollbar-width: none;
@@ -179,8 +179,8 @@ a, div {
 }
 
 #container {
-    position: absolute;
-    top: 250px;
+    position: relative;
+    top: 0;
     left: 50%;
     transform: translateX(-50%);
     display: grid;

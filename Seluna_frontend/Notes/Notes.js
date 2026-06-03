@@ -633,9 +633,11 @@ function chosingMoveDecisions() {
     if (anySelectedFolder) {
         SelectedFolders = true;
         move_btn.disabled = true;
+        download_btn.disabled = true;
     } else {
         SelectedFolders = false;
         move_btn.disabled = false;
+        download_btn.disabled = false;
     }
 }
 

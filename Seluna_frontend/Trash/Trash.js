@@ -241,6 +241,10 @@ async function load_deleted_Folders() {
         }
 
         const folders = await response.json();
+        if (folders.length === 0) {
+            const folder_menu = document.getElementById("folders_menu");
+            folder_menu.style.display = "none";
+        }
         folders_menu.innerHTML = "";
 
         function setupFolderEvents(folderBox, folder) {
@@ -329,7 +333,7 @@ async function load_deleted_Folders() {
             folderName.style.color = Color;
             folderName.textContent = folder.name;
 
-            //* if (folder.isImportant) { //*Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur odio laudantium harum!
+            if (folder.is_important) {
                 const isImportantIcon = document.createElement("i");
                 folderBox.classList.add("important-folder");
                 isImportantIcon.setAttribute("data-lucide", "star");
@@ -337,9 +341,9 @@ async function load_deleted_Folders() {
                 folderBox.appendChild(isImportantIcon);
                 isImportantIcon.style.color = Color;
                 isImportantIcon.style.fill = fillColor;
-            //* }
+            }
 
-            if (folder.isLocked) {
+            if (folder.is_locked) {
                 folderIcon.setAttribute("data-lucide", "folder-lock");
                 folderBox.classList.add("locked-folder");
             }

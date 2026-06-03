@@ -455,7 +455,7 @@ input::selection {
 
 #move:active, #lock:active, #delete:active, #mark_important:active, #download:active {background-color: #251e45;}
 
-#move:disabled, #lock:disabled, #mark_important:disabled { pointer-events: none; opacity: .5;}
+#move:disabled, #download:disabled { pointer-events: none; opacity: .5;}
 
 #folder_icon, #lock_icon, #bin_icon, #important_icon, #download_icon {width: 100%;}
 
@@ -898,14 +898,14 @@ input::selection {
 }
 
 #download_menu {
-    height: 260px;
-    width: 80%;
+    height: 250px;
+    width: 75%;
     border-radius: 25px;
     background: #251e45;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: -300px;
+    bottom: -330px;
     padding: 20px;
     z-index: 1;
 }
@@ -914,30 +914,47 @@ input::selection {
 #download_menu.slide-out {animation: slide_out_download_menu .5s forwards;}
 
 @keyframes slide_in_download_menu {
-    from { bottom: -300px; }
+    from { bottom: -330px; }
     to { bottom: 10px; }
 }
 
 @keyframes slide_out_download_menu {
     from { bottom: 10px; }
-    to { bottom: -300px; }
+    to { bottom: -330px; }
+}
+
+#download_minimenu {
+    width: 95%;
+    height: 75%;
+    border-radius: 25px;
+    background: #1d1737;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
 }
 
 .download_format {
-    width: 100%;
+    width: 95%;
     height: 60px;
     display: grid;
     justify-content: left;
     align-items: center;
-    background-color: #251e45;
+    background-color: #1d1737;
     border: 10px solid transparent;
-    border-radius: 10% / 50%;
+    border-radius: 15px;
     font-size: 17px;
-    margin: 15px 0;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .download_format:active {
-    background-color: #1d1737;
+    background-color: #251e45;
 }
 
 #delete_menu {
@@ -948,7 +965,7 @@ input::selection {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: -188%; /*12%*/
+    bottom: -188%;
     padding: 20px;
     z-index: 1;
 }
