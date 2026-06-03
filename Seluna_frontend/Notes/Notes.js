@@ -699,6 +699,8 @@ async function LoadFolderName () {
 
         const folderNames = await response.json();
         const folderList = document.getElementById("folder_list");
+        folderList.innerHTML = "";
+        folderList.appendChild(main_folder);
 
         folderNames.forEach(folder => {
             const folder_element = document.createElement("div");
@@ -710,7 +712,7 @@ async function LoadFolderName () {
             folderIcon.classList.add("folders_icon");
             folderIcon.style.color = folder.color;
 
-            const folderName = document.createElement("p");
+            const folderName = document.createElement("h3");
             folderName.className = "folder_name";
             folderName.textContent = folder.name;
             folderName.style.color = folder.color;
@@ -739,9 +741,7 @@ async function LoadFolderName () {
                 }
             });
         });
-
         lucide.createIcons();
-
     } catch (err) {
         console.error("Error loading folders name:", err);
     }
