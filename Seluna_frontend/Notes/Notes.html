@@ -126,8 +126,25 @@
                 </div>
                 <div id="lock_password_menu">
                     <h3 id="lock_password_menu_text">Create a strong password and keep it safe this note will only open for you.</h3>
-                    <input type="text" id="lock_password" placeholder="Enter a password"> <!--Change to type="password"-->
-                    <input type="text" id="confirm_lock_password" placeholder="Confirm your password"> <!--Change to type="password"-->
+                    <div id="password_lock">
+                        <input type="password" id="lock_password" placeholder="Enter a password">
+                        <span id="toggle_eye_lock" onclick="togglePasswordLock()">
+                            <img src="../Icons/eye.png" alt="Eye Icon" id="eye_icon_lock">
+                            <img src="../Icons/hidden-eye.png" alt="Hidden Eye Icon" id="hidden_eye_icon_lock" style="display: none;">
+                        </span>
+                    </div>
+
+
+
+                    <div id="confirm_password_lock">
+                        <input type="password" id="confirm_lock_password" placeholder="Confirm your password">
+                        <span id="toggle_eye_lock" onclick="togglePasswordLock()">
+                            <img src="../Icons/eye.png" alt="Eye Icon" id="eye_icon_lock_confirm">
+                            <img src="../Icons/hidden-eye.png" alt="Hidden Eye Icon" id="hidden_eye_icon_lock_confirm" style="display: none;">
+                        </span>
+                    </div>
+
+
                     <div id="chose_lock">
                         <button id="cancel_lock" data-tap="cancel_lock">Cancel</button>
                         <button id="continue_lock" data-tap="continue_lock">Lock</button>
@@ -161,6 +178,7 @@
             </div>
         </div>
     </div>
+
     <div id="unlock_menu">
         <h3 id="unlock_text">You are opening a locked note, you need to enter the password of the note in order to view or edit its content.</h3>
         <div class="password-wrapper">

@@ -376,6 +376,13 @@ function blur_backgroundHandler() {
         eyeIcon.style.display = "inline";
         hiddenEyeIcon.style.display = "none";
 
+        passwordInput_lock.type = "password";
+        passwordInput_lock_confirm.type = "password";
+        eyeIcon_lock.style.display = "inline";
+        hiddenEyeIcon_lock.style.display = "none";
+        eyeIcon_lock_confirm.style.display = "inline";
+        hiddenEyeIcon_lock_confirm.style.display = "none";
+
         blur_background.style.visibility = "hidden";
         decision_hider.style.visibility = "hidden";
     }, 100);
@@ -1005,6 +1012,13 @@ function cancel_lock() {
         lock_menu.classList.remove("slide-out");
         lock_password_menu.classList.add("slide-out");
         lock_password_menu.classList.remove("slide-in");
+
+        passwordInput_lock.type = "password";
+        passwordInput_lock_confirm.type = "password";
+        eyeIcon_lock.style.display = "inline";
+        hiddenEyeIcon_lock.style.display = "none";
+        eyeIcon_lock_confirm.style.display = "inline";
+        hiddenEyeIcon_lock_confirm.style.display = "none";
     }, 150);
 }
 
@@ -1139,6 +1153,30 @@ function togglePassword() {
         passwordInput.type = "password";
         eyeIcon.style.display = "inline";
         hiddenEyeIcon.style.display = "none";
+    }
+}
+
+const passwordInput_lock = document.getElementById("lock_password");
+const passwordInput_lock_confirm = document.getElementById("confirm_lock_password");
+const eyeIcon_lock = document.getElementById("eye_icon_lock");
+const hiddenEyeIcon_lock = document.getElementById("hidden_eye_icon_lock");
+const eyeIcon_lock_confirm = document.getElementById("eye_icon_lock_confirm");
+const hiddenEyeIcon_lock_confirm = document.getElementById("hidden_eye_icon_lock_confirm");
+function togglePasswordLock() {
+    if (passwordInput_lock.type === "password") {
+        passwordInput_lock.type = "text";
+        passwordInput_lock_confirm.type = "text";
+        eyeIcon_lock.style.display = "none";
+        hiddenEyeIcon_lock.style.display = "inline";
+        eyeIcon_lock_confirm.style.display = "none";
+        hiddenEyeIcon_lock_confirm.style.display = "inline";
+    } else {
+        passwordInput_lock.type = "password";
+        passwordInput_lock_confirm.type = "password";
+        eyeIcon_lock.style.display = "inline";
+        hiddenEyeIcon_lock.style.display = "none";
+        eyeIcon_lock_confirm.style.display = "inline";
+        hiddenEyeIcon_lock_confirm.style.display = "none";
     }
 }
 

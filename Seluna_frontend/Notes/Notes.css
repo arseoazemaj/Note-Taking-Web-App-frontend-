@@ -742,6 +742,7 @@ input::selection {
 #lock_password_menu {
     height: 90%;
     width: 90%;
+    position: absolute;
     border-radius: 25px;
     background: #251e45;
     position: absolute;
@@ -773,18 +774,27 @@ input::selection {
 }
 
 #lock_password, #confirm_lock_password {
-    position: absolute;
-    left: 20px;
+    position: relative;
     height: 35px;
-    width: 77%;
+    width: 90%;
 }
 
-#lock_password {
-    top: 37%;
+#eye_icon_lock, #hidden_eye_icon_lock, #eye_icon_lock_confirm, #hidden_eye_icon_lock_confirm {
+    width: 25px;
+    height: 25px;
+    transform: translateY(80%);
+    transform: translateY(20%);
+    right: 10%;
+    position: absolute;
 }
 
-#confirm_lock_password {
-    top: 55%;
+#password_lock {
+    position: relative;
+    top: 0%;
+}
+#confirm_password_lock {
+    position: relative;
+    top: 10%;
 }
 
 #chose_lock {
