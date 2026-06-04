@@ -924,7 +924,7 @@ input::selection {
 }
 
 #download_minimenu {
-    width: 95%;
+    width: 90%;
     height: 75%;
     border-radius: 25px;
     background: #1d1737;
