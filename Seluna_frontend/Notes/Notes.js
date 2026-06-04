@@ -492,6 +492,11 @@ async function LoadFolders() {
         }
 
         const folders = await response.json();
+        if (folders.length === 0) {
+            const folder_menu = document.getElementById("folders_menu");
+            folder_menu.style.display = "none";
+            container.style.top = "20px";
+        }
         folders_menu.innerHTML = "";
 
         function setupFolderEvents(folderBox, folder) {
@@ -1449,8 +1454,6 @@ async function download_txt () { //*For now have hardcoded text as content but w
 }
 
 async function download_pdf() {
-    console.log("This is a pdf file...");
-
     try {
         if (!window.Capacitor?.isNativePlatform()) {
             console.log("You are not on a native device.");
@@ -1493,9 +1496,7 @@ async function download_pdf() {
 }
 
 async function download_md() {
-    console.log(".md file...")
-
-        try {
+    try {
         if (!window.Capacitor?.isNativePlatform()) {
             console.log('Not running on native platform');
             return;
@@ -1624,7 +1625,18 @@ async function send_to_trash() {
 }
 
 
-
+//*To hide elements when the keyboard is open and show them again when it"s closed*//
+if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.Keyboard) {
+    const { Keyboard } = window.Capacitor.Plugins;
+    Keyboard.addListener('keyboardWillShow', () => {
+        document.getElementById("new_note").style.visibility = "hidden";
+        decide.style.visibility = "hidden";
+    });
+    Keyboard.addListener('keyboardWillHide', () => {
+        document.getElementById("new_note").style.visibility = "visible";
+        decide.style.visibility = "visible";
+    });
+}
 
 //*Will be used to clear the local storage for testing purposes*//
 

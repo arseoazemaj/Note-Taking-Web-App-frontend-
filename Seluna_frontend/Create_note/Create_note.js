@@ -236,8 +236,10 @@ function downloadNote() {
 }
 
 function closeDownloadMenuBG() {
-    download_bg.style.visibility = "hidden";
-    closeMenu();
+    setTimeout(() => {
+        download_bg.style.visibility = "hidden";
+        closeMenu();
+    }, 100);
 }
 
 async function download_txt () {
@@ -346,10 +348,10 @@ async function deleteNote() {
     const Content = document.getElementById("note_input").value.trim();
     const isImportant = filled;
 
-    if (Content === "" && Title === "") {
-        window.location.href = "../Notes/Notes.html";
-    }
-    else {
+    if (Content === "") {
+        alert("Cannot delete an empty note.");
+        return;
+    }else {
         try {
             const response = await fetch("http://localhost:5216/api/Notes/delete_note", {
                 method: "PUT",

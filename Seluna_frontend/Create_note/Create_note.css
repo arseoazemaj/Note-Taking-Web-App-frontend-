@@ -309,7 +309,7 @@ input {
     position: fixed;
     background: #251e45;
     height: 250px;
-    width: 80%;
+    width: 75%;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
