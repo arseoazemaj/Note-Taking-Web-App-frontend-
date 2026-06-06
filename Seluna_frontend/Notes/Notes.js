@@ -1532,12 +1532,22 @@ function open_trash_menu() {
             .map(folder => parseInt(folder.id))
             .filter(id => !isNaN(id));
 
-        if (noteIds.length > 0 && folderIds.length === 0) {
-            deletemsg.textContent = "Are you sure you want to delete the selected notes?";
-        } else if (folderIds.length > 0 && noteIds.length === 0) {
-            deletemsg.textContent = "Are you sure you want to delete the selected folders?";
-        } else if (noteIds.length > 0 && folderIds.length > 0) {
+        if (noteIds.length === 1 && folderIds.length === 0) {
+            deletemsg.textContent = "Are you sure you want to delete the selected note?";
+        } else if (noteIds.length === 1 && folderIds.length === 1) {
+            deletemsg.textContent = "Are you sure you want to delete the selected note and folder?";
+        } else if (noteIds.length > 1 && folderIds.length > 1) {
             deletemsg.textContent = "Are you sure you want to delete the selected notes and folders?";
+        } else if (noteIds.length === 1 && folderIds.length > 1) {
+            deletemsg.textContent = "Are you sure you want to delete the selected note and folders?";
+        } else if (noteIds.length > 1 && folderIds.length === 1) {
+            deletemsg.textContent = "Are you sure you want to delete the selected notes and folder?";
+        } else if (noteIds.length === 0 && folderIds.length > 1) {
+            deletemsg.textContent = "Are you sure you want to delete the selected folders?";
+        } else if (noteIds.length > 1 && folderIds.length === 0) {
+            deletemsg.textContent = "Are you sure you want to delete the selected notes?";
+        } else if (noteIds.length === 0 && folderIds.length === 1) {
+            deletemsg.textContent = "Are you sure you want to delete the selected folder?";
         }
     }, 150);
 }
