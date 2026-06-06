@@ -118,7 +118,6 @@ async function loadNotes() {
         }
 
         const notes = await response.json();
-
         container.innerHTML = "";
 
         function setupNoteEvents(noteBox, note) {
@@ -493,9 +492,8 @@ async function LoadFolders() {
 
         const folders = await response.json();
         if (folders.length === 0) {
-            const folder_menu = document.getElementById("folders_menu");
-            folder_menu.style.display = "none";
-            container.style.top = "20px";
+            folders_menu.style.display = "none";
+            container.style.top = "40px";
         }
         folders_menu.innerHTML = "";
 
@@ -1645,7 +1643,6 @@ if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.Key
 
 //TODO: Use only when wanting to see in your phone (when using comment code from line 50)
 document.addEventListener("DOMContentLoaded", function() {
-    const container = document.getElementById("container");
     let notes = JSON.parse(localStorage.getItem("notes")) || [];
 
     function setupNoteEvents(noteBox, note) {

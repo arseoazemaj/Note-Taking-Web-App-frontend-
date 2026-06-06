@@ -244,6 +244,7 @@ async function load_deleted_Folders() {
         if (folders.length === 0) {
             const folder_menu = document.getElementById("folders_menu");
             folder_menu.style.display = "none";
+            container.style.top = "-5px";
         }
         folders_menu.innerHTML = "";
 
