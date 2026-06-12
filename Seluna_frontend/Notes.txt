@@ -1,4 +1,4 @@
 This file will be used to write our ideas for the development of seluna and write what we are working on so if we leave and forget we will remember
 when we see this file and see what we were working on and what did last and everything that had happened.
 
-WILL WORK ON THE NOTES PAGE TO MAKE EVERY FEATURE THERE PERFECT WITHOUT BUGS
+Have one feature is the "Download" needs the phone to be able to access the backend which it can't do now bbut will see
