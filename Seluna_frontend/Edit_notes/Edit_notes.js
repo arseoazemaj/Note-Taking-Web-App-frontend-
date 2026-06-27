@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async function () { //*Loads the n
     }
 
     try {
-        const response = await fetch(`http://localhost:5216/api/Notes/get_note/${noteId}`, {
+        const response = await fetch(`http://192.168.1.7:5216/api/Notes/get_note/${noteId}`, {
             headers: {
                 "Authorization": "Bearer " + token,
                 "Content-Type": "application/json"
@@ -99,7 +99,7 @@ async function update(noteId) { //*Update the note || doesn't keep the password 
     };
 
     try {
-        const response = await fetch("http://localhost:5216/api/Notes/edit_note", {
+        const response = await fetch("http://192.168.1.7:5216/api/Notes/edit_note", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -234,7 +234,6 @@ function confirmLock() {
 function downloadNote() {
     setTimeout(() => {
         mini_menu = true;
-        console.log("Downloading note...");
         download_menu.classList.add("show_lock_menu");
         download_menu.classList.remove("hide_lock_menu");
     }, 100);
@@ -345,7 +344,7 @@ async function deleteNote() { //*Moves the note to trash
     const isImportant = filled;
 
     try {
-        const response = await fetch("http://localhost:5216/api/Notes/delete_note", {
+        const response = await fetch("http://192.168.1.7:5216/api/Notes/delete_note", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

@@ -5,7 +5,7 @@ const token = localStorage.getItem("token");
 // if (!token) {
 //     window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
 // } else {
-//     fetch("http://localhost:5216/api/Notes/check-auth", {
+//     fetch("http://192.168.1.7:5216/api/Notes/check-auth", {
 //         headers: {
 //             "Authorization": "Bearer " + token
 //         }
@@ -100,7 +100,7 @@ lucide.createIcons();
 //             return;
 //         }
 
-//         const response = await fetch("http://localhost:5216/api/account/get_username", {
+//         const response = await fetch("http://192.168.1.7:5216/api/account/get_username", {
 //                 method: "GET",
 //                 headers: {
 //                     "Authorization": `Bearer ${token}`,

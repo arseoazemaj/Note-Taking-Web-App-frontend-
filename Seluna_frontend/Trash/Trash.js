@@ -92,7 +92,7 @@ function updateselectionModeFromDOM() {
 async function load_deleted_Notes() {
     const container = document.getElementById("container");
     try {
-        const response = await fetch("http://localhost:5216/api/Notes/get_deleted_notes", {
+        const response = await fetch("http://192.168.1.7:5216/api/Notes/get_deleted_notes", {
             headers: {
                 "Authorization": "Bearer " + token,
                 "Content-Type": "application/json"
@@ -228,7 +228,7 @@ async function load_deleted_Notes() {
 
 async function load_deleted_Folders() {
     try {
-        const response = await fetch("http://localhost:5216/api/Folders/get_deleted_folders", {
+        const response = await fetch("http://192.168.1.7:5216/api/Folders/get_deleted_folders", {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
@@ -406,7 +406,7 @@ async function restore() {
 
         try {
             if (noteIds.length > 0) {
-                const notesResponse = await fetch("http://localhost:5216/api/Notes/restore_notes", {
+                const notesResponse = await fetch("http://192.168.1.7:5216/api/Notes/restore_notes", {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json",
@@ -420,7 +420,7 @@ async function restore() {
             }
 
             if (folderIds.length > 0) {
-                const foldersResponse = await fetch("http://localhost:5216/api/Folders/restore_folders", {
+                const foldersResponse = await fetch("http://192.168.1.7:5216/api/Folders/restore_folders", {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json",
@@ -469,7 +469,7 @@ async function permanently_Delete() {
 
         try {
             if (selectedNoteIds.length > 0) {
-                const noteResponse = await fetch("http://localhost:5216/api/Notes/delete_Notes_on_command", {
+                const noteResponse = await fetch("http://192.168.1.7:5216/api/Notes/delete_Notes_on_command", {
                     method: "DELETE",
                     headers: {
                         "Content-Type": "application/json",
@@ -486,7 +486,7 @@ async function permanently_Delete() {
             }
 
             if (selectedFolderIds.length > 0) {
-                const folderResponse = await fetch("http://localhost:5216/api/Folders/delete_Folders_on_command", {
+                const folderResponse = await fetch("http://192.168.1.7:5216/api/Folders/delete_Folders_on_command", {
                     method: "DELETE",
                     headers: {
                         "Content-Type": "application/json",

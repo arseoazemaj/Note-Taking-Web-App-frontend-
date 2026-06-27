@@ -169,7 +169,7 @@ async function signup(event) {
     };
 
     try {
-        const response = await fetch("http://localhost:5216/api/Auth/sign_up", {
+        const response = await fetch("http://192.168.1.7:5216/api/Auth/sign_up", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
@@ -178,7 +178,7 @@ async function signup(event) {
         const result = await response.json();
 
         if (response.ok) {
-            const loginResponse = await fetch("http://localhost:5216/api/Auth/log_in", {
+            const loginResponse = await fetch("http://192.168.1.7:5216/api/Auth/log_in", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username: username, password: password })
@@ -222,7 +222,7 @@ async function login(event) {
     };
 
     try {
-        const response = await fetch("http://localhost:5216/api/Auth/log_in", {
+        const response = await fetch("http://192.168.1.7:5216/api/Auth/log_in", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

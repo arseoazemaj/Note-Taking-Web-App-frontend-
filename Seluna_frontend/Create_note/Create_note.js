@@ -58,7 +58,7 @@ async function save() { //* Save the note
     };
 
     try {
-        const response = await fetch("http://localhost:5216/api/Notes/create_note", {
+        const response = await fetch("http://192.168.1.7:5216/api/Notes/create_note", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -228,7 +228,6 @@ function confirmLock() {
 function downloadNote() {
     setTimeout(() => {
         mini_menu = true;
-        console.log("Downloading note...");
         download_menu.classList.add("show_lock_menu");
         download_menu.classList.remove("hide_lock_menu");
         download_bg.style.visibility = "visible";
@@ -353,7 +352,7 @@ async function deleteNote() {
         return;
     }else {
         try {
-            const response = await fetch("http://localhost:5216/api/Notes/delete_note", {
+            const response = await fetch("http://192.168.1.7:5216/api/Notes/delete_note", {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
