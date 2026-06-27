@@ -62,34 +62,6 @@ input {
 
 #title:focus {outline: none;}
 
-#note {
-    position: fixed;
-    top: 90px;
-    height: 85%;
-    width: 95%;
-    left: 5px;
-}
-
-#note_input {
-    width: 85%;
-    height: 75%;
-    padding: 1rem;
-    font-size: 25px;
-    border: none;
-    border-radius: 8px;
-    resize: none;
-    outline: none;
-    background: #1c0f2fd1;
-    color: #c7c5ff;
-    font-family: 'Arial', sans-serif;
-    position: absolute;
-    top: 130px;
-    left: 3%;
-    z-index: -1;
-}
-
-#note_input::placeholder {color: #c7c5ff;}
-
 #sub-menu_icon {
     position: absolute;
     top: 32px;
@@ -138,7 +110,6 @@ input {
     font-size: large;
     height: 100%;
     width: 100%;
-    border-radius: 10px;
     border: none;
     padding-left: 45px;
     background-color: transparent;
@@ -146,13 +117,43 @@ input {
     align-items: center;
 }
 
+#save {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#trash {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#save:active, #important:active, #lock:active, #download:active, #trash:active { background-color: #251e45;}
+
 #save-icon, #important-icon, #lock-icon, #download-icon, #trash-icon {
     position: absolute;
     top: 13px;
     right: 80%;
 }
 
-#save:active, #important:active, #lock:active, #download:active #trash:active {background-color: #251e45;}
+#note_input {
+    width: 85%;
+    height: 75%;
+    padding: 1rem;
+    font-size: 25px;
+    border: none;
+    border-radius: 8px;
+    resize: none;
+    outline: none;
+    background: #1c0f2fd1;
+    color: #c7c5ff;
+    font-family: 'Arial', sans-serif;
+    position: absolute;
+    top: 130px;
+    left: 3%;
+    z-index: -1;
+}
+
+#note_input::placeholder {color: #c7c5ff;}
 
 #lock_bg {
     visibility: hidden;
@@ -192,6 +193,30 @@ input {
     to { opacity: 0; visibility: hidden;}
 }
 
+#eye_icon_lock, #hidden_eye_icon_lock, #eye_icon_lock_confirm, #hidden_eye_icon_lock_confirm {
+    width: 25px;
+    height: 25px;
+    transform: translateY(-120%);
+    right: 0%;
+    position: absolute;
+}
+
+#password_lock {
+    position: relative;
+    top: 0%;
+}
+
+#confirm_password_lock {
+    position: relative;
+    top: 10%;
+}
+
+#lock_password, #confirm_lock_password {
+    position: relative;
+    height: 35px;
+    width: 90%;
+}
+
 .lock_decide {
     position: fixed;
     left: 0px;
@@ -224,7 +249,6 @@ input {
     top: 50%;
     transform: translate(-50%, -50%);
     border-radius: 30px;
-    filter: drop-shadow(0 0 15px #302758);
 }
 
 #lock_password_menu.show_lock_menu {animation: show_lock_password .3s forwards;}
@@ -248,29 +272,10 @@ input {
 }
 
 #lock_password, #confirm_lock_password {
-    position: absolute;
     left: 50%;
     transform: translateX(-50%);
     height: 35px;
-    width: 70%;
-}
-
-#lock_password {
-    top: 40%;
-}
-
-#confirm_lock_password {
-    top: 55%;
-}
-
-.lock_decide {
-    position: fixed;
-    left: 0px;
-    bottom: 20px;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    column-gap: 30px;
 }
 
 #cancel_lock, #continue_lock {
@@ -290,18 +295,30 @@ input {
     pointer-events: none;
 }
 
+#download_bg {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
 #download_menu {
     visibility: hidden;
     position: fixed;
     background: #251e45;
     height: 250px;
-    width: 80%;
+    width: 75%;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     border-radius: 30px;
     filter: drop-shadow(0 0 15px #251e45);
     z-index: 2;
+    background: #251e45;
+    padding: 20px;
 }
 
 #download_menu.show_lock_menu {animation: show_download .3s forwards;}
@@ -317,19 +334,36 @@ input {
     to { opacity: 0; visibility: hidden;}
 }
 
-.download_format {
+#download_minimenu {
     width: 90%;
-    height: 60px;
+    height: 75%;
+    border-radius: 25px;
+    background: #1d1737;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
     display: flex;
-    justify-content: center;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.download_format {
+    width: 95%;
+    height: 60px;
+    display: grid;
+    justify-content: left;
     align-items: center;
-    background-color: #251e45;
+    background-color: #1d1737;
     border: 10px solid transparent;
-    border-radius: 10% / 50%;
+    border-radius: 15px;
     font-size: 17px;
-    margin: 20px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .download_format:active {
-    background-color: #1d1737;
+    background-color: #251e45;
 }
