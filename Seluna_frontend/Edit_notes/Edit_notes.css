@@ -199,17 +199,23 @@ input {
     height: 25px;
     transform: translateY(-120%);
     right: 3%;
+    right: 0%;
     position: absolute;
 }
 
 #password_lock {
     position: relative;
-    top: 5%;
 }
 
 #confirm_password_lock {
     position: relative;
-    top: 15%;
+    top: 10%;
+}
+
+#lock_password, #confirm_lock_password {
+    position: relative;
+    height: 35px;
+    width: 90%;
 }
 
 .lock_decide {
@@ -272,6 +278,7 @@ input {
     height: 35px;
     width: 95%;
     position: relative;
+    width: 100%;
 }
 
 #cancel_lock, #continue_lock {

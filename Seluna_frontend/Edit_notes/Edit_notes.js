@@ -167,6 +167,12 @@ function closelockMenuBG() {
     lock_menu_lock_password.classList.remove("show_lock_menu");
     passwordInput.value = "";
     passwordConfirmInput.value = "";
+    passwordInput_lock.type = "password";
+    passwordInput_lock_confirm.type = "password";
+    eyeIcon_lock.style.display = "inline";
+    hiddenEyeIcon_lock.style.display = "none";
+    eyeIcon_lock_confirm.style.display = "inline";
+    hiddenEyeIcon_lock_confirm.style.display = "none";
     closeMenu();
 }
 
@@ -217,6 +223,13 @@ function cancelLockPassword() {
         passwordConfirmInput.value = "";
         lock_menu_lock_password.classList.add("hide_lock_menu");
         lock_menu_lock_password.classList.remove("show_lock_menu");
+
+        passwordInput_lock.type = "password";
+        passwordInput_lock_confirm.type = "password";
+        eyeIcon_lock.style.display = "inline";
+        hiddenEyeIcon_lock.style.display = "none";
+        eyeIcon_lock_confirm.style.display = "inline";
+        hiddenEyeIcon_lock_confirm.style.display = "none";
     }, 100);
 }
 
