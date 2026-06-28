@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Edit_notes.css">
-    <title>New note</title>
+    <title>Edit note</title>
 </head>
 <body>
     <div id="menu">
         <a id="back" href="../Notes/Notes.html" draggable="false">
             <i data-lucide="chevron-left"></i>
         </a>
-        <input type="text" name="Title" id="title" placeholder="Title"> <!-- For the Trash page this will be disabled-->
-        <div id="blur_background"></div>
-        <a id="sub-menu_icon" draggable="false">
+        <input type="text" name="Title" id="title" placeholder="Title">
+        <div id="blur_background" data-tap="closeMenu"></div>
+        <a id="sub-menu_icon" draggable="false" data-tap="openMenu">
             <i data-lucide="ellipsis-vertical" id="ellipsis-icon"></i>
             <div id="container">
-                <button id="save" draggable="false" ontouchend="update(noteId)">
+                <button id="save" draggable="false" data-tap="save">
                     <i data-lucide="save" id="save-icon"></i>
                     Save
                 </button>
@@ -39,8 +39,20 @@
                         </div>
                         <div id="lock_password_menu">
                             <h3 id="lock_password_menu_text">Create a strong password and keep it safe this note will only open for you.</h3>
-                            <input type="text" id="lock_password" placeholder="Enter a password"> <!--Change to type="password"-->
-                            <input type="text" id="confirm_lock_password" placeholder="Confirm your password"> <!--Change to type="password"-->
+                            <div id="password_lock">
+                                <input type="password" id="lock_password" placeholder="Enter a password">
+                                <span id="toggle_eye_lock" onclick="togglePasswordLock()">
+                                    <img src="../Icons/eye.png" alt="Eye Icon" id="eye_icon_lock">
+                                    <img src="../Icons/hidden-eye.png" alt="Hidden Eye Icon" id="hidden_eye_icon_lock" style="display: none;">
+                                </span>
+                            </div>
+                            <div id="confirm_password_lock">
+                                <input type="password" id="confirm_lock_password" placeholder="Confirm your password">
+                                <span id="toggle_eye_lock" onclick="togglePasswordLock()">
+                                    <img src="../Icons/eye.png" alt="Eye Icon" id="eye_icon_lock_confirm">
+                                    <img src="../Icons/hidden-eye.png" alt="Hidden Eye Icon" id="hidden_eye_icon_lock_confirm" style="display: none;">
+                                </span>
+                            </div>
                             <div class="lock_decide">
                                 <button id="cancel_lock" data-tap="cancelLockPassword">Cancel</button>
                                 <button id="continue_lock" data-tap="confirmLock" disabled>Lock</button>
@@ -53,10 +65,13 @@
                         <i data-lucide="download" id="download-icon"></i>
                         Download
                     </button>
+                    <div id="download_bg" data-tap="closeDownloadMenuBG"></div>
                     <div id="download_menu">
-                        <button class="download_format" id="download_txt" data-tap="download_txt">Download as .txt</button>
-                        <button class="download_format" id="download_pdf" data-tap="download_pdf">Download as .pdf</button>
-                        <button class="download_format" id="download_md" data-tap="download_md">Download as .md (markdown)</button>
+                        <div id="download_minimenu">
+                            <button class="download_format" id="download_txt" data-tap="download_txt">Download as .txt</button>
+                            <button class="download_format" id="download_pdf" data-tap="download_pdf">Download as .pdf</button>
+                            <button class="download_format" id="download_md" data-tap="download_md">Download as .md (markdown)</button>
+                        </div>
                     </div>
                 </div>
                 <button id="trash" draggable="false" data-tap="deleteNote">
@@ -65,7 +80,7 @@
             </div>
         </a>
     </div>
-    <textarea id="note_input" placeholder="Write your thoughts here..."></textarea> <!-- For the Trash page this will be disabled-->
+    <textarea id="note_input" placeholder="Write your thoughts here..."></textarea>
 
 
 

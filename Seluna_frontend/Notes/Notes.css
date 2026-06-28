@@ -18,7 +18,7 @@ input {
 }
 
 h1, h3, p, a, button, input, input::placeholder {
-    color: #ad7ecc;
+    color: #c7a2df;
     font-weight: bold;
 }
 
@@ -156,7 +156,7 @@ input::selection {
     bottom: 5%;
     z-index: 1;
     scale: 3;
-    fill: #b17fd1;
+    fill: #c7a2df;
     border-radius: 50%;
 }
 
@@ -325,7 +325,7 @@ input::selection {
     transform: translate(-50%, -50%);
     height: 100px;
     width: 100px;
-    color: #ad7ecc;
+    color: #c7a2df;
     filter: drop-shadow(0 0 3px #ad7ecc);
 }
 
@@ -692,8 +692,8 @@ input::selection {
 #cancel_folder:active, #add_folder:active {background-color: #1d1737;}
 
 #lock_menu_ask {
-    height: 260px;
-    width: 85%;
+    height: 245px;
+    width: 75%;
     border-radius: 25px;
     background: #251e45;
     position: absolute;

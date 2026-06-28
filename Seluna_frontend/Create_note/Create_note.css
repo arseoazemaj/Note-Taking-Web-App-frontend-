@@ -26,7 +26,7 @@ body {
 }
 
 h1, h3, p, a, button, input, input::placeholder {
-    color: #ad7ecc;
+    color: #c7a2df;
     font-weight: bold;
 }
 
@@ -169,14 +169,15 @@ input {
     visibility: hidden;
     position: fixed;
     background: #251e45;
-    height: 280px;
+    height: 240px;
     width: 70%;
-    padding: 40px;
+    padding: 20px;
+    padding-left: 30px;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     border-radius: 30px;
-    filter: drop-shadow(0 0 15px #251e45);
+    filter: drop-shadow(0 0 10px #251e45);
     z-index: 2;
 }
 
@@ -197,23 +198,18 @@ input {
     width: 25px;
     height: 25px;
     transform: translateY(-120%);
-    right: 0%;
+    right: 3%;
     position: absolute;
 }
 
 #password_lock {
     position: relative;
-    top: 0%;
-}
-#confirm_password_lock {
-    position: relative;
-    top: 10%;
+    top: 5%;
 }
 
-#lock_password, #confirm_lock_password {
+#confirm_password_lock {
     position: relative;
-    height: 35px;
-    width: 90%;
+    top: 15%;
 }
 
 .lock_decide {
@@ -241,9 +237,9 @@ input {
 #lock_password_menu {
     position: fixed;
     background: #251e45;
-    height: 300px;
-    width: 78%;
-    padding: 40px;
+    height: 260px;
+    width: 95%;
+    padding: 20px;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -274,7 +270,8 @@ input {
     left: 50%;
     transform: translateX(-50%);
     height: 35px;
-    width: 100%;
+    width: 95%;
+    position: relative;
 }
 
 #cancel_lock, #continue_lock {

@@ -187,6 +187,30 @@ function continueLock() {
     }, 100);
 }
 
+const passwordInput_lock = document.getElementById("lock_password");
+const passwordInput_lock_confirm = document.getElementById("confirm_lock_password");
+const eyeIcon_lock = document.getElementById("eye_icon_lock");
+const hiddenEyeIcon_lock = document.getElementById("hidden_eye_icon_lock");
+const eyeIcon_lock_confirm = document.getElementById("eye_icon_lock_confirm");
+const hiddenEyeIcon_lock_confirm = document.getElementById("hidden_eye_icon_lock_confirm");
+function togglePasswordLock() {
+    if (passwordInput_lock.type === "password") {
+        passwordInput_lock.type = "text";
+        passwordInput_lock_confirm.type = "text";
+        eyeIcon_lock.style.display = "none";
+        hiddenEyeIcon_lock.style.display = "inline";
+        eyeIcon_lock_confirm.style.display = "none";
+        hiddenEyeIcon_lock_confirm.style.display = "inline";
+    } else {
+        passwordInput_lock.type = "password";
+        passwordInput_lock_confirm.type = "password";
+        eyeIcon_lock.style.display = "inline";
+        hiddenEyeIcon_lock.style.display = "none";
+        eyeIcon_lock_confirm.style.display = "inline";
+        hiddenEyeIcon_lock_confirm.style.display = "none";
+    }
+}
+
 function cancelLockPassword() {
     setTimeout(() => {
         passwordInput.value = "";
@@ -230,12 +254,19 @@ function confirmLock() {
     update(noteId);
 }
 
-//*Download
 function downloadNote() {
     setTimeout(() => {
         mini_menu = true;
         download_menu.classList.add("show_lock_menu");
         download_menu.classList.remove("hide_lock_menu");
+        download_bg.style.visibility = "visible";
+    }, 100);
+}
+
+function closeDownloadMenuBG() {
+    setTimeout(() => {
+        download_bg.style.visibility = "hidden";
+        closeMenu();
     }, 100);
 }
 
