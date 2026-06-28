@@ -10,16 +10,16 @@ h1, button, a {
 }
 
 input::placeholder {
-    color: #ad7ecc;
+    color: #c7a2df;
     font-weight: bold;
 }
 
 #sign_up-text, #log_in-text {
     position: absolute;
-    top: -29%;
+    top: -25%;
     left: 50%;
     transform: translateX(-50%);
-    color: #ae7fce;
+    color: #c7a2df;
 }
 
 #container {
@@ -34,18 +34,18 @@ input::placeholder {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 10px;
+    gap: 20px;
     padding: 20px;
     border-radius: 8px;
     background-color: #1d1737;
-    width: 250px;
+    width: 290px;
     position: absolute;
     top: 150px;
     box-shadow: 0 0 30px 10px #1d1737d6;
 }
 
-#log_in { height: 240px; display: none; }
-#sign_up { height: 290px; }
+#log_in {height: 280px;display: none;}
+#sign_up {height: 340px;}
 
 #username, #email, #login_username,
 #Password, #confirmPassword, #login_password {
@@ -55,9 +55,12 @@ input::placeholder {
     border-radius: 10px;
     color: #ad7ecc;
     background-color: #251e45;
-    font-size: 15px;
+    font-size: 18px;
+    font-weight: bold;
     outline: none;
     box-sizing: border-box;
+    position: relative;
+    top: 20px;
 }
 
 #Password { margin-top: -2px; }
@@ -82,63 +85,77 @@ input::placeholder {
 }
 
 #toggle-icon-1 img, #toggle-icon-2 img {
-    width: 20px;
-    height: 20px;
-    margin-right: -12px;
+    width: 25px;
+    height: 25px;
+    margin-right: -15px;
+    top: 20px;
+    /* margin-left: -40px; */
+    /* width: 25px; */
+    /* height: 25px; */
 }
 
-#toggle-icon-1 img { margin-top: -2px; }
+#toggle-icon-1 img {margin-top: -2px;/* top: -50px; *//* margin-left: -40px; *//* width: 25px; *//* height: 25px; */}
 #toggle-icon-2 img { margin-top: -6px; }
 
-#eye-icon-3, #hidden-eye-icon-3 { top: -65px; margin-left: -43px; height: 20px; }
+#eye-icon-3, #hidden-eye-icon-3 {
+    top: -50px;
+    margin-left: -40px;
+    width: 25px;
+    height: 25px;
+}
 #eye-icon-1, #eye-icon-2 { margin-top: 5px; }
 
 #log_in_btn, #sign_up_btn {
-    width: 66%;
-    margin: 0 auto;
+    position: relative;
+    width: auto;
     background-color: transparent;
-    color: #ad7ecc;
+    color: #c7a2df;
     font-size: 26px;
     font-weight: bold;
     border: none;
     border-radius: 10px;
+    top: -15px;
     transition: background-color .3s ease, transform .2s ease;
     outline: none;
+    scale: 1.2;
 }
 
-#log_in_btn { margin-top: 13px; margin-left: 34px; }
-#log_in_btn:active, #sign_up_btn:active { 
-    transform: scale(.97);
+#log_in_btn {
+    top: 25px;
+}
+
+#sign_up_btn {
+    top: 5px;
+}
+
+#log_in_btn:active, #sign_up_btn:active {
+    transform: scale(0.90);
     background-color: #1e134f;
 }
 
 #log_in_btn:disabled, #sign_up_btn:disabled {
     background-color: transparent;
     color: #513961;
-
-
-
     cursor: not-allowed;
 }
 
 #create_acc1, #create_acc2, #have_acc1, #have_acc2 {
     border: none;
     background-color: transparent;
-    color: #ad7ecc;
+    color: #c7a2df;
     width: 130px;
     height: 40px;
-    font-size: 23px;
     border-radius: 20px;
     z-index: 1;
     transition: background-color .3s;
+    font-size: 23px;
+    font-weight: bold;
 }
 
-#create_acc1, #create_acc2 { position: absolute; top: 3px; left: 5px; }
-#have_acc1, #have_acc2 { position: relative; top: 3px; left: 152px; }
+#create_acc1, #create_acc2 {position: absolute; left: 5px;}
+#have_acc1, #have_acc2 {position: relative; left: 152px;}
 
-#create_acc1:active, #create_acc2:active, #have_acc1:active, #have_acc2:active {
-    background-color: #3e1d74d6;
-}
+#create_acc1:active, #create_acc2:active, #have_acc1:active, #have_acc2:active {background-color: #3e1d74d6;}
 
 #redirect_log_in, #redirect_sign_up {
     width: 290px;
@@ -149,14 +166,14 @@ input::placeholder {
     margin: 0 auto;
 }
 
-#redirect_log_in { display: none; bottom: -202px; }
-#redirect_sign_up { display: block; bottom: -252px; }
+#redirect_log_in {display: none;bottom: -230px;}
+#redirect_sign_up {display: block;bottom: -285px;}
 
 #forgot {
     position: absolute;
-    top: 65%;
+    top: 70%;
     left: 50%;
     transform: translateX(-50%);
     text-decoration: none;
-    color: #ad7ecc;
+    color: #c7a2df;
 }

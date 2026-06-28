@@ -29,6 +29,7 @@ const eye_3 = document.getElementById("eye-icon-3");
 const hidden_eye_3 = document.getElementById("hidden-eye-icon-3");
 
 function go_to_log_in() {
+    setTimeout(() => {
     document.getElementById("sign_up").style.display = "none";
     document.getElementById("log_in").style.display = "flex";
     document.getElementById("redirect_sign_up").style.display = "none";
@@ -51,9 +52,13 @@ function go_to_log_in() {
     loginPassword.type = "password";    
     eye_3.style.display = "inline";
     hidden_eye_3.style.display = "none";
+
+    signUpBtn.disabled = true;
+    }, 200);
 }
 
 function go_to_sign_up() {
+    setTimeout(() => {
     document.getElementById("sign_up").style.display = "flex";
     document.getElementById("log_in").style.display = "none";
     document.getElementById("redirect_sign_up").style.display = "flex";
@@ -76,18 +81,21 @@ function go_to_sign_up() {
     hidden_eye_1.style.display = "none";
     eye_2.style.display = "inline";
     hidden_eye_2.style.display = "none";
+
+    logInBtn.disabled = true;
+    }, 200);
 }
 
+const signUpBtn = document.getElementById("sign_up_btn");
+const logInBtn = document.getElementById("log_in_btn");
 document.addEventListener("DOMContentLoaded", function () {
     const username = document.getElementById("username");
     const email = document.getElementById("email");
     const password = document.getElementById("Password");
     const confirmPassword = document.getElementById("confirmPassword");
-    const signUpBtn = document.getElementById("sign_up_btn");
 
     const loginUsername = document.getElementById("login_username");
     const loginPassword = document.getElementById("login_password");
-    const logInBtn = document.getElementById("log_in_btn");
 
     function isValidEmail(email) {
         const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -110,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const usernameValue = loginUsername.value.trim();
         const passwordValue = loginPassword.value.trim();
 
-        const isFormValid = usernameValue !== "" && passwordValue !== ""; //TODO: replace passwordValue !== "" with passwordValue.length >= 8
+        const isFormValid = usernameValue !== "" && passwordValue.length >= 8; //TODO: replace passwordValue !== "" with passwordValue.length >= 8
 
         logInBtn.disabled = !isFormValid;
     }
