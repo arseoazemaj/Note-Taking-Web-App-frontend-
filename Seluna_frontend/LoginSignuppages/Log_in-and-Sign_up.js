@@ -39,18 +39,9 @@ function togglePassword_log_in() {
     }
 }
 
-
-
-
-
-
-
-
 const username = document.getElementById("username");
 const email = document.getElementById("email");
-
 const loginUsername = document.getElementById("login_username");
-
 
 function go_to_log_in() {
     setTimeout(() => {
@@ -100,10 +91,6 @@ function go_to_sign_up() {
 
     sign_up_password.type = "password";
     sign_up_confirmPassword.type = "password";
-    eye_1.style.display = "inline";
-    hidden_eye_1.style.display = "none";
-    eye_2.style.display = "inline";
-    hidden_eye_2.style.display = "none";
 
     logInBtn.disabled = true;
     }, 200);
