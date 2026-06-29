@@ -7,3 +7,11 @@ body {
     0% {opacity: 0;}
     100% {opacity: 1;}
 }
+
+#profile_pic {
+    position: fixed;
+    top: 4vh;
+    left: 4vh;
+    width: 20%;
+    border-radius: 50%;
+}

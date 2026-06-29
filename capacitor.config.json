@@ -3,11 +3,16 @@
     "appName": "Seluna",
     "webDir": "Seluna_frontend",
     "bundledWebRuntime": false,
-        "plugins": {
-            "StatusBar": {
-                "overlaysWebView": false
-            },
-            "Keyboard": {
+
+    "server": {
+        "cleartext": true
+    },
+
+    "plugins": {
+        "StatusBar": {
+        "overlaysWebView": false
+        },
+        "Keyboard": {
             "resize": "native"
         }
     }
