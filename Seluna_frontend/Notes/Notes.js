@@ -105,7 +105,7 @@ let LockedNotes = false;
 async function loadNotes() {
     const container = document.getElementById("container");
     try {
-        const response = await fetch("http://192.168.1.7:5216/api/Notes/get_notes", {
+        const response = await fetch("http://localhost:5216/api/Notes/get_notes", {
             headers: {
                 "Authorization": "Bearer " + token,
                 "Content-Type": "application/json"
@@ -442,7 +442,7 @@ async function add_folder() {
     }
 
     try {
-        const response = await fetch("http://192.168.1.7:5216/api/Folders/create_folder", {
+        const response = await fetch("http://localhost:5216/api/Folders/create_folder", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -478,7 +478,7 @@ let LockedFolder = false;
 
 async function LoadFolders() {
     try {
-        const response = await fetch("http://192.168.1.7:5216/api/Folders/get_folder", {
+        const response = await fetch("http://localhost:5216/api/Folders/get_folder", {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
@@ -706,7 +706,7 @@ let touchmoved = false;
 
 async function LoadFolderName () {
     try {
-        const response = await fetch("http://192.168.1.7:5216/api/Folders/get_folderName", {
+        const response = await fetch("http://localhost:5216/api/Folders/get_folderName", {
             headers: {
                 Authorization: "Bearer " + token,
                 "Content-Type": "application/json"
@@ -770,7 +770,7 @@ async function LoadFolderName () {
 
 async function sendNoteToFolder(noteId, folderId) {
     try {
-        const response = await fetch("http://192.168.1.7:5216/api/Folders/SendNoteToFolder", {
+        const response = await fetch("http://localhost:5216/api/Folders/SendNoteToFolder", {
             method: "PUT",
             headers: {
                 Authorization: "Bearer " + token,
@@ -807,7 +807,7 @@ main_folder.addEventListener("click", () => {
 
 async function sendNoteToMain(noteId) {
     try {
-        const response = await fetch("http://192.168.1.7:5216/api/Folders/SendNoteToFolder", {
+        const response = await fetch("http://localhost:5216/api/Folders/SendNoteToFolder", {
             method: "PUT",
             headers: {
                 Authorization: "Bearer " + token,
@@ -839,7 +839,7 @@ async function opened_folder(folderId) {
     const folder_page = document.getElementById("folder_page");
     folder_page.innerHTML = "";
     try {
-        const response = await fetch(`http://192.168.1.7:5216/api/Notes/folder/${folderId}`, {
+        const response = await fetch(`http://localhost:5216/api/Notes/folder/${folderId}`, {
             method: "GET", //* By default it"s GET so now it was just me wanting to add it but for other methods you need to specify it *//
             headers: {
                 Authorization: "Bearer " + token,
@@ -1091,7 +1091,7 @@ async function continue_lock() {
     try {
         if (noteIds.length > 0) {
             const noteResponse = await fetch(
-                "http://192.168.1.7:5216/api/Notes/lock_note",
+                "http://localhost:5216/api/Notes/lock_note",
                 {
                     method: "POST",
                     headers: {
@@ -1112,7 +1112,7 @@ async function continue_lock() {
         }
 
         if (folderIds.length > 0) {
-            const folderResponse = await fetch("http://192.168.1.7:5216/api/Folders/lock_folder", {
+            const folderResponse = await fetch("http://localhost:5216/api/Folders/lock_folder", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -1249,7 +1249,7 @@ async function continue_unlock() {
             const noteId = parseInt(unlock_menu.dataset.noteId);
 
             const res = await fetch(
-                "http://192.168.1.7:5216/api/Notes/open_locked_note",
+                "http://localhost:5216/api/Notes/open_locked_note",
                 {
                     method: "POST",
                     headers: {
@@ -1276,7 +1276,7 @@ async function continue_unlock() {
             const folderId = parseInt(unlock_menu.dataset.folderId);
         
             const res = await fetch(
-                "http://192.168.1.7:5216/api/Folders/open_locked_folder",
+                "http://localhost:5216/api/Folders/open_locked_folder",
                 {
                     method: "POST",
                     headers: {
@@ -1345,7 +1345,7 @@ async function mark_important() {
                 }
 
                 const notesResponse = await fetch(
-                    "http://192.168.1.7:5216/api/Notes/mark_important_Notes",
+                    "http://localhost:5216/api/Notes/mark_important_Notes",
                     {
                         method: "PUT",
                         headers: {
@@ -1380,7 +1380,7 @@ async function mark_important() {
                 }
 
                 const foldersResponse = await fetch(
-                    "http://192.168.1.7:5216/api/Folders/mark_important_Folders",
+                    "http://localhost:5216/api/Folders/mark_important_Folders",
                     {
                         method: "PUT",
                         headers: {
@@ -1583,7 +1583,7 @@ async function send_to_trash() {
 
     try {
         if (noteIds.length > 0) {
-            const notesResponse = await fetch("http://192.168.1.7:5216/api/Notes/delete_notes", {
+            const notesResponse = await fetch("http://localhost:5216/api/Notes/delete_notes", {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -1597,7 +1597,7 @@ async function send_to_trash() {
         }
 
         if (folderIds.length > 0) {
-            const foldersResponse = await fetch("http://192.168.1.7:5216/api/Folders/delete_folders", {
+            const foldersResponse = await fetch("http://localhost:5216/api/Folders/delete_folders", {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -1630,20 +1630,6 @@ async function send_to_trash() {
         console.error("Error deleting notes or folders:", error);
         alert("Error deleting notes or folders.");
     }
-}
-
-
-//*To hide elements when the keyboard is open and show them again when it"s closed*//
-if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.Keyboard) {
-    const { Keyboard } = window.Capacitor.Plugins;
-    Keyboard.addListener('keyboardWillShow', () => {
-        document.getElementById("new_note").style.visibility = "hidden";
-        decide.style.visibility = "hidden";
-    });
-    Keyboard.addListener('keyboardWillHide', () => {
-        document.getElementById("new_note").style.visibility = "visible";
-        decide.style.visibility = "visible";
-    });
 }
 
 //*Will be used to clear the local storage for testing purposes*//
