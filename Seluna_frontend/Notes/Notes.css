@@ -18,7 +18,7 @@ input {
 }
 
 h1, h3, p, a, button, input, input::placeholder {
-    color: #ad7ecc;
+    color: #c7a2df;
     font-weight: bold;
 }
 
@@ -156,7 +156,7 @@ input::selection {
     bottom: 5%;
     z-index: 1;
     scale: 3;
-    fill: #b17fd1;
+    fill: #c7a2df;
     border-radius: 50%;
 }
 
@@ -277,6 +277,7 @@ input::selection {
     padding: 10px;
     border-radius: 15px;
     padding-bottom: 30px;
+    user-select: none;
 }
 
 .note-box.selected {background-color: #251e45b5;}
@@ -325,7 +326,7 @@ input::selection {
     transform: translate(-50%, -50%);
     height: 100px;
     width: 100px;
-    color: #ad7ecc;
+    color: #c7a2df;
     filter: drop-shadow(0 0 3px #ad7ecc);
 }
 
@@ -382,7 +383,7 @@ input::selection {
 .note-check-icon {
     color: #fff;
     position: absolute;
-    left: 10px;
+    right: 10px;
     display: none;
     z-index: 2;
 }
@@ -692,8 +693,8 @@ input::selection {
 #cancel_folder:active, #add_folder:active {background-color: #1d1737;}
 
 #lock_menu_ask {
-    height: 260px;
-    width: 85%;
+    height: 245px;
+    width: 75%;
     border-radius: 25px;
     background: #251e45;
     position: absolute;
@@ -776,15 +777,14 @@ input::selection {
 #lock_password, #confirm_lock_password {
     position: relative;
     height: 35px;
-    width: 90%;
+    width: 95%;
 }
 
 #eye_icon_lock, #hidden_eye_icon_lock, #eye_icon_lock_confirm, #hidden_eye_icon_lock_confirm {
     width: 25px;
     height: 25px;
-    transform: translateY(80%);
-    transform: translateY(20%);
-    right: 10%;
+    transform: translateY(-130%);
+    right: 0%;
     position: absolute;
 }
 

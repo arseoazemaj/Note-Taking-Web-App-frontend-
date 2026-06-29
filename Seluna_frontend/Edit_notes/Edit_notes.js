@@ -267,12 +267,19 @@ function confirmLock() {
     update(noteId);
 }
 
-//*Download
 function downloadNote() {
     setTimeout(() => {
         mini_menu = true;
         download_menu.classList.add("show_lock_menu");
         download_menu.classList.remove("hide_lock_menu");
+        download_bg.style.visibility = "visible";
+    }, 100);
+}
+
+function closeDownloadMenuBG() {
+    setTimeout(() => {
+        download_bg.style.visibility = "hidden";
+        closeMenu();
     }, 100);
 }
 
