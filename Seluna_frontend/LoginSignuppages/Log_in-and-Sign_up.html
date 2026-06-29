@@ -14,19 +14,20 @@
                 <input type="email" id="email" placeholder="Email" required>
                 <div id="password-container-1">
                     <input type="password" id="Password" placeholder="Password (+8 characteres)" required>
-                    <span id="toggle-icon-1" onclick="togglePassword('Password', 'eye-icon-1', 'hidden-eye-icon-1')">
+                    <span id="toggle-icon-1" onclick="togglePassword_sign_up()">
                         <img src="../Icons/eye.png" alt="Eye Icon" id="eye-icon-1">
-                        <img src="../Icons/hidden-eye.png" alt="Hidden Eye Icon" id="hidden-eye-icon-1" style="display: none;">
+                        <img src="../Icons/hidden-eye.png" alt="Hidden Eye Icon" id="hidden-eye-icon-1" class="hidden-eye-icon" style="display: none;">
                     </span>
+
                 </div>
                 <div id="password-container-2">
                     <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
-                    <span id="toggle-icon-2" onclick="togglePassword('confirmPassword', 'eye-icon-2', 'hidden-eye-icon-2')">
+                    <span id="toggle-icon-2" onclick="togglePassword_sign_up()">
                         <img src="../Icons/eye.png" alt="Eye Icon" id="eye-icon-2">
-                        <img src="../Icons/hidden-eye.png" alt="Hidden Eye Icon" id="hidden-eye-icon-2" style="display: none;">
+                        <img src="../Icons/hidden-eye.png" alt="Hidden Eye Icon" id="hidden-eye-icon-2" class="hidden-eye-icon" style="display: none;">
                     </span>
                 </div>
-                <button id="sign_up_btn" onclick="signup(event)" disabled>Sign up</button> <!--* Will create a new account-->
+                <button id="sign_up_btn" onclick="signup(event)" disabled>Sign up</button>
             </form>
 
 
@@ -35,21 +36,21 @@
                 <input type="text" id="login_username" placeholder="Username" required>
                 <div id="password-container-3">
                     <input type="password" id="login_password" placeholder="Password (+8 characteres)" required>
-                    <span id="toggle-icon-3" onclick="togglePassword('login_password', 'eye-icon-3', 'hidden-eye-icon-3')">
+                    <span id="toggle-icon-3" onclick="togglePassword_log_in()">
                         <img src="../Icons/eye.png" alt="Eye Icon" id="eye-icon-3">
-                        <img src="../Icons/hidden-eye.png" alt="Hidden Eye Icon" id="hidden-eye-icon-3" style="display: none;">
+                        <img src="../Icons/hidden-eye.png" alt="Hidden Eye Icon" id="hidden-eye-icon-3" class="hidden-eye-icon" style="display: none;">
                     </span>
                 </div>
-                <button id="log_in_btn" onclick="login(event)" disabled>Log in</button> <!--* Will check if the username and password are correct-->
-                <a href="forgot" id="forgot">Forgot password?</a> <!--* Will send a email to reset the password-->
+                <button id="log_in_btn" onclick="login(event)" disabled>Log in</button>
+                <a href="forgot" id="forgot">Forgot pssassword?</a> <!--* Will send a email to reset the password-->
             </form>
 
             <div id="redirect_sign_up">
                 <button id="have_acc1" onclick="go_to_log_in()">Log in</button> <!--* Will redirect to the login page-->
-                <button id="create_acc1" onclick="go_to_sign_up()">Sign up</button> <!--* Will redirect to the sign up page-->
+                <button id="create_acc1" >Sign up</button>
             </div>
             <div id="redirect_log_in">
-                <button id="have_acc2" onclick="go_to_log_in()">Log in</button> <!--* Will redirect to the login page-->
+                <button id="have_acc2" >Log in</button>
                 <button id="create_acc2" onclick="go_to_sign_up()">Sign up</button> <!--* Will redirect to the sign up page-->
             </div>
         </div>

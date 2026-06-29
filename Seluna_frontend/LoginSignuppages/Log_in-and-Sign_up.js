@@ -1,32 +1,56 @@
-function togglePassword(inputId, eyeId, hiddenEyeId) {
-    const passwordInput = document.getElementById(inputId);
-    const eyeIcon = document.getElementById(eyeId);
-    const hiddenEyeIcon = document.getElementById(hiddenEyeId);
+const sign_up_password = document.getElementById("Password");
+const sign_up_confirmPassword = document.getElementById("confirmPassword");
+const eyeIcon_1 = document.getElementById("eye-icon-1");
+const eyeIcon_2 = document.getElementById("eye-icon-2");
+const hiddenEyeIcon_1 = document.getElementById("hidden-eye-icon-1");
+const hiddenEyeIcon_2 = document.getElementById("hidden-eye-icon-2");
 
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        eyeIcon.style.display = "none";
-        hiddenEyeIcon.style.display = "inline";
+function togglePassword_sign_up() {
+    if (sign_up_password.type === "password") {
+        sign_up_password.type = "text";
+        sign_up_confirmPassword.type = "text";
+        eyeIcon_1.style.display = "none";
+        hiddenEyeIcon_1.style.display = "inline";
+        eyeIcon_2.style.display = "none";
+        hiddenEyeIcon_2.style.display = "inline";
     } else {
-        passwordInput.type = "password";
-        eyeIcon.style.display = "inline";
-        hiddenEyeIcon.style.display = "none";
+        sign_up_password.type = "password";
+        sign_up_confirmPassword.type = "password";
+        eyeIcon_1.style.display = "inline";
+        hiddenEyeIcon_1.style.display = "none";
+        eyeIcon_2.style.display = "inline";
+        hiddenEyeIcon_2.style.display = "none";
     }
 }
 
+const loginPassword = document.getElementById("login_password");
+const eyeIcon_3 = document.getElementById("eye-icon-3");
+const hiddenEyeIcon_3 = document.getElementById("hidden-eye-icon-3");
+
+function togglePassword_log_in() {
+    if (loginPassword.type === "password") {
+        loginPassword.type = "text";
+        eyeIcon_3.style.display = "none";
+        hiddenEyeIcon_3.style.display = "inline";
+    } else {
+        loginPassword.type = "password";
+        eyeIcon_3.style.display = "inline";
+        hiddenEyeIcon_3.style.display = "none";
+    }
+}
+
+
+
+
+
+
+
+
 const username = document.getElementById("username");
 const email = document.getElementById("email");
-const sign_up_password = document.getElementById("Password");
-const sign_up_confirmPassword = document.getElementById("confirmPassword");
-const eye_1 = document.getElementById("eye-icon-1");
-const hidden_eye_1 = document.getElementById("hidden-eye-icon-1");
-const eye_2 = document.getElementById("eye-icon-2");
-const hidden_eye_2 = document.getElementById("hidden-eye-icon-2");
 
 const loginUsername = document.getElementById("login_username");
-const loginPassword = document.getElementById("login_password");
-const eye_3 = document.getElementById("eye-icon-3");
-const hidden_eye_3 = document.getElementById("hidden-eye-icon-3");
+
 
 function go_to_log_in() {
     setTimeout(() => {
@@ -42,16 +66,15 @@ function go_to_log_in() {
 
     sign_up_password.type = "password";
     sign_up_confirmPassword.type = "password";
-    eye_1.style.display = "inline";
-    hidden_eye_1.style.display = "none";
-    eye_2.style.display = "inline";
-    hidden_eye_2.style.display = "none";
+
+    eyeIcon_1.style.display = "inline";
+    hiddenEyeIcon_1.style.display = "none";
+    eyeIcon_2.style.display = "inline";
+    hiddenEyeIcon_2.style.display = "none";
 
     loginUsername.value = "";
     loginPassword.value = "";
     loginPassword.type = "password";    
-    eye_3.style.display = "inline";
-    hidden_eye_3.style.display = "none";
 
     signUpBtn.disabled = true;
     }, 200);
@@ -67,8 +90,8 @@ function go_to_sign_up() {
     loginUsername.value = "";
     loginPassword.value = "";
     loginPassword.type = "password";    
-    eye_3.style.display = "inline";
-    hidden_eye_3.style.display = "none";
+    eyeIcon_3.style.display = "inline";
+    hiddenEyeIcon_3.style.display = "none";
 
     username.value = "";
     email.value = "";

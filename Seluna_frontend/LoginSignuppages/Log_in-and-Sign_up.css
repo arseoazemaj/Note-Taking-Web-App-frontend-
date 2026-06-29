@@ -36,7 +36,7 @@ input::placeholder {
     align-items: stretch;
     gap: 20px;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 25px;
     background-color: #1d1737;
     width: 290px;
     position: absolute;
@@ -75,8 +75,7 @@ input::placeholder {
 }
 
 #toggle-icon-1, #toggle-icon-2, #toggle-icon-3, #eye-icon-1, #hidden-eye-icon-1, #eye-icon-2, #hidden-eye-icon-2, #eye-icon-3, #hidden-eye-icon-3 {
-    position: absolute;
-}
+position: absolute;}
 
 #toggle-icon-1, #toggle-icon-2, #toggle-icon-3, #eye-icon-1, #hidden-eye-icon-1, #eye-icon-2, #hidden-eye-icon-2 {
     right: 10px;
@@ -89,12 +88,9 @@ input::placeholder {
     height: 25px;
     margin-right: -15px;
     top: 20px;
-    /* margin-left: -40px; */
-    /* width: 25px; */
-    /* height: 25px; */
 }
 
-#toggle-icon-1 img {margin-top: -2px;/* top: -50px; *//* margin-left: -40px; *//* width: 25px; *//* height: 25px; */}
+#toggle-icon-1 img {margin-top: -2px;}
 #toggle-icon-2 img { margin-top: -6px; }
 
 #eye-icon-3, #hidden-eye-icon-3 {
@@ -103,48 +99,52 @@ input::placeholder {
     width: 25px;
     height: 25px;
 }
+
 #eye-icon-1, #eye-icon-2 { margin-top: 5px; }
 
 #log_in_btn, #sign_up_btn {
     position: relative;
-    width: auto;
+    width: 55%;
+    height: 45px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: transparent;
     color: #c7a2df;
-    font-size: 26px;
+    font-size: 30px;
     font-weight: bold;
     border: none;
     border-radius: 10px;
-    top: -15px;
+    padding-left: 15px;
+    padding-right: 15px;
     transition: background-color .3s ease, transform .2s ease;
     outline: none;
-    scale: 1.2;
+    scale: 1;
 }
 
-#log_in_btn {
-    top: 25px;
-}
-
-#sign_up_btn {
-    top: 5px;
-}
+#log_in_btn {top: 30px;}
+#sign_up_btn {top: 5px;}
 
 #log_in_btn:active, #sign_up_btn:active {
     transform: scale(0.90);
-    background-color: #1e134f;
+    background-color: #251e45;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #log_in_btn:disabled, #sign_up_btn:disabled {
     background-color: transparent;
-    color: #513961;
     cursor: not-allowed;
+    pointer-events: none;
+    opacity: .5;
 }
 
 #create_acc1, #create_acc2, #have_acc1, #have_acc2 {
     border: none;
     background-color: transparent;
     color: #c7a2df;
-    width: 130px;
-    height: 40px;
+    width: 140px;
+    height: 45px;
     border-radius: 20px;
     z-index: 1;
     transition: background-color .3s;
@@ -155,7 +155,7 @@ input::placeholder {
 #create_acc1, #create_acc2 {position: absolute; left: 5px;}
 #have_acc1, #have_acc2 {position: relative; left: 152px;}
 
-#create_acc1:active, #create_acc2:active, #have_acc1:active, #have_acc2:active {background-color: #3e1d74d6;}
+#create_acc1:active, #create_acc2:active, #have_acc1:active, #have_acc2:active {background-color: #251e45;}
 
 #redirect_log_in, #redirect_sign_up {
     width: 290px;
@@ -167,11 +167,11 @@ input::placeholder {
 }
 
 #redirect_log_in {display: none;bottom: -230px;}
-#redirect_sign_up {display: block;bottom: -285px;}
+#redirect_sign_up {display: block;bottom: -295px;}
 
 #forgot {
     position: absolute;
-    top: 70%;
+    top: 75%;
     left: 50%;
     transform: translateX(-50%);
     text-decoration: none;

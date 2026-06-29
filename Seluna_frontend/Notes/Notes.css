@@ -277,6 +277,7 @@ input::selection {
     padding: 10px;
     border-radius: 15px;
     padding-bottom: 30px;
+    user-select: none;
 }
 
 .note-box.selected {background-color: #251e45b5;}
@@ -382,7 +383,7 @@ input::selection {
 .note-check-icon {
     color: #fff;
     position: absolute;
-    left: 10px;
+    right: 10px;
     display: none;
     z-index: 2;
 }
@@ -776,15 +777,14 @@ input::selection {
 #lock_password, #confirm_lock_password {
     position: relative;
     height: 35px;
-    width: 90%;
+    width: 95%;
 }
 
 #eye_icon_lock, #hidden_eye_icon_lock, #eye_icon_lock_confirm, #hidden_eye_icon_lock_confirm {
     width: 25px;
     height: 25px;
-    transform: translateY(80%);
-    transform: translateY(20%);
-    right: 10%;
+    transform: translateY(-130%);
+    right: 0%;
     position: absolute;
 }
 
