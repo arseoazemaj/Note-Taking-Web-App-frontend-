@@ -33,8 +33,9 @@
         </div>
     </div>
     <h1 id="greetings">Notes</h1> <!--*Will greet using the username of the user-->
-    <input type="text" id="search" placeholder="Search notes">
-    <a href="../Create_note/Create_note.html" draggable="false">
+    <input type="text" id="search" placeholder="Search notes" data-tap="search">
+    <div id="search_background_blur" data-tap="search_blur_hide"></div>
+    <a href="../Create_note/Create_note.html" id="create_note" draggable="false">
         <i id="new_note" data-lucide="circle-plus"></i>
     </a>
     <div id="folders_menu"></div>

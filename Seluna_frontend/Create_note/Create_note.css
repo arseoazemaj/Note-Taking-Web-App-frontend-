@@ -362,3 +362,10 @@ input {
 .download_format:active {
     background-color: #251e45;
 }
+
+#toolbar {
+    background: #251e45;
+    color: #ae7fce;
+    position: relative;
+    top: 450px;
+}

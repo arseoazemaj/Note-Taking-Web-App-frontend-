@@ -22,6 +22,15 @@ function Profile () {
     window.location.href = "../Profile/Profile.html";
 }
 
+const search_blur = document.getElementById("search_background_blur");
+function search() {
+    search_blur.style.visibility = "visible";
+}
+
+function search_blur_hide() {
+    search_blur.style.visibility = "hidden";
+}
+
 const folderBox = document.querySelector(".folder-box.selected");
 
 function Select_off() {
@@ -248,19 +257,20 @@ async function loadNotes() {
 }
 
 const decide = document.getElementById("decide");
+const create_note = document.getElementById("create_note");
 
 function showDecision() {
-    decide.classList.add("slide-in");
     decide.classList.remove("slide-out");
+    decide.classList.add("slide-in");
 
-    document.getElementById("new_note").style.visibility = "hidden";
+    create_note.style.visibility = "hidden";
     SelectionMode = true;
 }
 
 function hideDecision() {
-    document.getElementById("new_note").style.visibility = "visible";
-    decide.classList.add("slide-out");
     decide.classList.remove("slide-in");
+    decide.classList.add("slide-out");
+    create_note.style.visibility = "visible";
     SelectionMode = false;
     SelectedNotes = false;
     SelectedFolders = false;
@@ -624,10 +634,7 @@ async function LoadFolders() {
 
 function showUnlockFolderPrompt(folderId) {
     blur_background.style.visibility = "visible";
-    unlock_folder_menu.classList.add("show");
-    unlock_folder_menu.classList.remove("hide");
-
-    unlock_folder_menu.dataset.folderId = folderId;
+    create_note.style.visibility = "hidden";
 }
 
 function chosingMoveDecisions() {
@@ -1632,138 +1639,21 @@ async function send_to_trash() {
     }
 }
 
-//*Will be used to clear the local storage for testing purposes*//
+//*To hide elements when the keyboard is open and show them again when it"s closed*//
+if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.Keyboard) {
+    const { Keyboard } = window.Capacitor.Plugins;
+    Keyboard.addListener('keyboardWillShow', () => {
+        create_note.style.visibility = "hidden";
+        decide.style.visibility = "hidden";
+    });
+    Keyboard.addListener('keyboardWillHide', () => {
+        if (SelectionMode) {
+            create_note.style.visibility = "hidden";
+        } else {
+            create_note.style.visibility = "visible";
+        }
+        decide.style.visibility = "visible";
+    });
+}
 
-// localStorage.removeItem("notes");
-
-
-//TODO: Use only when wanting to see in your phone (when using comment code from line 50)
-document.addEventListener("DOMContentLoaded", function() {
-    let notes = JSON.parse(localStorage.getItem("notes")) || [];
-
-    function setupNoteEvents(noteBox, note) {
-        noteBox.addEventListener("touchstart", function(e) {
-            longPressFired = false;
-            wasCanceled = false;
-
-            const touch = e.touches[0];
-            startX = touch.clientX;
-            startY = touch.clientY;
-
-            longPressTimer = setTimeout(() => {
-                longPressFired = true;
-                SelectionMode = true;
-                const checkIcon = noteBox.querySelector(".note-check-icon");
-                checkIcon.style.display = "block";
-                noteBox.classList.add("selected");
-                noteBox.style.transform = "scale(.9)";
-                showDecision();
-            }, LONG_PRESS_MS);
-        });
-
-        noteBox.addEventListener("touchmove", function(e) {
-            const touch = e.touches[0];
-            const dx = touch.clientX - startX;
-            const dy = touch.clientY - startY;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-
-            if (distance > MOVE_THRESHOLD) {
-                clearTimeout(longPressTimer);
-                wasCanceled = true;
-            }
-        });
-
-        noteBox.addEventListener("touchcancel", function() {
-            clearTimeout(longPressTimer);
-            wasCanceled = true;
-        });
-
-        noteBox.addEventListener("touchend", function() {
-            clearTimeout(longPressTimer);
-
-            if (wasCanceled) {
-                return;
-            }
-
-            if (SelectionMode) {
-                if (!longPressFired) {
-                    const checkIcon = noteBox.querySelector(".note-check-icon");
-                    const isSelected = noteBox.classList.toggle("selected");
-
-                    if (isSelected) {
-                        checkIcon.style.display = "block";
-                        noteBox.style.transform = "scale(.9)";
-                    } else {
-                        checkIcon.style.display = "none";
-                        noteBox.style.transform = "scale(1)";
-                    }
-
-                    const anySelected = document.querySelector(".note-box.selected");
-                    if (anySelected) {
-                        showDecision();
-                    } else {
-                        SelectionMode = false;
-                        hideDecision();
-                    }
-                }
-            } else if (!longPressFired && !wasCanceled) {
-                window.location.href = `../Edit_notes/Edit_notes.html?id=${note.id}`;
-            }
-
-            longPressFired = false;
-        });
-    }
-
-    if (!token) {
-            notes.forEach(note => {
-            const noteBox = document.createElement("div");
-            noteBox.className = "note-box";
-            noteBox.setAttribute("id", note.id);
-
-            const checkIcon = document.createElement("i");
-            checkIcon.setAttribute("data-lucide", "circle-check");
-            checkIcon.classList.add("note-check-icon");
-            checkIcon.style.display = "none";
-            noteBox.appendChild(checkIcon);
-
-            if (note.isImportant) {
-                const isImportantIcon = document.createElement("i");
-                noteBox.classList.add("important-note");
-                isImportantIcon.setAttribute("data-lucide", "star");
-                isImportantIcon.classList.add("important-icon");
-                noteBox.appendChild(isImportantIcon);
-            }
-
-            const noteContent = document.createElement("p");
-            noteContent.className = "note-content";
-
-            if (note.isLocked) {
-                const lockIcon = document.createElement("i");
-                lockIcon.setAttribute("data-lucide", "lock-keyhole");
-                lockIcon.classList.add("lock-icon");
-
-                const lockBackground = document.createElement("div");
-                lockBackground.classList.add("lock-background");
-                lockBackground.appendChild(lockIcon);
-
-                noteBox.classList.add("locked-note");
-                noteBox.appendChild(lockBackground);
-
-                noteContent.textContent = "This note is locked. You need to unlock it to see its content.";
-            } else {
-                noteContent.textContent = note.content;
-            }
-
-            const noteTitle = document.createElement("h3");
-            noteTitle.textContent = note.title;
-            noteTitle.className = "title";
-
-            noteBox.appendChild(noteContent);
-            noteBox.appendChild(noteTitle);
-            container.appendChild(noteBox);
-
-            setupNoteEvents(noteBox, note);
-        });
-        lucide.createIcons();
-    }
-});
+localStorage.removeItem("notes");

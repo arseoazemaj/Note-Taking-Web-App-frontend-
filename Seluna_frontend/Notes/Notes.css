@@ -137,10 +137,22 @@ input::selection {
 }
 
 #search {
+    position: relative;
     margin: auto;
     display: block;
     height: 35px;
     width: 65%;
+    z-index: 2;
+}
+
+#search_background_blur {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
 #search::placeholder {
@@ -177,7 +189,7 @@ input::selection {
     padding: 40px 10px;
     width: 90%;
     position: relative;
-    top: 0px;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
     scrollbar-width: none;
@@ -224,7 +236,7 @@ input::selection {
     visibility: hidden;
     position: fixed;
     background: #1d1737;
-    height: 400px;
+    height: 395px;
     width: 95%;
     grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
     gap: 30px 40px;
@@ -237,9 +249,11 @@ input::selection {
     display: grid;
     filter: drop-shadow(0 0 15px #302758);
     opacity: .97;
-    padding: 25px;
+    padding: 20px;
+    padding-right: 30px;
     overflow-y: auto;
     scrollbar-width: none;
+    overscroll-behavior: none;
 }
 
 #folder_page.show {animation: show_folder_page .5s forwards;}
@@ -257,7 +271,7 @@ input::selection {
 
 #container {
     position: relative;
-    top: 0;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
     display: grid;
@@ -395,7 +409,7 @@ input::selection {
     height: 80px;
     width: 100%;
     background-color: #1a1433;
-    bottom: -10%;
+    bottom: -20%;
     display: flex;
     justify-content: center;
     z-index: 2;
@@ -405,13 +419,13 @@ input::selection {
 #decide.slide-out {animation: slide_out_decide .5s forwards;}
 
 @keyframes slide_in_decide {
-    from { bottom: -10%; }
+    from { bottom: -20%; }
     to { bottom: 0; }
 }
 
 @keyframes slide_out_decide {
     from { bottom: 0; }
-    to { bottom: -10%; }
+    to { bottom: -20%; }
 }
 
 #blur_background {
@@ -429,7 +443,7 @@ input::selection {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    height: 80px;
+    height: 100%;
     width: 100%;
     backdrop-filter: blur(1px);
     background: #1d17374a;
@@ -444,32 +458,32 @@ input::selection {
     height: 100%;
     backdrop-filter: blur(1px);
     background: #1d17374a;
-    z-index: 1;
+    z-index: 2;
 }
 
-#move, #lock, #delete, #mark_important, #download {
-    height: 80px;
+#move, #lock, #mark_important, #download, #delete {
+    height: 100%;
     background-color: #1a1433;
     border: none;
-    padding: 10px;
+    padding: 5px;
 }
 
 #move:active, #lock:active, #delete:active, #mark_important:active, #download:active {background-color: #251e45;}
 
 #move:disabled, #download:disabled { pointer-events: none; opacity: .5;}
 
-#folder_icon, #lock_icon, #bin_icon, #important_icon, #download_icon {width: 100%;}
+#folder_icon, #lock_icon, #bin_icon, #important_icon, #download_icon {width: 100%;scale: 1.1;}
 
 #move_menu {
     height: 300px;
-    width: 85%;
+    width: 80%;
     border-radius: 25px;
     background: #251e45;
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    bottom: -420%;
-    padding: 15px;
+    bottom: -430%;
+    padding: 20px;
     z-index: 1;
 }
 
@@ -477,13 +491,13 @@ input::selection {
 #move_menu.slide-out {animation: slide_out .5s forwards;}
 
 @keyframes slide_in {
-    from { bottom: -420%; }
+    from { bottom: -430%; }
     to { bottom: 10px; }
 }
 
 @keyframes slide_out {
     from { bottom: 10px; }
-    to { bottom: -420%; }
+    to {bottom: -430%;}
 }
 
 #folder_header_text_1 {
@@ -694,7 +708,7 @@ input::selection {
 
 #lock_menu_ask {
     height: 245px;
-    width: 75%;
+    width: 80%;
     border-radius: 25px;
     background: #251e45;
     position: absolute;
@@ -741,17 +755,16 @@ input::selection {
 .lock_menu_answere:active {background-color: #1d1737;}
 
 #lock_password_menu {
-    height: 90%;
-    width: 90%;
-    position: absolute;
-    border-radius: 25px;
-    background: #251e45;
-    position: absolute;
+    height: 100%;
+    width: 100%;
     left: 50%;
     transform: translateX(-50%);
-    bottom: -320px;
+    background: #251e45;
+    position: relative;
+    bottom: -378px;
+    border-radius: 25px;
     padding: 20px;
-    z-index: 1;
+    visibility: visible;
 }
 
 #lock_password_menu.slide-in {animation: slide_in_lock_menu .5s forwards;}
@@ -759,7 +772,7 @@ input::selection {
 
 @keyframes slide_in_lock_menu {
     from { bottom: -320px; }
-    to { bottom: 330px; }
+    to {bottom: 545px;}
 }
 
 @keyframes slide_out_lock_menu {
@@ -900,7 +913,7 @@ input::selection {
 
 #download_menu {
     height: 250px;
-    width: 75%;
+    width: 80%;
     border-radius: 25px;
     background: #251e45;
     position: absolute;
@@ -925,7 +938,7 @@ input::selection {
 }
 
 #download_minimenu {
-    width: 90%;
+    width: 99%;
     height: 75%;
     border-radius: 25px;
     background: #1d1737;
@@ -933,7 +946,8 @@ input::selection {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     display: flex;
     gap: 20px;
     flex-direction: column;
@@ -960,7 +974,7 @@ input::selection {
 
 #delete_menu {
     height: 95px;
-    width: 82%;
+    width: 80%;
     border-radius: 25px;
     background: #251e45;
     position: absolute;

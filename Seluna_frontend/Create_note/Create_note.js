@@ -381,32 +381,3 @@ async function deleteNote() {
         }
     }
 }
-
-//*Used to save the notes in local storage for testing purposes (will be deleted in the end)*//
-
-document.getElementById("save").addEventListener("click", function() {
-    if (window.Capacitor?.isNativePlatform()) {
-        const title = document.getElementById("title").value.trim();
-        const content = document.getElementById("note_input").value.trim();
-    
-        if (content === "") {
-            return;
-        }
-    
-        const isImportant = filled;
-    
-        const note = {
-            title: title,
-            content: content,
-            isImportant: isImportant
-        };
-    
-        let notes = JSON.parse(localStorage.getItem("notes")) || [];
-    
-        notes.push(note);
-    
-        localStorage.setItem("notes", JSON.stringify(notes));
-    
-        window.location.href = "../Notes/Notes.html";
-    }
-});
