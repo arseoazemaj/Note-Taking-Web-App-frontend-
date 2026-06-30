@@ -3,4 +3,13 @@ when we see this file and see what we were working on and what did last and ever
 
 Have one feature is the "Download" needs the phone to be able to access the backend which it can't do now but will see
 
-I think now we can frely work on the Profile page can we?
+
+toolbar for the notes
+
+bold
+italic
+underline
+bullet list
+number list
+undo
+redo

@@ -19,7 +19,9 @@
           "-webkit-user-drag",
           "backdrop-filter",
           "scrollbar-width",
-          "scrollbar-width: none"
+          "scrollbar-width: none",
+          "overscroll-behavior",
+          "overscroll-behavior: none"
         ]
       }
     ],

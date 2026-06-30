@@ -365,6 +365,7 @@ input {
 }
 
 #toolbar {
+    visibility: hidden;
     background: #251e45;
     color: #ae7fce;
     position: relative;
@@ -375,5 +376,15 @@ input {
     width: 100%;
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    gap: 5px;
+}
+
+#bold, #italic, #underline, #list, #list-ordered, #undo, #redo {
+    height: 100%;
+    width: 13%;
+    border-radius: 50%;
+    background: #1a1433;
+    border: none;
+    scale: .9;
 }
