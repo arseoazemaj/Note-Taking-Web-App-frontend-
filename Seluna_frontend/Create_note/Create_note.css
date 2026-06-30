@@ -147,9 +147,10 @@ input {
     background: #1c0f2fd1;
     color: #c7c5ff;
     font-family: 'Arial', sans-serif;
-    position: absolute;
-    top: 130px;
-    left: 3%;
+    position: fixed;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: -1;
 }
 
@@ -367,5 +368,12 @@ input {
     background: #251e45;
     color: #ae7fce;
     position: relative;
-    top: 450px;
+    top: 460px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 45px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
