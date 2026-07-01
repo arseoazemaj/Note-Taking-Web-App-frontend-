@@ -30,8 +30,7 @@
     "jsdom": "^26.1.0",
     "jwt-decode": "^4.0.0",
     "react": "^19.2.7",
-    "react-dom": "^19.2.7",
-    "typescript": "^6.0.3"
+    "react-dom": "^19.2.7"
   },
   "directories": {
     "test": "tests"
@@ -39,6 +38,7 @@
   "devDependencies": {
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
+    "typescript": "^6.0.3",
     "vite": "^7.3.0"
   },
   "type": "commonjs"
