@@ -64,11 +64,13 @@ function openMenu() {
 
 function closeMenu() {
     setTimeout(() => {
+        if (download_menu.classList.contains("show_lock_menu")) {
+            download_menu.classList.remove("show_lock_menu");
+            download_menu.classList.add("hide_lock_menu");
+        }
         container.classList.remove("show_menu");
         container.classList.add("hide_menu");
         lock_bg.style.visibility = "hidden";
-        download_menu.classList.remove("show_lock_menu");
-        download_menu.classList.add("hide_lock_menu");
         blur_background.style.visibility = "hidden";
     }, 10);
 }

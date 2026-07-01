@@ -1,15 +1,4 @@
 This file will be used to write our ideas for the development of seluna and write what we are working on so if we leave and forget we will remember
 when we see this file and see what we were working on and what did last and everything that had happened.
 
-Have one feature is the "Download" needs the phone to be able to access the backend which it can't do now but will see
-
-
-toolbar for the notes
-
-bold
-italic
-underline
-bullet list
-number list
-undo
-redo
+Have one feature is the "Download" needs the phone to be able to access the backend and will work now that we can access the backend

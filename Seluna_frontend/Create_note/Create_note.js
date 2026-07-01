@@ -381,14 +381,3 @@ async function deleteNote() {
         }
     }
 }
-
-const toolbar = document.getElementById("toolbar")
-if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.Keyboard) {
-    const { Keyboard } = window.Capacitor.Plugins;
-    Keyboard.addListener('keyboardWillShow', () => {
-        toolbar.style.visibility = "visible"
-    });
-    Keyboard.addListener('keyboardWillHide', () => {
-        toolbar.style.visibility = "hidden"
-    });
-}

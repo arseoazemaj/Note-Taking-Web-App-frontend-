@@ -30,6 +30,8 @@ h1, h3, p, a, button, input, input::placeholder {
     font-weight: bold;
 }
 
+textarea::placeholder {color: #c7a2df;}
+
 a, p, h1, h3, button {
     -webkit-user-select: none;
     user-select: none;
@@ -147,14 +149,11 @@ input {
     background: #1c0f2fd1;
     color: #c7c5ff;
     font-family: 'Arial', sans-serif;
-    position: fixed;
-    top: 90px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: absolute;
+    top: 130px;
+    left: 3%;
     z-index: -1;
 }
-
-#note_input::placeholder {color: #c7c5ff;}
 
 #lock_bg {
     visibility: hidden;
@@ -362,29 +361,4 @@ input {
 
 .download_format:active {
     background-color: #251e45;
-}
-
-#toolbar {
-    visibility: hidden;
-    background: #251e45;
-    color: #ae7fce;
-    position: relative;
-    top: 460px;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 45px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-}
-
-#bold, #italic, #underline, #list, #list-ordered, #undo, #redo {
-    height: 100%;
-    width: 13%;
-    border-radius: 50%;
-    background: #1a1433;
-    border: none;
-    scale: .9;
 }

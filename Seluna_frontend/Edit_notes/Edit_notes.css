@@ -30,6 +30,8 @@ h1, h3, p, a, button, input, input::placeholder {
     font-weight: bold;
 }
 
+textarea::placeholder {color: #c7a2df;}
+
 a, p, h1, h3, button {
     -webkit-user-select: none;
     user-select: none;
@@ -152,8 +154,6 @@ input {
     left: 3%;
     z-index: -1;
 }
-
-#note_input::placeholder {color: #c7c5ff;}
 
 #lock_bg {
     visibility: hidden;
