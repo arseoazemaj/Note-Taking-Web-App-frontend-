@@ -1421,6 +1421,15 @@ async function mark_important() {
     }, 150);
 }
 
+
+
+
+
+
+
+
+
+
 function download_note() {
     setTimeout(() => {
         download_menu.classList.add("slide-in");
@@ -1523,6 +1532,15 @@ async function download_md() {
         alert('Error saving MD file');
     }
 }
+
+
+
+
+
+
+
+
+
 
 function open_trash_menu() {
     setTimeout(() => {

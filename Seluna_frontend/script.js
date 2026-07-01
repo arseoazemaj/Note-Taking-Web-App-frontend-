@@ -1,6 +1,6 @@
 //TODO Delete in the end
 window.onload = function() {
-    window.location.href = "../Create_note/Create_note.html"; //*Just for development for now
+    window.location.href = "../Notes/Notes.html"; //*Just for development for now
 };
 
 
