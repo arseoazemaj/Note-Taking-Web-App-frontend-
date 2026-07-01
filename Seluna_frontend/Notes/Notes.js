@@ -146,6 +146,7 @@ async function loadNotes() {
                     noteBox.classList.add("selected");
                     noteBox.style.transform = "scale(.9)";
                     showDecision();
+                    chosingMoveDecisions();
                 }, LONG_PRESS_MS);
             });
 
@@ -184,6 +185,7 @@ async function loadNotes() {
                             checkIcon.style.display = "none";
                             noteBox.style.transform = "scale(1)";
                         }
+                        chosingMoveDecisions();
                         updateSelectionModeFromDOM();
                     }
                 } else if (!longPressFired && !wasCanceled) {
@@ -638,17 +640,26 @@ function showUnlockFolderPrompt(folderId) {
 }
 
 function chosingMoveDecisions() {
-    const anySelectedFolder = document.querySelector(".folder-box.selected");
+    const folderCount = document.querySelectorAll(".folder-box.selected").length;
+    const noteCount = document.querySelectorAll(".note-box.selected").length;
 
-    if (anySelectedFolder) {
-        SelectedFolders = true;
-        move_btn.disabled = true;
-        download_btn.disabled = true;
-    } else {
-        SelectedFolders = false;
-        move_btn.disabled = false;
-        download_btn.disabled = false;
+    const hasFolders = folderCount > 0;
+
+    let canMove = false;
+    let canDownload = false;
+
+    if (!hasFolders) {
+        if (noteCount === 1) {
+            canMove = true;
+            canDownload = true;
+        } else if (noteCount > 1) {
+            canMove = true;
+            canDownload = false;
+        }
     }
+
+    move_btn.disabled = !canMove;
+    download_btn.disabled = !canDownload;
 }
 
 const folderPage = document.getElementById("folder_page");
@@ -878,6 +889,7 @@ async function opened_folder(folderId) {
                         noteBox.classList.add("selected");
                         noteBox.style.transform = "scale(.9)";
                         showDecision();
+                        chosingMoveDecisions();
                     }, LONG_PRESS_MS);
             });
 
@@ -909,6 +921,7 @@ async function opened_folder(folderId) {
                     if (!longPressFired) {
                         const checkIcon = noteBox.querySelector(".note-check-icon");
                         const isSelected = noteBox.classList.toggle("selected");
+                        chosingMoveDecisions();
                         if (isSelected) {
                             checkIcon.style.display = "block";
                             noteBox.style.transform = "scale(.9)";
