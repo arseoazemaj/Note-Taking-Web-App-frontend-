@@ -1,22 +1,26 @@
 //TODO Uncomment the following code when everything is finished
 
 const token = localStorage.getItem("token");
+console.log("Token on Notes page:", token);
 
-// if (!token) {
-//     window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
-// } else {
-//     fetch("http://192.168.1.7:5216/api/Notes/check-auth", {
-//         headers: {
-//             "Authorization": "Bearer " + token
-//         }
-//     })
-//     .then(res => {
-//         if (!res.ok) {
-//             localStorage.removeItem("token");
-//             window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
-//         }
-//     });
-// }
+if (!token) {
+    window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
+} else {
+    fetch("http://192.168.1.7:5216/api/Notes/check_auth", {
+        headers: {
+            "Authorization": "Bearer " + token
+        }
+    })
+    .then(async res => {
+        console.log("Status:", res.status);
+        console.log(await res.text());
+
+        if (!res.ok) {
+            window.location.href = "../LoginSignuppages/Log_in-and-Sign_up.html";
+        }
+    })
+    .catch(console.error);
+}
 
 function getUserIdFromToken() {
     const token = localStorage.getItem("token");
@@ -87,36 +91,3 @@ lucide.createIcons();
         activeEl = null;
     });
 })();
-
-document.addEventListener("DOMContentLoaded", loadUsername );
-
-async function loadUsername() {
-    try {
-        const username = document.getElementById("username");
-        const username_input = document.getElementById("username_change");
-        const token = localStorage.getItem("token");
-        if (!token) {
-            console.error("No JWT token found");
-            return;
-        }
-
-        const response = await fetch("http://192.168.1.7:5216/api/account/get_username", {
-                method: "GET",
-                headers: {
-                    "Authorization": `Bearer ${token}`,
-                    "Content-Type": "application/json"
-                }
-            }
-        );
-
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-        }
-
-        const data = await response.json();
-        username.textContent = data.username;
-        username_input.value = data.username;
-    } catch (error) {
-        console.error("Failed to load username:", error);
-    }
-}

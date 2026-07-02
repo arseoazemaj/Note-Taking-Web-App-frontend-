@@ -1686,5 +1686,3 @@ if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.Key
         decide.style.visibility = "visible";
     });
 }
-
-localStorage.removeItem("notes");

@@ -2,3 +2,7 @@ This file will be used to write our ideas for the development of seluna and writ
 when we see this file and see what we were working on and what did last and everything that had happened.
 
 Have one feature is the "Download" needs the phone to be able to access the backend and will work now that we can access the backend
+
+notes will be in created order at first
+
+scrcpy
